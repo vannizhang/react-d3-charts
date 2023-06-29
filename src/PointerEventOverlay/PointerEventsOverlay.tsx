@@ -77,6 +77,7 @@ export const PointerEventsOverlay: FC<Props> = ({
                 handleMouseMoveEvent(null);
             })
             .on('mousemove', (evt) => {
+                console.log(evt);
                 handleMouseMoveEvent(evt.offsetX);
             });
     };
@@ -99,7 +100,10 @@ export const PointerEventsOverlay: FC<Props> = ({
             return null;
         }
 
-        const { dimension } = svgContainerData;
+        const { dimension, margin } = svgContainerData;
+
+        // minus left margin space to get accurate mouse posion x that is relative to the rect
+        mousePosX -= margin.left;
 
         const { width } = dimension;
 
@@ -107,6 +111,7 @@ export const PointerEventsOverlay: FC<Props> = ({
 
         // set offset if typeof xScale is ScaleBand
         const offset = 'bandwidth' in xScale ? xScale.bandwidth() / 2 : 0;
+        // console.log(offset)
 
         // when pointer at left half of first bar OR at right half of last bar
         if (mousePosX < offset || mousePosX > width - offset) {
