@@ -27,13 +27,15 @@ type Props = {
      */
     color?: string;
     /**
-     * number of ticks to be displayed on x axis, by default, D3 will try to place as many as possible
-     */
-    numOfTicksOnXAxis: number;
-    /**
      * if ture, show horizontal grid lines
      */
     showHorizontalGridLine: boolean;
+    /**
+     * By default, D3 shows ticks for all items in the data on the x-axis.
+     * Pass an array of tick values or an array of keys of the input data to override that behavior
+     * and only render ticks for items that have their keys in `tickValuesOnXAxis`.
+     */
+    tickValuesOnXAxis: (string | number)[];
 };
 
 /**
@@ -44,8 +46,8 @@ type Props = {
 export const BasicBarChart: FC<Props> = ({
     data,
     color,
-    numOfTicksOnXAxis,
     showHorizontalGridLine,
+    tickValuesOnXAxis,
 }: Props) => {
     const [dimension, setDimension] = useState<Dimension>({
         height: 0,
@@ -99,7 +101,7 @@ export const BasicBarChart: FC<Props> = ({
                     color={color}
                 />
 
-                <XAxis scale={xScale} numTicks={numOfTicksOnXAxis} />
+                <XAxis scale={xScale} tickValues={tickValuesOnXAxis} />
 
                 <YAxis scale={yScale} showGridLines={showHorizontalGridLine} />
             </SvgContainer>

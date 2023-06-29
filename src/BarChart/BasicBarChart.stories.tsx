@@ -86,11 +86,11 @@ export const ShowGridLine: Story = {
     },
 };
 
-export const CustomColorAndNumberOfTicks: Story = {
+export const CustomColorAndTickValues: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
-        numOfTicksOnXAxis: 3,
         color: 'orange',
+        tickValuesOnXAxis: ['12/1', '12/5', '12/10'],
     },
 };

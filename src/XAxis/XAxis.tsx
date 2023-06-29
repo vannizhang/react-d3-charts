@@ -9,10 +9,7 @@ type Props = {
      * A scale function that has numeric output
      */
     scale: AxisScale<string | number>;
-    /**
-     * specify how many ticks the axis has
-     */
-    numTicks?: number;
+    tickValues?: (string | number)[];
     svgContainerData?: SvgContainerData;
 };
 
@@ -24,7 +21,7 @@ type Props = {
  * Good Resources to learn how axes in d3 work
  * @see https://www.d3indepth.com/axes/
  */
-export const XAxis: FC<Props> = ({ scale, svgContainerData, numTicks }) => {
+export const XAxis: FC<Props> = ({ scale, tickValues, svgContainerData }) => {
     const drawXAxis = () => {
         const { rootGroup, dimension } = svgContainerData;
 
@@ -32,8 +29,8 @@ export const XAxis: FC<Props> = ({ scale, svgContainerData, numTicks }) => {
 
         const xAxis = axisBottom(scale);
 
-        if (numTicks) {
-            xAxis.ticks(numTicks);
+        if (tickValues) {
+            xAxis.tickValues(tickValues);
         }
 
         const xAxisGroup: Selection<SVGSVGElement, any, any, any> =
