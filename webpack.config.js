@@ -26,15 +26,6 @@ module.exports =  (env, options)=> {
         devtool: 'source-map',
         resolve: {
             extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
-            alias: {
-                '@components': path.resolve(__dirname, 'src/components/'),
-                '@constants': path.resolve(__dirname, 'src/constants/'),
-                '@hooks': path.resolve(__dirname, 'src/hooks/'),
-                '@services': path.resolve(__dirname, 'src/services/'),
-                '@store': path.resolve(__dirname, 'src/store/'),
-                '@styles': path.resolve(__dirname, 'src/styles/'),
-                '@utils': path.resolve(__dirname, 'src/utils/'),
-            },
         },
         module: {
             rules: [
@@ -52,9 +43,6 @@ module.exports =  (env, options)=> {
                             options: {
                                 sourceMap: true
                             }
-                        }, 
-                        {
-                            loader: 'postcss-loader'
                         }
                     ],
                 },
@@ -83,75 +71,13 @@ module.exports =  (env, options)=> {
                 filename: devMode ? '[name].css' : '[name].[contenthash].css',
                 chunkFilename: devMode ? '[name].css' : '[name].[contenthash].css',
             }),
-            // copy static files from public folder to build directory
-            new CopyPlugin({
-                patterns: [
-                    { 
-                        from: "public/**/*", 
-                        globOptions: {
-                            ignore: ["**/index.html"],
-                        },
-                    }
-                ],
-            }),
             new HtmlWebpackPlugin({
                 template: './public/index.html',
                 filename: 'index.html',
-                title: package.name,
-                meta: {
-                    title: package.name,
-                    description: package.description,
-                    author: package.author,
-                    keywords: Array.isArray(package.keywords) 
-                        ? package.keywords.join(',') 
-                        : undefined,
-                    'og:title': package.name,
-                    'og:description': package.description,
-                    'og:url': package.homepage,
-                },
-                minify: {
-                    html5                          : true,
-                    collapseWhitespace             : true,
-                    minifyCSS                      : true,
-                    minifyJS                       : true,
-                    minifyURLs                     : false,
-                    removeComments                 : true,
-                    removeEmptyAttributes          : true,
-                    removeOptionalTags             : true,
-                    removeRedundantAttributes      : true,
-                    removeScriptTypeAttributes     : true,
-                    removeStyleLinkTypeAttributese : true,
-                    useShortDoctype                : true
-                }
             }),
             // !devMode ? new CleanWebpackPlugin() : false,
             // !devMode ? new BundleAnalyzerPlugin() : false
         ].filter(Boolean),
-        optimization: {
-            splitChunks: {
-                cacheGroups: {
-                    // vendor chunk
-                    vendor: {
-                        // sync + async chunks
-                        chunks: 'all',
-                        name: 'vendor',
-                        // import file path containing node_modules
-                        test: /node_modules/
-                    }
-                }
-            },
-            minimizer: [
-                new TerserPlugin({
-                    extractComments: true,
-                    terserOptions: {
-                        compress: {
-                            drop_console: true,
-                        }
-                    }
-                }), 
-                new CssMinimizerPlugin()
-            ]
-        },
     }
 
 };
