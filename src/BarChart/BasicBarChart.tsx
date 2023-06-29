@@ -15,6 +15,7 @@ import { Dimension, ReactD3ChartData } from '../types';
 import { SCALE_BAND_PADDING_INNER } from '../constants';
 import { XAxis } from '../XAxis/XAxis';
 import { YAxis } from '../YAxis/YAxis';
+import { PointerEventsOverlay } from '../PointerEventOverlay/PointerEventsOverlay';
 
 type XScale = ScaleBand<string | number>;
 
@@ -104,6 +105,13 @@ export const BasicBarChart: FC<Props> = ({
                 <XAxis scale={xScale} tickValues={tickValuesOnXAxis} />
 
                 <YAxis scale={yScale} showGridLines={showHorizontalGridLine} />
+
+                <PointerEventsOverlay
+                    xScale={xScale}
+                    itemOnHoverChanged={(data) => {
+                        console.log(data);
+                    }}
+                />
             </SvgContainer>
         </div>
     );

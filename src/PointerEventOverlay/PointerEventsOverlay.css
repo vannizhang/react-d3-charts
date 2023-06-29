@@ -1,0 +1,4 @@
+.pointer-event-overlay-group line {
+    stroke: var(--pointer-overlay-ref-line-color);
+    stroke-width: var(--pointer-overlay-ref-line-width);
+}

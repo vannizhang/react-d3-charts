@@ -1,4 +1,7 @@
 :root {
     --axis-tick-line-color: #303030;
     --axis-tick-text-color: #303030;
+
+    --pointer-overlay-ref-line-color: red;
+    --pointer-overlay-ref-line-wdith: 1px;
 }
