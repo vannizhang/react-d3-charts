@@ -27,51 +27,70 @@ const meta: Meta<typeof BasicBarChart> = {
 export default meta;
 type Story = StoryObj<typeof BasicBarChart>;
 
+const data = [
+    {
+        key: '12/1',
+        value: 26,
+    },
+    {
+        key: '12/2',
+        value: 38,
+    },
+    {
+        key: '12/3',
+        value: 10,
+    },
+    {
+        key: '12/4',
+        value: 45,
+    },
+    {
+        key: '12/5',
+        value: 10,
+    },
+    {
+        key: '12/6',
+        value: 12,
+    },
+    {
+        key: '12/7',
+        value: 15,
+    },
+    {
+        key: '12/8',
+        value: 7,
+    },
+    {
+        key: '12/9',
+        value: 23,
+    },
+    {
+        key: '12/10',
+        value: 4,
+    },
+];
+
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-export const Primary: Story = {
+export const Default: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
-        data: [
-            {
-                key: '12/1',
-                value: 26,
-            },
-            {
-                key: '12/2',
-                value: 38,
-            },
-            {
-                key: '12/3',
-                value: 10,
-            },
-            {
-                key: '12/4',
-                value: 45,
-            },
-            {
-                key: '12/5',
-                value: 10,
-            },
-            {
-                key: '12/6',
-                value: 12,
-            },
-            {
-                key: '12/7',
-                value: 15,
-            },
-            {
-                key: '12/8',
-                value: 7,
-            },
-            {
-                key: '12/9',
-                value: 23,
-            },
-            {
-                key: '12/10',
-                value: 4,
-            },
-        ],
+        data,
+    },
+};
+
+export const ShowGridLine: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        showHorizontalGridLine: true,
+    },
+};
+
+export const CustomColorAndNumberOfTicks: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        numOfTicksOnXAxis: 3,
+        color: 'orange',
     },
 };

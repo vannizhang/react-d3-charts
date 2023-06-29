@@ -22,7 +22,18 @@ type YScale = ScaleLinear<number, number>;
 
 type Props = {
     data: ReactD3ChartData;
+    /**
+     * fill color of the Bar Rectange
+     */
     color?: string;
+    /**
+     * number of ticks to be displayed on x axis, by default, D3 will try to place as many as possible
+     */
+    numOfTicksOnXAxis: number;
+    /**
+     * if ture, show horizontal grid lines
+     */
+    showHorizontalGridLine: boolean;
 };
 
 /**
@@ -30,7 +41,12 @@ type Props = {
  * @param param0
  * @returns
  */
-export const BasicBarChart: FC<Props> = ({ data, color }) => {
+export const BasicBarChart: FC<Props> = ({
+    data,
+    color,
+    numOfTicksOnXAxis,
+    showHorizontalGridLine,
+}: Props) => {
     const [dimension, setDimension] = useState<Dimension>({
         height: 0,
         width: 0,
@@ -83,9 +99,9 @@ export const BasicBarChart: FC<Props> = ({ data, color }) => {
                     color={color}
                 />
 
-                <XAxis scale={xScale} />
+                <XAxis scale={xScale} numTicks={numOfTicksOnXAxis} />
 
-                <YAxis scale={yScale} />
+                <YAxis scale={yScale} showGridLines={showHorizontalGridLine} />
             </SvgContainer>
         </div>
     );

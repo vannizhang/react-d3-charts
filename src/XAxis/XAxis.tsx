@@ -30,10 +30,10 @@ export const XAxis: FC<Props> = ({ scale, svgContainerData, numTicks }) => {
 
         const { height } = dimension;
 
-        const xAxisGenerator = axisBottom(scale);
+        const xAxis = axisBottom(scale);
 
         if (numTicks) {
-            xAxisGenerator.ticks(numTicks);
+            xAxis.ticks(numTicks);
         }
 
         const xAxisGroup: Selection<SVGSVGElement, any, any, any> =
@@ -45,7 +45,7 @@ export const XAxis: FC<Props> = ({ scale, svgContainerData, numTicks }) => {
             xAxisGroup
                 .attr('transform', `translate(0, ${height})`)
                 .transition()
-                .call(xAxisGenerator);
+                .call(xAxis);
             return;
         }
 
@@ -53,7 +53,7 @@ export const XAxis: FC<Props> = ({ scale, svgContainerData, numTicks }) => {
             .append('g')
             .attr('class', 'x axis')
             .attr('transform', `translate(0,${height})`)
-            .call(xAxisGenerator);
+            .call(xAxis);
     };
 
     useEffect(() => {
