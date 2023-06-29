@@ -17,6 +17,7 @@ const SvgContainer: React.FC<Props> = ({
     children,
     dimensionOnChange,
 }) => {
+    const containerRef = useRef<HTMLDivElement>();
     const svgRef = useRef<SVGSVGElement>();
     const rootGroupRef = useRef<SVGGElement>();
 
@@ -27,9 +28,9 @@ const SvgContainer: React.FC<Props> = ({
         const svg = select(svgRef.current).node();
         const rootGroup = select(rootGroupRef.current).node();
 
-        const bbox = svg.getBBox();
-        const width = bbox.width - margin.left - margin.right;
-        const height = bbox.height - margin.top - margin.bottom;
+        const container = containerRef.current;
+        const width = container.offsetWidth - margin.left - margin.right;
+        const height = container.offsetHeight - margin.top - margin.bottom;
 
         const dimension: Dimension = {
             height,
@@ -61,32 +62,41 @@ const SvgContainer: React.FC<Props> = ({
     }, []);
 
     return (
-        <svg
-            ref={svgRef}
+        <div
+            ref={containerRef}
             style={{
                 position: 'relative',
                 width: '100%',
                 height: '100%',
             }}
         >
-            <g
-                ref={rootGroupRef}
+            <svg
+                ref={svgRef}
                 style={{
-                    transform: `translate(${margin.left}px, ${margin.top}px)`,
+                    position: 'relative',
+                    width: '100%',
+                    height: '100%',
                 }}
             >
-                {svgContainerData
-                    ? React.Children.map(children, (child) => {
-                          return React.cloneElement(
-                              child as React.ReactElement<any>,
-                              {
-                                  svgContainerData,
-                              }
-                          );
-                      })
-                    : null}
-            </g>
-        </svg>
+                <g
+                    ref={rootGroupRef}
+                    style={{
+                        transform: `translate(${margin.left}px, ${margin.top}px)`,
+                    }}
+                >
+                    {svgContainerData
+                        ? React.Children.map(children, (child) => {
+                              return React.cloneElement(
+                                  child as React.ReactElement<any>,
+                                  {
+                                      svgContainerData,
+                                  }
+                              );
+                          })
+                        : null}
+                </g>
+            </svg>
+        </div>
     );
 };
 

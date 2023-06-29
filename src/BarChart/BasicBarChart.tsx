@@ -2,10 +2,8 @@ import React, { FC, useMemo, useState } from 'react';
 import {
     ScaleBand,
     scaleLinear,
-    scaleTime,
+    // scaleTime,
     ScaleLinear,
-    ScaleTime,
-    AxisScale,
     scaleBand,
     max,
     min,
@@ -21,9 +19,15 @@ type YScale = ScaleLinear<number, number>;
 
 type Props = {
     data: ReactD3ChartData;
+    color?: string;
 };
 
-export const BasicBarChart: FC<Props> = ({ data }) => {
+/**
+ * Basic Bar Chart
+ * @param param0
+ * @returns
+ */
+export const BasicBarChart: FC<Props> = ({ data, color }) => {
     const [dimension, setDimension] = useState<Dimension>({
         height: 0,
         width: 0,
@@ -73,7 +77,7 @@ export const BasicBarChart: FC<Props> = ({ data }) => {
                     data={data}
                     xScale={xScale}
                     yScale={yScale}
-                    // color={}
+                    color={color}
                 />
             </SvgContainer>
         </div>

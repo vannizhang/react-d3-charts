@@ -24,5 +24,6 @@ module.exports = {
     "rules": {
         'prettier/prettier': 'error',
         "@typescript-eslint/interface-name-prefix": "off"
-    }
+    },
+    "ignorePatterns": ["**/*.stories.tsx"],
 }
