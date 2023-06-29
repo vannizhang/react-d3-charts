@@ -1,0 +1,15 @@
+.y.axis .tick text {
+    fill: var(--axis-tick-text-color);
+}
+
+.y.axis .tick line {
+    stroke: var(--axis-tick-line-color);
+}
+
+.y.axis .domain {
+    stroke: var(--axis-tick-line-color);
+}
+
+.y.axis.show-grid .tick line {
+    stroke-dasharray: 1 1;
+}

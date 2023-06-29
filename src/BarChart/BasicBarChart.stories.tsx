@@ -10,8 +10,8 @@ const meta: Meta<typeof BasicBarChart> = {
         (Story) => (
             <div
                 style={{
-                    width: '500px',
-                    height: '300px',
+                    width: '100%',
+                    height: '100%',
                 }}
             >
                 {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}

@@ -1,3 +1,4 @@
+import '../style.css';
 import React, { FC, useMemo, useState } from 'react';
 import {
     ScaleBand,
@@ -12,6 +13,8 @@ import SvgContainer from '../SvgContainer/SvgContainer';
 import Bars from './Bars';
 import { Dimension, ReactD3ChartData } from '../types';
 import { SCALE_BAND_PADDING_INNER } from '../constants';
+import { XAxis } from '../XAxis/XAxis';
+import { YAxis } from '../YAxis/YAxis';
 
 type XScale = ScaleBand<string | number>;
 
@@ -79,6 +82,10 @@ export const BasicBarChart: FC<Props> = ({ data, color }) => {
                     yScale={yScale}
                     color={color}
                 />
+
+                <XAxis scale={xScale} />
+
+                <YAxis scale={yScale} />
             </SvgContainer>
         </div>
     );

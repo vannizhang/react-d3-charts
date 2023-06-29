@@ -1,0 +1,11 @@
+.x.axis .tick text {
+    fill: var(--axis-tick-text-color);
+}
+
+.x.axis .tick line {
+    stroke: var(--axis-tick-line-color);
+}
+
+.x.axis .domain {
+    stroke: var(--axis-tick-line-color);
+}
