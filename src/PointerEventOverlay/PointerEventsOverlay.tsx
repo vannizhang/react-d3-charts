@@ -17,7 +17,10 @@ export type DataOfItemOnHover = {
 };
 
 type Props = {
-    xScale: ScaleBand<string | number> | ScaleLinear<number, number>;
+    xScale:
+        | ScaleBand<string | number>
+        | ScaleLinear<number, number>
+        | ScaleTime<number, number>;
     svgContainerData?: SvgContainerData;
     /**
      * fires when user hover/leave a chart item
@@ -82,15 +85,43 @@ export const PointerEventsOverlay: FC<Props> = ({
             });
     };
 
+    /**
+     * Find the data of the item that is closest to the input mouse position on the x-axis.
+     * Updates the position of the vertical reference line to indicate the closest item
+     * and calls the itemOnHoverChanged callback function.
+     *
+     * If the input mouse position is null, it means the user has moved the mouse out of
+     * the chart.
+     *
+     * @param mouseXPosition The mouse position on the x-axis.
+     */
     const handleMouseMoveEvent = (mouseXPosition: number) => {
         // console.log(mouseXPosition)
 
+        // Find the item that is being hovered over based on the mouse position.
         const itemOnHover = findItemOnHoverByMousePos(mouseXPosition);
 
         updateVerticalRefLinePos(itemOnHover);
 
         // console.log(itemOnHover.current)
         itemOnHoverChanged(itemOnHover);
+    };
+
+    /**
+     * Calculates and returns the corresponding position on the x-axis range for a given value from the x domain.
+     * @param value value from the x domain
+     * @returns position from the range on x scale
+     */
+    const getRangePositionOnXScale = (
+        value: string | number | Date
+    ): number => {
+        // set offset if typeof xScale is ScaleBand
+        const offset = 'bandwidth' in xScale ? xScale.bandwidth() / 2 : 0;
+
+        // Calculate and return the x-axis position based on the type of xScale.
+        return 'bandwidth' in xScale
+            ? xScale(value as string | number) + offset
+            : xScale(+value);
     };
 
     const findItemOnHoverByMousePos = (
@@ -119,12 +150,12 @@ export const PointerEventsOverlay: FC<Props> = ({
 
             const value = xDomain[index];
 
-            const xPosition =
-                'bandwidth' in xScale ? xScale(value) + offset : xScale(+value);
+            // const xPosition =
+            //     'bandwidth' in xScale ? xScale(value as (string | number)) + offset : xScale(+value);
 
             return {
                 index,
-                xPosition,
+                xPosition: getRangePositionOnXScale(value),
             };
         }
 
@@ -133,17 +164,17 @@ export const PointerEventsOverlay: FC<Props> = ({
 
         for (let i = 0; i < xDomain.length; i++) {
             const currItem = xDomain[i];
-            const currItemPos =
-                'bandwidth' in xScale
-                    ? xScale(currItem) + offset
-                    : xScale(+currItem);
+            const currItemPos = getRangePositionOnXScale(currItem);
+            // 'bandwidth' in xScale
+            //     ? xScale(currItem as (string | number)) + offset
+            //     : xScale(+currItem);
 
             const nextItemIndex = xDomain[i + 1] ? i + 1 : i;
             const nextItem = xDomain[nextItemIndex];
-            const nextItemPos =
-                'bandwidth' in xScale
-                    ? xScale(nextItem) + offset
-                    : xScale(+nextItem);
+            const nextItemPos = getRangePositionOnXScale(nextItem);
+            // 'bandwidth' in xScale
+            //     ? xScale(nextItem as (string | number)) + offset
+            //     : xScale(+nextItem);
 
             if (mousePosX >= currItemPos && mousePosX <= nextItemPos) {
                 const distToCurrItem = Math.abs(mousePosX - currItemPos);
