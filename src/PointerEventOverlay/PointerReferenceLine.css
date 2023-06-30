@@ -1,0 +1,8 @@
+.pointer-event-reference-line-group {
+    pointer-events: none;
+}
+
+.pointer-event-reference-line-group line {
+    stroke: var(--pointer-reference-line-color);
+    stroke-width: var(--pointer-reference-line-width);
+}

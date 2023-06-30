@@ -2,6 +2,12 @@
     --axis-tick-line-color: #303030;
     --axis-tick-text-color: #303030;
 
-    --pointer-overlay-ref-line-color: red;
-    --pointer-overlay-ref-line-wdith: 1px;
+    --pointer-reference-line-color: red;
+    --pointer-reference-line-wdith: 1px;
+
+    --tooltip-background-color: rgba(0,0,0,.75);
+    --tooltip-text-color: #fff;
+    --tooltip-text-font-size: .85rem;
+    --tooltip-max-width: 200px
+    /* --tooltip-border-color: .75rem; */
 }

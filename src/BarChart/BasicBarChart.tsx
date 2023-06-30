@@ -11,11 +11,16 @@ import {
 } from 'd3';
 import SvgContainer from '../SvgContainer/SvgContainer';
 import Bars from './Bars';
-import { Dimension, ReactD3ChartData } from '../types';
-import { SCALE_BAND_PADDING_INNER } from '../constants';
+import { Dimension, Margin, ReactD3ChartData } from '../types';
+import { MARGIN, SCALE_BAND_PADDING_INNER } from '../constants';
 import { XAxis } from '../XAxis/XAxis';
 import { YAxis } from '../YAxis/YAxis';
-import { PointerEventsOverlay } from '../PointerEventOverlay/PointerEventsOverlay';
+import {
+    HoveredChartItem,
+    PointerEventsOverlay,
+} from '../PointerEventOverlay/PointerEventsOverlay';
+import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
+import { PointerReferenceLine } from '../PointerEventOverlay/PointerReferenceLine';
 
 type XScale = ScaleBand<string | number>;
 
@@ -37,6 +42,14 @@ type Props = {
      * and only render ticks for items that have their keys in `tickValuesOnXAxis`.
      */
     tickValuesOnXAxis: (string | number)[];
+    /**
+     * if true, show tooltip when user hovers a bar element
+     */
+    showTooltip: boolean;
+    /**
+     * custom margin space
+     */
+    margin?: Margin;
 };
 
 /**
@@ -49,11 +62,16 @@ export const BasicBarChart: FC<Props> = ({
     color,
     showHorizontalGridLine,
     tickValuesOnXAxis,
+    showTooltip,
+    margin = MARGIN,
 }: Props) => {
     const [dimension, setDimension] = useState<Dimension>({
         height: 0,
         width: 0,
     });
+
+    const [hoveredChartItem, setHoveredChartItem] =
+        useState<HoveredChartItem>();
 
     const xDomain = useMemo(() => {
         if (!data || !data.length) {
@@ -94,7 +112,7 @@ export const BasicBarChart: FC<Props> = ({
                 height: '100%',
             }}
         >
-            <SvgContainer dimensionOnChange={setDimension}>
+            <SvgContainer margin={margin} dimensionOnChange={setDimension}>
                 <Bars
                     data={data}
                     xScale={xScale}
@@ -106,13 +124,30 @@ export const BasicBarChart: FC<Props> = ({
 
                 <YAxis scale={yScale} showGridLines={showHorizontalGridLine} />
 
+                {showTooltip ? (
+                    <PointerReferenceLine
+                        xPosition={
+                            hoveredChartItem ? hoveredChartItem.xPosition : null
+                        }
+                    />
+                ) : (
+                    <></>
+                )}
+
                 <PointerEventsOverlay
                     xScale={xScale}
-                    itemOnHoverChanged={(data) => {
-                        console.log(data);
-                    }}
+                    hoveredChartItemOnChange={setHoveredChartItem}
                 />
             </SvgContainer>
+
+            {showTooltip && hoveredChartItem && (
+                <TooltipOnTop
+                    content={data[hoveredChartItem.index]?.tooltip}
+                    xPosition={hoveredChartItem.xPosition}
+                    dimension={dimension}
+                    margin={margin}
+                />
+            )}
         </div>
     );
 };

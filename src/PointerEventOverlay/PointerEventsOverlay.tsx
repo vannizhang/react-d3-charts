@@ -1,11 +1,9 @@
-import './PointerEventsOverlay.css';
-
 import React, { useRef, useEffect, FC } from 'react';
 
 import { select, ScaleBand, ScaleLinear, ScaleTime } from 'd3';
 import { SvgContainerData } from '../types';
 
-export type DataOfItemOnHover = {
+export type HoveredChartItem = {
     /**
      * index of the item that is being hovered
      */
@@ -27,39 +25,39 @@ type Props = {
      * @param data
      * @returns
      */
-    itemOnHoverChanged: (data: DataOfItemOnHover) => void;
+    hoveredChartItemOnChange: (data: HoveredChartItem) => void;
 };
 
 export const PointerEventsOverlay: FC<Props> = ({
     xScale,
     svgContainerData,
-    itemOnHoverChanged,
+    hoveredChartItemOnChange,
 }: Props) => {
     const containerGroupRef = useRef<SVGGElement>();
 
-    const createRefLine = () => {
-        const { dimension } = svgContainerData;
+    // const createRefLine = () => {
+    //     const { dimension } = svgContainerData;
 
-        const { height } = dimension;
+    //     const { height } = dimension;
 
-        const group = select(containerGroupRef.current);
+    //     const group = select(containerGroupRef.current);
 
-        const refLine = group.select('line');
+    //     const refLine = group.select('line');
 
-        if (refLine.size()) {
-            return;
-        }
+    //     if (refLine.size()) {
+    //         return;
+    //     }
 
-        group
-            .append('line')
-            .attr('x1', 0)
-            .attr('y1', 0)
-            .attr('x2', 0)
-            .attr('y2', height)
-            .style('opacity', 0)
-            .style('stoke', 'red')
-            .style('fill', 'none');
-    };
+    //     group
+    //         .append('line')
+    //         .attr('x1', 0)
+    //         .attr('y1', 0)
+    //         .attr('x2', 0)
+    //         .attr('y2', height)
+    //         .style('opacity', 0)
+    //         .style('stoke', 'red')
+    //         .style('fill', 'none');
+    // };
 
     const createOverlayRect = () => {
         const { dimension } = svgContainerData;
@@ -101,10 +99,10 @@ export const PointerEventsOverlay: FC<Props> = ({
         // Find the item that is being hovered over based on the mouse position.
         const itemOnHover = findItemOnHoverByMousePos(mouseXPosition);
 
-        updateVerticalRefLinePos(itemOnHover);
+        // updateVerticalRefLinePos(itemOnHover);
 
         // console.log(itemOnHover.current)
-        itemOnHoverChanged(itemOnHover);
+        hoveredChartItemOnChange(itemOnHover);
     };
 
     /**
@@ -128,11 +126,9 @@ export const PointerEventsOverlay: FC<Props> = ({
      * Finds the item on hover based on the mouse position.
      *
      * @param {number} mousePosX - The x-coordinate of the mouse position.
-     * @returns {DataOfItemOnHover} - An object containing the index and x-position of the item on hover.
+     * @returns {HoveredChartItem} - An object containing the index and x-position of the item on hover.
      */
-    const findItemOnHoverByMousePos = (
-        mousePosX: number
-    ): DataOfItemOnHover => {
+    const findItemOnHoverByMousePos = (mousePosX: number): HoveredChartItem => {
         if (!mousePosX) {
             return null;
         }
@@ -187,63 +183,9 @@ export const PointerEventsOverlay: FC<Props> = ({
             index: left,
             xPosition: getRangePositionOnXScale(xDomain[left]),
         };
-
-        // // set offset if typeof xScale is ScaleBand
-        // const offset = 'bandwidth' in xScale ? xScale.bandwidth() / 2 : 0;
-        // // console.log(offset)
-
-        // // when pointer at left half of first bar OR at right half of last bar
-        // if (mousePosX < offset || mousePosX > width - offset) {
-        //     const index = mousePosX < offset ? 0 : xDomain.length - 1;
-
-        //     const value = xDomain[index];
-
-        //     // const xPosition =
-        //     //     'bandwidth' in xScale ? xScale(value as (string | number)) + offset : xScale(+value);
-
-        //     return {
-        //         index,
-        //         xPosition: getRangePositionOnXScale(value),
-        //     };
-        // }
-
-        // let itemIndex = -1;
-        // let xPositionOfItemOnHover = 0;
-
-        // for (let i = 0; i < xDomain.length; i++) {
-        //     const currItem = xDomain[i];
-        //     const currItemPos = getRangePositionOnXScale(currItem);
-        //     // 'bandwidth' in xScale
-        //     //     ? xScale(currItem as (string | number)) + offset
-        //     //     : xScale(+currItem);
-
-        //     const nextItemIndex = xDomain[i + 1] ? i + 1 : i;
-        //     const nextItem = xDomain[nextItemIndex];
-        //     const nextItemPos = getRangePositionOnXScale(nextItem);
-        //     // 'bandwidth' in xScale
-        //     //     ? xScale(nextItem as (string | number)) + offset
-        //     //     : xScale(+nextItem);
-
-        //     if (mousePosX >= currItemPos && mousePosX <= nextItemPos) {
-        //         const distToCurrItem = Math.abs(mousePosX - currItemPos);
-        //         const distToNextItem = Math.abs(mousePosX - nextItemPos);
-
-        //         itemIndex = distToCurrItem < distToNextItem ? i : nextItemIndex;
-
-        //         xPositionOfItemOnHover =
-        //             distToCurrItem < distToNextItem ? currItemPos : nextItemPos;
-
-        //         break;
-        //     }
-        // }
-
-        // return {
-        //     index: itemIndex,
-        //     xPosition: xPositionOfItemOnHover,
-        // };
     };
 
-    const updateVerticalRefLinePos = (itemOnHover: DataOfItemOnHover): void => {
+    const updateVerticalRefLinePos = (itemOnHover: HoveredChartItem): void => {
         const group = select(containerGroupRef.current);
 
         const refLine = group.select(`line`);
@@ -257,7 +199,7 @@ export const PointerEventsOverlay: FC<Props> = ({
 
     useEffect(() => {
         if (svgContainerData) {
-            createRefLine();
+            // createRefLine();
             createOverlayRect();
         }
     }, [svgContainerData]);
