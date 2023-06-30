@@ -1,11 +1,18 @@
-export type ReactD3ChartDataItem = {
+export type BarChartDataItem = {
     key: string | number;
     value: number;
-    label?: string;
     tooltip?: string;
 };
 
-export type ReactD3ChartData = ReactD3ChartDataItem[];
+export type BarChartData = BarChartDataItem[];
+
+export type LineChartDataItem = {
+    key: number;
+    value: number;
+    tooltip?: string;
+};
+
+export type LineChartData = LineChartDataItem[];
 
 export type Dimension = {
     height: number;

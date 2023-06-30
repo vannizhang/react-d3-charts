@@ -2,13 +2,13 @@ import React, { useRef, useEffect } from 'react';
 
 import { select, ScaleBand, ScaleLinear } from 'd3';
 
-import { ReactD3ChartData, SvgContainerData } from '../types';
+import { BarChartData, SvgContainerData } from '../types';
 
 type Props = {
     xScale: ScaleBand<string | number>;
     yScale: ScaleLinear<number, number>;
     svgContainerData?: SvgContainerData;
-    data: ReactD3ChartData;
+    data: BarChartData;
     color?: string;
 };
 

@@ -14,11 +14,22 @@ export type HoveredChartItem = {
     xPosition: number;
 };
 
+type XScale =
+    | ScaleBand<string | number>
+    | ScaleLinear<number, number>
+    | ScaleTime<number, number>;
+
+type XDomain = (string | number)[];
+
 type Props = {
-    xScale:
-        | ScaleBand<string | number>
-        | ScaleLinear<number, number>
-        | ScaleTime<number, number>;
+    /**
+     * scale function for for x axis
+     */
+    xScale: XScale;
+    /**
+     * domain of the x scale
+     */
+    xDomain: XDomain;
     svgContainerData?: SvgContainerData;
     /**
      * fires when user hover/leave a chart item
@@ -30,34 +41,15 @@ type Props = {
 
 export const PointerEventsOverlay: FC<Props> = ({
     xScale,
+    xDomain,
     svgContainerData,
     hoveredChartItemOnChange,
 }: Props) => {
     const containerGroupRef = useRef<SVGGElement>();
 
-    // const createRefLine = () => {
-    //     const { dimension } = svgContainerData;
+    const xScaleRef = useRef<XScale>();
 
-    //     const { height } = dimension;
-
-    //     const group = select(containerGroupRef.current);
-
-    //     const refLine = group.select('line');
-
-    //     if (refLine.size()) {
-    //         return;
-    //     }
-
-    //     group
-    //         .append('line')
-    //         .attr('x1', 0)
-    //         .attr('y1', 0)
-    //         .attr('x2', 0)
-    //         .attr('y2', height)
-    //         .style('opacity', 0)
-    //         .style('stoke', 'red')
-    //         .style('fill', 'none');
-    // };
+    const xDomainRef = useRef<XDomain>();
 
     const createOverlayRect = () => {
         const { dimension } = svgContainerData;
@@ -78,7 +70,6 @@ export const PointerEventsOverlay: FC<Props> = ({
                 handleMouseMoveEvent(null);
             })
             .on('mousemove', (evt) => {
-                console.log(evt);
                 handleMouseMoveEvent(evt.offsetX);
             });
     };
@@ -99,8 +90,6 @@ export const PointerEventsOverlay: FC<Props> = ({
         // Find the item that is being hovered over based on the mouse position.
         const itemOnHover = findItemOnHoverByMousePos(mouseXPosition);
 
-        // updateVerticalRefLinePos(itemOnHover);
-
         // console.log(itemOnHover.current)
         hoveredChartItemOnChange(itemOnHover);
     };
@@ -113,6 +102,8 @@ export const PointerEventsOverlay: FC<Props> = ({
     const getRangePositionOnXScale = (
         value: string | number | Date
     ): number => {
+        const xScale = xScaleRef.current;
+
         // set offset if typeof xScale is ScaleBand
         const offset = 'bandwidth' in xScale ? xScale.bandwidth() / 2 : 0;
 
@@ -135,10 +126,10 @@ export const PointerEventsOverlay: FC<Props> = ({
 
         const { margin } = svgContainerData;
 
+        const xDomain = xDomainRef.current;
+
         // Subtract the left margin space to get the accurate mouse position x relative to the rectangle
         mousePosX -= margin.left;
-
-        const xDomain = xScale.domain();
 
         let left = 0;
         let right = xDomain.length - 1;
@@ -185,24 +176,22 @@ export const PointerEventsOverlay: FC<Props> = ({
         };
     };
 
-    const updateVerticalRefLinePos = (itemOnHover: HoveredChartItem): void => {
-        const group = select(containerGroupRef.current);
-
-        const refLine = group.select(`line`);
-
-        const opacity = itemOnHover ? 1 : 0;
-
-        const xPos: number = itemOnHover?.xPosition || 0;
-
-        refLine.attr('x1', xPos).attr('x2', xPos).style('opacity', opacity);
-    };
-
     useEffect(() => {
         if (svgContainerData) {
             // createRefLine();
             createOverlayRect();
         }
     }, [svgContainerData]);
+
+    useEffect(() => {
+        if (xScale) {
+            xScaleRef.current = xScale;
+        }
+
+        if (xDomain) {
+            xDomainRef.current = xDomain;
+        }
+    }, [xScale, xDomain]);
 
     return (
         <g className="pointer-event-overlay-group" ref={containerGroupRef} />

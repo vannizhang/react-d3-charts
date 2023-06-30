@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react';
-import { Dimension, Margin, ReactD3ChartData } from '../types';
+import { Dimension, Margin } from '../types';
 
 type Props = {
     content: string;

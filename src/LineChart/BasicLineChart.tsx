@@ -8,10 +8,11 @@ import {
     scaleBand,
     max,
     min,
+    ScaleTime,
+    AxisScale,
 } from 'd3';
 import SvgContainer from '../SvgContainer/SvgContainer';
-import Bars from './Bars';
-import { Dimension, Margin, BarChartData } from '../types';
+import { Dimension, Margin, LineChartData } from '../types';
 import { MARGIN, SCALE_BAND_PADDING_INNER } from '../constants';
 import { XAxis } from '../XAxis/XAxis';
 import { YAxis } from '../YAxis/YAxis';
@@ -21,35 +22,34 @@ import {
 } from '../PointerEventOverlay/PointerEventsOverlay';
 import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
 import { PointerReferenceLine } from '../PointerEventOverlay/PointerReferenceLine';
+import Line from './Line';
 
-type XScale = ScaleBand<string | number>;
+type XScale = ScaleLinear<number, number> | ScaleTime<number, number>;
 
 type YScale = ScaleLinear<number, number>;
 
 type Props = {
-    data: BarChartData;
+    data: LineChartData;
     /**
-     * fill color of the Bar Rectange
+     * fill color of the Line
      */
     color?: string;
     /**
+     * width of the line
+     */
+    strokeWidth?: number;
+    /**
      * if ture, show horizontal grid lines
      */
-    showHorizontalGridLine: boolean;
+    showHorizontalGridLine?: boolean;
     /**
      * if ture, show vertical grid lines
      */
-    showVerticalGridLine: boolean;
+    showVerticalGridLine?: boolean;
     /**
-     * By default, D3 shows ticks for all items in the data on the x-axis.
-     * Pass an array of tick values or an array of keys of the input data to override that behavior
-     * and only render ticks for items that have their keys in `tickValuesOnXAxis`.
+     * if true, show tooltip when user hovers the chart
      */
-    tickValuesOnXAxis: (string | number)[];
-    /**
-     * if true, show tooltip when user hovers a bar element
-     */
-    showTooltip: boolean;
+    showTooltip?: boolean;
     /**
      * custom margin space
      */
@@ -57,16 +57,16 @@ type Props = {
 };
 
 /**
- * Basic Bar Chart
+ * Basic Line Chart
  * @param param0
  * @returns
  */
-export const BasicBarChart: FC<Props> = ({
+export const BasicLineChart: FC<Props> = ({
     data,
     color,
+    strokeWidth,
     showHorizontalGridLine,
     showVerticalGridLine,
-    tickValuesOnXAxis,
     showTooltip,
     margin = MARGIN,
 }: Props) => {
@@ -78,24 +78,14 @@ export const BasicBarChart: FC<Props> = ({
     const [hoveredChartItem, setHoveredChartItem] =
         useState<HoveredChartItem>();
 
-    const xDomain = useMemo(() => {
-        if (!data || !data.length) {
-            return [];
-        }
-
-        return data.map((d) => {
-            return typeof d.key === 'number' ? d.key.toString() : d.key;
-        });
-    }, [data]);
-
     const xScale = useMemo((): XScale => {
         const { width } = dimension;
 
-        return scaleBand()
-            .paddingInner(SCALE_BAND_PADDING_INNER)
-            .range([0, width])
-            .domain(xDomain);
-    }, [dimension, xDomain]);
+        const xmin = min(data, (d) => d.key);
+        const xmax = max(data, (d) => d.key);
+
+        return scaleLinear().range([0, width]).domain([xmin, xmax]);
+    }, [dimension]);
 
     const yScale = useMemo((): YScale => {
         const { height } = dimension;
@@ -118,17 +108,17 @@ export const BasicBarChart: FC<Props> = ({
             }}
         >
             <SvgContainer margin={margin} dimensionOnChange={setDimension}>
-                <Bars
-                    data={data}
+                <Line
                     xScale={xScale}
                     yScale={yScale}
+                    data={data}
                     color={color}
+                    width={strokeWidth}
                 />
 
                 <XAxis
-                    scale={xScale}
+                    scale={xScale as AxisScale<number>}
                     showGridLines={showVerticalGridLine}
-                    tickValues={tickValuesOnXAxis}
                 />
 
                 <YAxis scale={yScale} showGridLines={showHorizontalGridLine} />
@@ -145,7 +135,7 @@ export const BasicBarChart: FC<Props> = ({
 
                 <PointerEventsOverlay
                     xScale={xScale}
-                    xDomain={xDomain}
+                    xDomain={data.map((d) => d.key)}
                     hoveredChartItemOnChange={setHoveredChartItem}
                 />
             </SvgContainer>
