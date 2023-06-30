@@ -93,6 +93,7 @@ export const ShowGridLine: Story = {
     args: {
         data,
         showHorizontalGridLine: true,
+        showVerticalGridLine: true,
     },
 };
 

@@ -37,6 +37,10 @@ type Props = {
      */
     showHorizontalGridLine: boolean;
     /**
+     * if ture, show vertical grid lines
+     */
+    showVerticalGridLine: boolean;
+    /**
      * By default, D3 shows ticks for all items in the data on the x-axis.
      * Pass an array of tick values or an array of keys of the input data to override that behavior
      * and only render ticks for items that have their keys in `tickValuesOnXAxis`.
@@ -61,6 +65,7 @@ export const BasicBarChart: FC<Props> = ({
     data,
     color,
     showHorizontalGridLine,
+    showVerticalGridLine,
     tickValuesOnXAxis,
     showTooltip,
     margin = MARGIN,
@@ -120,7 +125,11 @@ export const BasicBarChart: FC<Props> = ({
                     color={color}
                 />
 
-                <XAxis scale={xScale} tickValues={tickValuesOnXAxis} />
+                <XAxis
+                    scale={xScale}
+                    showGridLines={showVerticalGridLine}
+                    tickValues={tickValuesOnXAxis}
+                />
 
                 <YAxis scale={yScale} showGridLines={showHorizontalGridLine} />
 

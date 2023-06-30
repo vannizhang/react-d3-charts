@@ -8,6 +8,11 @@
     --tooltip-background-color: rgba(0,0,0,.75);
     --tooltip-text-color: #fff;
     --tooltip-text-font-size: .85rem;
-    --tooltip-max-width: 200px
+    --tooltip-max-width: 200px;
     /* --tooltip-border-color: .75rem; */
+
+    /*
+     * this value will be used in axis grid line's `stroke-dasharray` property
+     */
+    --grid-line-dash-pattern: 1 1;
 }

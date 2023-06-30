@@ -9,3 +9,7 @@
 .x.axis .domain {
     stroke: var(--axis-tick-line-color);
 }
+
+.x.axis.show-grid .tick line {
+    stroke-dasharray: var(--grid-line-dash-pattern);
+}

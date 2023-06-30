@@ -9,6 +9,10 @@ type Props = {
      * A scale function that has numeric output
      */
     scale: AxisScale<string | number>;
+    /**
+     * if true, create grid lines by setting the tick size to your chart height
+     */
+    showGridLines?: boolean;
     tickValues?: (string | number)[];
     svgContainerData?: SvgContainerData;
 };
@@ -21,13 +25,23 @@ type Props = {
  * Good Resources to learn how axes in d3 work
  * @see https://www.d3indepth.com/axes/
  */
-export const XAxis: FC<Props> = ({ scale, tickValues, svgContainerData }) => {
+export const XAxis: FC<Props> = ({
+    scale,
+    showGridLines,
+    tickValues,
+    svgContainerData,
+}) => {
     const drawXAxis = () => {
         const { rootGroup, dimension } = svgContainerData;
 
         const { height } = dimension;
 
         const xAxis = axisBottom(scale);
+
+        if (showGridLines) {
+            xAxis.tickSizeInner(-height);
+            // .tickPadding(5);
+        }
 
         if (tickValues) {
             xAxis.tickValues(tickValues);
@@ -48,7 +62,16 @@ export const XAxis: FC<Props> = ({ scale, tickValues, svgContainerData }) => {
 
         select(rootGroup)
             .append('g')
-            .attr('class', 'x axis')
+            .attr('class', () => {
+                const classNames = ['x', 'axis'];
+
+                // add 'show-grid' class to show grid lines
+                if (showGridLines) {
+                    classNames.push('show-grid');
+                }
+
+                return classNames.join(' ');
+            })
             .attr('transform', `translate(0,${height})`)
             .call(xAxis);
     };
