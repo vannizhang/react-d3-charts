@@ -33,30 +33,45 @@ export const TooltipOnTop: FC<Props> = ({
 
         const { width } = dimension;
 
+        /**
+         * postion of the left end of the chart area on x axis
+         */
+        const xMin = margin.left;
+        /**
+         * postion of the right end of the chart area on x axis
+         */
+        const xMax = width + margin.left;
+
         const tooltipDivWidth = tooltipDiv.offsetWidth;
         const tooltipDivHeight = tooltipDiv.offsetHeight;
 
-        const top = -(tooltipDivHeight - margin.top);
+        const topPos = -(tooltipDivHeight - margin.top);
+
+        // postion on x axis for the chart item that is being hovered
         const xPosForItemOnHover = xPosition + margin.left;
 
-        let left =
-            xPosForItemOnHover + tooltipDivWidth / 2 >= width + margin.left
-                ? xPosForItemOnHover - tooltipDivWidth
-                : xPosForItemOnHover - tooltipDivWidth / 2;
+        /**
+         * position of the left end of the tooltip container
+         */
+        let leftPos = xPosForItemOnHover - tooltipDivWidth / 2;
 
-        left = left >= margin.left ? left : margin.left;
+        // make sure the left end of the tooltip won't go beyond eft end of the chart
+        leftPos = Math.max(leftPos, xMin);
+
+        // make sure the right end of the tooltip won't go beyond right end of the chart
+        leftPos = Math.min(leftPos, xMax - tooltipDivWidth);
 
         setTooltipPos({
-            top,
-            left,
+            top: topPos,
+            left: leftPos,
         });
     };
 
     useEffect(() => {
-        if (xPosition) {
+        if (xPosition !== null && content !== null) {
             updateTooltipPosition();
         }
-    }, [xPosition]);
+    }, [xPosition, content]);
 
     if (!content) {
         return null;
