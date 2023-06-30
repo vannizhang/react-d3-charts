@@ -5,7 +5,7 @@ import {
     scaleLinear,
     // scaleTime,
     ScaleLinear,
-    scaleBand,
+    scaleTime,
     max,
     min,
     ScaleTime,
@@ -39,6 +39,14 @@ type Props = {
      */
     strokeWidth?: number;
     /**
+     * indicate number of ticks that should be renderder on x axis
+     */
+    numberOfTicksOnXAxis?: number;
+    /**
+     * indicate number of ticks that should be renderder on y axis
+     */
+    numberOfTicksOnYAxis?: number;
+    /**
      * if ture, show horizontal grid lines
      */
     showHorizontalGridLine?: boolean;
@@ -50,6 +58,13 @@ type Props = {
      * if true, show tooltip when user hovers the chart
      */
     showTooltip?: boolean;
+    /**
+     * A string with the desired format directives that will be used to format the key of each item.
+     * When timeformatSpecifier is provided, scale time will be used on x axis instead of scale linear.
+     *
+     * @see https://github.com/d3/d3-time-format
+     */
+    timeformatSpecifier?: string;
     /**
      * custom margin space
      */
@@ -67,7 +82,10 @@ export const BasicLineChart: FC<Props> = ({
     strokeWidth,
     showHorizontalGridLine,
     showVerticalGridLine,
+    numberOfTicksOnXAxis,
+    numberOfTicksOnYAxis,
     showTooltip,
+    timeformatSpecifier,
     margin = MARGIN,
 }: Props) => {
     const [dimension, setDimension] = useState<Dimension>({
@@ -81,11 +99,15 @@ export const BasicLineChart: FC<Props> = ({
     const xScale = useMemo((): XScale => {
         const { width } = dimension;
 
+        const shouldUseTimeScale = timeformatSpecifier !== undefined;
+
         const xmin = min(data, (d) => d.key);
         const xmax = max(data, (d) => d.key);
 
-        return scaleLinear().range([0, width]).domain([xmin, xmax]);
-    }, [dimension]);
+        return shouldUseTimeScale
+            ? scaleTime().range([0, width]).domain([xmin, xmax])
+            : scaleLinear().range([0, width]).domain([xmin, xmax]);
+    }, [dimension, data]);
 
     const yScale = useMemo((): YScale => {
         const { height } = dimension;
@@ -119,9 +141,15 @@ export const BasicLineChart: FC<Props> = ({
                 <XAxis
                     scale={xScale as AxisScale<number>}
                     showGridLines={showVerticalGridLine}
+                    timeformatSpecifier={timeformatSpecifier}
+                    numberOfTicks={numberOfTicksOnXAxis}
                 />
 
-                <YAxis scale={yScale} showGridLines={showHorizontalGridLine} />
+                <YAxis
+                    scale={yScale}
+                    showGridLines={showHorizontalGridLine}
+                    numberOfTicks={numberOfTicksOnYAxis}
+                />
 
                 {showTooltip ? (
                     <PointerReferenceLine

@@ -9,9 +9,10 @@ type Props = {
      */
     scale: ScaleLinear<number, number>;
     /**
-     * specify how many ticks the axis has
+     * Indicate number of ticks that should be renderder.
+     * If not provided, d3 will try to render as many ticks as possible
      */
-    numTicks?: number;
+    numberOfTicks?: number;
     /**
      * if true, create grid lines by setting the tick size to your chart width
      */
@@ -21,7 +22,7 @@ type Props = {
 
 export const YAxis: FC<Props> = ({
     scale,
-    numTicks,
+    numberOfTicks = 5,
     showGridLines,
     svgContainerData,
 }) => {
@@ -30,7 +31,7 @@ export const YAxis: FC<Props> = ({
 
         const { width } = dimension;
 
-        const yAxis = axisLeft(scale).ticks(numTicks | 5);
+        const yAxis = axisLeft(scale).ticks(numberOfTicks);
 
         if (showGridLines) {
             yAxis.tickSizeInner(-width);

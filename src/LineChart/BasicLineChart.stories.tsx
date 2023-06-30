@@ -97,12 +97,14 @@ export const ShowGridLine: Story = {
     },
 };
 
-export const CustomColorAndThickness: Story = {
+export const CustomColorThicknessAndNumberOfTicks: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
         color: 'orange',
         strokeWidth: 3,
+        numberOfTicksOnXAxis: 5,
+        numberOfTicksOnYAxis: 2,
     },
 };
 
@@ -111,5 +113,19 @@ export const ShowTooltipAndReferenceLine: Story = {
     args: {
         data,
         showTooltip: true,
+    },
+};
+
+export const UseScaleTime: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data: data.map((d) => {
+            return {
+                ...d,
+                key: new Date(d.key, 0, 1).getTime(),
+            };
+        }),
+        showTooltip: true,
+        timeformatSpecifier: '%Y %b',
     },
 };

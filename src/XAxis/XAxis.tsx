@@ -13,7 +13,19 @@ type Props = {
      * if true, create grid lines by setting the tick size to your chart height
      */
     showGridLines?: boolean;
+    /**
+     * Indicate number of ticks that should be renderder.
+     * If not provided, d3 will try to render as many ticks as possible
+     */
+    numberOfTicks?: number;
+    /**
+     * Specified values to be used for ticks rather than using the scale’s automatic tick generator
+     */
     tickValues?: (string | number)[];
+    /**
+     * formatter that will be used to format timestamp of each item
+     */
+    timeformatSpecifier?: string;
     svgContainerData?: SvgContainerData;
 };
 
@@ -28,9 +40,15 @@ type Props = {
 export const XAxis: FC<Props> = ({
     scale,
     showGridLines,
+    numberOfTicks,
     tickValues,
+    timeformatSpecifier,
     svgContainerData,
 }) => {
+    const formatTime = timeformatSpecifier
+        ? timeFormat(timeformatSpecifier)
+        : null;
+
     const drawXAxis = () => {
         const { rootGroup, dimension } = svgContainerData;
 
@@ -45,6 +63,17 @@ export const XAxis: FC<Props> = ({
 
         if (tickValues) {
             xAxis.tickValues(tickValues);
+        }
+
+        if (numberOfTicks) {
+            xAxis.ticks(numberOfTicks);
+        }
+
+        if (formatTime) {
+            xAxis.tickFormat((d: number) => {
+                const date = new Date(+d);
+                return formatTime(date);
+            });
         }
 
         const xAxisGroup: Selection<SVGSVGElement, any, any, any> =
