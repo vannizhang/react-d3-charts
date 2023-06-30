@@ -124,6 +124,12 @@ export const PointerEventsOverlay: FC<Props> = ({
             : xScale(+value);
     };
 
+    /**
+     * Finds the item on hover based on the mouse position.
+     *
+     * @param {number} mousePosX - The x-coordinate of the mouse position.
+     * @returns {DataOfItemOnHover} - An object containing the index and x-position of the item on hover.
+     */
     const findItemOnHoverByMousePos = (
         mousePosX: number
     ): DataOfItemOnHover => {
@@ -131,68 +137,110 @@ export const PointerEventsOverlay: FC<Props> = ({
             return null;
         }
 
-        const { dimension, margin } = svgContainerData;
+        const { margin } = svgContainerData;
 
-        // minus left margin space to get accurate mouse posion x that is relative to the rect
+        // Subtract the left margin space to get the accurate mouse position x relative to the rectangle
         mousePosX -= margin.left;
-
-        const { width } = dimension;
 
         const xDomain = xScale.domain();
 
-        // set offset if typeof xScale is ScaleBand
-        const offset = 'bandwidth' in xScale ? xScale.bandwidth() / 2 : 0;
-        // console.log(offset)
+        let left = 0;
+        let right = xDomain.length - 1;
 
-        // when pointer at left half of first bar OR at right half of last bar
-        if (mousePosX < offset || mousePosX > width - offset) {
-            const index = mousePosX < offset ? 0 : xDomain.length - 1;
+        while (left < right) {
+            // If there are only two items left, it means the mouse pointer must be between these two items
+            if (right - left <= 1) {
+                const leftItem = xDomain[left];
+                const rightItem = xDomain[right];
 
-            const value = xDomain[index];
+                // find distance of the mouse pointer to left and right items
+                const distance2Left = Math.abs(
+                    mousePosX - getRangePositionOnXScale(leftItem)
+                );
+                const distance2Right = Math.abs(
+                    mousePosX - getRangePositionOnXScale(rightItem)
+                );
 
-            // const xPosition =
-            //     'bandwidth' in xScale ? xScale(value as (string | number)) + offset : xScale(+value);
+                // Adjust the left/right pointer to terminate the binary search
+                if (distance2Left <= distance2Right) {
+                    right--;
+                } else {
+                    left++;
+                }
+            }
 
-            return {
-                index,
-                xPosition: getRangePositionOnXScale(value),
-            };
-        }
+            // find item in the middle
+            const idxOfItemInMiddle = Math.floor((right - left) / 2) + left;
+            const xPosOfItenInMiddle = getRangePositionOnXScale(
+                xDomain[idxOfItemInMiddle]
+            );
 
-        let itemIndex = -1;
-        let xPositionOfItemOnHover = 0;
-
-        for (let i = 0; i < xDomain.length; i++) {
-            const currItem = xDomain[i];
-            const currItemPos = getRangePositionOnXScale(currItem);
-            // 'bandwidth' in xScale
-            //     ? xScale(currItem as (string | number)) + offset
-            //     : xScale(+currItem);
-
-            const nextItemIndex = xDomain[i + 1] ? i + 1 : i;
-            const nextItem = xDomain[nextItemIndex];
-            const nextItemPos = getRangePositionOnXScale(nextItem);
-            // 'bandwidth' in xScale
-            //     ? xScale(nextItem as (string | number)) + offset
-            //     : xScale(+nextItem);
-
-            if (mousePosX >= currItemPos && mousePosX <= nextItemPos) {
-                const distToCurrItem = Math.abs(mousePosX - currItemPos);
-                const distToNextItem = Math.abs(mousePosX - nextItemPos);
-
-                itemIndex = distToCurrItem < distToNextItem ? i : nextItemIndex;
-
-                xPositionOfItemOnHover =
-                    distToCurrItem < distToNextItem ? currItemPos : nextItemPos;
-
-                break;
+            // Adjust the pointer by comparing the x position of the mouse pointer and the x position of the item in the middle
+            if (mousePosX <= xPosOfItenInMiddle) {
+                right = idxOfItemInMiddle;
+            } else {
+                left = idxOfItemInMiddle;
             }
         }
 
         return {
-            index: itemIndex,
-            xPosition: xPositionOfItemOnHover,
+            index: left,
+            xPosition: getRangePositionOnXScale(xDomain[left]),
         };
+
+        // // set offset if typeof xScale is ScaleBand
+        // const offset = 'bandwidth' in xScale ? xScale.bandwidth() / 2 : 0;
+        // // console.log(offset)
+
+        // // when pointer at left half of first bar OR at right half of last bar
+        // if (mousePosX < offset || mousePosX > width - offset) {
+        //     const index = mousePosX < offset ? 0 : xDomain.length - 1;
+
+        //     const value = xDomain[index];
+
+        //     // const xPosition =
+        //     //     'bandwidth' in xScale ? xScale(value as (string | number)) + offset : xScale(+value);
+
+        //     return {
+        //         index,
+        //         xPosition: getRangePositionOnXScale(value),
+        //     };
+        // }
+
+        // let itemIndex = -1;
+        // let xPositionOfItemOnHover = 0;
+
+        // for (let i = 0; i < xDomain.length; i++) {
+        //     const currItem = xDomain[i];
+        //     const currItemPos = getRangePositionOnXScale(currItem);
+        //     // 'bandwidth' in xScale
+        //     //     ? xScale(currItem as (string | number)) + offset
+        //     //     : xScale(+currItem);
+
+        //     const nextItemIndex = xDomain[i + 1] ? i + 1 : i;
+        //     const nextItem = xDomain[nextItemIndex];
+        //     const nextItemPos = getRangePositionOnXScale(nextItem);
+        //     // 'bandwidth' in xScale
+        //     //     ? xScale(nextItem as (string | number)) + offset
+        //     //     : xScale(+nextItem);
+
+        //     if (mousePosX >= currItemPos && mousePosX <= nextItemPos) {
+        //         const distToCurrItem = Math.abs(mousePosX - currItemPos);
+        //         const distToNextItem = Math.abs(mousePosX - nextItemPos);
+
+        //         itemIndex = distToCurrItem < distToNextItem ? i : nextItemIndex;
+
+        //         xPositionOfItemOnHover =
+        //             distToCurrItem < distToNextItem ? currItemPos : nextItemPos;
+
+        //         break;
+        //     }
+        // }
+
+        // return {
+        //     index: itemIndex,
+        //     xPosition: xPositionOfItemOnHover,
+        // };
     };
 
     const updateVerticalRefLinePos = (itemOnHover: DataOfItemOnHover): void => {
