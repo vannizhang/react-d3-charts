@@ -1,4 +1,4 @@
-import '../style.css';
+import '../variables.css';
 import React, { FC, useMemo, useState } from 'react';
 import {
     ScaleBand,
