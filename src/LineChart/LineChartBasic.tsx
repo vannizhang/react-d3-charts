@@ -1,7 +1,7 @@
 import '../variables.css';
 import React, { FC, useMemo, useState } from 'react';
 import {
-    ScaleBand,
+    // ScaleBand,
     scaleLinear,
     // scaleTime,
     ScaleLinear,
@@ -24,6 +24,7 @@ import {
 import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
 import { PointerReferenceLine } from '../PointerEventOverlay/PointerReferenceLine';
 import Line from './Line';
+import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 
 export type LineChartDataItem = {
     /**
@@ -127,7 +128,7 @@ export const LineChartBasic: FC<Props> = ({
     tickFormatFunction4YAxis,
     showTooltip,
     timeformatSpecifier4XAxis,
-    margin,
+    margin = DEFAULT_MARGINS,
 }: Props) => {
     const [dimension, setDimension] = useState<SvgContainerDimension>({
         height: 0,

@@ -23,6 +23,7 @@ import {
 import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
 import { PointerReferenceLine } from '../PointerEventOverlay/PointerReferenceLine';
 import { SCALE_BAND_PADDING_INNER } from './constants';
+import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 
 export type BarChartDataItem = {
     key: string | number;
@@ -78,7 +79,7 @@ export const BarChartBasic: FC<Props> = ({
     showVerticalGridLine,
     tickValuesOnXAxis,
     showTooltip,
-    margin,
+    margin = DEFAULT_MARGINS,
 }: Props) => {
     const [dimension, setDimension] = useState<SvgContainerDimension>({
         height: 0,
