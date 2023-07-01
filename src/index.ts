@@ -1,2 +1,2 @@
-export { BarChartBasic } from './BarChartBasic/BarChartBasic';
-export { LineChartBasic } from './LineChartBasic/LineChartBasic';
+export { BarChartBasic } from './BarChart/BarChartBasic';
+export { LineChartBasic } from './LineChart/LineChartBasic';
