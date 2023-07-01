@@ -71,7 +71,7 @@ type Props = {
  * @param param0
  * @returns
  */
-export const BasicBarChart: FC<Props> = ({
+export const BarChartBasic: FC<Props> = ({
     data,
     color,
     showHorizontalGridLine,

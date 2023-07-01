@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 
 import { select, ScaleBand, ScaleLinear } from 'd3';
 import { SvgContainerData } from '../SvgContainer/SvgContainer';
-import { BarChartData } from './BasicBarChart';
+import { BarChartData } from './BarChartBasic';
 
 type Props = {
     xScale: ScaleBand<string | number>;

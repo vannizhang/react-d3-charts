@@ -1,12 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { BasicLineChart } from './BasicLineChart';
-import { MARGIN } from '../constants';
+import { BarChartBasic } from './BarChartBasic';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-const meta: Meta<typeof BasicLineChart> = {
-    title: 'Example/BasicLineChart',
-    component: BasicLineChart,
+const meta: Meta<typeof BarChartBasic> = {
+    title: 'Example/BarChartBasic',
+    component: BarChartBasic,
     decorators: [
         (Story) => (
             <div
@@ -26,58 +25,58 @@ const meta: Meta<typeof BasicLineChart> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof BasicLineChart>;
+type Story = StoryObj<typeof BarChartBasic>;
 
 const data = [
     {
-        key: 2013,
+        key: '12/1',
         value: 26,
         tooltip: 'this is a tooltip',
     },
     {
-        key: 2014,
+        key: '12/2',
         value: 38,
-        tooltip: 'this is a <strong>tooltip</strong>',
+        tooltip: 'this is a tooltip',
     },
     {
-        key: 2015,
+        key: '12/3',
         value: 10,
-        tooltip: 'this is <br/>a tooltip',
+        tooltip: 'this is a tooltip',
     },
     {
-        key: 2016,
+        key: '12/4',
         value: 45,
         tooltip: 'this is a tooltip',
     },
     {
-        key: 2017,
+        key: '12/5',
         value: 10,
         tooltip: 'this is a tooltip',
     },
     {
-        key: 2018,
+        key: '12/6',
         value: 12,
         tooltip: 'this is a tooltip',
     },
     {
-        key: 2019,
+        key: '12/7',
         value: 15,
         tooltip: 'this is a tooltip',
     },
     {
-        key: 2020,
+        key: '12/8',
         value: 7,
         tooltip: 'this is a tooltip',
     },
     {
-        key: 2021,
+        key: '12/9',
         value: 23,
         tooltip: 'this is a tooltip',
     },
     {
-        key: 2022,
-        value: 20,
-        tooltip: 'this is a tooltip',
+        key: '12/10',
+        value: 4,
+        tooltip: 'this is a tooltip, and it is longer than other ones',
     },
 ];
 
@@ -98,17 +97,12 @@ export const ShowGridLine: Story = {
     },
 };
 
-export const CustomStyleNumberAndFormatOfTicks: Story = {
+export const CustomColorAndTickValues: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
         color: 'orange',
-        strokeWidth: 3,
-        numberOfTicksOnXAxis: 5,
-        numberOfTicksOnYAxis: 2,
-        tickFormatFunction4XAxis: (val: number) => {
-            return val.toString();
-        },
+        tickValuesOnXAxis: ['12/1', '12/5', '12/10'],
     },
 };
 
@@ -117,23 +111,5 @@ export const ShowTooltipAndReferenceLine: Story = {
     args: {
         data,
         showTooltip: true,
-    },
-};
-
-export const UseScaleTime: Story = {
-    // More on args: https://storybook.js.org/docs/react/writing-stories/args
-    args: {
-        data: data.map((d) => {
-            return {
-                ...d,
-                key: new Date(d.key, 0, 1).getTime(),
-            };
-        }),
-        showTooltip: true,
-        timeformatSpecifier4XAxis: '%Y %b',
-        margin: {
-            ...MARGIN,
-            right: 20,
-        },
     },
 };

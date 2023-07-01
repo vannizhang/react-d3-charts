@@ -7,7 +7,7 @@ import {
     ScaleTime,
     curveMonotoneX,
 } from 'd3';
-import { LineChartData, LineChartDataItem } from './BasicLineChart';
+import { LineChartData, LineChartDataItem } from './LineChartBasic';
 import { SvgContainerData } from '../SvgContainer/SvgContainer';
 
 type Props = {

@@ -116,7 +116,7 @@ type Props = {
  * @param param0
  * @returns
  */
-export const BasicLineChart: FC<Props> = ({
+export const LineChartBasic: FC<Props> = ({
     data,
     color,
     strokeWidth,
