@@ -22,6 +22,7 @@ import {
 } from '../PointerEventOverlay/PointerEventsOverlay';
 import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
 import { PointerReferenceLine } from '../PointerEventOverlay/PointerReferenceLine';
+import { SCALE_BAND_PADDING_INNER } from './constants';
 
 export type BarChartDataItem = {
     key: string | number;
@@ -64,8 +65,6 @@ type Props = {
      */
     margin?: SvgContainerMargins;
 };
-
-const SCALE_BAND_PADDING_INNER = 0.2;
 
 /**
  * Basic Bar Chart

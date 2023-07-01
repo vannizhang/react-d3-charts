@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useLayoutEffect, ReactNode } from 'react';
 
 import { select } from 'd3';
+import { DEFAULT_MARGINS } from './constants';
 
 export type SvgContainerDimension = {
     height: number;
@@ -25,16 +26,6 @@ type Props = {
     margin?: SvgContainerMargins;
     children?: ReactNode;
     dimensionOnChange?: (dimension: SvgContainerDimension) => void;
-};
-
-/**
- * Default margin spaces
- */
-const DEFAULT_MARGINS = {
-    top: 15,
-    right: 15,
-    bottom: 30,
-    left: 30,
 };
 
 const SvgContainer: React.FC<Props> = ({

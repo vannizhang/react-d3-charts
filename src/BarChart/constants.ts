@@ -1,0 +1,1 @@
+export const SCALE_BAND_PADDING_INNER = 0.2;
