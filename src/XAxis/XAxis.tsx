@@ -26,6 +26,16 @@ type Props = {
      * formatter that will be used to format timestamp of each item
      */
     timeformatSpecifier?: string;
+    /**
+     * custom format function mapping a value from the axis Domain to a formatted string for display purposes.
+     * @param domainValue original domain value
+     * @param index
+     * @returns formatted string
+     */
+    tickFormatFunction?: (
+        domainValue: number | string,
+        index?: number
+    ) => string;
     svgContainerData?: SvgContainerData;
 };
 
@@ -43,6 +53,7 @@ export const XAxis: FC<Props> = ({
     numberOfTicks,
     tickValues,
     timeformatSpecifier,
+    tickFormatFunction,
     svgContainerData,
 }) => {
     const formatTime = timeformatSpecifier
@@ -74,6 +85,10 @@ export const XAxis: FC<Props> = ({
                 const date = new Date(+d);
                 return formatTime(date);
             });
+        }
+
+        if (!formatTime && tickFormatFunction) {
+            xAxis.tickFormat(tickFormatFunction);
         }
 
         const xAxisGroup: Selection<SVGSVGElement, any, any, any> =

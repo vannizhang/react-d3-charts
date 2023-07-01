@@ -7,7 +7,7 @@ type Props = {
     /**
      * Linear scale function used by yaxis
      */
-    scale: ScaleLinear<number, number>;
+    scale: AxisScale<number>;
     /**
      * Indicate number of ticks that should be renderder.
      * If not provided, d3 will try to render as many ticks as possible
@@ -17,6 +17,13 @@ type Props = {
      * if true, create grid lines by setting the tick size to your chart width
      */
     showGridLines?: boolean;
+    /**
+     * custom format function mapping a value from the axis Domain to a formatted string for display purposes.
+     * @param domainValue original domain value
+     * @param index
+     * @returns formatted string
+     */
+    tickFormatFunction?: (domainValue: number, index?: number) => string;
     svgContainerData?: SvgContainerData;
 };
 
@@ -24,6 +31,7 @@ export const YAxis: FC<Props> = ({
     scale,
     numberOfTicks = 5,
     showGridLines,
+    tickFormatFunction,
     svgContainerData,
 }) => {
     const drawYAxis = () => {
@@ -36,6 +44,10 @@ export const YAxis: FC<Props> = ({
         if (showGridLines) {
             yAxis.tickSizeInner(-width);
             // .tickPadding(5);
+        }
+
+        if (tickFormatFunction) {
+            yAxis.tickFormat(tickFormatFunction);
         }
 
         const yAxisGroup: Selection<SVGSVGElement, any, any, any> =

@@ -13,7 +13,7 @@ import {
 } from 'd3';
 import SvgContainer from '../SvgContainer/SvgContainer';
 import { Dimension, Margin, LineChartData } from '../types';
-import { MARGIN, SCALE_BAND_PADDING_INNER } from '../constants';
+import { MARGIN } from '../constants';
 import { XAxis } from '../XAxis/XAxis';
 import { YAxis } from '../YAxis/YAxis';
 import {
@@ -39,6 +39,14 @@ type Props = {
      */
     strokeWidth?: number;
     /**
+     * if true, show tooltip when user hovers the chart
+     */
+    showTooltip?: boolean;
+    /**
+     * custom margin space
+     */
+    margin?: Margin;
+    /**
      * indicate number of ticks that should be renderder on x axis
      */
     numberOfTicksOnXAxis?: number;
@@ -55,20 +63,29 @@ type Props = {
      */
     showVerticalGridLine?: boolean;
     /**
-     * if true, show tooltip when user hovers the chart
+     * custom format function mapping a value from the axis Domain to a formatted string for display purposes.
+     * @param domainValue original domain value
+     * @param index
+     * @returns formatted string
      */
-    showTooltip?: boolean;
+    tickFormatFunction4XAxis?: (
+        domainValue: number | string,
+        index?: number
+    ) => string;
+    /**
+     * custom format function mapping a value from the axis Domain to a formatted string for display purposes.
+     * @param domainValue original domain value
+     * @param index
+     * @returns formatted string
+     */
+    tickFormatFunction4YAxis?: (domainValue: number, index?: number) => string;
     /**
      * A string with the desired format directives that will be used to format the key of each item.
      * When timeformatSpecifier is provided, scale time will be used on x axis instead of scale linear.
      *
      * @see https://github.com/d3/d3-time-format
      */
-    timeformatSpecifier?: string;
-    /**
-     * custom margin space
-     */
-    margin?: Margin;
+    timeformatSpecifier4XAxis?: string;
 };
 
 /**
@@ -84,8 +101,10 @@ export const BasicLineChart: FC<Props> = ({
     showVerticalGridLine,
     numberOfTicksOnXAxis,
     numberOfTicksOnYAxis,
+    tickFormatFunction4XAxis,
+    tickFormatFunction4YAxis,
     showTooltip,
-    timeformatSpecifier,
+    timeformatSpecifier4XAxis,
     margin = MARGIN,
 }: Props) => {
     const [dimension, setDimension] = useState<Dimension>({
@@ -99,7 +118,7 @@ export const BasicLineChart: FC<Props> = ({
     const xScale = useMemo((): XScale => {
         const { width } = dimension;
 
-        const shouldUseTimeScale = timeformatSpecifier !== undefined;
+        const shouldUseTimeScale = timeformatSpecifier4XAxis !== undefined;
 
         const xmin = min(data, (d) => d.key);
         const xmax = max(data, (d) => d.key);
@@ -141,14 +160,16 @@ export const BasicLineChart: FC<Props> = ({
                 <XAxis
                     scale={xScale as AxisScale<number>}
                     showGridLines={showVerticalGridLine}
-                    timeformatSpecifier={timeformatSpecifier}
+                    timeformatSpecifier={timeformatSpecifier4XAxis}
                     numberOfTicks={numberOfTicksOnXAxis}
+                    tickFormatFunction={tickFormatFunction4XAxis}
                 />
 
                 <YAxis
                     scale={yScale}
                     showGridLines={showHorizontalGridLine}
                     numberOfTicks={numberOfTicksOnYAxis}
+                    tickFormatFunction={tickFormatFunction4YAxis}
                 />
 
                 {showTooltip ? (

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { BasicLineChart } from './BasicLineChart';
+import { MARGIN } from '../constants';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof BasicLineChart> = {
@@ -36,12 +37,12 @@ const data = [
     {
         key: 2014,
         value: 38,
-        tooltip: 'this is a tooltip',
+        tooltip: 'this is a <strong>tooltip</strong>',
     },
     {
         key: 2015,
         value: 10,
-        tooltip: 'this is a tooltip',
+        tooltip: 'this is <br/>a tooltip',
     },
     {
         key: 2016,
@@ -97,7 +98,7 @@ export const ShowGridLine: Story = {
     },
 };
 
-export const CustomColorThicknessAndNumberOfTicks: Story = {
+export const CustomStyleNumberAndFormatOfTicks: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
@@ -105,6 +106,9 @@ export const CustomColorThicknessAndNumberOfTicks: Story = {
         strokeWidth: 3,
         numberOfTicksOnXAxis: 5,
         numberOfTicksOnYAxis: 2,
+        tickFormatFunction4XAxis: (val: number) => {
+            return val.toString();
+        },
     },
 };
 
@@ -126,6 +130,10 @@ export const UseScaleTime: Story = {
             };
         }),
         showTooltip: true,
-        timeformatSpecifier: '%Y %b',
+        timeformatSpecifier4XAxis: '%Y %b',
+        margin: {
+            ...MARGIN,
+            right: 20,
+        },
     },
 };
