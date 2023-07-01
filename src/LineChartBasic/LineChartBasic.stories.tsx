@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { LineChartBasic } from './LineChartBasic';
-import { MARGIN } from '../constants';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof LineChartBasic> = {
@@ -132,8 +131,10 @@ export const UseScaleTime: Story = {
         showTooltip: true,
         timeformatSpecifier4XAxis: '%Y %b',
         margin: {
-            ...MARGIN,
+            top: 15,
             right: 20,
+            bottom: 30,
+            left: 30,
         },
     },
 };

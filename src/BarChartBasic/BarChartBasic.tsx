@@ -14,7 +14,6 @@ import SvgContainer, {
     SvgContainerMargins,
 } from '../SvgContainer/SvgContainer';
 import Bars from './Bars';
-import { MARGIN, SCALE_BAND_PADDING_INNER } from '../constants';
 import { XAxis } from '../XAxis/XAxis';
 import { YAxis } from '../YAxis/YAxis';
 import {
@@ -66,6 +65,8 @@ type Props = {
     margin?: SvgContainerMargins;
 };
 
+const SCALE_BAND_PADDING_INNER = 0.2;
+
 /**
  * Basic Bar Chart
  * @param param0
@@ -78,7 +79,7 @@ export const BarChartBasic: FC<Props> = ({
     showVerticalGridLine,
     tickValuesOnXAxis,
     showTooltip,
-    margin = MARGIN,
+    margin,
 }: Props) => {
     const [dimension, setDimension] = useState<SvgContainerDimension>({
         height: 0,

@@ -15,7 +15,6 @@ import SvgContainer, {
     SvgContainerDimension,
     SvgContainerMargins,
 } from '../SvgContainer/SvgContainer';
-import { MARGIN } from '../constants';
 import { XAxis } from '../XAxis/XAxis';
 import { YAxis } from '../YAxis/YAxis';
 import {
@@ -128,7 +127,7 @@ export const LineChartBasic: FC<Props> = ({
     tickFormatFunction4YAxis,
     showTooltip,
     timeformatSpecifier4XAxis,
-    margin = MARGIN,
+    margin,
 }: Props) => {
     const [dimension, setDimension] = useState<SvgContainerDimension>({
         height: 0,
