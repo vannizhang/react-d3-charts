@@ -11,7 +11,7 @@ import {
 } from 'd3';
 import SvgContainer from '../SvgContainer/SvgContainer';
 import Bars from './Bars';
-import { Dimension, Margin, BarChartData } from '../types';
+import { Dimension, Margin } from '../types';
 import { MARGIN, SCALE_BAND_PADDING_INNER } from '../constants';
 import { XAxis } from '../XAxis/XAxis';
 import { YAxis } from '../YAxis/YAxis';
@@ -21,6 +21,14 @@ import {
 } from '../PointerEventOverlay/PointerEventsOverlay';
 import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
 import { PointerReferenceLine } from '../PointerEventOverlay/PointerReferenceLine';
+
+export type BarChartDataItem = {
+    key: string | number;
+    value: number;
+    tooltip?: string;
+};
+
+export type BarChartData = BarChartDataItem[];
 
 type XScale = ScaleBand<string | number>;
 

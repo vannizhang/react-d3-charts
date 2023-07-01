@@ -12,7 +12,7 @@ import {
     AxisScale,
 } from 'd3';
 import SvgContainer from '../SvgContainer/SvgContainer';
-import { Dimension, Margin, LineChartData } from '../types';
+import { Dimension, Margin } from '../types';
 import { MARGIN } from '../constants';
 import { XAxis } from '../XAxis/XAxis';
 import { YAxis } from '../YAxis/YAxis';
@@ -23,6 +23,27 @@ import {
 import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
 import { PointerReferenceLine } from '../PointerEventOverlay/PointerReferenceLine';
 import Line from './Line';
+
+type LineChartDataItem = {
+    /**
+     * key is a numerical value that determines the x position of this item.
+     * key can be used to contain values like:
+     * - unix timestamp (e.g. 1688167415)
+     * - year (e.g. 2014)
+     * - order of the item (e.g. 1)
+     */
+    key: number;
+    /**
+     * value is numerical value that determines the y position of this item
+     */
+    value: number;
+    /**
+     * tooltip assoicated with this item, can be plain text or html string
+     */
+    tooltip?: string;
+};
+
+type LineChartData = LineChartDataItem[];
 
 type XScale = ScaleLinear<number, number> | ScaleTime<number, number>;
 
