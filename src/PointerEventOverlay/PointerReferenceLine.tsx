@@ -1,8 +1,8 @@
 import './PointerReferenceLine.css';
 
 import React, { FC, useEffect, useRef } from 'react';
-import { SvgContainerData } from '../types';
 import { select } from 'd3';
+import { SvgContainerData } from '../SvgContainer/SvgContainer';
 
 type Props = {
     xPosition: number;

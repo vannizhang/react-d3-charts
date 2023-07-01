@@ -2,14 +2,31 @@ import React, { useRef, useEffect, useLayoutEffect, ReactNode } from 'react';
 
 import { select } from 'd3';
 
-import { SvgContainerData, Margin, Dimension } from '../types';
-
 import { MARGIN } from '../constants';
 
+export type SvgContainerDimension = {
+    height: number;
+    width: number;
+};
+
+export type SvgContainerMargins = {
+    left: number;
+    right: number;
+    top: number;
+    bottom: number;
+};
+
+export type SvgContainerData = {
+    svg: SVGSVGElement;
+    rootGroup: SVGGElement;
+    margin: SvgContainerMargins;
+    dimension: SvgContainerDimension;
+};
+
 type Props = {
-    margin?: Margin;
+    margin?: SvgContainerMargins;
     children?: ReactNode;
-    dimensionOnChange?: (dimension: Dimension) => void;
+    dimensionOnChange?: (dimension: SvgContainerDimension) => void;
 };
 
 const SvgContainer: React.FC<Props> = ({
@@ -32,7 +49,7 @@ const SvgContainer: React.FC<Props> = ({
         const width = container.offsetWidth - margin.left - margin.right;
         const height = container.offsetHeight - margin.top - margin.bottom;
 
-        const dimension: Dimension = {
+        const dimension: SvgContainerDimension = {
             height,
             width,
         };

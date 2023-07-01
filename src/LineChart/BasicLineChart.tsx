@@ -11,8 +11,10 @@ import {
     ScaleTime,
     AxisScale,
 } from 'd3';
-import SvgContainer from '../SvgContainer/SvgContainer';
-import { Dimension, Margin } from '../types';
+import SvgContainer, {
+    SvgContainerDimension,
+    SvgContainerMargins,
+} from '../SvgContainer/SvgContainer';
 import { MARGIN } from '../constants';
 import { XAxis } from '../XAxis/XAxis';
 import { YAxis } from '../YAxis/YAxis';
@@ -24,7 +26,7 @@ import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
 import { PointerReferenceLine } from '../PointerEventOverlay/PointerReferenceLine';
 import Line from './Line';
 
-type LineChartDataItem = {
+export type LineChartDataItem = {
     /**
      * key is a numerical value that determines the x position of this item.
      * key can be used to contain values like:
@@ -43,7 +45,7 @@ type LineChartDataItem = {
     tooltip?: string;
 };
 
-type LineChartData = LineChartDataItem[];
+export type LineChartData = LineChartDataItem[];
 
 type XScale = ScaleLinear<number, number> | ScaleTime<number, number>;
 
@@ -66,7 +68,7 @@ type Props = {
     /**
      * custom margin space
      */
-    margin?: Margin;
+    margin?: SvgContainerMargins;
     /**
      * indicate number of ticks that should be renderder on x axis
      */
@@ -128,7 +130,7 @@ export const BasicLineChart: FC<Props> = ({
     timeformatSpecifier4XAxis,
     margin = MARGIN,
 }: Props) => {
-    const [dimension, setDimension] = useState<Dimension>({
+    const [dimension, setDimension] = useState<SvgContainerDimension>({
         height: 0,
         width: 0,
     });

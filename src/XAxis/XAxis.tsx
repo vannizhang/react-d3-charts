@@ -1,8 +1,8 @@
 import './XAxis.css';
 import { AxisScale } from 'd3-axis';
 import React, { FC, useEffect } from 'react';
-import { SvgContainerData } from '../types';
 import { select, axisBottom, timeFormat, Selection } from 'd3';
+import { SvgContainerData } from '../SvgContainer/SvgContainer';
 
 type Props = {
     /**

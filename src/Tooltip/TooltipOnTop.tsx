@@ -1,11 +1,14 @@
 import React, { FC, useEffect } from 'react';
-import { Dimension, Margin } from '../types';
+import {
+    SvgContainerDimension,
+    SvgContainerMargins,
+} from '../SvgContainer/SvgContainer';
 
 type Props = {
     content: string;
-    dimension: Dimension;
+    dimension: SvgContainerDimension;
     xPosition: number;
-    margin: Margin;
+    margin: SvgContainerMargins;
 };
 
 export const TooltipOnTop: FC<Props> = ({

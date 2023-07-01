@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, FC } from 'react';
 
 import { select, ScaleBand, ScaleLinear, ScaleTime } from 'd3';
-import { SvgContainerData } from '../types';
+import { SvgContainerData } from '../SvgContainer/SvgContainer';
 
 export type HoveredChartItem = {
     /**
@@ -30,13 +30,13 @@ type Props = {
      * domain of the x scale
      */
     xDomain: XDomain;
-    svgContainerData?: SvgContainerData;
     /**
      * fires when user hover/leave a chart item
      * @param data
      * @returns
      */
     hoveredChartItemOnChange: (data: HoveredChartItem) => void;
+    svgContainerData?: SvgContainerData;
 };
 
 export const PointerEventsOverlay: FC<Props> = ({

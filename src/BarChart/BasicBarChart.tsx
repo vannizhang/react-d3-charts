@@ -9,9 +9,11 @@ import {
     max,
     min,
 } from 'd3';
-import SvgContainer from '../SvgContainer/SvgContainer';
+import SvgContainer, {
+    SvgContainerDimension,
+    SvgContainerMargins,
+} from '../SvgContainer/SvgContainer';
 import Bars from './Bars';
-import { Dimension, Margin } from '../types';
 import { MARGIN, SCALE_BAND_PADDING_INNER } from '../constants';
 import { XAxis } from '../XAxis/XAxis';
 import { YAxis } from '../YAxis/YAxis';
@@ -59,9 +61,9 @@ type Props = {
      */
     showTooltip: boolean;
     /**
-     * custom margin space
+     * custom margins space
      */
-    margin?: Margin;
+    margin?: SvgContainerMargins;
 };
 
 /**
@@ -78,7 +80,7 @@ export const BasicBarChart: FC<Props> = ({
     showTooltip,
     margin = MARGIN,
 }: Props) => {
-    const [dimension, setDimension] = useState<Dimension>({
+    const [dimension, setDimension] = useState<SvgContainerDimension>({
         height: 0,
         width: 0,
     });
