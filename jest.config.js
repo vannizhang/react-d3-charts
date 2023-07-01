@@ -30,15 +30,5 @@ module.exports = {
     // transformIgnorePatterns: ['<rootDir>/node_modules/'],
     
     // Indicates whether each individual test should be reported during the run
-    verbose: true,
-
-    moduleNameMapper: {
-        "^@components(.*)$": "<rootDir>/src/components$1",
-        "^@constants(.*)$": "<rootDir>/src/constants$1",
-        "^@utils(.*)$": "<rootDir>/src/utils$1",
-        "^@typing(.*)$": "<rootDir>/src/typing$1",
-        "^@store(.*)$": "<rootDir>/src/store$1",
-        "^@services(.*)$": "<rootDir>/src/services$1",
-        "^@hooks(.*)$": "<rootDir>/src/hooks$1",
-    } 
+    verbose: true
 };
