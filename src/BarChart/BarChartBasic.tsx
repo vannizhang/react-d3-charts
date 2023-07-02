@@ -46,7 +46,7 @@ type Props = {
     /**
      * if true, show tooltip when user hovers a bar element
      */
-    showTooltip: boolean;
+    showTooltip?: boolean;
     // xScaleOptions?: {
     // };
     /**
@@ -81,7 +81,7 @@ type Props = {
 export const BarChartBasic: FC<Props> = ({
     data,
     fill,
-    showTooltip,
+    showTooltip = false,
     // xScaleOptions = {},
     yScaleOptions = {},
     xAxisOptions = {},
