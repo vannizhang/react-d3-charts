@@ -75,7 +75,7 @@ export const XAxis: FC<Props> = ({
 
         if (showGridLines) {
             xAxis.tickSizeInner(-height);
-            // .tickPadding(5);
+            xAxis.tickPadding(6);
         }
 
         if (tickValues) {

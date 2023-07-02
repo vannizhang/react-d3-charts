@@ -46,7 +46,7 @@ export const YAxis: FC<Props> = ({
 
         if (showGridLines) {
             yAxis.tickSizeInner(-width);
-            // .tickPadding(5);
+            yAxis.tickPadding(5);
         }
 
         if (tickFormatFunction) {
