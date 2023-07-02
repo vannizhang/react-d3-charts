@@ -75,3 +75,14 @@ export const ShowTooltipAndReferenceLine: Story = {
         showTooltip: true,
     },
 };
+
+export const CustomOptionsForYScale: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        showTooltip: true,
+        yScaleOptions: {
+            domain: [0, 200],
+        },
+    },
+};

@@ -47,10 +47,18 @@ type Props = {
      * if true, show tooltip when user hovers a bar element
      */
     showTooltip: boolean;
+    // xScaleOptions?: {
+    // };
     /**
-     * custom margins space
+     * options that will be used to create scale function for the y-axis
      */
-    margin?: SvgContainerMargins;
+    yScaleOptions?: {
+        /**
+         * Custom domain that will be used to create a scale function for the y-axis.
+         * If not provided, the minimum and maximum values of the `value` property of all items will be used as the domain.
+         */
+        domain?: number[];
+    };
     /**
      * options to customized x axis
      */
@@ -59,6 +67,10 @@ type Props = {
      * options to customized y axis
      */
     yAxisOptions?: YAxisOptions;
+    /**
+     * custom margins space
+     */
+    margin?: SvgContainerMargins;
 };
 
 /**
@@ -70,9 +82,11 @@ export const BarChartBasic: FC<Props> = ({
     data,
     fill,
     showTooltip,
-    margin = DEFAULT_MARGINS,
+    // xScaleOptions = {},
+    yScaleOptions = {},
     xAxisOptions = {},
     yAxisOptions = {},
+    margin = DEFAULT_MARGINS,
 }: Props) => {
     const [dimension, setDimension] = useState<SvgContainerDimension>({
         height: 0,
@@ -104,13 +118,16 @@ export const BarChartBasic: FC<Props> = ({
     const yScale = useMemo((): YScale => {
         const { height } = dimension;
 
-        const ymax = data && data.length ? max(data, (d) => d.value) : 0;
+        let domain = yScaleOptions?.domain || [];
 
-        const ymin = 0;
+        if (!domain.length) {
+            const ymax = data && data.length ? max(data, (d) => d.value) : 0;
 
-        return scaleLinear<number, number>()
-            .range([height, 0])
-            .domain([ymin, ymax]);
+            const ymin = 0;
+
+            domain = [ymin, ymax];
+        }
+        return scaleLinear<number, number>().range([height, 0]).domain(domain);
     }, [dimension, data]);
 
     return (

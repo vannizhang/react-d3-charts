@@ -11,13 +11,6 @@ export type XAxisOptions = {
      */
     numberOfTicks?: number;
     /**
-     * Specified values to be used for ticks rather than using the scale’s automatic tick generator.
-     * By default, D3 shows ticks for all items in the data on the x-axis.
-     * Pass an array of tick values or an array of keys of the input data to override that behavior
-     * and only render ticks for items that have their keys in `tickValuesOnXAxis`.
-     */
-    tickValues?: (string | number)[];
-    /**
      * if true, create grid lines by setting the tick size to your chart height
      */
     showGridLines?: boolean;
@@ -31,6 +24,13 @@ export type XAxisOptions = {
         domainValue: number | string,
         index?: number
     ) => string;
+    /**
+     * Specified values to be used for ticks rather than using the scale’s automatic tick generator.
+     * By default, D3 shows ticks for all items in the data on the x-axis.
+     * Pass an array of tick values or an array of keys of the input data to override that behavior
+     * and only render ticks for items that have their keys in `tickValuesOnXAxis`.
+     */
+    tickValues?: (string | number)[];
     /**
      * formatter that will be used to format timestamp of each item
      */

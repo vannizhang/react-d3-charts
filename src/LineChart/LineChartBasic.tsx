@@ -52,6 +52,9 @@ type XScale = ScaleLinear<number, number> | ScaleTime<number, number>;
 type YScale = ScaleLinear<number, number>;
 
 type Props = {
+    /**
+     * array of `LineChartDataItem` that will be used to plot the Line Chart
+     */
     data: LineChartData;
     /**
      * stroke color of the Line
@@ -66,17 +69,36 @@ type Props = {
      */
     showTooltip?: boolean;
     /**
-     * custom margin space
+     * options that will be used to create scale function for the x-axis
      */
-    margin?: SvgContainerMargins;
+    xScaleOptions?: {
+        /**
+         * If set to true, a time scale will be used instead of a linear scale for the x-axis.
+         */
+        useTimeScale?: boolean;
+    };
     /**
-     *
+     * options that will be used to create scale function for the y-axis
+     */
+    yScaleOptions?: {
+        /**
+         * Custom domain that will be used to create a scale function for the y-axis.
+         * If not provided, the minimum and maximum values of the `value` property of all items will be used as the domain.
+         */
+        domain?: number[];
+    };
+    /**
+     * options to customized x axis
      */
     xAxisOptions?: XAxisOptions;
     /**
-     *
+     * options to customized y axis
      */
     yAxisOptions?: YAxisOptions;
+    /**
+     * custom margin space
+     */
+    margin?: SvgContainerMargins;
 };
 
 /**
@@ -89,6 +111,8 @@ export const LineChartBasic: FC<Props> = ({
     stroke,
     strokeWidth,
     showTooltip,
+    xScaleOptions = {},
+    yScaleOptions = {},
     xAxisOptions = {},
     yAxisOptions = {},
     margin = DEFAULT_MARGINS,
@@ -104,13 +128,10 @@ export const LineChartBasic: FC<Props> = ({
     const xScale = useMemo((): XScale => {
         const { width } = dimension;
 
-        const shouldUseTimeScale =
-            xAxisOptions?.timeformatSpecifier !== undefined;
-
         const xmin = min(data, (d) => d.key);
         const xmax = max(data, (d) => d.key);
 
-        return shouldUseTimeScale
+        return xScaleOptions?.useTimeScale
             ? scaleTime().range([0, width]).domain([xmin, xmax])
             : scaleLinear().range([0, width]).domain([xmin, xmax]);
     }, [dimension, data]);
@@ -118,13 +139,17 @@ export const LineChartBasic: FC<Props> = ({
     const yScale = useMemo((): YScale => {
         const { height } = dimension;
 
-        const ymax = data && data.length ? max(data, (d) => d.value) : 0;
+        let domain = yScaleOptions?.domain || [];
 
-        const ymin = 0;
+        if (!domain.length) {
+            const ymax = data && data.length ? max(data, (d) => d.value) : 0;
 
-        return scaleLinear<number, number>()
-            .range([height, 0])
-            .domain([ymin, ymax]);
+            const ymin = 0;
+
+            domain = [ymin, ymax];
+        }
+
+        return scaleLinear<number, number>().range([height, 0]).domain(domain);
     }, [dimension, data]);
 
     return (
