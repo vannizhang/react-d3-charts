@@ -11,7 +11,10 @@ export type XAxisOptions = {
      */
     numberOfTicks?: number;
     /**
-     * Specified values to be used for ticks rather than using the scale’s automatic tick generator
+     * Specified values to be used for ticks rather than using the scale’s automatic tick generator.
+     * By default, D3 shows ticks for all items in the data on the x-axis.
+     * Pass an array of tick values or an array of keys of the input data to override that behavior
+     * and only render ticks for items that have their keys in `tickValuesOnXAxis`.
      */
     tickValues?: (string | number)[];
     /**

@@ -14,8 +14,8 @@ import SvgContainer, {
     SvgContainerMargins,
 } from '../SvgContainer/SvgContainer';
 import Bars from './Bars';
-import { XAxis } from '../XAxis/XAxis';
-import { YAxis } from '../YAxis/YAxis';
+import { XAxis, XAxisOptions } from '../XAxis/XAxis';
+import { YAxis, YAxisOptions } from '../YAxis/YAxis';
 import {
     HoveredChartItem,
     PointerEventsOverlay,
@@ -42,21 +42,7 @@ type Props = {
     /**
      * fill color of the Bar Rectange
      */
-    color?: string;
-    /**
-     * if ture, show horizontal grid lines
-     */
-    showHorizontalGridLine: boolean;
-    /**
-     * if ture, show vertical grid lines
-     */
-    showVerticalGridLine: boolean;
-    /**
-     * By default, D3 shows ticks for all items in the data on the x-axis.
-     * Pass an array of tick values or an array of keys of the input data to override that behavior
-     * and only render ticks for items that have their keys in `tickValuesOnXAxis`.
-     */
-    tickValuesOnXAxis: (string | number)[];
+    fill?: string;
     /**
      * if true, show tooltip when user hovers a bar element
      */
@@ -65,6 +51,14 @@ type Props = {
      * custom margins space
      */
     margin?: SvgContainerMargins;
+    /**
+     * options to customized x axis
+     */
+    xAxisOptions?: XAxisOptions;
+    /**
+     * options to customized y axis
+     */
+    yAxisOptions?: YAxisOptions;
 };
 
 /**
@@ -74,12 +68,11 @@ type Props = {
  */
 export const BarChartBasic: FC<Props> = ({
     data,
-    color,
-    showHorizontalGridLine,
-    showVerticalGridLine,
-    tickValuesOnXAxis,
+    fill,
     showTooltip,
     margin = DEFAULT_MARGINS,
+    xAxisOptions = {},
+    yAxisOptions = {},
 }: Props) => {
     const [dimension, setDimension] = useState<SvgContainerDimension>({
         height: 0,
@@ -129,20 +122,21 @@ export const BarChartBasic: FC<Props> = ({
             }}
         >
             <SvgContainer margin={margin} dimensionOnChange={setDimension}>
-                <Bars
-                    data={data}
-                    xScale={xScale}
-                    yScale={yScale}
-                    color={color}
-                />
+                <Bars data={data} xScale={xScale} yScale={yScale} fill={fill} />
 
                 <XAxis
                     scale={xScale}
-                    showGridLines={showVerticalGridLine}
-                    tickValues={tickValuesOnXAxis}
+                    showGridLines={xAxisOptions.showGridLines}
+                    tickValues={xAxisOptions.tickValues}
+                    tickFormatFunction={xAxisOptions.tickFormatFunction}
                 />
 
-                <YAxis scale={yScale} showGridLines={showHorizontalGridLine} />
+                <YAxis
+                    scale={yScale}
+                    showGridLines={yAxisOptions.showGridLines}
+                    numberOfTicks={yAxisOptions.numberOfTicks}
+                    tickFormatFunction={yAxisOptions.tickFormatFunction}
+                />
 
                 {showTooltip ? (
                     <PointerReferenceLine

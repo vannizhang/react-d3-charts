@@ -9,7 +9,10 @@ type Props = {
     yScale: ScaleLinear<number, number>;
     svgContainerData?: SvgContainerData;
     data: BarChartData;
-    color?: string;
+    /**
+     * fill color of bar rects
+     */
+    fill?: string;
 };
 
 const Bars: React.FC<Props> = ({
@@ -17,7 +20,7 @@ const Bars: React.FC<Props> = ({
     yScale,
     data,
     svgContainerData,
-    color = 'steelblue',
+    fill = 'steelblue',
 }) => {
     const barsGroup = useRef<SVGGElement>();
 
@@ -37,7 +40,7 @@ const Bars: React.FC<Props> = ({
             .data(data)
             .enter()
             .append('rect')
-            .style('fill', color)
+            .style('fill', fill)
             .attr('x', (d) => xScale(d.key))
             .attr('width', xScale.bandwidth())
             .attr('y', (d) => yScale(d.value))

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { BarChartBasic } from './BarChartBasic';
+import { data } from './data';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof BarChartBasic> = {
@@ -27,59 +28,6 @@ const meta: Meta<typeof BarChartBasic> = {
 export default meta;
 type Story = StoryObj<typeof BarChartBasic>;
 
-const data = [
-    {
-        key: '12/1',
-        value: 26,
-        tooltip: 'this is a tooltip',
-    },
-    {
-        key: '12/2',
-        value: 38,
-        tooltip: 'this is a tooltip',
-    },
-    {
-        key: '12/3',
-        value: 10,
-        tooltip: 'this is a tooltip',
-    },
-    {
-        key: '12/4',
-        value: 45,
-        tooltip: 'this is a tooltip',
-    },
-    {
-        key: '12/5',
-        value: 10,
-        tooltip: 'this is a tooltip',
-    },
-    {
-        key: '12/6',
-        value: 12,
-        tooltip: 'this is a tooltip',
-    },
-    {
-        key: '12/7',
-        value: 15,
-        tooltip: 'this is a tooltip',
-    },
-    {
-        key: '12/8',
-        value: 7,
-        tooltip: 'this is a tooltip',
-    },
-    {
-        key: '12/9',
-        value: 23,
-        tooltip: 'this is a tooltip',
-    },
-    {
-        key: '12/10',
-        value: 4,
-        tooltip: 'this is a tooltip, and it is longer than other ones',
-    },
-];
-
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 export const Default: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
@@ -88,21 +36,35 @@ export const Default: Story = {
     },
 };
 
-export const ShowGridLine: Story = {
+export const CustomStyle: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
-        showHorizontalGridLine: true,
-        showVerticalGridLine: true,
+        fill: 'orange',
     },
 };
 
-export const CustomColorAndTickValues: Story = {
+export const CustomizedAxisOptions: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
-        color: 'orange',
-        tickValuesOnXAxis: ['12/1', '12/5', '12/10'],
+        xAxisOptions: {
+            showGridLines: true,
+            tickValues: ['12/1', '12/5', '12/10'],
+            /**
+             * formar tick value from `12/1` to `12-1`
+             * @param val
+             * @returns
+             */
+            tickFormatFunction: (val: string) => {
+                const [month, day] = val.split('/');
+                return `${month}-${day}`;
+            },
+        },
+        yAxisOptions: {
+            showGridLines: true,
+            numberOfTicks: 3,
+        },
     },
 };
 
