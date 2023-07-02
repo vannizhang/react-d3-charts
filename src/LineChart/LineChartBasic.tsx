@@ -15,8 +15,8 @@ import SvgContainer, {
     SvgContainerDimension,
     SvgContainerMargins,
 } from '../SvgContainer/SvgContainer';
-import { XAxis } from '../XAxis/XAxis';
-import { YAxis } from '../YAxis/YAxis';
+import { XAxis, XAxisOptions } from '../XAxis/XAxis';
+import { YAxis, YAxisOptions } from '../YAxis/YAxis';
 import {
     HoveredChartItem,
     PointerEventsOverlay,
@@ -54,9 +54,9 @@ type YScale = ScaleLinear<number, number>;
 type Props = {
     data: LineChartData;
     /**
-     * fill color of the Line
+     * stroke color of the Line
      */
-    color?: string;
+    stroke?: string;
     /**
      * width of the line
      */
@@ -70,45 +70,13 @@ type Props = {
      */
     margin?: SvgContainerMargins;
     /**
-     * indicate number of ticks that should be renderder on x axis
-     */
-    numberOfTicksOnXAxis?: number;
-    /**
-     * indicate number of ticks that should be renderder on y axis
-     */
-    numberOfTicksOnYAxis?: number;
-    /**
-     * if ture, show horizontal grid lines
-     */
-    showHorizontalGridLine?: boolean;
-    /**
-     * if ture, show vertical grid lines
-     */
-    showVerticalGridLine?: boolean;
-    /**
-     * custom format function mapping a value from the axis Domain to a formatted string for display purposes.
-     * @param domainValue original domain value
-     * @param index
-     * @returns formatted string
-     */
-    tickFormatFunction4XAxis?: (
-        domainValue: number | string,
-        index?: number
-    ) => string;
-    /**
-     * custom format function mapping a value from the axis Domain to a formatted string for display purposes.
-     * @param domainValue original domain value
-     * @param index
-     * @returns formatted string
-     */
-    tickFormatFunction4YAxis?: (domainValue: number, index?: number) => string;
-    /**
-     * A string with the desired format directives that will be used to format the key of each item.
-     * When timeformatSpecifier is provided, scale time will be used on x axis instead of scale linear.
      *
-     * @see https://github.com/d3/d3-time-format
      */
-    timeformatSpecifier4XAxis?: string;
+    xAxisOptions?: XAxisOptions;
+    /**
+     *
+     */
+    yAxisOptions?: YAxisOptions;
 };
 
 /**
@@ -118,16 +86,11 @@ type Props = {
  */
 export const LineChartBasic: FC<Props> = ({
     data,
-    color,
+    stroke,
     strokeWidth,
-    showHorizontalGridLine,
-    showVerticalGridLine,
-    numberOfTicksOnXAxis,
-    numberOfTicksOnYAxis,
-    tickFormatFunction4XAxis,
-    tickFormatFunction4YAxis,
     showTooltip,
-    timeformatSpecifier4XAxis,
+    xAxisOptions = {},
+    yAxisOptions = {},
     margin = DEFAULT_MARGINS,
 }: Props) => {
     const [dimension, setDimension] = useState<SvgContainerDimension>({
@@ -141,7 +104,8 @@ export const LineChartBasic: FC<Props> = ({
     const xScale = useMemo((): XScale => {
         const { width } = dimension;
 
-        const shouldUseTimeScale = timeformatSpecifier4XAxis !== undefined;
+        const shouldUseTimeScale =
+            xAxisOptions?.timeformatSpecifier !== undefined;
 
         const xmin = min(data, (d) => d.key);
         const xmax = max(data, (d) => d.key);
@@ -176,23 +140,23 @@ export const LineChartBasic: FC<Props> = ({
                     xScale={xScale}
                     yScale={yScale}
                     data={data}
-                    color={color}
+                    stroke={stroke}
                     width={strokeWidth}
                 />
 
                 <XAxis
                     scale={xScale as AxisScale<number>}
-                    showGridLines={showVerticalGridLine}
-                    timeformatSpecifier={timeformatSpecifier4XAxis}
-                    numberOfTicks={numberOfTicksOnXAxis}
-                    tickFormatFunction={tickFormatFunction4XAxis}
+                    showGridLines={xAxisOptions?.showGridLines}
+                    timeformatSpecifier={xAxisOptions?.timeformatSpecifier}
+                    numberOfTicks={xAxisOptions?.numberOfTicks}
+                    tickFormatFunction={xAxisOptions?.tickFormatFunction}
                 />
 
                 <YAxis
                     scale={yScale}
-                    showGridLines={showHorizontalGridLine}
-                    numberOfTicks={numberOfTicksOnYAxis}
-                    tickFormatFunction={tickFormatFunction4YAxis}
+                    showGridLines={yAxisOptions.showGridLines}
+                    numberOfTicks={yAxisOptions.numberOfTicks}
+                    tickFormatFunction={yAxisOptions?.tickFormatFunction}
                 />
 
                 {showTooltip ? (

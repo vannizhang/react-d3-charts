@@ -4,17 +4,9 @@ import React, { FC, useEffect } from 'react';
 import { select, axisBottom, timeFormat, Selection } from 'd3';
 import { SvgContainerData } from '../SvgContainer/SvgContainer';
 
-type Props = {
+export type XAxisOptions = {
     /**
-     * A scale function that has numeric output
-     */
-    scale: AxisScale<string | number>;
-    /**
-     * if true, create grid lines by setting the tick size to your chart height
-     */
-    showGridLines?: boolean;
-    /**
-     * Indicate number of ticks that should be renderder.
+     * Indicate number of ticks that should be renderder, this only works with Scale Linear, for Scale Band, use `tickValues` option
      * If not provided, d3 will try to render as many ticks as possible
      */
     numberOfTicks?: number;
@@ -23,9 +15,9 @@ type Props = {
      */
     tickValues?: (string | number)[];
     /**
-     * formatter that will be used to format timestamp of each item
+     * if true, create grid lines by setting the tick size to your chart height
      */
-    timeformatSpecifier?: string;
+    showGridLines?: boolean;
     /**
      * custom format function mapping a value from the axis Domain to a formatted string for display purposes.
      * @param domainValue original domain value
@@ -36,6 +28,17 @@ type Props = {
         domainValue: number | string,
         index?: number
     ) => string;
+    /**
+     * formatter that will be used to format timestamp of each item
+     */
+    timeformatSpecifier?: string;
+};
+
+type Props = XAxisOptions & {
+    /**
+     * A scale function that has numeric output
+     */
+    scale: AxisScale<string | number>;
     svgContainerData?: SvgContainerData;
 };
 

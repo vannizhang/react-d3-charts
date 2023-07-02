@@ -3,11 +3,7 @@ import React, { FC, useEffect } from 'react';
 import { select, axisLeft, AxisScale, Selection } from 'd3';
 import { SvgContainerData } from '../SvgContainer/SvgContainer';
 
-type Props = {
-    /**
-     * Linear scale function used by yaxis
-     */
-    scale: AxisScale<number>;
+export type YAxisOptions = {
     /**
      * Indicate number of ticks that should be renderder.
      * If not provided, d3 will try to render as many ticks as possible
@@ -24,6 +20,13 @@ type Props = {
      * @returns formatted string
      */
     tickFormatFunction?: (domainValue: number, index?: number) => string;
+};
+
+type Props = YAxisOptions & {
+    /**
+     * Linear scale function used by yaxis
+     */
+    scale: AxisScale<number>;
     svgContainerData?: SvgContainerData;
 };
 

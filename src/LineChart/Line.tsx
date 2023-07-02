@@ -15,7 +15,7 @@ type Props = {
     yScale: ScaleLinear<number, number>;
     svgContainerData?: SvgContainerData;
     data: LineChartData;
-    color?: string;
+    stroke?: string;
     width?: number;
 };
 
@@ -24,7 +24,7 @@ const Line: React.FC<Props> = ({
     yScale,
     data,
     svgContainerData,
-    color = 'steelblue',
+    stroke = 'steelblue',
     width = 1,
 }) => {
     const lineGroup = React.useRef<SVGGElement>();
@@ -44,7 +44,7 @@ const Line: React.FC<Props> = ({
             .data([data])
             .attr('d', valueline)
             .style('fill', 'none')
-            .style('stroke', color)
+            .style('stroke', stroke)
             .style('stroke-width', width);
     };
 
