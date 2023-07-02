@@ -1,8 +1,12 @@
 {
   "name": "@vannizhang/react-d3-charts",
   "version": "1.0.0",
-  "description": "Start React+Redux project with TypeScript in an easier and faster way",
-  "main": "index.js",
+  "description": "A set of simple and reusable D3 Charts with React and TypeScript",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "test": "jest --passWithNoTests",
     "clean": "rimraf dist",
@@ -13,7 +17,7 @@
     "version": "npm run lint && git add -A src",
     "postversion": "git push && git push --tags",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o docs"
+    "build-storybook": "rimraf docs && storybook build -o docs"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,json}": [
