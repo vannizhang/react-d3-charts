@@ -8,3 +8,7 @@ npm i --save-dev @types/d3@7
 
 npm install d3@7
 ```
+
+## Commands
+`npm run storybook`
+`npm run build-storybook`
