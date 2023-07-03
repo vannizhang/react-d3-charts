@@ -255,7 +255,7 @@ The `LineChartBasic` component renders a basic line chart based on the provided 
 
 **Basic**
 
-Here is an example of a basic Line Chart:
+Here is an example of a basic Line Chart, the `x` field of the `LineChartDataItem` should always be numerical value.
 ```js
 <LineChartBasic
   data={[
@@ -439,10 +439,14 @@ React (version 18) and D3.js (version 7) are the required dependencies for this 
 Storybook provides a sandbox environment where you can interactively develop and test the components in isolation.
 
 To test the components locally, run the following command:
-`npm run storybook`
+```sh
+npm run storybook
+```
 
 You can also generate static output (saved in the `/docs` folder) of the Storybook using:
-`npm run build-storybook`
+```sh
+npm run build-storybook
+```
 
 ## License
 This library is licensed under the [Apache License](./LICENSE)

@@ -26,10 +26,13 @@ import { PointerReferenceLine } from '../PointerEventOverlay/PointerReferenceLin
 import Line from './Line';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 
+/**
+ * Represents a data item for the basic line chart.
+ */
 export type LineChartDataItem = {
     /**
      * A numerical value that determines the x position of this item.
-     * Here are some examples of data that can be used as `x`:
+     * Examples of valid `x` values:
      * - Unix timestamp (e.g., 1688167415)
      * - Year (e.g., 2014)
      * - Order of the item (e.g., 1)
@@ -40,7 +43,8 @@ export type LineChartDataItem = {
      */
     y: number;
     /**
-     * The tooltip associated with this item, which can be plain text or an HTML string.
+     * An optional tooltip associated with this data item.
+     * It can be plain text or an HTML string.
      */
     tooltip?: string;
 };
