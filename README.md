@@ -33,13 +33,13 @@ The `BarChartBasic` component renders a basic bar chart based on the provided da
 | **Name**      | **Type**                         | **Default**                                  | **Description**                                                                                     |
 |---------------|----------------------------------|----------------------------------------------|-----------------------------------------------------------------------------------------------------|
 | data          | `BarChartDataItem[]`             | -                                            | The data used to render the bar chart.                                                              |
-| showTooltip   | boolean (optional)               | false                                        | Determines whether to show a tooltip when the user hovers over a bar element.                       |
+| showTooltip   | `boolean` (optional)               | false                                      | Determines whether to show a tooltip when the user hovers over a bar element.                       |
 | yScaleOptions | `YScaleOptions` (optional)       | -                                            | Options used to customize the scale function for the y-axis.                                        |
 | xAxisOptions  | `XAxisOptions` (optional)        | -                                            | Options used to customize the x-axis.                                                               |
 | yAxisOptions  | `YAxisOptions` (optional)        | -                                            | Options used to customize the y-axis.                                                               |
-| fill          | string (optional)                | -                                            | The fill color of the bar rectangles.                                                               |
-| width         | number (optional)                | -                                            | The width of the chart container. If not provided, it will fit the width of the parent container.   |
-| height        | number (optional)                | -                                            | The height of the chart container. If not provided, it will fit the height of the parent container. |
+| fill          | `string` (optional)                | -                                          | The fill color of the bar rectangles.                                                               |
+| width         | `number` (optional)                | -                                          | The width of the chart container. If not provided, it will fit the width of the parent container.   |
+| height        | `number` (optional)                | -                                          | The height of the chart container. If not provided, it will fit the height of the parent container. |
 | margin        | `SvgContainerMargins` (optional) | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                               |
                                                
 ### Examples
@@ -57,6 +57,7 @@ Here is an example of a basic Bar Chart. Bar charts are effective for representi
     {
       x: '12/2',
       y: 38,
+      tooltip: 'this is a tooltip',
     },
     //...
   ]}
@@ -70,6 +71,7 @@ The `x` field of `BarChartDataItem` can also be a `number`
     {
       x: 2018,
       y: 26,
+      tooltip: 'this is a tooltip',
     },
     {
       x: 2019,
@@ -88,6 +90,12 @@ Here is an example of customizing `fill` color for the bar rectangles, the `widt
   fill="orange"
   height={150}
   width={350}
+  margin={{
+    bottom: 30,
+    left: 30,
+    right: 20,
+    top: 15
+  }}
   data={[
     {
       x: '12/1',
