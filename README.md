@@ -85,7 +85,7 @@ The `x` field of `BarChartDataItem` can also be a `number`
 
 **Customized Style**
 
-Here is an example of customizing `fill` color for the bar rectangles, the `width` and `height` of the chart container.
+Here is an example of customizing `fill` color for the bar rectangles, the `width`, `height` and `margin` of the chart container.
 ```js
 <BarChartBasic
   fill="orange"
@@ -101,10 +101,6 @@ Here is an example of customizing `fill` color for the bar rectangles, the `widt
     {
       x: '12/1',
       y: 26,
-    },
-    {
-      x: '12/2',
-      y: 38,
     },
     //...
   ]}
