@@ -57,14 +57,6 @@ type Props = {
      */
     data: LineChartData;
     /**
-     * stroke color of the Line
-     */
-    stroke?: string;
-    /**
-     * width of the line
-     */
-    strokeWidth?: number;
-    /**
      * if true, show tooltip when user hovers the chart
      */
     showTooltip?: boolean;
@@ -95,6 +87,14 @@ type Props = {
      * options to customized y axis
      */
     yAxisOptions?: YAxisOptions;
+    /**
+     * stroke color of the Line
+     */
+    stroke?: string;
+    /**
+     * width of the line
+     */
+    strokeWidth?: number;
     /**
      * width of the chart conatiner, if not provided, it will fit to width of parent container
      */
