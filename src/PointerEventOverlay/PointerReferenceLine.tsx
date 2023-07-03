@@ -1,4 +1,4 @@
-import './PointerReferenceLine.css';
+import '../styles/PointerReferenceLine.css';
 
 import React, { FC, useEffect, useRef } from 'react';
 import { select } from 'd3';

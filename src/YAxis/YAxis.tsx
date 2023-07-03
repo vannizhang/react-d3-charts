@@ -1,4 +1,4 @@
-import './YAxis.css';
+import '../styles/YAxis.css';
 import React, { FC, useEffect } from 'react';
 import { select, axisLeft, AxisScale, Selection } from 'd3';
 import { SvgContainerData } from '../SvgContainer/SvgContainer';
