@@ -29,14 +29,14 @@ export default meta;
 type Story = StoryObj<typeof LineChartBasic>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-export const Default: Story = {
+export const BasicExample: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
     },
 };
 
-export const CustomStyle: Story = {
+export const CustomizedStyles: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
@@ -44,27 +44,6 @@ export const CustomStyle: Story = {
         strokeWidth: 3,
         width: 350,
         height: 150,
-    },
-};
-
-export const CustomAxisOptions: Story = {
-    // More on args: https://storybook.js.org/docs/react/writing-stories/args
-    args: {
-        data,
-        xAxisOptions: {
-            showGridLines: true,
-            numberOfTicks: 5,
-            tickFormatFunction: (val: number) => {
-                return val.toString();
-            },
-        },
-        yAxisOptions: {
-            showGridLines: true,
-            numberOfTicks: 2,
-            tickFormatFunction: (val: number) => {
-                return '+' + val.toString();
-            },
-        },
     },
 };
 
@@ -76,7 +55,35 @@ export const ShowTooltipAndReferenceLine: Story = {
     },
 };
 
-export const CustomOptionsForXAndYScale: Story = {
+export const CustomizedXAxisOptions: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        xAxisOptions: {
+            showGridLines: true,
+            numberOfTicks: 5,
+            tickFormatFunction: (val: number) => {
+                return val.toString();
+            },
+        },
+    },
+};
+
+export const CustomizedYAxisOptions: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        yAxisOptions: {
+            showGridLines: true,
+            numberOfTicks: 2,
+            tickFormatFunction: (val: number) => {
+                return '+' + val.toString();
+            },
+        },
+    },
+};
+
+export const CustomizedOptionsForXScale: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data: dataTimestampForX,
@@ -84,19 +91,21 @@ export const CustomOptionsForXAndYScale: Story = {
         xScaleOptions: {
             useTimeScale: true,
         },
-        yScaleOptions: {
-            domain: [0, 200],
-        },
         xAxisOptions: {
             tickFormatFunction: (val: number) => {
                 return new Date(val).getFullYear().toString();
             },
         },
-        margin: {
-            top: 15,
-            right: 20,
-            bottom: 30,
-            left: 30,
+    },
+};
+
+export const CustomizedOptionsForYScale: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        showTooltip: true,
+        yScaleOptions: {
+            domain: [0, 200],
         },
     },
 };
