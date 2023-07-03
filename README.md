@@ -84,6 +84,7 @@ The `x` field of `BarChartDataItem` can also be a `number`
 ```
 
 **Customized Style**
+
 Here is an example of customizing `fill` color for the bar rectangles, the `width` and `height` of the chart container.
 ```js
 <BarChartBasic
@@ -100,12 +101,10 @@ Here is an example of customizing `fill` color for the bar rectangles, the `widt
     {
       x: '12/1',
       y: 26,
-      tooltip: 'this is a tooltip',
     },
     {
       x: '12/2',
       y: 38,
-      tooltip: 'this is a tooltip',
     },
     //...
   ]}
@@ -113,6 +112,7 @@ Here is an example of customizing `fill` color for the bar rectangles, the `widt
 ```
 
 **Show Tooltip And Reference Line**
+
 Set `showTooltip` to true to show a tooltip when the user hovers over a bar element. 
 
 Plase make sure the `tooltip` field is included in each `BarChartDataItem`.
@@ -147,7 +147,6 @@ Here is an example of extend ticks on x axis and show them as grid lines:
     {
       x: '12/1',
       y: 26,
-      tooltip: 'this is a tooltip',
     },
     //...
   ]}
@@ -165,7 +164,6 @@ You can specify values to be used for ticks rather than using the scale’s auto
     {
       x: '12/1',
       y: 26,
-      tooltip: 'this is a tooltip',
     },
     //...
   ]}
@@ -186,7 +184,6 @@ You can provide a custom format function mapping a value from the axis Domain to
     {
       x: '12/1',
       y: 26,
-      tooltip: 'this is a tooltip',
     },
     //...
   ]}
@@ -194,6 +191,7 @@ You can provide a custom format function mapping a value from the axis Domain to
 ```
 
 **Customized X Axis Options**
+
 Here is an example of extend ticks on y axis and show them as grid lines: 
 ```js
 <BarChartBasic
@@ -204,7 +202,6 @@ Here is an example of extend ticks on y axis and show them as grid lines:
     {
       x: '12/1',
       y: 26,
-      tooltip: 'this is a tooltip',
     },
     //...
   ]}
@@ -221,7 +218,6 @@ You can indicate number of ticks on y axis that should be rendered, If not provi
     {
       x: '12/1',
       y: 26,
-      tooltip: 'this is a tooltip',
     },
     //...
   ]}
@@ -229,6 +225,7 @@ You can indicate number of ticks on y axis that should be rendered, If not provi
 ```
 
 **Customized Options For Y Scale**
+
 Here is an example of using customized options for Y Scale. 
 
 You can provide a custom domain used to create the scale function for the y-axis. If not provided, the domain will be determined by the maximum values of the `y` property among all items, and the minimum value of the domain will be 0.
@@ -241,12 +238,6 @@ You can provide a custom domain used to create the scale function for the y-axis
     {
       x: '12/1',
       y: 26,
-      tooltip: 'this is a tooltip',
-    },
-    {
-      x: '12/2',
-      y: 38,
-      tooltip: 'this is a tooltip',
     },
     //...
   ]}
