@@ -32,8 +32,8 @@ const Line: React.FC<Props> = ({
     const valueline = useMemo(() => {
         return line<LineChartDataItem>()
             .curve(curveMonotoneX)
-            .x((d) => xScale(d.key))
-            .y((d) => yScale(d.value));
+            .x((d) => xScale(d.x))
+            .y((d) => yScale(d.y));
     }, [xScale, yScale]);
 
     const draw = () => {

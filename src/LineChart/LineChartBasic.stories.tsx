@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { LineChartBasic } from './LineChartBasic';
-import { data, dataUsingTimestampAsKey } from './data';
+import { data, dataTimestampForX } from './data';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof LineChartBasic> = {
@@ -79,7 +79,7 @@ export const ShowTooltipAndReferenceLine: Story = {
 export const CustomOptionsForXAndYScale: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
-        data: dataUsingTimestampAsKey,
+        data: dataTimestampForX,
         showTooltip: true,
         xScaleOptions: {
             useTimeScale: true,

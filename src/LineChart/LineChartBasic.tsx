@@ -34,11 +34,11 @@ export type LineChartDataItem = {
      * - year (e.g. 2014)
      * - order of the item (e.g. 1)
      */
-    key: number;
+    x: number;
     /**
      * value is numerical value that determines the y position of this item
      */
-    value: number;
+    y: number;
     /**
      * tooltip assoicated with this item, can be plain text or html string
      */
@@ -138,8 +138,8 @@ export const LineChartBasic: FC<Props> = ({
     const xScale = useMemo((): XScale => {
         const { width } = dimension;
 
-        const xmin = min(data, (d) => d.key);
-        const xmax = max(data, (d) => d.key);
+        const xmin = min(data, (d) => d.x);
+        const xmax = max(data, (d) => d.x);
 
         return xScaleOptions?.useTimeScale
             ? scaleTime().range([0, width]).domain([xmin, xmax])
@@ -152,7 +152,7 @@ export const LineChartBasic: FC<Props> = ({
         let domain = yScaleOptions?.domain || [];
 
         if (!domain.length) {
-            const ymax = data && data.length ? max(data, (d) => d.value) : 0;
+            const ymax = data && data.length ? max(data, (d) => d.y) : 0;
 
             const ymin = 0;
 
@@ -206,7 +206,7 @@ export const LineChartBasic: FC<Props> = ({
 
                 <PointerEventsOverlay
                     xScale={xScale}
-                    xDomain={data.map((d) => d.key)}
+                    xDomain={data.map((d) => d.x)}
                     hoveredChartItemOnChange={setHoveredChartItem}
                 />
             </SvgContainer>

@@ -26,8 +26,8 @@ import { SCALE_BAND_PADDING_INNER } from './constants';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 
 export type BarChartDataItem = {
-    key: string | number;
-    value: number;
+    x: string | number;
+    y: number;
     tooltip?: string;
 };
 
@@ -112,7 +112,7 @@ export const BarChartBasic: FC<Props> = ({
         }
 
         return data.map((d) => {
-            return typeof d.key === 'number' ? d.key.toString() : d.key;
+            return typeof d.x === 'number' ? d.x.toString() : d.x;
         });
     }, [data]);
 
@@ -131,7 +131,7 @@ export const BarChartBasic: FC<Props> = ({
         let domain = yScaleOptions?.domain || [];
 
         if (!domain.length) {
-            const ymax = data && data.length ? max(data, (d) => d.value) : 0;
+            const ymax = data && data.length ? max(data, (d) => d.y) : 0;
 
             const ymin = 0;
 

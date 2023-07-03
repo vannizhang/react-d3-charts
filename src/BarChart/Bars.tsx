@@ -41,11 +41,11 @@ const Bars: React.FC<Props> = ({
             .enter()
             .append('rect')
             .style('fill', fill)
-            .attr('x', (d) => xScale(d.key))
+            .attr('x', (d) => xScale(d.x))
             .attr('width', xScale.bandwidth())
-            .attr('y', (d) => yScale(d.value))
+            .attr('y', (d) => yScale(d.y))
             .attr('height', (d) => {
-                return height - yScale(d.value);
+                return height - yScale(d.y);
             });
     };
 
