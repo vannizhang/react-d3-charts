@@ -26,8 +26,18 @@ import { SCALE_BAND_PADDING_INNER } from './constants';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 
 export type BarChartDataItem = {
+    /**
+     *
+     * A string or numerical value that determines the x position of this item.
+     */
     x: string | number;
+    /**
+     * A numerical value that determines the height of this item in Bar chart.
+     */
     y: number;
+    /**
+     * The tooltip associated with this item, which can be plain text or an HTML string.
+     */
     tooltip?: string;
 };
 

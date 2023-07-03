@@ -28,19 +28,19 @@ import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 
 export type LineChartDataItem = {
     /**
-     * key is a numerical value that determines the x position of this item.
-     * key can be used to contain values like:
-     * - unix timestamp (e.g. 1688167415)
-     * - year (e.g. 2014)
-     * - order of the item (e.g. 1)
+     * A numerical value that determines the x position of this item.
+     * Here are some examples of data that can be used as `x`:
+     * - Unix timestamp (e.g., 1688167415)
+     * - Year (e.g., 2014)
+     * - Order of the item (e.g., 1)
      */
     x: number;
     /**
-     * value is numerical value that determines the y position of this item
+     * A numerical value that determines the y position of this item.
      */
     y: number;
     /**
-     * tooltip assoicated with this item, can be plain text or html string
+     * The tooltip associated with this item, which can be plain text or an HTML string.
      */
     tooltip?: string;
 };
