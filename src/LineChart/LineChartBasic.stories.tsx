@@ -42,6 +42,8 @@ export const CustomStyle: Story = {
         data,
         stroke: 'orange',
         strokeWidth: 3,
+        width: 350,
+        height: 150,
     },
 };
 

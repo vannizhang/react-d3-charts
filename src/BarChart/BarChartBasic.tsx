@@ -68,6 +68,14 @@ type Props = {
      */
     yAxisOptions?: YAxisOptions;
     /**
+     * width of the chart conatiner, if not provided, it will fit to width of parent container
+     */
+    width?: number;
+    /**
+     * height of the chart conatiner, if not provided, it will fit to height of parent container
+     */
+    height?: number;
+    /**
      * custom margins space
      */
     margin?: SvgContainerMargins;
@@ -86,6 +94,8 @@ export const BarChartBasic: FC<Props> = ({
     yScaleOptions = {},
     xAxisOptions = {},
     yAxisOptions = {},
+    width,
+    height,
     margin = DEFAULT_MARGINS,
 }: Props) => {
     const [dimension, setDimension] = useState<SvgContainerDimension>({
@@ -134,8 +144,8 @@ export const BarChartBasic: FC<Props> = ({
         <div
             style={{
                 position: 'relative',
-                width: '100%',
-                height: '100%',
+                width: width || '100%',
+                height: height || '100%',
             }}
         >
             <SvgContainer margin={margin} dimensionOnChange={setDimension}>
