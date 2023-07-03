@@ -27,7 +27,6 @@ import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 
 export type BarChartDataItem = {
     /**
-     *
      * A string or numerical value that determines the x position of this item.
      */
     x: string | number;
@@ -41,52 +40,53 @@ export type BarChartDataItem = {
     tooltip?: string;
 };
 
-export type BarChartData = BarChartDataItem[];
-
 type XScale = ScaleBand<string | number>;
 
 type YScale = ScaleLinear<number, number>;
 
 type Props = {
-    data: BarChartData;
     /**
-     * fill color of the Bar Rectange
+     * The data used to render the bar chart.
      */
-    fill?: string;
+    data: BarChartDataItem[];
     /**
-     * if true, show tooltip when user hovers a bar element
+     * Determines whether to show a tooltip when the user hovers over a bar element.
      */
     showTooltip?: boolean;
     // xScaleOptions?: {
     // };
     /**
-     * options that will be used to create scale function for the y-axis
+     * Options used to customize the scale function for the y-axis.
      */
     yScaleOptions?: {
         /**
-         * Custom domain that will be used to create a scale function for the y-axis.
-         * If not provided, the minimum and maximum values of the `value` property of all items will be used as the domain.
+         * Custom domain used to create the scale function for the y-axis.
+         * If not provided, the domain will be determined by the maximum values of the `y` property among all items, and the minimum value of the domain will be 0.
          */
         domain?: number[];
     };
     /**
-     * options to customized x axis
+     * Options used to customize the x-axis.
      */
     xAxisOptions?: XAxisOptions;
     /**
-     * options to customized y axis
+     * Options used to customize the y-axis.
      */
     yAxisOptions?: YAxisOptions;
     /**
-     * width of the chart conatiner, if not provided, it will fit to width of parent container
+     * The fill color of the bar rectangles.
+     */
+    fill?: string;
+    /**
+     * The width of the chart container. If not provided, it will fit the width of the parent container.
      */
     width?: number;
     /**
-     * height of the chart conatiner, if not provided, it will fit to height of parent container
+     * The height of the chart container. If not provided, it will fit the height of the parent container.
      */
     height?: number;
     /**
-     * custom margins space
+     * Custom margin space around the chart area.
      */
     margin?: SvgContainerMargins;
 };

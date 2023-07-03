@@ -88,7 +88,9 @@ export const CustomOptionsForXAndYScale: Story = {
             domain: [0, 200],
         },
         xAxisOptions: {
-            timeformatSpecifier: '%Y %b',
+            tickFormatFunction: (val: number) => {
+                return new Date(val).getFullYear().toString();
+            },
         },
         margin: {
             top: 15,

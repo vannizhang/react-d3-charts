@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { BarChartBasic } from './BarChartBasic';
-import { data } from './data';
+import { data, dataNumbericalX } from './data';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof BarChartBasic> = {
@@ -29,44 +29,27 @@ export default meta;
 type Story = StoryObj<typeof BarChartBasic>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-export const Default: Story = {
+export const BasicExample: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
     },
 };
 
-export const CustomStyle: Story = {
+export const BasicExampleNumericaValueForXAxis: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data: dataNumbericalX,
+    },
+};
+
+export const CustomizedStyles: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
         fill: 'orange',
         width: 350,
         height: 150,
-    },
-};
-
-export const CustomizedAxisOptions: Story = {
-    // More on args: https://storybook.js.org/docs/react/writing-stories/args
-    args: {
-        data,
-        xAxisOptions: {
-            showGridLines: true,
-            tickValues: ['12/1', '12/5', '12/10'],
-            /**
-             * formar tick value from `12/1` to `12-1`
-             * @param val
-             * @returns
-             */
-            tickFormatFunction: (val: string) => {
-                const [month, day] = val.split('/');
-                return `${month}-${day}`;
-            },
-        },
-        yAxisOptions: {
-            showGridLines: true,
-            numberOfTicks: 3,
-        },
     },
 };
 
@@ -78,7 +61,44 @@ export const ShowTooltipAndReferenceLine: Story = {
     },
 };
 
-export const CustomOptionsForYScale: Story = {
+export const CustomizedXAxisOptions: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        xAxisOptions: {
+            /**
+             * set to true to extend ticks on x axis and show them as grid lines
+             */
+            showGridLines: true,
+            /**
+             * Specified values to be used for ticks rather than using the scale’s automatic tick generator.
+             */
+            tickValues: ['12/1', '12/5', '12/10'],
+            /**
+             * You can provide a custom format function mapping a value from the axis Domain to a formatted string for display purposes.
+             * @param val
+             * @returns
+             */
+            tickFormatFunction: (val: string) => {
+                const [month, day] = val.split('/');
+                return `${month}-${day}`;
+            },
+        },
+    },
+};
+
+export const CustomizedYAxisOptions: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        yAxisOptions: {
+            showGridLines: true,
+            numberOfTicks: 3,
+        },
+    },
+};
+
+export const CustomizedOptionsForYScale: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,

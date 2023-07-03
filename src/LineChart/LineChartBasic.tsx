@@ -182,7 +182,6 @@ export const LineChartBasic: FC<Props> = ({
                 <XAxis
                     scale={xScale as AxisScale<number>}
                     showGridLines={xAxisOptions?.showGridLines}
-                    timeformatSpecifier={xAxisOptions?.timeformatSpecifier}
                     numberOfTicks={xAxisOptions?.numberOfTicks}
                     tickFormatFunction={xAxisOptions?.tickFormatFunction}
                 />

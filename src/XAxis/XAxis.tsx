@@ -31,10 +31,6 @@ export type XAxisOptions = {
      * and only render ticks for items that have their keys in `tickValuesOnXAxis`.
      */
     tickValues?: (string | number)[];
-    /**
-     * formatter that will be used to format timestamp of each item
-     */
-    timeformatSpecifier?: string;
 };
 
 type Props = XAxisOptions & {
@@ -58,14 +54,9 @@ export const XAxis: FC<Props> = ({
     showGridLines,
     numberOfTicks,
     tickValues,
-    timeformatSpecifier,
     tickFormatFunction,
     svgContainerData,
 }) => {
-    const formatTime = timeformatSpecifier
-        ? timeFormat(timeformatSpecifier)
-        : null;
-
     const drawXAxis = () => {
         const { rootGroup, dimension } = svgContainerData;
 
@@ -86,14 +77,7 @@ export const XAxis: FC<Props> = ({
             xAxis.ticks(numberOfTicks);
         }
 
-        if (formatTime) {
-            xAxis.tickFormat((d: number) => {
-                const date = new Date(+d);
-                return formatTime(date);
-            });
-        }
-
-        if (!formatTime && tickFormatFunction) {
+        if (tickFormatFunction) {
             xAxis.tickFormat(tickFormatFunction);
         }
 
