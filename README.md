@@ -224,7 +224,7 @@ You can indicate number of ticks on y axis that should be rendered, If not provi
 
 Here is an example of using customized options for Y Scale. 
 
-You can provide a custom domain used to create the scale function for the y-axis. If not provided, the domain will be determined by the maximum values of the `y` property among all items, and the minimum value of the domain will be 0.
+You can provide a custom `domain` used to create the scale function for the y-axis. If not provided, the domain will be determined by the maximum values of the `y` property among all items, and the minimum value of the domain will be 0.
 ```js
 <BarChartBasic
   yScaleOptions={{
@@ -233,6 +233,205 @@ You can provide a custom domain used to create the scale function for the y-axis
   data={[
     {
       x: '12/1',
+      y: 26,
+    },
+    //...
+  ]}
+/>
+```
+
+## `LineChartBasic` Component
+The `LineChartBasic` component renders a basic line chart based on the provided data.
+
+### Props
+ **Name**      | **Type**                         | **Default** | **Description**                                                                                     
+---------------|----------------------------------|-------------|-----------------------------------------------------------------------------------------------------
+ data          | `LineChartDataItem[]`            | -           | An array of `LineChartDataItem` objects that will be used to plot the line chart.                     
+ showTooltip   | `boolean` (optional)             | false       | If set to true, displays a tooltip when the user hovers over the chart.                             
+ xScaleOptions | `XScaleOptions` (optional)       | -           | Options used to create a scale function for the x-axis.                                             
+ yScaleOptions | `YScaleOptions` (optional)       | -           | Options used to create a scale function for the y-axis.                                             
+ xAxisOptions  | `XAxisOptions` (optional)        | -           | Options for customizing the x-axis.                                                                 
+ yAxisOptions  | `YAxisOptions` (optional)        | -           | Options for customizing the y-axis.                                                                 
+ stroke        | `string` (optional)              | -           | The stroke color of the line.                                                                       
+ strokeWidth   | `number` (optional)              | -           | The width of the line.                                                                              
+ width         | `number` (optional)              | -           | The width of the chart container. If not provided, it will fit the width of the parent container.   
+ height        | `number` (optional)              | -           | The height of the chart container. If not provided, it will fit the height of the parent container. 
+ margin        | `SvgContainerMargins` (optional) | -           | Custom margins for the chart container.                                                             
+
+### Examples
+
+**Basic**
+
+Here is an example of a basic Line Chart:
+```js
+<LineChartBasic
+  data={[
+    {
+      x: 2013,
+      y: 26,
+      tooltip: 'this is a tooltip',
+    },
+    {
+      x: 2014,
+      y: 38,
+      tooltip: 'this is a tooltip',
+    },
+    {
+      x: 2015,
+      y: 10,
+      tooltip: 'this is a tooltip',
+    }
+  ]}
+/>
+```
+
+**Customized Style**
+
+Here is an example of customizing stroke color and width for the line; and the `width`, `height` and `margin` of the chart container.
+```js
+<LineChartBasic
+  stroke="orange"
+  strokeWidth={3}
+  height={150}
+  width={350}
+  margin={{
+    bottom: 30,
+    left: 30,
+    right: 20,
+    top: 15
+  }}
+  data={[
+    {
+      x: 2013,
+      y: 26,
+    },
+    //...
+  ]}
+/>
+```
+
+**Show Tooltip And Reference Line**
+
+Set `showTooltip` to true to show a tooltip when the user moves mouse pointer. 
+
+Plase make sure the `tooltip` field is included in each `LineChartDataItem`.
+```js
+<LineChartBasic
+  showTooltip
+  data={[
+    {
+      x: 2013,
+      y: 26,
+      tooltip: 'this is a tooltip',
+    },
+    {
+      x: 2014,
+      y: 38,
+      tooltip: 'this is a tooltip',
+    },
+    //...
+  ]}
+/>
+```
+
+**Customized X Axis Options**
+
+Here is an example of using customized options for x axis:
+```js
+<LineChartBasic
+  xAxisOptions={{
+    /*
+     * Indicate number of ticks that should be renderd on x axis
+     */
+    numberOfTicks: 3,
+    /*
+     * extend ticks on x axis and show them as grid lines
+     */
+    showGridLines: true,
+    /*
+     * provide a custom format function mapping a value from the axis Domain to a formatted string for display purposes:
+     */
+    tickFormatFunction: (val: number) => {
+        return val.toString();
+    },
+  }}
+  data={[
+    {
+      x: 2013,
+      y: 26,
+    },
+    //...
+  ]}
+/>
+```
+
+**Customized Y Axis Options**
+
+Here is an example of using customized options for y axis:
+```js
+<LineChartBasic
+  yAxisOptions={{
+    /*
+     * Indicate number of ticks that should be renderd on y axis
+     */
+    numberOfTicks: 2,
+    /*
+     * Extend ticks on y axis and show them as grid lines
+     */
+    showGridLines: true,
+    /*
+     * Provide a custom format function mapping a value from the axis Domain to a formatted string for display purposes:
+     */
+    tickFormatFunction: (val: number) => {
+        return '+' + val.toString();
+    },
+  }}
+  data={[
+    {
+      x: 2013,
+      y: 26,
+    },
+    //...
+  ]}
+/>
+```
+
+**Customized Options For X Scale**
+
+Here is an example of using time scale for x-axis instead of the linear scale.
+
+When using time scale, it's recommended to also provide a `tickFormatFunction` in `xAxisOptions` that can create formatted ticks on x-axis.
+```js
+<LineChartBasic
+  xScaleOptions={{
+    useTimeScale: true
+  }}
+  xAxisOptions={{
+    tickFormatFunction: (val: number) => {
+        return new Date(val).getFullYear().toString();
+    },
+  }}
+  data={[
+    {
+      x: 2013,
+      y: 26,
+    },
+    //...
+  ]}
+/>
+```
+
+**Customized Options For Y Scale**
+
+You can provide a custom `domain` used to create the scale function for the y-axis. If not provided, the domain will be determined by the maximum values of the `y` property among all items, and the minimum value of the domain will be 0.
+```js
+<LineChartBasic
+  yScaleOptions={{
+    domain: [ 0, 200 ]
+  }}
+  data={[
+    {
+      x: 2013,
       y: 26,
     },
     //...

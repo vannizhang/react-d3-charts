@@ -45,7 +45,7 @@ export type LineChartDataItem = {
     tooltip?: string;
 };
 
-export type LineChartData = LineChartDataItem[];
+// export type LineChartData = LineChartDataItem[];
 
 type XScale = ScaleLinear<number, number> | ScaleTime<number, number>;
 
@@ -55,7 +55,7 @@ type Props = {
     /**
      * array of `LineChartDataItem` that will be used to plot the Line Chart
      */
-    data: LineChartData;
+    data: LineChartDataItem[];
     /**
      * if true, show tooltip when user hovers the chart
      */

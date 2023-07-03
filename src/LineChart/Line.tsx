@@ -7,14 +7,14 @@ import {
     ScaleTime,
     curveMonotoneX,
 } from 'd3';
-import { LineChartData, LineChartDataItem } from './LineChartBasic';
+import { LineChartDataItem } from './LineChartBasic';
 import { SvgContainerData } from '../SvgContainer/SvgContainer';
 
 type Props = {
     xScale: ScaleTime<number, number> | ScaleLinear<number, number>;
     yScale: ScaleLinear<number, number>;
     svgContainerData?: SvgContainerData;
-    data: LineChartData;
+    data: LineChartDataItem[];
     stroke?: string;
     width?: number;
 };
