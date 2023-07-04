@@ -8,12 +8,11 @@
         "outDir": "dist",
         "noImplicitAny": true,
         "preserveConstEnums": true,
-        "removeComments": true,
+        "removeComments": false,
         "sourceMap": false,
         "target": "es5",
         "resolveJsonModule": true,
         "esModuleInterop": true ,
-        "suppressImplicitAnyIndexErrors": true,
         "typeRoots": [  
             "./src/types", 
             "./node_modules/@types"
@@ -23,8 +22,7 @@
     "exclude": [
         "**/node_modules", 
         "**/.*/",
-        "*.stories.ts",
-        "*.stories.tsx"
+        "**/*.stories.tsx"
     ],
     "include": [
         "./src/**/**/*"

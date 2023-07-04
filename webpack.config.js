@@ -1,6 +1,6 @@
 const path = require('path');
 const package = require('./package.json');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: 'production',
@@ -40,20 +40,12 @@ module.exports = {
     rules: [
        {
             test: /\.(ts|tsx)$/,
-            loader: 'babel-loader',
+            loader: 'ts-loader',
        },
        {
             test: /\.css$/i,
             include: path.resolve(__dirname, 'src'),
-            use: [
-                MiniCssExtractPlugin.loader,
-                {
-                    loader: "css-loader", 
-                    options: {
-                        sourceMap: true
-                    }
-                },
-            ],
+            use: ["style-loader", "css-loader"],
         },
         { 
             test: /\.(png|jpg|gif|svg)$/,  
@@ -65,12 +57,12 @@ module.exports = {
     ],
   },
   plugins: [
-    // new BundleAnalyzerPlugin()
-    new MiniCssExtractPlugin({
-        // Options similar to the same options in webpackOptions.output
-        // both options are optional
-        filename: '[name].css',
-    }),
+    // // new BundleAnalyzerPlugin()
+    // new MiniCssExtractPlugin({
+    //     // Options similar to the same options in webpackOptions.output
+    //     // both options are optional
+    //     filename: '[name].css',
+    // }),
   ],
   /**
    * The externals configuration option provides a way of excluding dependencies from the output bundles. 
