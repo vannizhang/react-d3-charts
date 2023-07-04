@@ -391,7 +391,7 @@ Here is an example of using customized options for y axis:
     /*
      * Provide a custom format function mapping a value from the axis Domain to a formatted string for display purposes:
      */
-    tickFormatFunction: (number | string) => {
+    tickFormatFunction: (val: number | string) => {
         return '+' + val.toString();
     },
   }}
