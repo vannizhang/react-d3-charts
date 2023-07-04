@@ -9,8 +9,7 @@
   ],
   "scripts": {
     "test": "jest --passWithNoTests",
-    "clean": "rimraf dist",
-    "build": "npm run clean && tsc",
+    "build": "webpack --mode production",
     "lint": "eslint src --ext .tsx,.ts --cache --fix",
     "prepare": "husky install && npm run build",
     "prepublishOnly": "npm run test && npm run lint",
@@ -38,7 +37,10 @@
   },
   "homepage": "https://github.com/vannizhang/react-redux-boilerplate",
   "devDependencies": {
-    "@babel/preset-env": "^7.22.5",
+    "@babel/core": "^7.22.6",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-transform-runtime": "^7.22.6",
+    "@babel/preset-env": "^7.22.6",
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
     "@storybook/addon-essentials": "^7.0.24",
@@ -54,6 +56,8 @@
     "@types/react-dom": "^18.2.6",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.1",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.8.1",
     "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -62,11 +66,14 @@
     "husky": "^8.0.1",
     "jest": "^26.6.3",
     "lint-staged": "^13.0.3",
+    "mini-css-extract-plugin": "^2.7.6",
     "prettier": "^2.7.1",
     "prop-types": "^15.8.1",
     "rimraf": "^5.0.1",
     "storybook": "^7.0.24",
-    "typescript": "^4.3.4"
+    "typescript": "^4.3.4",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "d3": "^7.8.5",
