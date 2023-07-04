@@ -1,1 +1,0 @@
-export { BarChartBasic } from './BarChartBasic';

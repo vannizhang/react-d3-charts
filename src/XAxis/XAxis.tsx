@@ -1,4 +1,4 @@
-import '../styles/XAxis.css';
+import './XAxis.css';
 import { AxisScale } from 'd3-axis';
 import React, { FC, useEffect } from 'react';
 import { select, axisBottom, timeFormat, Selection } from 'd3';
