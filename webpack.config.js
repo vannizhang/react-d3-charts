@@ -45,7 +45,7 @@ module.exports = {
        {
             test: /\.css$/i,
             include: path.resolve(__dirname, 'src'),
-            use: ["style-loader", "css-loader"],
+            use: [ 'style-loader', 'css-loader' ],
         },
         { 
             test: /\.(png|jpg|gif|svg)$/,  
@@ -57,7 +57,6 @@ module.exports = {
     ],
   },
   plugins: [
-    // // new BundleAnalyzerPlugin()
     // new MiniCssExtractPlugin({
     //     // Options similar to the same options in webpackOptions.output
     //     // both options are optional
