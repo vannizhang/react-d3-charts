@@ -35,7 +35,7 @@ export const PointerReferenceLine: FC<Props> = ({
             .attr('x2', 0)
             .attr('y2', height)
             .style('opacity', 0)
-            .style('stoke', 'red')
+            // .style('stoke', 'red')
             .style('fill', 'none');
     };
 

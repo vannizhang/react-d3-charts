@@ -87,15 +87,16 @@ export const TooltipOnTop: FC<Props> = ({
                 position: 'absolute',
                 left: `${tooltipPos.left}px`,
                 top: `${tooltipPos.top}px`,
-                padding: '.25rem',
+                padding: '.1rem .2rem',
                 pointerEvents: 'none',
                 boxSizing: 'border-box',
-                // boxShadow: `0 0 10px 2px ${TOOLTIP_BOXSHADOW_COLOR}`,
+                boxShadow: `0 0 5px 2px var(--tooltip-dropshadow-color)`,
                 maxWidth: 'var(--tooltip-max-width)',
                 zIndex: 5,
                 background: 'var(--tooltip-background-color)',
                 color: 'var(--tooltip-text-color)',
                 fontSize: 'var(--tooltip-text-font-size)',
+                // border: `solid 1px var(--tooltip-border-color)`
             }}
             dangerouslySetInnerHTML={{ __html: content }}
         ></div>

@@ -2,14 +2,18 @@
     --axis-tick-line-color: #303030;
     --axis-tick-text-color: #303030;
 
-    --pointer-reference-line-color: red;
-    --pointer-reference-line-wdith: 1px;
+    --pointer-vertical-reference-line-color: rgba(0,0,0,.5);
+    --pointer-vertical-reference-line-width: 1px;
 
-    --tooltip-background-color: rgba(0,0,0,.75);
+    /*
+     * variables that control style of the chart tooltip
+     */
+    --tooltip-background-color: rgba(0,0,0,.70);
     --tooltip-text-color: #fff;
-    --tooltip-text-font-size: .85rem;
+    --tooltip-text-font-size: .8rem;
     --tooltip-max-width: 200px;
-    /* --tooltip-border-color: .75rem; */
+    --tooltip-border-color: transparent;
+    --tooltip-dropshadow-color: rgba(0,0,0,.3);
 
     /*
      * this value will be used in axis grid line's `stroke-dasharray` property
