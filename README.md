@@ -22,6 +22,11 @@ npm install @vannizhang/@vannizhang/react-d3-charts
 
 The `BarChartBasic` component renders a basic bar chart based on the provided data.
 
+### Usage
+```sh
+import { BarChartBasic } from '@vannizhang/react-d3-charts'
+```
+
 ### Props
 | **Name**      | **Type**                         | **Default**                                  | **Description**                                                                                     |
 |---------------|----------------------------------|----------------------------------------------|-----------------------------------------------------------------------------------------------------|
@@ -235,6 +240,11 @@ You can provide a custom `domain` used to create the scale function for the y-ax
 
 ## `LineChartBasic` Component
 The `LineChartBasic` component renders a basic line chart based on the provided data.
+
+### Usage
+```sh
+import { LineChartBasic } from '@vannizhang/react-d3-charts'
+```
 
 ### Props
  **Name**      | **Type**                         | **Default** | **Description**                                                                                     
