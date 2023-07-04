@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 
 import { LineChartBasic } from './LineChartBasic';
 import { data, dataTimestampForX } from './data';
@@ -62,7 +63,7 @@ export const CustomizedXAxisOptions: Story = {
         xAxisOptions: {
             showGridLines: true,
             numberOfTicks: 5,
-            tickFormatFunction: (val: number) => {
+            tickFormatFunction: (val: number | string) => {
                 return val.toString();
             },
         },
@@ -76,7 +77,7 @@ export const CustomizedYAxisOptions: Story = {
         yAxisOptions: {
             showGridLines: true,
             numberOfTicks: 2,
-            tickFormatFunction: (val: number) => {
+            tickFormatFunction: (val: number | string) => {
                 return '+' + val.toString();
             },
         },
@@ -92,7 +93,7 @@ export const CustomizedOptionsForXScale: Story = {
             useTimeScale: true,
         },
         xAxisOptions: {
-            tickFormatFunction: (val: number) => {
+            tickFormatFunction: (val: number | string) => {
                 return new Date(val).getFullYear().toString();
             },
         },

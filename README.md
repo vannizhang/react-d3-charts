@@ -6,6 +6,7 @@ React D3 Charts is a library that offers a collection of simple and reusable D3 
 - [Docs](#Docs)
   - [Basic Bar Chart](#barchartbasic-component)
   - [Basic Line Chart](#linechartbasic-component)
+  - [Sparkline Chart](#sparkline-component)
 - [Dependencies](#Dependencies)
 - [Storybook](#Storybook)
 
@@ -169,7 +170,12 @@ You can provide a custom format function mapping a value from the axis Domain to
 <BarChartBasic
   xAxisOptions={{
     // a format function to convert default value (e.g. '12/1') into a different format (e.g. '12-1')
-    tickFormatFunction: (val: string) => {
+    tickFormatFunction: (val: number | string) => {
+
+        if(typeof val === 'number'){
+            val = val.toString();
+        }
+
         const [month, day] = val.split('/');
         return `${month}-${day}`;
     }
@@ -354,7 +360,7 @@ Here is an example of using customized options for x axis:
     /*
      * provide a custom format function mapping a value from the axis Domain to a formatted string for display purposes:
      */
-    tickFormatFunction: (val: number) => {
+    tickFormatFunction: (val: number | string) => {
         return val.toString();
     },
   }}
@@ -385,7 +391,7 @@ Here is an example of using customized options for y axis:
     /*
      * Provide a custom format function mapping a value from the axis Domain to a formatted string for display purposes:
      */
-    tickFormatFunction: (val: number) => {
+    tickFormatFunction: (number | string) => {
         return '+' + val.toString();
     },
   }}
@@ -410,7 +416,7 @@ When using time scale, it's recommended to also provide a `tickFormatFunction` i
     useTimeScale: true
   }}
   xAxisOptions={{
-    tickFormatFunction: (val: number) => {
+    tickFormatFunction: (val: number | string) => {
         return new Date(val).getFullYear().toString();
     },
   }}
@@ -442,8 +448,57 @@ You can provide a custom `domain` used to create the scale function for the y-ax
 />
 ```
 
+## `Sparkline` Component
+The `Sparkline` component renders a tiny line chart using an array of numbers as input data.
+
+### Usage
+```sh
+import { Sparkline } from '@vannizhang/react-d3-charts'
+```
+
+### Props
+ **Name**      | **Type**                         | **Default** | **Description**                                                                                     
+---------------|----------------------------------|-------------|-----------------------------------------------------------------------------------------------------
+ data          | `number[]`                       | -           | Array of numbers that will be used to plot the Sparkline Chart.                     
+ stroke        | `string` (optional)              | -           | The stroke color of the line.                                                                       
+ strokeWidth   | `number` (optional)              | -           | The width of the line.                                                                              
+ width         | `number` (optional)              | -           | The width of the chart container. If not provided, it will fit the width of the parent container.   
+ height        | `number` (optional)              | -           | The height of the chart container. If not provided, it will fit the height of the parent container. 
+ margin        | `SvgContainerMargins` (optional) | -           | Custom margins for the chart container.                                                             
+
+### Examples
+
+**Basic**
+
+Here is an example of plotting a sparkline chart.
+```js
+<Sparkline
+  data={[5, 16, 26 ,31, 7, 9, 14, 38]}
+/>
+```
+
+**Customized Style**
+
+Here is an example of customizing stroke color and width for the sparkline; and the `width`, `height` and `margin` of the chart container.
+```js
+<Sparkline
+  stroke="orange"
+  strokeWidth={1}
+  height={20}
+  width={60}
+  margin={{
+    bottom: 0,
+    left: 0,
+    right: 0,
+    top: 0
+  }}
+  data={[5, 16, 26 ,31, 7, 9, 14, 38]}
+/>
+```
+
 ## Dependencies
-React (version 18) and D3.js (version 7) are the required dependencies for this library.
+- React (version 18)
+- D3.js (version 7)
 
 ## Storybook
 Storybook provides a sandbox environment where you can interactively develop and test the components in isolation.

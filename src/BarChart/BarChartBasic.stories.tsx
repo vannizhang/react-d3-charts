@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { BarChartBasic } from './BarChartBasic';
@@ -79,7 +80,11 @@ export const CustomizedXAxisOptions: Story = {
              * @param val
              * @returns
              */
-            tickFormatFunction: (val: string) => {
+            tickFormatFunction: (val: number | string) => {
+                if (typeof val === 'number') {
+                    val = val.toString();
+                }
+
                 const [month, day] = val.split('/');
                 return `${month}-${day}`;
             },
