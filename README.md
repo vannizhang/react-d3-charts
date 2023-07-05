@@ -6,6 +6,7 @@ React D3 Charts is a library that offers a collection of simple and reusable D3 
 - [Docs](#Docs)
   - [Basic Bar Chart](#barchartbasic-component)
   - [Basic Line Chart](#linechartbasic-component)
+  - [Bar and Line Combo Chart](#barlinecombochart-component)
   - [Sparkline Chart](#sparkline-component)
 - [Dependencies](#Dependencies)
 - [Storybook](#Storybook)
