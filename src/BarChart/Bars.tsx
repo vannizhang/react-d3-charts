@@ -8,7 +8,10 @@ type Props = {
     xScale: ScaleBand<string | number>;
     yScale: ScaleLinear<number, number>;
     svgContainerData?: SvgContainerData;
-    data: BarChartDataItem[];
+    data: {
+        x: string | number;
+        y: number;
+    }[];
     /**
      * fill color of bar rects
      */
