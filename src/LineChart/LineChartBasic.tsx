@@ -22,9 +22,9 @@ import {
     PointerEventsOverlay,
 } from '../PointerEventOverlay/PointerEventsOverlay';
 import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
-import { PointerReferenceLine } from '../PointerEventOverlay/PointerReferenceLine';
 import Line from './Line';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
+import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
 
 /**
  * Represents a data item for the basic line chart.
@@ -198,7 +198,7 @@ export const LineChartBasic: FC<Props> = ({
                 />
 
                 {showTooltip ? (
-                    <PointerReferenceLine
+                    <VerticalReferenceLine
                         xPosition={
                             hoveredChartItem ? hoveredChartItem.xPosition : null
                         }

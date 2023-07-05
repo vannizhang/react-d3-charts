@@ -2,8 +2,8 @@
     --axis-tick-line-color: #303030;
     --axis-tick-text-color: #303030;
 
-    --pointer-vertical-reference-line-color: rgba(0,0,0,.5);
-    --pointer-vertical-reference-line-width: 1px;
+    --vertical-reference-line-color: rgba(0,0,0,.5);
+    --vertical-reference-line-width: 1px;
 
     /*
      * variables that control style of the chart tooltip

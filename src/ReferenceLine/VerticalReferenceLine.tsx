@@ -1,4 +1,4 @@
-import './PointerReferenceLine.css';
+import './VerticalReferenceLine.css';
 
 import React, { FC, useEffect, useRef } from 'react';
 import { select } from 'd3';
@@ -9,7 +9,7 @@ type Props = {
     svgContainerData?: SvgContainerData;
 };
 
-export const PointerReferenceLine: FC<Props> = ({
+export const VerticalReferenceLine: FC<Props> = ({
     xPosition,
     svgContainerData,
 }) => {
@@ -64,9 +64,6 @@ export const PointerReferenceLine: FC<Props> = ({
     }, [xPosition]);
 
     return (
-        <g
-            className="pointer-event-reference-line-group"
-            ref={containerGroupRef}
-        />
+        <g className="vertical-reference-line-group" ref={containerGroupRef} />
     );
 };

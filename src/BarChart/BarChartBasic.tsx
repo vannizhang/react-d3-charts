@@ -21,9 +21,9 @@ import {
     PointerEventsOverlay,
 } from '../PointerEventOverlay/PointerEventsOverlay';
 import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
-import { PointerReferenceLine } from '../PointerEventOverlay/PointerReferenceLine';
 import { SCALE_BAND_PADDING_INNER } from './constants';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
+import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
 
 export type BarChartDataItem = {
     /**
@@ -176,7 +176,7 @@ export const BarChartBasic: FC<Props> = ({
                 />
 
                 {showTooltip ? (
-                    <PointerReferenceLine
+                    <VerticalReferenceLine
                         xPosition={
                             hoveredChartItem ? hoveredChartItem.xPosition : null
                         }
