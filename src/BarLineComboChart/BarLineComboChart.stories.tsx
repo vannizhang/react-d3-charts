@@ -37,79 +37,73 @@ export const BasicExample: Story = {
     },
 };
 
-// export const BasicExampleNumericaValueForXAxis: Story = {
-//     // More on args: https://storybook.js.org/docs/react/writing-stories/args
-//     args: {
-//         data: dataNumbericalX,
-//     },
-// };
+export const CustomizedStyles: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        fill: 'orange',
+        strokeColor: 'lightseagreen',
+        innerPadding: 0.05,
+        width: 350,
+        height: 150,
+    },
+};
 
-// export const CustomizedStyles: Story = {
-//     // More on args: https://storybook.js.org/docs/react/writing-stories/args
-//     args: {
-//         data,
-//         fill: 'orange',
-//         innerPadding: 0.05,
-//         width: 350,
-//         height: 150,
-//     },
-// };
+export const ShowTooltipAndReferenceLine: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        showTooltip: true,
+    },
+};
 
-// export const ShowTooltipAndReferenceLine: Story = {
-//     // More on args: https://storybook.js.org/docs/react/writing-stories/args
-//     args: {
-//         data,
-//         showTooltip: true,
-//     },
-// };
+export const CustomizedXAxisOptions: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        xAxisOptions: {
+            /**
+             * set to true to extend ticks on x axis and show them as grid lines
+             */
+            showGridLines: true,
+            /**
+             * Specified values to be used for ticks rather than using the scale’s automatic tick generator.
+             */
+            tickValues: ['12/1', '12/5', '12/10'],
+            /**
+             * You can provide a custom format function mapping a value from the axis Domain to a formatted string for display purposes.
+             * @param val
+             * @returns
+             */
+            tickFormatFunction: (val: number | string) => {
+                if (typeof val === 'number') {
+                    val = val.toString();
+                }
 
-// export const CustomizedXAxisOptions: Story = {
-//     // More on args: https://storybook.js.org/docs/react/writing-stories/args
-//     args: {
-//         data,
-//         xAxisOptions: {
-//             /**
-//              * set to true to extend ticks on x axis and show them as grid lines
-//              */
-//             showGridLines: true,
-//             /**
-//              * Specified values to be used for ticks rather than using the scale’s automatic tick generator.
-//              */
-//             tickValues: ['12/1', '12/5', '12/10'],
-//             /**
-//              * You can provide a custom format function mapping a value from the axis Domain to a formatted string for display purposes.
-//              * @param val
-//              * @returns
-//              */
-//             tickFormatFunction: (val: number | string) => {
-//                 if (typeof val === 'number') {
-//                     val = val.toString();
-//                 }
+                const [month, day] = val.split('/');
+                return `${month}-${day}`;
+            },
+        },
+    },
+};
 
-//                 const [month, day] = val.split('/');
-//                 return `${month}-${day}`;
-//             },
-//         },
-//     },
-// };
+export const CustomizedYAxisOptions: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        yAxisOptions: {
+            showGridLines: true,
+            numberOfTicks: 3,
+        },
+    },
+};
 
-// export const CustomizedYAxisOptions: Story = {
-//     // More on args: https://storybook.js.org/docs/react/writing-stories/args
-//     args: {
-//         data,
-//         yAxisOptions: {
-//             showGridLines: true,
-//             numberOfTicks: 3,
-//         },
-//     },
-// };
-
-// export const CustomizedOptionsForYScale: Story = {
-//     // More on args: https://storybook.js.org/docs/react/writing-stories/args
-//     args: {
-//         data,
-//         yScaleOptions: {
-//             domain: [0, 200],
-//         },
-//     },
-// };
+export const CustomizedOptionsForYScale: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        yScaleOptions: {
+            domain: [0, 200],
+        },
+    },
+};

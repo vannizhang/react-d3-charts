@@ -83,9 +83,9 @@ type Props = {
      */
     fill?: string;
     /**
-     * stroke color of the Line
+     * color for the Line
      */
-    stroke?: string;
+    strokeColor?: string;
     /**
      * width of the line
      */
@@ -123,7 +123,7 @@ export const BarLineComboChart: FC<Props> = ({
     xAxisOptions = {},
     yAxisOptions = {},
     fill,
-    stroke,
+    strokeColor,
     strokeWidth,
     innerPadding = SCALE_BAND_PADDING_INNER,
     width,
@@ -200,7 +200,7 @@ export const BarLineComboChart: FC<Props> = ({
                     xScale={xScale}
                     yScale={yScale}
                     data={data}
-                    stroke={stroke}
+                    stroke={strokeColor}
                     width={strokeWidth}
                 />
 
