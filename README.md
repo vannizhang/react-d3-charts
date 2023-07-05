@@ -32,13 +32,14 @@ import { BarChartBasic } from '@vannizhang/react-d3-charts'
 | **Name**      | **Type**                         | **Default**                                  | **Description**                                                                                     |
 |---------------|----------------------------------|----------------------------------------------|-----------------------------------------------------------------------------------------------------|
 | data          | `BarChartDataItem[]`             | -                                            | The data used to render the bar chart.                                                              |
-| showTooltip   | `boolean` (optional)               | false                                      | Determines whether to show a tooltip when the user hovers over a bar element.                       |
+| showTooltip   | `boolean` (optional)             | false                                        | Determines whether to show a tooltip when the user hovers over a bar element.                       |
 | yScaleOptions | `YScaleOptions` (optional)       | -                                            | Options used to customize the scale function for the y-axis.                                        |
 | xAxisOptions  | `XAxisOptions` (optional)        | -                                            | Options used to customize the x-axis.                                                               |
 | yAxisOptions  | `YAxisOptions` (optional)        | -                                            | Options used to customize the y-axis.                                                               |
-| fill          | `string` (optional)                | -                                          | The fill color of the bar rectangles.                                                               |
-| width         | `number` (optional)                | -                                          | The width of the chart container. If not provided, it will fit the width of the parent container.   |
-| height        | `number` (optional)                | -                                          | The height of the chart container. If not provided, it will fit the height of the parent container. |
+| fill          | `string` (optional)              | -                                            | The fill color of the bar rectangles.                                                               |
+| innerPadding  | `number` (optional)              | 0.2                                          | The inner padding determines the blank space between bands.                                         |
+| width         | `number` (optional)              | -                                            | The width of the chart container. If not provided, it will fit the width of the parent container.   |
+| height        | `number` (optional)              | -                                            | The height of the chart container. If not provided, it will fit the height of the parent container. |
 | margin        | `SvgContainerMargins` (optional) | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                               |
                                                
 ### Examples
@@ -84,10 +85,11 @@ The `x` field of `BarChartDataItem` can also be a `number`
 
 **Customized Style**
 
-Here is an example of customizing `fill` color for the bar rectangles, the `width`, `height` and `margin` of the chart container.
+Here is an example of customizing `fill` color and `innerPadding` for the bar rectangles; and the `width`, `height` and `margin` of the chart container.
 ```js
 <BarChartBasic
   fill="orange"
+  innerPadding={0.05}
   height={150}
   width={350}
   margin={{

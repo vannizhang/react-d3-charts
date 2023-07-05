@@ -49,6 +49,7 @@ export const CustomizedStyles: Story = {
     args: {
         data,
         fill: 'orange',
+        innerPadding: 0.05,
         width: 350,
         height: 150,
     },

@@ -78,6 +78,12 @@ type Props = {
      */
     fill?: string;
     /**
+     * The inner padding determines the blank space between bands.
+     * The value which must be in the range [0, 1]. A value `0` of innerPadding indicates no blank space betwwen bands.
+     * The default value is 0.2.
+     */
+    innerPadding?: number;
+    /**
      * The width of the chart container. If not provided, it will fit the width of the parent container.
      */
     width?: number;
@@ -98,12 +104,13 @@ type Props = {
  */
 export const BarChartBasic: FC<Props> = ({
     data,
-    fill,
     showTooltip = false,
     // xScaleOptions = {},
     yScaleOptions = {},
     xAxisOptions = {},
     yAxisOptions = {},
+    fill,
+    innerPadding = SCALE_BAND_PADDING_INNER,
     width,
     height,
     margin = DEFAULT_MARGINS,
@@ -130,7 +137,7 @@ export const BarChartBasic: FC<Props> = ({
         const { width } = dimension;
 
         return scaleBand()
-            .paddingInner(SCALE_BAND_PADDING_INNER)
+            .paddingInner(innerPadding)
             .range([0, width])
             .domain(xDomain);
     }, [dimension, xDomain]);
