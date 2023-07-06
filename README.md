@@ -1,5 +1,5 @@
 # React D3 Charts
-React D3 Charts is a library that offers a collection of simple and reusable D3 charts for React and TypeScript.
+React D3 Charts is a library that offers a collection of simple and reusable charts with D3, React and TypeScript.
 
 ## Table of Conetnt
 - [Installation](#Installation)
@@ -15,8 +15,8 @@ React D3 Charts is a library that offers a collection of simple and reusable D3 
 ## Installation
 
 To use React D3 Charts in your project, install it via npm:
-```
-npm install @vannizhang/@vannizhang/react-d3-charts
+```sh
+npm install @vannizhang/react-d3-charts
 ```
 
 ## Docs
