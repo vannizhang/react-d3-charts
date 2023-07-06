@@ -23,7 +23,7 @@ npm install @vannizhang/@vannizhang/react-d3-charts
 
 ## Basic Bar Chart
 
-A basic bar chart based on the provided data.
+See [examples](https://vannizhang.github.io/react-d3-charts/?path=/docs/example-barchartbasic--docs).
 
 ### Usage
 ```sh
@@ -266,7 +266,8 @@ You can provide a custom `domain` used to create the scale function for the y-ax
 ```
 
 ## Basic Line Chart
-A basic line chart based on the provided data.
+
+See [examples](https://vannizhang.github.io/react-d3-charts/?path=/docs/example-linechartbasic--docs).
 
 ### Usage
 ```sh
@@ -476,7 +477,11 @@ You can provide a custom `domain` used to create the scale function for the y-ax
 
 ## Bar and Line Combo Chart
 
-The Bar and Line Combo Chart is a type of graph that combines two different types of visualization: bar chart and line chart. It is used to display and compare different data series that have different scales or units of measurement.
+The Bar and Line Combo Chart is a type of graph that combines two different types of visualization: bar chart and line chart. 
+
+It is used to display and compare different data series that have different scales or units of measurement. 
+
+See [examples](https://vannizhang.github.io/react-d3-charts/?path=/docs/example-barlinecombochart--docs).
 
 ### Usage
 ```sh
@@ -576,6 +581,8 @@ Plase make sure the `tooltip` field is included in each `BarLineComboChartDataIt
 A horizontal bar chart is a type of graph that uses rectangular bars to present data. 
 
 The length of the bars is proportional to the values they represent. Horizontal bar charts are used to display comparisons between categories of data.
+
+See [exmaples](https://vannizhang.github.io/react-d3-charts/?path=/docs/example-barlinecombochart--docs).
 
 ### Usage
 ```sh
@@ -710,7 +717,7 @@ You can provide custom domain used to create the scale function for the x-axis:
 ```
 
 ## Sparkline Chart
-The Sparkline chart renders a tiny line chart using an array of numbers as input data.
+The Sparkline chart renders a tiny line chart using an array of numbers as input data. See [examples](https://vannizhang.github.io/react-d3-charts/?path=/docs/example-sparkline--docs).
 
 ### Usage
 ```sh
