@@ -4,9 +4,10 @@ React D3 Charts is a library that offers a collection of simple and reusable D3 
 ## Table of Conetnt
 - [Installation](#Installation)
 - [Docs](#Docs)
-  - [Basic Bar Chart](#barchartbasic-component)
-  - [Basic Line Chart](#linechartbasic-component)
-  - [Bar and Line Combo Chart](#barlinecombochart-component)
+  - [Basic Bar Chart](#Basic-Bar-Chart)
+  - [Basic Line Chart](#Basic-Line-Chart)
+  - [Bar and Line Combo Chart](#Bar-and-Line-Combo-Chart)
+  - [Horizontal Bar Chart](#Horizontal-Bar-Chart)
   - [Sparkline Chart](#sparkline-component)
 - [Dependencies](#Dependencies)
 - [Storybook](#Storybook)
@@ -20,9 +21,9 @@ npm install @vannizhang/@vannizhang/react-d3-charts
 
 ## Docs
 
-## `BarChartBasic` Component
+## Basic Bar Chart
 
-The `BarChartBasic` component renders a basic bar chart based on the provided data.
+A basic bar chart based on the provided data.
 
 ### Usage
 ```sh
@@ -263,8 +264,8 @@ You can provide a custom `domain` used to create the scale function for the y-ax
 />
 ```
 
-## `LineChartBasic` Component
-The `LineChartBasic` component renders a basic line chart based on the provided data.
+## Basic Line Chart
+A basic line chart based on the provided data.
 
 ### Usage
 ```sh
@@ -471,9 +472,9 @@ You can provide a custom `domain` used to create the scale function for the y-ax
 />
 ```
 
-## `BarLineComboChart` Component
+## Bar and Line Combo Chart
 
-The `BarLineComboChart` is a type of graph that combines two different types of visualization: bar chart and line chart. It is used to display and compare different data series that have different scales or units of measurement.
+The Bar and Line Combo Chart is a type of graph that combines two different types of visualization: bar chart and line chart. It is used to display and compare different data series that have different scales or units of measurement.
 
 ### Usage
 ```sh
@@ -568,8 +569,8 @@ Plase make sure the `tooltip` field is included in each `BarLineComboChartDataIt
 />
 ```
 
-## `Sparkline` Component
-The `Sparkline` component renders a tiny line chart using an array of numbers as input data.
+## Sparkline Chart
+The Sparkline chart renders a tiny line chart using an array of numbers as input data.
 
 ### Usage
 ```sh

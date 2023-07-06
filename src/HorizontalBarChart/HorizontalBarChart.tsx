@@ -102,9 +102,7 @@ type Props = {
 };
 
 /**
- * Basic Bar Chart
- * @param param0
- * @returns
+ * Horizontal bar charts are used to display comparisons between categories of data.
  */
 export const HorizontalBarChart: FC<Props> = ({
     data,
