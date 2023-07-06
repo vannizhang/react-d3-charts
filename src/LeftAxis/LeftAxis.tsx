@@ -2,27 +2,9 @@ import '../styles/axis.css';
 import React, { FC, useEffect } from 'react';
 import { select, axisLeft, AxisScale, Selection } from 'd3';
 import { SvgContainerData } from '../SvgContainer/SvgContainer';
+import { LeftAxisOptions } from './types';
 
-export type YAxisOptions = {
-    /**
-     * Indicate number of ticks that should be renderder.
-     * If not provided, d3 will try to render as many ticks as possible
-     */
-    numberOfTicks?: number;
-    /**
-     * if true, create grid lines by setting the tick size to your chart width
-     */
-    showGridLines?: boolean;
-    /**
-     * custom format function mapping a value from the axis Domain to a formatted string for display purposes.
-     * @param domainValue original domain value
-     * @param index
-     * @returns formatted string
-     */
-    tickFormatFunction?: (domainValue: number, index?: number) => string;
-};
-
-type Props = YAxisOptions & {
+type Props = LeftAxisOptions & {
     /**
      * Linear scale function used by yaxis
      */
@@ -30,7 +12,7 @@ type Props = YAxisOptions & {
     svgContainerData?: SvgContainerData;
 };
 
-export const YAxis: FC<Props> = ({
+export const LeftAxis: FC<Props> = ({
     scale,
     numberOfTicks = 5,
     showGridLines,

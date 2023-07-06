@@ -61,7 +61,7 @@ export const CustomizedXAxisOptions: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
-        xAxisOptions: {
+        bottomAxisOptions: {
             /**
              * set to true to extend ticks on x axis and show them as grid lines
              */
@@ -92,7 +92,7 @@ export const CustomizedYAxisOptions: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
-        yAxisOptions: {
+        leftAxisOptions: {
             showGridLines: true,
             numberOfTicks: 3,
         },

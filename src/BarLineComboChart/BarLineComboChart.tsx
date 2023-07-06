@@ -14,8 +14,10 @@ import SvgContainer, {
     SvgContainerMargins,
 } from '../SvgContainer/SvgContainer';
 import Bars from '../BarChart/Bars';
-import { XAxis, XAxisOptions } from '../XAxis/XAxis';
-import { YAxis, YAxisOptions } from '../YAxis/YAxis';
+import { BottomAxis } from '../BottomAxis/BottomAxis';
+import { BottomAxisOptions } from '../BottomAxis/types';
+import { LeftAxis } from '../LeftAxis/LeftAxis';
+import { LeftAxisOptions } from '../LeftAxis/types';
 import {
     HoveredChartItem,
     PointerEventsOverlay,
@@ -70,13 +72,13 @@ type Props = {
         domain?: number[];
     };
     /**
-     * Options used to customize the x-axis.
+     * Options used to customize the x-axis at bottom.
      */
-    xAxisOptions?: XAxisOptions;
+    bottomAxisOptions?: BottomAxisOptions;
     /**
-     * Options used to customize the y-axis.
+     * Options used to customize the y-axis at left.
      */
-    yAxisOptions?: YAxisOptions;
+    leftAxisOptions?: LeftAxisOptions;
     /**
      * The fill color of the bar rectangles.
      */
@@ -119,8 +121,8 @@ export const BarLineComboChart: FC<Props> = ({
     showTooltip = false,
     // xScaleOptions = {},
     yScaleOptions = {},
-    xAxisOptions = {},
-    yAxisOptions = {},
+    bottomAxisOptions = {},
+    leftAxisOptions = {},
     fill,
     strokeColor,
     strokeWidth,
@@ -203,19 +205,21 @@ export const BarLineComboChart: FC<Props> = ({
                     width={strokeWidth}
                 />
 
-                <XAxis
+                <BottomAxis
                     scale={xScale}
-                    showGridLines={xAxisOptions.showGridLines}
-                    tickValues={xAxisOptions.tickValues}
-                    tickFormatFunction={xAxisOptions.tickFormatFunction}
-                    shouldRotateTextLabels={xAxisOptions.shouldRotateTextLabels}
+                    showGridLines={bottomAxisOptions.showGridLines}
+                    tickValues={bottomAxisOptions.tickValues}
+                    tickFormatFunction={bottomAxisOptions.tickFormatFunction}
+                    shouldRotateTextLabels={
+                        bottomAxisOptions.shouldRotateTextLabels
+                    }
                 />
 
-                <YAxis
+                <LeftAxis
                     scale={yScale}
-                    showGridLines={yAxisOptions.showGridLines}
-                    numberOfTicks={yAxisOptions.numberOfTicks}
-                    tickFormatFunction={yAxisOptions.tickFormatFunction}
+                    showGridLines={leftAxisOptions.showGridLines}
+                    numberOfTicks={leftAxisOptions.numberOfTicks}
+                    tickFormatFunction={leftAxisOptions.tickFormatFunction}
                 />
 
                 {showTooltip ? (

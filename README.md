@@ -4,7 +4,7 @@ React D3 Charts is a library that offers a collection of simple and reusable D3 
 ## Table of Conetnt
 - [Installation](#Installation)
 - [Docs](#Docs)
-  - [Basic Bar Chart](#basic-bar-bhart)
+  - [Basic Bar Chart](#basic-bar-chart)
   - [Basic Line Chart](#basic-line-chart)
   - [Bar and Line Combo Chart](#bar-and-line-combo-chart)
   - [Horizontal Bar Chart](#horizontal-bar-chart)
@@ -31,18 +31,19 @@ import { BarChartBasic } from '@vannizhang/react-d3-charts'
 ```
 
 ### Props
-| **Name**      | **Type**                         | **Default**                                  | **Description**                                                                                     |
-|---------------|----------------------------------|----------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| data          | `BarChartDataItem[]`             | -                                            | The data used to render the bar chart.                                                              |
-| showTooltip   | `boolean` (optional)             | false                                        | Determines whether to show a tooltip when the user hovers over a bar element.                       |
-| yScaleOptions | `YScaleOptions` (optional)       | -                                            | Options used to customize the scale function for the y-axis.                                        |
-| xAxisOptions  | `XAxisOptions` (optional)        | -                                            | Options used to customize the x-axis.                                                               |
-| yAxisOptions  | `YAxisOptions` (optional)        | -                                            | Options used to customize the y-axis.                                                               |
-| fill          | `string` (optional)              | -                                            | The fill color of the bar rectangles.                                                               |
-| innerPadding  | `number` (optional)              | 0.2                                          | The inner padding determines the blank space between bands.                                         |
-| width         | `number` (optional)              | -                                            | The width of the chart container. If not provided, it will fit the width of the parent container.   |
-| height        | `number` (optional)              | -                                            | The height of the chart container. If not provided, it will fit the height of the parent container. |
-| margin        | `SvgContainerMargins` (optional) | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                               |
+| **Name**          | **Type**                                                    | **Default**                                  | **Description**                                                                                     |
+|-------------------|-------------------------------------------------------------|----------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| data              | `BarChartDataItem[]`                                        | -                                            | The data used to render the bar chart.                                                              |
+| showTooltip       | `boolean` (optional)                                        | false                                        | Determines whether to show a tooltip when the user hovers over a bar element.                       |
+| yScaleOptions     | `YScaleOptions` (optional)                                  | -                                            | Options used to customize the scale function for the y-axis.                                        |
+| bottomAxisOptions | [`BottomAxisOptions`](./src/BottomAxis/types.ts) (optional) | -                                            | Options used to customize the x-axis at bottom.                                                     |
+| leftAxisOptions   | [`LeftAxisOptions`](./src/LeftAxis/types.ts) (optional)     | -                                            | Options used to customize the y-axis at left.                                                       |
+| fill              | `string` (optional)                                         | -                                            | The fill color of the bar rectangles.                                                               |
+| innerPadding      | `number` (optional)                                         | 0.2                                          | The inner padding determines the blank space between bands.                                         |
+| width             | `number` (optional)                                         | -                                            | The width of the chart container. If not provided, it will fit the width of the parent container.   |
+| height            | `number` (optional)                                         | -                                            | The height of the chart container. If not provided, it will fit the height of the parent container. |
+| margin            | `SvgContainerMargins` (optional)                            | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                               |
+
                                                
 ### Examples
 **Basic**
@@ -134,12 +135,12 @@ Plase make sure the `tooltip` field is included in each `BarChartDataItem`.
 />
 ```
 
-**Customized X Axis Options**
+**Customized Options for X Axis at Bottom**
 
 Here is an example of rotate text labels on x axis to provide more space: 
 ```js
 <BarChartBasic
-  xAxisOptions={{
+  bottomAxisOptions={{
     shouldRotateTextLabels: true
   }}
   data={[
@@ -155,7 +156,7 @@ Here is an example of rotate text labels on x axis to provide more space:
 Here is an example of extend ticks on x axis and show them as grid lines: 
 ```js
 <BarChartBasic
-  xAxisOptions={{
+  bottomAxisOptions={{
     showGridLines: true
   }}
   data={[
@@ -171,7 +172,7 @@ Here is an example of extend ticks on x axis and show them as grid lines:
 You can specify values to be used for ticks rather than using the scale’s automatic tick generator:
 ```js
 <BarChartBasic
-  xAxisOptions={{
+  bottomAxisOptions={{
     // only render ticks on a axis for values in this array
     tickValues: ['12/1', '12/5', '12/10'],
   }}
@@ -188,7 +189,7 @@ You can specify values to be used for ticks rather than using the scale’s auto
 You can provide a custom format function mapping a value from the axis Domain to a formatted string for display purposes:
 ```js
 <BarChartBasic
-  xAxisOptions={{
+  bottomAxisOptions={{
     // a format function to convert default value (e.g. '12/1') into a different format (e.g. '12-1')
     tickFormatFunction: (val: number | string) => {
 
@@ -210,12 +211,12 @@ You can provide a custom format function mapping a value from the axis Domain to
 />
 ```
 
-**Customized X Axis Options**
+**Customized Options for Y Axis at left**
 
 Here is an example of extend ticks on y axis and show them as grid lines: 
 ```js
 <BarChartBasic
-  yAxisOptions={{
+  leftAxisOptions={{
     showGridLines: true
   }}
   data={[
@@ -231,7 +232,7 @@ Here is an example of extend ticks on y axis and show them as grid lines:
 You can indicate number of ticks on y axis that should be rendered, If not provided, d3 will try to render as many ticks as possible.
 ```js
 <BarChartBasic
-  yAxisOptions={{
+  leftAxisOptions={{
     numberOfTicks: 3
   }}
   data={[
@@ -273,19 +274,20 @@ import { LineChartBasic } from '@vannizhang/react-d3-charts'
 ```
 
 ### Props
- **Name**      | **Type**                         | **Default** | **Description**                                                                                     
----------------|----------------------------------|-------------|-----------------------------------------------------------------------------------------------------
- data          | `LineChartDataItem[]`            | -           | An array of `LineChartDataItem` objects that will be used to plot the line chart.                     
- showTooltip   | `boolean` (optional)             | false       | If set to true, displays a tooltip when the user hovers over the chart.                             
- xScaleOptions | `XScaleOptions` (optional)       | -           | Options used to create a scale function for the x-axis.                                             
- yScaleOptions | `YScaleOptions` (optional)       | -           | Options used to create a scale function for the y-axis.                                             
- xAxisOptions  | `XAxisOptions` (optional)        | -           | Options for customizing the x-axis.                                                                 
- yAxisOptions  | `YAxisOptions` (optional)        | -           | Options for customizing the y-axis.                                                                 
- stroke        | `string` (optional)              | -           | The stroke color of the line.                                                                       
- strokeWidth   | `number` (optional)              | -           | The width of the line.                                                                              
- width         | `number` (optional)              | -           | The width of the chart container. If not provided, it will fit the width of the parent container.   
- height        | `number` (optional)              | -           | The height of the chart container. If not provided, it will fit the height of the parent container. 
- margin        | `SvgContainerMargins` (optional) | -           | Custom margins for the chart container.                                                             
+| **Name**          | **Type**                                                    | **Default** | **Description**                                                                                     | 
+|-------------------|-------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------------------|
+| data              | `LineChartDataItem[]`                                       | -           | An array of `LineChartDataItem` objects that will be used to plot the line chart.                   |
+| showTooltip       | `boolean` (optional)                                        | false       | If set to true, displays a tooltip when the user hovers over the chart.                             |
+| xScaleOptions     | `XScaleOptions` (optional)                                  | -           | Options used to create a scale function for the x-axis.                                             |
+| yScaleOptions     | `YScaleOptions` (optional)                                  | -           | Options used to create a scale function for the y-axis.                                             |
+| bottomAxisOptions | [`BottomAxisOptions`](./src/BottomAxis/types.ts) (optional) | -           | Options used to customize the x-axis at bottom.                                                     |
+| leftAxisOptions   | [`LeftAxisOptions`](./src/LeftAxis/types.ts) (optional)     | -           | Options used to customize the y-axis at left.                                                       |
+| stroke            | `string` (optional)                                         | -           | The stroke color of the line.                                                                       |
+| strokeWidth       | `number` (optional)                                         | -           | The width of the line.                                                                              |
+| width             | `number` (optional)                                         | -           | The width of the chart container. If not provided, it will fit the width of the parent container.   |
+| height            | `number` (optional)                                         | -           | The height of the chart container. If not provided, it will fit the height of the parent container. |
+| margin            | `SvgContainerMargins` (optional)                            | -           | Custom margins for the chart container.                                                             |
+                                                   
 
 ### Examples
 
@@ -368,7 +370,7 @@ Plase make sure the `tooltip` field is included in each `LineChartDataItem`.
 Here is an example of using customized options for x axis:
 ```js
 <LineChartBasic
-  xAxisOptions={{
+  bottomAxisOptions={{
     /*
      * Indicate number of ticks that should be renderd on x axis
      */
@@ -398,12 +400,12 @@ Here is an example of using customized options for x axis:
 />
 ```
 
-**Customized Y Axis Options**
+**Customized Options for Y Axis at Left**
 
 Here is an example of using customized options for y axis:
 ```js
 <LineChartBasic
-  yAxisOptions={{
+  leftAxisOptions={{
     /*
      * Indicate number of ticks that should be renderd on y axis
      */
@@ -433,13 +435,13 @@ Here is an example of using customized options for y axis:
 
 Here is an example of using time scale for x-axis instead of the linear scale.
 
-When using time scale, it's recommended to also provide a `tickFormatFunction` in `xAxisOptions` that can create formatted ticks on x-axis.
+When using time scale, it's recommended to also provide a `tickFormatFunction` in `bottomAxisOptions` that can create formatted ticks on x-axis.
 ```js
 <LineChartBasic
   xScaleOptions={{
     useTimeScale: true
   }}
-  xAxisOptions={{
+  bottomAxisOptions={{
     tickFormatFunction: (val: number | string) => {
         return new Date(val).getFullYear().toString();
     },
@@ -482,21 +484,21 @@ import { BarLineComboChart } from '@vannizhang/react-d3-charts'
 ```
 
 ### Props
-| **Name**      | **Type**                         | **Default**                                  | **Description**                                                                                     |
-|---------------|----------------------------------|----------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| data          | `BarLineComboChartDataItem[]`             | -                                   | The data used to render the bar and line combo chart.                                                         |
-| showTooltip   | `boolean` (optional)             | false                                        | Determines whether to show a tooltip when the user hovers over a bar element.                       |
-| yScaleOptions | `YScaleOptions` (optional)       | -                                            | Options used to customize the scale function for the y-axis.                                        |
-| xAxisOptions  | `XAxisOptions` (optional)        | -                                            | Options used to customize the x-axis.                                                               |
-| yAxisOptions  | `YAxisOptions` (optional)        | -                                            | Options used to customize the y-axis.                                                               |
-| fill          | `string` (optional)              | -                                            | The fill color of the bar rectangles.                                                               |
-| strokeColor   | `string` (optional)              | -                                            | The stroke color of the line.                                                                       |
-| strokeWidth   | `number` (optional)              | -                                            | The width of the line.                                                                              |
-| innerPadding  | `number` (optional)              | 0.2                                          | The inner padding determines the blank space between bands.                                         |
-| width         | `number` (optional)              | -                                            | The width of the chart container. If not provided, it will fit the width of the parent container.   |
-| height        | `number` (optional)              | -                                            | The height of the chart container. If not provided, it will fit the height of the parent container. |
-| margin        | `SvgContainerMargins` (optional) | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                               |
-                                               
+| **Name**          | **Type**                                                    | **Default**                                  | **Description**                                                                                     |
+|-------------------|-------------------------------------------------------------|----------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| data              | `BarLineComboChartDataItem[]`                               | -                                            | The data used to render the bar and line combo chart.                                               |
+| showTooltip       | `boolean` (optional)                                        | false                                        | Determines whether to show a tooltip when the user hovers over a bar element.                       |
+| yScaleOptions     | `YScaleOptions` (optional)                                  | -                                            | Options used to customize the scale function for the y-axis.                                        |
+| bottomAxisOptions | [`BottomAxisOptions`](./src/BottomAxis/types.ts) (optional) | -                                            | Options used to customize the x-axis at bottom.                                                     |
+| leftAxisOptions   | [`LeftAxisOptions`](./src/LeftAxis/types.ts) (optional)     | -                                            | Options used to customize the y-axis at left.                                                       |
+| fill              | `string` (optional)                                         | -                                            | The fill color of the bar rectangles.                                                               |
+| strokeColor       | `string` (optional)                                         | -                                            | The stroke color of the line.                                                                       |
+| strokeWidth       | `number` (optional)                                         | -                                            | The width of the line.                                                                              |
+| innerPadding      | `number` (optional)                                         | 0.2                                          | The inner padding determines the blank space between bands.                                         |
+| width             | `number` (optional)                                         | -                                            | The width of the chart container. If not provided, it will fit the width of the parent container.   |
+| height            | `number` (optional)                                         | -                                            | The height of the chart container. If not provided, it will fit the height of the parent container. |
+| margin            | `SvgContainerMargins` (optional)                            | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                               |
+
 ### Examples
 **Basic**
 
@@ -621,9 +623,9 @@ Here is an example of customizing `fill` color and `innerPadding` for the bar re
 ```js
 <HorizontalBarChart
   fill="orange"
+  innerPadding={0.3}
   width={800}
   height={400}
-  innerPadding={0.3}
   margin={{
     bottom: 30,
     left: 100,

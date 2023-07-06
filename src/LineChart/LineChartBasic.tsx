@@ -15,8 +15,10 @@ import SvgContainer, {
     SvgContainerDimension,
     SvgContainerMargins,
 } from '../SvgContainer/SvgContainer';
-import { XAxis, XAxisOptions } from '../XAxis/XAxis';
-import { YAxis, YAxisOptions } from '../YAxis/YAxis';
+import { BottomAxis } from '../BottomAxis/BottomAxis';
+import { BottomAxisOptions } from '../BottomAxis/types';
+import { LeftAxis } from '../LeftAxis/LeftAxis';
+import { LeftAxisOptions } from '../LeftAxis/types';
 import {
     HoveredChartItem,
     PointerEventsOverlay,
@@ -86,11 +88,11 @@ type Props = {
     /**
      * options to customized x axis
      */
-    xAxisOptions?: XAxisOptions;
+    bottomAxisOptions?: BottomAxisOptions;
     /**
-     * options to customized y axis
+     * Options used to customize the y-axis at left.
      */
-    yAxisOptions?: YAxisOptions;
+    leftAxisOptions?: LeftAxisOptions;
     /**
      * stroke color of the Line
      */
@@ -125,8 +127,8 @@ export const LineChartBasic: FC<Props> = ({
     showTooltip,
     xScaleOptions = {},
     yScaleOptions = {},
-    xAxisOptions = {},
-    yAxisOptions = {},
+    bottomAxisOptions = {},
+    leftAxisOptions = {},
     width,
     height,
     margin = DEFAULT_MARGINS,
@@ -183,19 +185,21 @@ export const LineChartBasic: FC<Props> = ({
                     width={strokeWidth}
                 />
 
-                <XAxis
+                <BottomAxis
                     scale={xScale as AxisScale<number>}
-                    showGridLines={xAxisOptions?.showGridLines}
-                    numberOfTicks={xAxisOptions?.numberOfTicks}
-                    tickFormatFunction={xAxisOptions?.tickFormatFunction}
-                    shouldRotateTextLabels={xAxisOptions.shouldRotateTextLabels}
+                    showGridLines={bottomAxisOptions?.showGridLines}
+                    numberOfTicks={bottomAxisOptions?.numberOfTicks}
+                    tickFormatFunction={bottomAxisOptions?.tickFormatFunction}
+                    shouldRotateTextLabels={
+                        bottomAxisOptions.shouldRotateTextLabels
+                    }
                 />
 
-                <YAxis
+                <LeftAxis
                     scale={yScale}
-                    showGridLines={yAxisOptions.showGridLines}
-                    numberOfTicks={yAxisOptions.numberOfTicks}
-                    tickFormatFunction={yAxisOptions?.tickFormatFunction}
+                    showGridLines={leftAxisOptions.showGridLines}
+                    numberOfTicks={leftAxisOptions.numberOfTicks}
+                    tickFormatFunction={leftAxisOptions?.tickFormatFunction}
                 />
 
                 {showTooltip ? (

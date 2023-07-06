@@ -60,7 +60,7 @@ export const CustomizedXAxisOptions: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
-        xAxisOptions: {
+        bottomAxisOptions: {
             showGridLines: true,
             numberOfTicks: 5,
             shouldRotateTextLabels: true,
@@ -75,7 +75,7 @@ export const CustomizedYAxisOptions: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
-        yAxisOptions: {
+        leftAxisOptions: {
             showGridLines: true,
             numberOfTicks: 2,
             tickFormatFunction: (val: number | string) => {
@@ -93,7 +93,7 @@ export const CustomizedOptionsForXScale: Story = {
         xScaleOptions: {
             useTimeScale: true,
         },
-        xAxisOptions: {
+        bottomAxisOptions: {
             tickFormatFunction: (val: number | string) => {
                 return new Date(val).getFullYear().toString();
             },
