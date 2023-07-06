@@ -1,15 +1,15 @@
-.x.axis .tick text {
+.axis .tick text {
     fill: var(--axis-tick-text-color);
 }
 
-.x.axis .tick line {
+.axis .tick line {
     stroke: var(--axis-tick-line-color);
 }
 
-.x.axis .domain {
+.axis .domain {
     stroke: var(--axis-tick-line-color);
 }
 
-.x.axis.show-grid .tick line {
+.axis.show-grid .tick line {
     stroke-dasharray: var(--grid-line-dash-pattern);
 }

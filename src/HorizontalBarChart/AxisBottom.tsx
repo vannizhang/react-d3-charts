@@ -1,9 +1,9 @@
 import '../styles/axis.css';
 import React, { FC, useEffect } from 'react';
-import { select, axisLeft, AxisScale, Selection } from 'd3';
+import { select, axisBottom, AxisScale, Selection } from 'd3';
 import { SvgContainerData } from '../SvgContainer/SvgContainer';
 
-export type YAxisOptions = {
+export type BottomAxisOptions = {
     /**
      * Indicate number of ticks that should be renderder.
      * If not provided, d3 will try to render as many ticks as possible
@@ -22,47 +22,48 @@ export type YAxisOptions = {
     tickFormatFunction?: (domainValue: number, index?: number) => string;
 };
 
-type Props = YAxisOptions & {
+type Props = BottomAxisOptions & {
     /**
-     * Linear scale function used by yaxis
+     * Linear scale function used by x-axis
      */
     scale: AxisScale<number>;
     svgContainerData?: SvgContainerData;
 };
 
-export const YAxis: FC<Props> = ({
+export const AxisBottom: FC<Props> = ({
     scale,
     numberOfTicks = 5,
     showGridLines,
     tickFormatFunction,
     svgContainerData,
 }) => {
-    const drawYAxis = () => {
+    const drawBottomAxis = () => {
         const { rootGroup, dimension } = svgContainerData;
 
-        const { width } = dimension;
+        const { height } = dimension;
 
-        const yAxis = axisLeft(scale).ticks(numberOfTicks);
+        const axisBottomGenerator = axisBottom(scale).ticks(numberOfTicks);
 
         if (showGridLines) {
-            yAxis.tickSizeInner(-width);
-            yAxis.tickPadding(5);
+            axisBottomGenerator.tickSizeInner(-height);
+            axisBottomGenerator.tickPadding(5);
         }
 
         if (tickFormatFunction) {
-            yAxis.tickFormat(tickFormatFunction);
+            axisBottomGenerator.tickFormat(tickFormatFunction);
         }
 
         const yAxisGroup: Selection<SVGSVGElement, any, any, any> =
-            select(rootGroup).select('.y.axis');
+            select(rootGroup).select('.bottom.axis');
 
         // y axis is already existed, only need to update it
         if (yAxisGroup.size()) {
             yAxisGroup
+                .attr('transform', `translate(0, ${height})`)
                 // add a call to `.transition` to make the axis animate
                 .transition()
                 // axis can be updated by calling `.call(yAxis)` again
-                .call(yAxis);
+                .call(axisBottomGenerator);
 
             return;
         }
@@ -70,7 +71,7 @@ export const YAxis: FC<Props> = ({
         select(rootGroup)
             .append('g')
             .attr('class', () => {
-                const classNames = ['y', 'axis'];
+                const classNames = ['bottom', 'axis'];
 
                 // add 'show-grid' class to show grid lines
                 if (showGridLines) {
@@ -79,12 +80,13 @@ export const YAxis: FC<Props> = ({
 
                 return classNames.join(' ');
             })
-            .call(yAxis);
+            .attr('transform', `translate(0,${height})`)
+            .call(axisBottomGenerator);
     };
 
     useEffect(() => {
         if (svgContainerData) {
-            drawYAxis();
+            drawBottomAxis();
         }
     }, [scale, svgContainerData]);
 

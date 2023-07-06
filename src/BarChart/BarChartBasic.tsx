@@ -21,7 +21,6 @@ import {
     PointerEventsOverlay,
 } from '../PointerEventOverlay/PointerEventsOverlay';
 import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
-import { SCALE_BAND_PADDING_INNER } from './constants';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
 
@@ -110,7 +109,7 @@ export const BarChartBasic: FC<Props> = ({
     xAxisOptions = {},
     yAxisOptions = {},
     fill,
-    innerPadding = SCALE_BAND_PADDING_INNER,
+    innerPadding = 0.2,
     width,
     height,
     margin = DEFAULT_MARGINS,
