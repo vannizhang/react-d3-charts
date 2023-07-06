@@ -15,6 +15,17 @@ export type XAxisOptions = {
      */
     showGridLines?: boolean;
     /**
+     * Specified values to be used for ticks rather than using the scale’s automatic tick generator.
+     * By default, D3 shows ticks for all items in the data on the x-axis.
+     * Pass an array of tick values or an array of keys of the input data to override that behavior
+     * and only render ticks for items that have their keys in `tickValuesOnXAxis`.
+     */
+    tickValues?: (string | number)[];
+    /**
+     * if true, rotate the label text to provide more space
+     */
+    shouldRotateTextLabels?: boolean;
+    /**
      * custom format function mapping a value from the axis Domain to a formatted string for display purposes.
      * @param domainValue original domain value
      * @param index
@@ -24,13 +35,6 @@ export type XAxisOptions = {
         domainValue: number | string,
         index?: number
     ) => string;
-    /**
-     * Specified values to be used for ticks rather than using the scale’s automatic tick generator.
-     * By default, D3 shows ticks for all items in the data on the x-axis.
-     * Pass an array of tick values or an array of keys of the input data to override that behavior
-     * and only render ticks for items that have their keys in `tickValuesOnXAxis`.
-     */
-    tickValues?: (string | number)[];
 };
 
 type Props = XAxisOptions & {
@@ -54,6 +58,7 @@ export const XAxis: FC<Props> = ({
     showGridLines,
     numberOfTicks,
     tickValues,
+    shouldRotateTextLabels,
     tickFormatFunction,
     svgContainerData,
 }) => {
@@ -91,23 +96,31 @@ export const XAxis: FC<Props> = ({
                 .attr('transform', `translate(0, ${height})`)
                 .transition()
                 .call(xAxis);
-            return;
+        } else {
+            select(rootGroup)
+                .append('g')
+                .attr('class', () => {
+                    const classNames = ['x', 'axis'];
+
+                    // add 'show-grid' class to show grid lines
+                    if (showGridLines) {
+                        classNames.push('show-grid');
+                    }
+
+                    return classNames.join(' ');
+                })
+                .attr('transform', `translate(0,${height})`)
+                .call(xAxis);
         }
 
-        select(rootGroup)
-            .append('g')
-            .attr('class', () => {
-                const classNames = ['x', 'axis'];
-
-                // add 'show-grid' class to show grid lines
-                if (showGridLines) {
-                    classNames.push('show-grid');
-                }
-
-                return classNames.join(' ');
-            })
-            .attr('transform', `translate(0,${height})`)
-            .call(xAxis);
+        if (shouldRotateTextLabels) {
+            select(rootGroup)
+                .selectAll('.x.axis text')
+                .style('text-anchor', 'end')
+                .attr('dx', '-.8em')
+                .attr('dy', '.15em')
+                .attr('transform', 'rotate(-45)');
+        }
     };
 
     useEffect(() => {

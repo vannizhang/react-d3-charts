@@ -209,6 +209,7 @@ export const BarLineComboChart: FC<Props> = ({
                     showGridLines={xAxisOptions.showGridLines}
                     tickValues={xAxisOptions.tickValues}
                     tickFormatFunction={xAxisOptions.tickFormatFunction}
+                    shouldRotateTextLabels={xAxisOptions.shouldRotateTextLabels}
                 />
 
                 <YAxis

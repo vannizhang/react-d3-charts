@@ -188,6 +188,7 @@ export const LineChartBasic: FC<Props> = ({
                     showGridLines={xAxisOptions?.showGridLines}
                     numberOfTicks={xAxisOptions?.numberOfTicks}
                     tickFormatFunction={xAxisOptions?.tickFormatFunction}
+                    shouldRotateTextLabels={xAxisOptions.shouldRotateTextLabels}
                 />
 
                 <YAxis

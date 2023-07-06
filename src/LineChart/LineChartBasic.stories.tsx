@@ -63,6 +63,7 @@ export const CustomizedXAxisOptions: Story = {
         xAxisOptions: {
             showGridLines: true,
             numberOfTicks: 5,
+            shouldRotateTextLabels: true,
             tickFormatFunction: (val: number | string) => {
                 return val.toString();
             },

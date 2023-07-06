@@ -76,6 +76,7 @@ export const CustomizedXAxisOptions: Story = {
              * Specified values to be used for ticks rather than using the scale’s automatic tick generator.
              */
             tickValues: ['12/1', '12/5', '12/10'],
+            shouldRotateTextLabels: true,
             /**
              * You can provide a custom format function mapping a value from the axis Domain to a formatted string for display purposes.
              * @param val

@@ -135,6 +135,22 @@ Plase make sure the `tooltip` field is included in each `BarChartDataItem`.
 
 **Customized X Axis Options**
 
+Here is an example of rotate text labels on x axis to provide more space: 
+```js
+<BarChartBasic
+  xAxisOptions={{
+    shouldRotateTextLabels: true
+  }}
+  data={[
+    {
+      x: '12/1',
+      y: 26,
+    },
+    //...
+  ]}
+/>
+```
+
 Here is an example of extend ticks on x axis and show them as grid lines: 
 ```js
 <BarChartBasic
@@ -356,6 +372,10 @@ Here is an example of using customized options for x axis:
      * Indicate number of ticks that should be renderd on x axis
      */
     numberOfTicks: 3,
+    /**
+     * rotate the label text to provide more space
+     */
+    shouldRotateTextLabels: true
     /*
      * extend ticks on x axis and show them as grid lines
      */
