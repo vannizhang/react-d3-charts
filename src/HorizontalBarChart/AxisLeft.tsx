@@ -3,19 +3,7 @@ import { AxisScale } from 'd3-axis';
 import React, { FC, useEffect } from 'react';
 import { select, axisLeft, Selection } from 'd3';
 import { SvgContainerData } from '../SvgContainer/SvgContainer';
-
-export type LeftAxisOptions = {
-    /**
-     * custom format function mapping a value from the axis Domain to a formatted string for display purposes.
-     * @param domainValue original domain value
-     * @param index
-     * @returns formatted string
-     */
-    tickFormatFunction?: (
-        domainValue: number | string,
-        index?: number
-    ) => string;
-};
+import { LeftAxisOptions } from './types';
 
 type Props = LeftAxisOptions & {
     /**

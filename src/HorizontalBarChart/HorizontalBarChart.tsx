@@ -16,23 +16,13 @@ import SvgContainer, {
 import Bars from './Bars';
 // import { SCALE_BAND_PADDING_INNER } from './constants';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
-import { AxisLeft, LeftAxisOptions } from './AxisLeft';
-import { AxisBottom, BottomAxisOptions } from './AxisBottom';
-
-export type HorizontalBarChartDataItem = {
-    /**
-     * A numerical value that determines the width of this item in Bar chart.
-     */
-    x: number;
-    /**
-     * A string or numerical value that determines the y position of this item.
-     */
-    y: string | number;
-    /**
-     * The tooltip associated with this item, which can be plain text or an HTML string.
-     */
-    tooltip?: string;
-};
+import { AxisLeft } from './AxisLeft';
+import { AxisBottom } from './AxisBottom';
+import {
+    BottomAxisOptions,
+    HorizontalBarChartDataItem,
+    LeftAxisOptions,
+} from './types';
 
 type XScale = ScaleLinear<number, number>;
 

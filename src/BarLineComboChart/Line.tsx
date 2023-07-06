@@ -2,10 +2,8 @@ import React, { useEffect, useMemo } from 'react';
 import { select, line, ScaleLinear, curveMonotoneX } from 'd3';
 
 import { SvgContainerData } from '../SvgContainer/SvgContainer';
-import {
-    BarLineComboChartDataItem,
-    XScaleBarLineComboChart,
-} from './BarLineComboChart';
+import { XScaleBarLineComboChart } from './BarLineComboChart';
+import { BarLineComboChartDataItem } from './types';
 
 type Props = {
     xScale: XScaleBarLineComboChart;

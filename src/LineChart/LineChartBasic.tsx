@@ -15,10 +15,10 @@ import SvgContainer, {
     SvgContainerDimension,
     SvgContainerMargins,
 } from '../SvgContainer/SvgContainer';
-import { BottomAxis } from '../BottomAxis/BottomAxis';
-import { BottomAxisOptions } from '../BottomAxis/types';
-import { LeftAxis } from '../LeftAxis/LeftAxis';
-import { LeftAxisOptions } from '../LeftAxis/types';
+import { BottomAxis } from '../Axis/BottomAxis';
+import { BottomAxisOptions } from '../Axis/types';
+import { LeftAxis } from '../Axis/LeftAxis';
+import { LeftAxisOptions } from '../Axis/types';
 import {
     HoveredChartItem,
     PointerEventsOverlay,
@@ -27,31 +27,7 @@ import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
 import Line from './Line';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
-
-/**
- * Represents a data item for the basic line chart.
- */
-export type LineChartDataItem = {
-    /**
-     * A numerical value that determines the x position of this item.
-     * Examples of valid `x` values:
-     * - Unix timestamp (e.g., 1688167415)
-     * - Year (e.g., 2014)
-     * - Order of the item (e.g., 1)
-     */
-    x: number;
-    /**
-     * A numerical value that determines the y position of this item.
-     */
-    y: number;
-    /**
-     * An optional tooltip associated with this data item.
-     * It can be plain text or an HTML string.
-     */
-    tooltip?: string;
-};
-
-// export type LineChartData = LineChartDataItem[];
+import { LineChartDataItem, XScaleOptions, YScaleOptions } from './types';
 
 type XScale = ScaleLinear<number, number> | ScaleTime<number, number>;
 
@@ -69,22 +45,11 @@ type Props = {
     /**
      * options that will be used to create scale function for the x-axis
      */
-    xScaleOptions?: {
-        /**
-         * If set to true, a time scale will be used instead of a linear scale for the x-axis.
-         */
-        useTimeScale?: boolean;
-    };
+    xScaleOptions?: XScaleOptions;
     /**
      * options that will be used to create scale function for the y-axis
      */
-    yScaleOptions?: {
-        /**
-         * Custom domain that will be used to create a scale function for the y-axis.
-         * If not provided, the minimum and maximum values of the `value` property of all items will be used as the domain.
-         */
-        domain?: number[];
-    };
+    yScaleOptions?: YScaleOptions;
     /**
      * options to customized x axis
      */

@@ -14,10 +14,10 @@ import SvgContainer, {
     SvgContainerMargins,
 } from '../SvgContainer/SvgContainer';
 import Bars from './Bars';
-import { BottomAxis } from '../BottomAxis/BottomAxis';
-import { BottomAxisOptions } from '../BottomAxis/types';
-import { LeftAxis } from '../LeftAxis/LeftAxis';
-import { LeftAxisOptions } from '../LeftAxis/types';
+import { BottomAxis } from '../Axis/BottomAxis';
+import { BottomAxisOptions } from '../Axis/types';
+import { LeftAxis } from '../Axis/LeftAxis';
+import { LeftAxisOptions } from '../Axis/types';
 import {
     HoveredChartItem,
     PointerEventsOverlay,
@@ -25,21 +25,7 @@ import {
 import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
-
-export type BarChartDataItem = {
-    /**
-     * A string or numerical value that determines the x position of this item.
-     */
-    x: string | number;
-    /**
-     * A numerical value that determines the height of this item in Bar chart.
-     */
-    y: number;
-    /**
-     * The tooltip associated with this item, which can be plain text or an HTML string.
-     */
-    tooltip?: string;
-};
+import { BarChartDataItem, YScaleOptions } from './types';
 
 type XScale = ScaleBand<string | number>;
 
@@ -59,13 +45,7 @@ type Props = {
     /**
      * Options used to customize the scale function for the y-axis.
      */
-    yScaleOptions?: {
-        /**
-         * Custom domain used to create the scale function for the y-axis.
-         * If not provided, the domain will be determined by the maximum values of the `y` property among all items, and the minimum value of the domain will be 0.
-         */
-        domain?: number[];
-    };
+    yScaleOptions?: YScaleOptions;
     /**
      * Options used to customize the x-axis at bottom.
      */

@@ -7,8 +7,9 @@ import {
     ScaleTime,
     curveMonotoneX,
 } from 'd3';
-import { LineChartDataItem } from './LineChartBasic';
+// import { LineChartDataItem } from './LineChartBasic';
 import { SvgContainerData } from '../SvgContainer/SvgContainer';
+import { LineChartDataItem } from './types';
 
 type Props = {
     xScale: ScaleTime<number, number> | ScaleLinear<number, number>;

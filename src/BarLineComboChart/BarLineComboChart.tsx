@@ -14,10 +14,10 @@ import SvgContainer, {
     SvgContainerMargins,
 } from '../SvgContainer/SvgContainer';
 import Bars from '../BarChart/Bars';
-import { BottomAxis } from '../BottomAxis/BottomAxis';
-import { BottomAxisOptions } from '../BottomAxis/types';
-import { LeftAxis } from '../LeftAxis/LeftAxis';
-import { LeftAxisOptions } from '../LeftAxis/types';
+import { BottomAxis } from '../Axis/BottomAxis';
+import { BottomAxisOptions } from '../Axis/types';
+import { LeftAxis } from '../Axis/LeftAxis';
+import { LeftAxisOptions } from '../Axis/types';
 import {
     HoveredChartItem,
     PointerEventsOverlay,
@@ -26,25 +26,7 @@ import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
 import Line from './Line';
-
-export type BarLineComboChartDataItem = {
-    /**
-     * A string or numerical value that determines the x position of this item.
-     */
-    x: string | number;
-    /**
-     * A numerical value that determines the height of Bar that represents this item.
-     */
-    yBar: number;
-    /**
-     * A numerical value that determines the y position of the node in Line that represents this item.
-     */
-    yLine: number;
-    /**
-     * The tooltip associated with this item, which can be plain text or an HTML string.
-     */
-    tooltip?: string;
-};
+import { BarLineComboChartDataItem } from './types';
 
 export type XScaleBarLineComboChart = ScaleBand<string | number>;
 
