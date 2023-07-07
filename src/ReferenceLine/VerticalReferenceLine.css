@@ -1,9 +1,0 @@
-.vertical-reference-line-group {
-    pointer-events: none;
-}
-
-.vertical-reference-line-group line {
-    stroke: var(--vertical-reference-line-color);
-    stroke-width: var(--vertical-reference-line-width);
-    stroke-dasharray: 1 1;
-}

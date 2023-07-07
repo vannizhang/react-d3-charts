@@ -24,7 +24,7 @@ import {
 } from '../PointerEventOverlay/PointerEventsOverlay';
 import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
-import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
+import { VerticalCrosshairLine } from '../CrosshairReferenceLine/VerticalCrosshairLine';
 import { BarChartDataItem, YScaleOptions } from './types';
 
 type XScale = ScaleBand<string | number>;
@@ -167,7 +167,7 @@ export const BarChartBasic: FC<Props> = ({
                 />
 
                 {showTooltip ? (
-                    <VerticalReferenceLine
+                    <VerticalCrosshairLine
                         xPosition={
                             hoveredChartItem ? hoveredChartItem.xPosition : null
                         }

@@ -10,7 +10,7 @@ React D3 Charts is a library that offers a collection of simple and reusable cha
   - [Horizontal Bar Chart](#horizontal-bar-chart)
   - [Pie Chart](#pie-chart)
   - [Sparkline Chart](#sparkline-component)
-- [Customizing Chart Styles with CSS Variables](#customizing-chart-styles-with-css-variables)
+- [Customizing Chart Styles with CSS Variables](#customizing-common-chart-styles-with-css-variables)
 - [Dependencies](#Dependencies)
 - [Storybook](#Storybook)
 
@@ -874,20 +874,20 @@ Here is an example of customizing stroke color and width for the sparkline; and 
 />
 ```
 
-## Customizing Chart Styles with CSS Variables
-You have the ability to customize the styles of chart elements by providing your own values for CSS variables. These variables are defined in the [`variables.css`](./src/styles/variables.css) file and control the appearance of specific elements within the components.
+## Customizing Common Chart Styles with CSS Variables
+You have the ability to customize the styles of common chart elements by providing your own values for CSS variables. These variables are defined in the [`variables.css`](./src/styles/variables.css) file and control the appearance of specific elements within the components.
 
 Here's an example of the [`variables.css`](./src/styles/variables.css) file:
 ```css
 :root {
     /*
-     * variables that control style of the axis tick line and text color
+     * variables that control the style of the axis tick line and text
      */
     --axis-tick-line-color: #303030;
     --axis-tick-text-color: #303030;
 
     /*
-     * variables that control style of the chart tooltip
+     * variables that control the style of the chart tooltip
      */
     --tooltip-background-color: rgba(255,255,255,1);
     --tooltip-text-color: #303030;
@@ -895,6 +895,12 @@ Here's an example of the [`variables.css`](./src/styles/variables.css) file:
     --tooltip-max-width: 200px;
     --tooltip-border-color: transparent;
     --tooltip-dropshadow-color: rgba(0,0,0,.2);
+
+    /*
+     * variables that control the style of crosshair reference line
+     */
+    --crosshair-reference-line-color: rgba(0,0,0,.5);
+    --crosshair-reference-line-width: 1px;
 }
 ```
 

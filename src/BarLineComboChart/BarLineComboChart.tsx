@@ -24,7 +24,7 @@ import {
 } from '../PointerEventOverlay/PointerEventsOverlay';
 import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
-import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
+import { VerticalCrosshairLine } from '../CrosshairReferenceLine/VerticalCrosshairLine';
 import Line from './Line';
 import { BarLineComboChartDataItem } from './types';
 
@@ -205,7 +205,7 @@ export const BarLineComboChart: FC<Props> = ({
                 />
 
                 {showTooltip ? (
-                    <VerticalReferenceLine
+                    <VerticalCrosshairLine
                         xPosition={
                             hoveredChartItem ? hoveredChartItem.xPosition : null
                         }

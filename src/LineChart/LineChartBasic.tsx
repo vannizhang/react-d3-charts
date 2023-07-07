@@ -26,7 +26,7 @@ import {
 import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
 import Line from './Line';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
-import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
+import { VerticalCrosshairLine } from '../CrosshairReferenceLine/VerticalCrosshairLine';
 import { LineChartDataItem, XScaleOptions, YScaleOptions } from './types';
 
 type XScale = ScaleLinear<number, number> | ScaleTime<number, number>;
@@ -168,7 +168,7 @@ export const LineChartBasic: FC<Props> = ({
                 />
 
                 {showTooltip ? (
-                    <VerticalReferenceLine
+                    <VerticalCrosshairLine
                         xPosition={
                             hoveredChartItem ? hoveredChartItem.xPosition : null
                         }

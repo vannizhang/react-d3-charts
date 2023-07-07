@@ -1,12 +1,12 @@
 :root {
     /*
-     * variables that control style of the axis tick line and text color
+     * variables that control the style of the axis tick line and text
      */
     --axis-tick-line-color: #303030;
     --axis-tick-text-color: #303030;
 
     /*
-     * variables that control style of the chart tooltip
+     * variables that control the style of the chart tooltip
      */
     --tooltip-background-color: rgba(255,255,255,1);
     --tooltip-text-color: #303030;
@@ -16,8 +16,8 @@
     --tooltip-dropshadow-color: rgba(0,0,0,.2);
 
     /*
-     * variables that control style vertical reference line in the Bar and Line charts
+     * variables that control the style of crosshair reference line
      */
-    --vertical-reference-line-color: rgba(0,0,0,.5);
-    --vertical-reference-line-width: 1px;
+    --crosshair-reference-line-color: rgba(0,0,0,.5);
+    --crosshair-reference-line-width: 1px;
 }

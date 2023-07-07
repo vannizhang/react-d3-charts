@@ -1,15 +1,18 @@
-import './VerticalReferenceLine.css';
+import './CrosshairReferenceLine.css';
 
 import React, { FC, useEffect, useRef } from 'react';
 import { select } from 'd3';
 import { SvgContainerData } from '../SvgContainer/SvgContainer';
 
 type Props = {
+    /**
+     * position on x-axis to place this vertical reference line
+     */
     xPosition: number;
     svgContainerData?: SvgContainerData;
 };
 
-export const VerticalReferenceLine: FC<Props> = ({
+export const VerticalCrosshairLine: FC<Props> = ({
     xPosition,
     svgContainerData,
 }) => {
@@ -35,8 +38,7 @@ export const VerticalReferenceLine: FC<Props> = ({
             .attr('x2', 0)
             .attr('y2', height)
             .style('opacity', 0)
-            // .style('stoke', 'red')
-            .style('fill', 'none');
+            .attr('fill', 'none');
     };
 
     const updateVerticalRefLinePos = (): void => {
@@ -64,6 +66,6 @@ export const VerticalReferenceLine: FC<Props> = ({
     }, [xPosition]);
 
     return (
-        <g className="vertical-reference-line-group" ref={containerGroupRef} />
+        <g className="crosshair-reference-line-group" ref={containerGroupRef} />
     );
 };
