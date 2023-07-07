@@ -11,5 +11,5 @@
 }
 
 .axis.show-grid .tick line {
-    stroke-dasharray: var(--grid-line-dash-pattern);
+    stroke-dasharray: 1 1;
 }

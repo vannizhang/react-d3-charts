@@ -1,22 +1,23 @@
 :root {
+    /*
+     * variables that control style of the axis tick line and text color
+     */
     --axis-tick-line-color: #303030;
     --axis-tick-text-color: #303030;
-
-    --vertical-reference-line-color: rgba(0,0,0,.5);
-    --vertical-reference-line-width: 1px;
 
     /*
      * variables that control style of the chart tooltip
      */
-    --tooltip-background-color: rgba(0,0,0,.70);
-    --tooltip-text-color: #fff;
+    --tooltip-background-color: rgba(255,255,255,1);
+    --tooltip-text-color: #303030;
     --tooltip-text-font-size: .8rem;
     --tooltip-max-width: 200px;
     --tooltip-border-color: transparent;
-    --tooltip-dropshadow-color: rgba(0,0,0,.3);
+    --tooltip-dropshadow-color: rgba(0,0,0,.2);
 
     /*
-     * this value will be used in axis grid line's `stroke-dasharray` property
+     * variables that control style vertical reference line in the Bar and Line charts
      */
-    --grid-line-dash-pattern: 1 1;
+    --vertical-reference-line-color: rgba(0,0,0,.5);
+    --vertical-reference-line-width: 1px;
 }

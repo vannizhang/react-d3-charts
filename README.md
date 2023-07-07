@@ -873,6 +873,56 @@ Here is an example of customizing stroke color and width for the sparkline; and 
 />
 ```
 
+## Customizing Chart Styles with CSS Variables
+You have the ability to customize the styles of chart elements by providing your own values for CSS variables. These variables are defined in the [`variables.css`](./src/styles/variables.css) file and control the appearance of specific elements within the components.
+
+Here's an example of the [`variables.css`](./src/styles/variables.css) file:
+```css
+:root {
+    /*
+     * variables that control style of the axis tick line and text color
+     */
+    --axis-tick-line-color: #303030;
+    --axis-tick-text-color: #303030;
+
+    /*
+     * variables that control style of the chart tooltip
+     */
+    --tooltip-background-color: rgba(255,255,255,1);
+    --tooltip-text-color: #303030;
+    --tooltip-text-font-size: .8rem;
+    --tooltip-max-width: 200px;
+    --tooltip-border-color: transparent;
+    --tooltip-dropshadow-color: rgba(0,0,0,.2);
+}
+```
+
+To customize the styles, you can simply override these variables with your own values. Here's an example of how you can override the `--axis-tick-line-color` and `--axis-tick-text-color` variables:
+```js
+<div
+  style={{
+    '--axis-tick-line-color': 'lightslategray',
+    '--axis-tick-text-color': 'lightslategray',
+  } as React.CSSProperties}
+>
+  <BarChartBasic
+    data={[
+      {
+        x: '12/1', // A string or numerical value that determines the x position of this item.
+        y: 26, // A numerical value that determines the height of this item in Bar chart.
+        tooltip: 'this is a tooltip',
+      },
+      {
+        x: '12/2',
+        y: 38,
+        tooltip: 'this is a tooltip',
+      },
+      //...
+    ]}
+  />
+</div>
+```
+
 ## Dependencies
 - React (version 18)
 - D3.js (version 7)
