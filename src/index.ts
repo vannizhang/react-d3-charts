@@ -3,11 +3,13 @@ import { BarLineComboChart } from './BarLineComboChart';
 import { LineChartBasic } from './LineChart/LineChartBasic';
 import { Sparkline } from './Sparkline/Sparkline';
 import { HorizontalBarChart } from './HorizontalBarChart/HorizontalBarChart';
+import { PieChart } from './PieChart/PieChart';
 
 export {
     BarChartBasic,
     BarLineComboChart,
     HorizontalBarChart,
     LineChartBasic,
+    PieChart,
     Sparkline,
 };
