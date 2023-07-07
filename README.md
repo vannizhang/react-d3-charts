@@ -10,6 +10,7 @@ React D3 Charts is a library that offers a collection of simple and reusable cha
   - [Horizontal Bar Chart](#horizontal-bar-chart)
   - [Pie Chart](#pie-chart)
   - [Sparkline Chart](#sparkline-component)
+- [Customizing Chart Styles with CSS Variables](#customizing-chart-styles-with-css-variables)
 - [Dependencies](#Dependencies)
 - [Storybook](#Storybook)
 
