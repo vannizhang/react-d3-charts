@@ -1,7 +1,7 @@
 {
   "name": "@vannizhang/react-d3-charts",
   "version": "1.0.2",
-  "description": "A set of simple and reusable D3 Charts with React and TypeScript",
+  "description": "A collection of simple and reusable charts with D3, React and TypeScript.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -27,15 +27,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vannizhang/react-redux-boilerplate.git"
+    "url": "git+https://github.com/vannizhang/react-d3-charts.git"
   },
   "keywords": [],
   "author": "Jinnan Zhang",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vannizhang/react-redux-boilerplate/issues"
+    "url": "https://github.com/vannizhang/react-d3-charts/issues"
   },
-  "homepage": "https://github.com/vannizhang/react-redux-boilerplate",
+  "homepage": "https://github.com/vannizhang/react-d3-charts",
   "devDependencies": {
     "@babel/preset-env": "^7.22.6",
     "@babel/preset-react": "^7.22.5",
