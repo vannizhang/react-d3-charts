@@ -1,12 +1,6 @@
 import React, { FC, useEffect, useRef } from 'react';
 import { schemeSet2, select, arc, pie } from 'd3';
-
-export type PieChartDataItem = {
-    key: string | number;
-    value: number;
-    tooltip?: string;
-    color?: string;
-};
+import { PieChartDataItem } from './types';
 
 type Props = {
     /**
