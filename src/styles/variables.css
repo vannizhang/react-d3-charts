@@ -20,4 +20,12 @@
      */
     --crosshair-reference-line-color: rgba(0,0,0,.5);
     --crosshair-reference-line-width: 1px;
+    --crosshair-reference-line-stroke-dasharray: 1 1;
+
+    /*
+     * variables that control the style of user provided reference line
+     */
+     --reference-line-color: rgba(200,0,0,.8);
+     --reference-line-width: 1px;
+     --reference-line-stroke-dasharray: 2 1;
 }

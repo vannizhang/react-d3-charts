@@ -5,5 +5,5 @@
 .crosshair-reference-line-group line {
     stroke: var(--crosshair-reference-line-color);
     stroke-width: var(--crosshair-reference-line-width);
-    stroke-dasharray: 1 1;
+    stroke-dasharray: var(--crosshair-reference-line-stroke-dasharray);
 }

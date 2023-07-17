@@ -27,7 +27,13 @@ import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
 import Line from './Line';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 import { VerticalCrosshairLine } from '../CrosshairReferenceLine/VerticalCrosshairLine';
-import { LineChartDataItem, XScaleOptions, YScaleOptions } from './types';
+import {
+    LineChartDataItem,
+    VericalReferenceLineData,
+    XScaleOptions,
+    YScaleOptions,
+} from './types';
+import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
 
 type XScale = ScaleLinear<number, number> | ScaleTime<number, number>;
 
@@ -58,6 +64,10 @@ type Props = {
      * Options used to customize the y-axis at left.
      */
     leftAxisOptions?: LeftAxisOptions;
+    /**
+     * Array of data that will be used to draw vertical reference lines
+     */
+    verticalReferenceLines?: VericalReferenceLineData[];
     /**
      * stroke color of the Line
      */
@@ -94,6 +104,7 @@ export const LineChartBasic: FC<Props> = ({
     yScaleOptions = {},
     bottomAxisOptions = {},
     leftAxisOptions = {},
+    verticalReferenceLines = [],
     width,
     height,
     margin = DEFAULT_MARGINS,
@@ -182,6 +193,19 @@ export const LineChartBasic: FC<Props> = ({
                     xDomain={data.map((d) => d.x)}
                     hoveredChartItemOnChange={setHoveredChartItem}
                 />
+
+                {verticalReferenceLines && verticalReferenceLines.length ? (
+                    verticalReferenceLines.map((d) => {
+                        return (
+                            <VerticalReferenceLine
+                                key={d.x}
+                                xPosition={xScale(d.x)}
+                            />
+                        );
+                    })
+                ) : (
+                    <></>
+                )}
             </SvgContainer>
 
             {showTooltip && hoveredChartItem && (

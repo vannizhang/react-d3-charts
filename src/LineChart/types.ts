@@ -35,3 +35,14 @@ export type YScaleOptions = {
      */
     domain?: number[];
 };
+
+export type VericalReferenceLineData = {
+    /**
+     * A numerical value that determines the x position of this vertical reference line
+     */
+    x: number;
+    /**
+     * label text to be displayed next to the vertical reference line
+     */
+    label: string;
+};

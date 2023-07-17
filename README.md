@@ -277,19 +277,21 @@ import { LineChartBasic } from '@vannizhang/react-d3-charts'
 ```
 
 ### Props
-| **Name**          | **Type**                                                    | **Default** | **Description**                                                                                     | 
-|-------------------|-------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------------------|
-| data              | [`LineChartDataItem[]`](./src/LineChart/types.ts)           | -           | An array of `LineChartDataItem` objects that will be used to plot the line chart.                   |
-| showTooltip       | `boolean` (optional)                                        | false       | If set to true, displays a tooltip when the user hovers over the chart.                             |
-| xScaleOptions     | [`XScaleOptions`](./src/LineChart/types.ts) (optional)      | -           | Options used to create a scale function for the x-axis.                                             |
-| yScaleOptions     | [`YScaleOptions`](./src/LineChart/types.ts) (optional)      | -           | Options used to create a scale function for the y-axis.                                             |
-| bottomAxisOptions | [`BottomAxisOptions`](./src/Axis/types.ts) (optional)       | -           | Options used to customize the x-axis at bottom.                                                     |
-| leftAxisOptions   | [`LeftAxisOptions`](./src/Axis/types.ts) (optional)         | -           | Options used to customize the y-axis at left.                                                       |
-| stroke            | `string` (optional)                                         | -           | The stroke color of the line.                                                                       |
-| strokeWidth       | `number` (optional)                                         | -           | The width of the line.                                                                              |
-| width             | `number` (optional)                                         | -           | The width of the chart container. If not provided, it will fit the width of the parent container.   |
-| height            | `number` (optional)                                         | -           | The height of the chart container. If not provided, it will fit the height of the parent container. |
-| margin            | `SvgContainerMargins` (optional)                            | -           | Custom margins for the chart container.                                                             |
+| **Name**               | **Type**                                                             | **Default** | **Description**                                                                                     |
+|------------------------|----------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------------------|
+| data                   | [`LineChartDataItem[]`](./src/LineChart/types.ts)                    | -           | An array of `LineChartDataItem` objects that will be used to plot the line chart.                   |
+| showTooltip            | `boolean` (optional)                                                 | false       | If set to true, displays a tooltip when the user hovers over the chart.                             |
+| xScaleOptions          | [`XScaleOptions`](./src/LineChart/types.ts) (optional)               | -           | Options used to create a scale function for the x-axis.                                             |
+| yScaleOptions          | [`YScaleOptions`](./src/LineChart/types.ts) (optional)               | -           | Options used to create a scale function for the y-axis.                                             |
+| bottomAxisOptions      | [`BottomAxisOptions`](./src/Axis/types.ts) (optional)                | -           | Options used to customize the x-axis at bottom.                                                     |
+| leftAxisOptions        | [`LeftAxisOptions`](./src/Axis/types.ts) (optional)                  | -           | Options used to customize the y-axis at left.                                                       |
+| verticalReferenceLines | [`VericalReferenceLineData[]`](./src/LineChart/types.ts) (optional)  | -           | Data that will be used to draw vertical reference lines.                                            |
+| stroke                 | `string` (optional)                                                  | -           | The stroke color of the line.                                                                       |
+| strokeWidth            | `number` (optional)                                                  | -           | The width of the line.                                                                              |
+| width                  | `number` (optional)                                                  | -           | The width of the chart container. If not provided, it will fit the width of the parent container.   |
+| height                 | `number` (optional)                                                  | -           | The height of the chart container. If not provided, it will fit the height of the parent container. |
+| margin                 | `SvgContainerMargins` (optional)                                     | -           | Custom margins for the chart container.                                                             |
+
                                                    
 
 ### Examples
@@ -473,6 +475,27 @@ You can provide a custom `domain` used to create the scale function for the y-ax
       y: 26,
     },
     //...
+  ]}
+/>
+```
+
+**Customized Vertical Reference Lines**
+
+Here is an example of a basic Line Chart, the `x` field of the `LineChartDataItem` should always be numerical value.
+```js
+<LineChartBasic
+  data={[
+    {
+      x: 2013,
+      y: 26,
+    },
+    //...
+  ]}
+  verticalReferenceLines={[
+    {
+      label: 'text to be displayed',
+      x: 2020
+    }
   ]}
 />
 ```

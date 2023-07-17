@@ -111,3 +111,16 @@ export const CustomizedOptionsForYScale: Story = {
         },
     },
 };
+
+export const CustomizedVerticalReferenceLines: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        verticalReferenceLines: [
+            {
+                x: 2020,
+                label: 'text label with reference line',
+            },
+        ],
+    },
+};
