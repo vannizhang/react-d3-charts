@@ -481,7 +481,7 @@ You can provide a custom `domain` used to create the scale function for the y-ax
 
 **Customized Vertical Reference Lines**
 
-Here is an example of a basic Line Chart, the `x` field of the `LineChartDataItem` should always be numerical value.
+Here is an example of adding vertical reference lines to the Line Chart.
 ```js
 <LineChartBasic
   data={[
