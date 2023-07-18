@@ -25,7 +25,7 @@
     /*
      * variables that control the style of user provided reference line
      */
-     --reference-line-color: rgba(200,0,0,.8);
+     --reference-line-color: rgba(0,0,255,.8);
      --reference-line-width: 1px;
      --reference-line-stroke-dasharray: 2 1;
 }

@@ -29,7 +29,7 @@ import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 import { VerticalCrosshairLine } from '../CrosshairReferenceLine/VerticalCrosshairLine';
 import {
     LineChartDataItem,
-    VericalReferenceLineData,
+    VerticalReferenceLineData,
     XScaleOptions,
     YScaleOptions,
 } from './types';
@@ -67,7 +67,7 @@ type Props = {
     /**
      * Array of data that will be used to draw vertical reference lines
      */
-    verticalReferenceLines?: VericalReferenceLineData[];
+    verticalReferenceLines?: VerticalReferenceLineData[];
     /**
      * stroke color of the Line
      */
@@ -116,6 +116,12 @@ export const LineChartBasic: FC<Props> = ({
 
     const [hoveredChartItem, setHoveredChartItem] =
         useState<HoveredChartItem>();
+
+    /**
+     * data of the reference line that is currently hovered by the mouse pointer
+     */
+    const [hoveredVerticalReferenceLine, setHoveredVerticalReferenceLine] =
+        useState<VerticalReferenceLineData>();
 
     const xScale = useMemo((): XScale => {
         const { width } = dimension;
@@ -200,6 +206,14 @@ export const LineChartBasic: FC<Props> = ({
                             <VerticalReferenceLine
                                 key={d.x}
                                 xPosition={xScale(d.x)}
+                                onMouseEnter={setHoveredVerticalReferenceLine.bind(
+                                    null,
+                                    d
+                                )}
+                                onMouseLeave={setHoveredVerticalReferenceLine.bind(
+                                    null,
+                                    null
+                                )}
                             />
                         );
                     })
@@ -212,6 +226,15 @@ export const LineChartBasic: FC<Props> = ({
                 <TooltipOnTop
                     content={data[hoveredChartItem.index]?.tooltip}
                     xPosition={hoveredChartItem.xPosition}
+                    dimension={dimension}
+                    margin={margin}
+                />
+            )}
+
+            {hoveredVerticalReferenceLine && (
+                <TooltipOnTop
+                    content={hoveredVerticalReferenceLine.tooltip}
+                    xPosition={xScale(hoveredVerticalReferenceLine.x)}
                     dimension={dimension}
                     margin={margin}
                 />

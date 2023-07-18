@@ -285,7 +285,7 @@ import { LineChartBasic } from '@vannizhang/react-d3-charts'
 | yScaleOptions          | [`YScaleOptions`](./src/LineChart/types.ts) (optional)               | -           | Options used to create a scale function for the y-axis.                                             |
 | bottomAxisOptions      | [`BottomAxisOptions`](./src/Axis/types.ts) (optional)                | -           | Options used to customize the x-axis at bottom.                                                     |
 | leftAxisOptions        | [`LeftAxisOptions`](./src/Axis/types.ts) (optional)                  | -           | Options used to customize the y-axis at left.                                                       |
-| verticalReferenceLines | [`VericalReferenceLineData[]`](./src/LineChart/types.ts) (optional)  | -           | Data that will be used to draw vertical reference lines.                                            |
+| verticalReferenceLines | [`VerticalReferenceLineData[]`](./src/LineChart/types.ts) (optional) | -           | Data that will be used to draw vertical reference lines.                                            |
 | stroke                 | `string` (optional)                                                  | -           | The stroke color of the line.                                                                       |
 | strokeWidth            | `number` (optional)                                                  | -           | The width of the line.                                                                              |
 | width                  | `number` (optional)                                                  | -           | The width of the chart container. If not provided, it will fit the width of the parent container.   |
@@ -493,7 +493,7 @@ Here is an example of adding vertical reference lines to the Line Chart.
   ]}
   verticalReferenceLines={[
     {
-      label: 'text to be displayed',
+      tooltip: 'text to be displayed',
       x: 2020
     }
   ]}
