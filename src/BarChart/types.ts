@@ -20,3 +20,14 @@ export type YScaleOptions = {
      */
     domain?: number[];
 };
+
+export type VerticalReferenceLineData = {
+    /**
+     * A string or numerical value that determines the x position of this vertical reference line.
+     */
+    x: string | number;
+    /**
+     * tooltip to be displayed on top of the vertical reference line.
+     */
+    tooltip: string;
+};

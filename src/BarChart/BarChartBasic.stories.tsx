@@ -114,3 +114,17 @@ export const CustomizedOptionsForYScale: Story = {
         },
     },
 };
+
+export const CustomizedVerticalReferenceLines: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        showTooltip: true,
+        verticalReferenceLines: [
+            {
+                x: '12/9',
+                tooltip: 'tooltip comes with reference line',
+            },
+        ],
+    },
+};
