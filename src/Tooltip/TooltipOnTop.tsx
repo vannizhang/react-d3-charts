@@ -96,7 +96,7 @@ export const TooltipOnTop: FC<Props> = ({
                 background: 'var(--tooltip-background-color)',
                 color: 'var(--tooltip-text-color)',
                 fontSize: 'var(--tooltip-text-font-size)',
-                // border: `solid 1px var(--tooltip-border-color)`
+                border: `solid 1px var(--tooltip-border-color)`,
             }}
             dangerouslySetInnerHTML={{ __html: content }}
         ></div>
