@@ -138,7 +138,7 @@ export const LineChartBasic: FC<Props> = ({
         return xScaleOptions?.useTimeScale
             ? scaleTime().range([0, width]).domain(domain)
             : scaleLinear().range([0, width]).domain(domain);
-    }, [dimension, data]);
+    }, [dimension, data, xScaleOptions]);
 
     const yScale = useMemo((): YScale => {
         const { height } = dimension;
@@ -154,7 +154,7 @@ export const LineChartBasic: FC<Props> = ({
         }
 
         return scaleLinear<number, number>().range([height, 0]).domain(domain);
-    }, [dimension, data]);
+    }, [dimension, data, yScaleOptions]);
 
     return (
         <div

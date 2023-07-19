@@ -152,7 +152,7 @@ export const BarChartBasic: FC<Props> = ({
             domain = [ymin, ymax];
         }
         return scaleLinear<number, number>().range([height, 0]).domain(domain);
-    }, [dimension, data]);
+    }, [dimension, data, yScaleOptions]);
 
     return (
         <div
