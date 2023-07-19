@@ -26,12 +26,17 @@ export type XScaleOptions = {
      * If set to true, a time scale will be used instead of a linear scale for the x-axis.
      */
     useTimeScale?: boolean;
+    /**
+     * Custom domain that will be used to create a scale function for the x-axis.
+     * If not provided, the minimum and maximum values of the `x` property of all items will be used as the domain.
+     */
+    domain?: number[];
 };
 
 export type YScaleOptions = {
     /**
      * Custom domain that will be used to create a scale function for the y-axis.
-     * If not provided, the minimum and maximum values of the `value` property of all items will be used as the domain.
+     * If not provided, the minimum and maximum values of the `y` property of all items will be used as the domain.
      */
     domain?: number[];
 };

@@ -483,6 +483,26 @@ When using time scale, it's recommended to also provide a `tickFormatFunction` i
 />
 ```
 
+You can provide a custom domain that will be used to create a scale function for the x-axis. If not provided, the minimum and maximum values of the `x` property of all items will be used as the domain.
+
+```js
+<LineChartBasic
+  xScaleOptions={{
+    domain: [
+      2010,
+      2025
+    ]
+  }}
+  data={[
+    {
+      x: 2013,
+      y: 26,
+    },
+    //...
+  ]}
+/>
+```
+
 **Customized Options For Y Scale**
 
 You can provide a custom `domain` used to create the scale function for the y-axis. If not provided, the domain will be determined by the maximum values of the `y` property among all items, and the minimum value of the domain will be 0.

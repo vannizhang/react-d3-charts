@@ -101,6 +101,16 @@ export const CustomizedOptionsForXScale: Story = {
     },
 };
 
+export const CustomizedOptionsForXScaleUseCustomizedDomain: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        xScaleOptions: {
+            domain: [2013, 2025],
+        },
+    },
+};
+
 export const CustomizedOptionsForYScale: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {

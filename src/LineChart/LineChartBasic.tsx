@@ -126,12 +126,18 @@ export const LineChartBasic: FC<Props> = ({
     const xScale = useMemo((): XScale => {
         const { width } = dimension;
 
-        const xmin = min(data, (d) => d.x);
-        const xmax = max(data, (d) => d.x);
+        let domain = xScaleOptions?.domain || [];
+
+        if (!domain.length) {
+            const xmin = min(data, (d) => d.x);
+            const xmax = max(data, (d) => d.x);
+
+            domain = [xmin, xmax];
+        }
 
         return xScaleOptions?.useTimeScale
-            ? scaleTime().range([0, width]).domain([xmin, xmax])
-            : scaleLinear().range([0, width]).domain([xmin, xmax]);
+            ? scaleTime().range([0, width]).domain(domain)
+            : scaleLinear().range([0, width]).domain(domain);
     }, [dimension, data]);
 
     const yScale = useMemo((): YScale => {
