@@ -83,11 +83,6 @@ Here is an example of customizing `fill` color and `innerPadding` for the bar re
 			y: -40,
 			tooltip: 'this is a tooltip',
 		},
-		{
-			x: 2019,
-			y: -10,
-			tooltip: 'this is a tooltip',
-		},
 		//...
 	]}
 />
@@ -191,10 +186,10 @@ You can provide a custom `domain` used to create the scale function for the y-ax
     domain: [ -200, 200 ]
   }}
   data={[
-	{
-		x: 2018,
-		y: -40,
-	},
+    {
+      x: 2018,
+      y: -40,
+    },
     //...
   ]}
 />
