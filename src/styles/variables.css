@@ -28,4 +28,10 @@
      --reference-line-color: rgba(0,0,255,.8);
      --reference-line-width: 1px;
      --reference-line-stroke-dasharray: 2 1;
+
+    /*
+     * variables that control the style of divider line that is used in Diverging Bar Chart and similar
+     */
+    --divider-line-color: rgba(0,0,0,.5);
+    --divider-line-width: 1px;
 }
