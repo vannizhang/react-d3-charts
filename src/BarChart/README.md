@@ -24,8 +24,6 @@ import { BarChartBasic } from '@vannizhang/react-d3-charts'
 | margin                 | `SvgContainerMargins` (optional)                                    | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                               |
 
                                                
-### Examples
-
 Basic Example
 ---
 

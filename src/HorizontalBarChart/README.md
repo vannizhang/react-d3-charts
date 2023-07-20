@@ -24,8 +24,9 @@ import { HorizontalBarChart } from '@vannizhang/react-d3-charts'
 | height            | `number` (optional)                                                 | -                                            | The height of the chart container. If not provided, it will fit the height of the parent container. |
 | margin            | `SvgContainerMargins` (optional)                                    | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                               |
                                                
-### Examples
-**Basic**
+
+**Basic Example**
+---
 
 Here is an example of a Horizontal Bar Chart:
 ```js
@@ -47,6 +48,7 @@ Here is an example of a Horizontal Bar Chart:
 ```
 
 **Customized Style**
+---
 
 Here is an example of customizing `fill` color and `innerPadding` for the bar rectangles; and the `width`, `height` and `margin` of the chart container.
 ```js
@@ -72,6 +74,7 @@ Here is an example of customizing `fill` color and `innerPadding` for the bar re
 ```
 
 **Customized Left Axis Options**
+---
 
 You can provide a custom format function mapping a value from the axis Domain to a formatted string for display purposes
 ```js
@@ -94,6 +97,7 @@ You can provide a custom format function mapping a value from the axis Domain to
 ```
 
 **Customized Bottom Axis Options**
+---
 
 ```js
 <HorizontalBarChart
@@ -118,6 +122,7 @@ You can provide a custom format function mapping a value from the axis Domain to
 ```
 
 **Customized Options For X Scale**
+---
 
 You can provide custom domain used to create the scale function for the x-axis:
 ```js

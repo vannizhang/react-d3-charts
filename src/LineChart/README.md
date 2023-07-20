@@ -26,9 +26,8 @@ import { LineChartBasic } from '@vannizhang/react-d3-charts'
 
                                                    
 
-### Examples
-
-**Basic**
+**Basic Example**
+---
 
 Here is an example of a basic Line Chart, the `x` field of the `LineChartDataItem` should always be numerical value.
 ```js
@@ -54,6 +53,7 @@ Here is an example of a basic Line Chart, the `x` field of the `LineChartDataIte
 ```
 
 **Customized Style**
+---
 
 Here is an example of customizing stroke color and width for the line; and the `width`, `height` and `margin` of the chart container.
 ```js
@@ -79,6 +79,7 @@ Here is an example of customizing stroke color and width for the line; and the `
 ```
 
 **Show Tooltip And Reference Line**
+---
 
 Set `showTooltip` to true to show a tooltip when the user moves mouse pointer. 
 
@@ -103,6 +104,7 @@ Plase make sure the `tooltip` field is included in each `LineChartDataItem`.
 ```
 
 **Customized X Axis Options**
+---
 
 Here is an example of using customized options for x axis:
 ```js
@@ -138,6 +140,7 @@ Here is an example of using customized options for x axis:
 ```
 
 **Customized Options for Y Axis at Left**
+---
 
 Here is an example of using customized options for y axis:
 ```js
@@ -169,6 +172,7 @@ Here is an example of using customized options for y axis:
 ```
 
 **Customized Options For X Scale**
+---
 
 Here is an example of using time scale for x-axis instead of the linear scale.
 
@@ -214,6 +218,7 @@ You can provide a custom domain that will be used to create a scale function for
 ```
 
 **Customized Options For Y Scale**
+---
 
 You can provide a custom `domain` used to create the scale function for the y-axis. If not provided, the domain will be determined by the maximum values of the `y` property among all items, and the minimum value of the domain will be 0.
 ```js
@@ -232,6 +237,7 @@ You can provide a custom `domain` used to create the scale function for the y-ax
 ```
 
 **Customized Vertical Reference Lines**
+---
 
 Here is an example of adding vertical reference lines to the Line Chart.
 ```js

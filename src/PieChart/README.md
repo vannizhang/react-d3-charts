@@ -20,9 +20,9 @@ import { PieChart } from '@vannizhang/react-d3-charts'
 | onMouseEnter | `(data: PieChartDataItem) => void` (optional)   | -           | Fires when user hovers a slice of the pie chart.                                                    |
 | onMouseLeave | `() => void` (optional)                         | -           | Fires when user leaves a slice of the pie chart.                                                    |                                                  
 
-### Examples
 
-**Basic**
+**Basic Example**
+---
 
 Here is an example of plotting a Pie chart.
 ```js
@@ -50,6 +50,7 @@ Here is an example of plotting a Pie chart.
 ```
 
 **Customized Styles**
+---
 
 Here is an example of using customized colors for each slice:
 ```js

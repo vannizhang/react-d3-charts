@@ -28,8 +28,9 @@ import { BarLineComboChart } from '@vannizhang/react-d3-charts'
 | height                 | `number` (optional)                                                          | -                                            | The height of the chart container. If not provided, it will fit the height of the parent container. |
 | margin                 | `SvgContainerMargins` (optional)                                             | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                               |
 
-### Examples
-**Basic**
+
+**Basic Example**
+---
 
 Here is an example of a Bar and Line Combo Chart, `yBar` is a numerical value that determines the height of Bar that represents this item, and `yLine` is numerical value that determines the y position of the node in the Line that represents this item
 ```js
@@ -53,6 +54,7 @@ Here is an example of a Bar and Line Combo Chart, `yBar` is a numerical value th
 ```
 
 **Customized Style**
+---
 
 Here is an example of customizing `fill` color and `innerPadding` for the bar rectangles; `stroke` color of the line; and the `width`, `height` and `margin` of the chart container.
 ```js
@@ -81,6 +83,7 @@ Here is an example of customizing `fill` color and `innerPadding` for the bar re
 ```
 
 **Show Tooltip And Reference Line**
+---
 
 Set `showTooltip` to true to show a tooltip when the user hovers over a bar element. 
 
@@ -101,6 +104,7 @@ Plase make sure the `tooltip` field is included in each `BarLineComboChartDataIt
 ```
 
 **Customized Vertical Reference Lines**
+---
 
 Here is an example of adding vertical reference lines to the Bar Chart.
 ```js

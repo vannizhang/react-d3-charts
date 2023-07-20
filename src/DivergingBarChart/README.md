@@ -23,8 +23,9 @@ import { DivergingBarChart } from '@vannizhang/react-d3-charts'
 | height            | `number` (optional)                                               | -                                            | The height of the chart container. If not provided, it will fit the height of the parent container. |
 | margin            | `SvgContainerMargins` (optional)                                  | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                               |
                                 
-### Examples
-**Basic**
+
+**Basic Example**
+---
 
 Here is an example of a Diverging Bar Chart:
 ```js
@@ -67,6 +68,7 @@ The `x` field of `DivergingBarChartDataItem` can also be a `number`
 ```
 
 **Customized Style**
+---
 
 Here is an example of customizing `fill` color and `innerPadding` for the bar rectangles; and the `width`, `height` of the chart container.
 ```js
@@ -92,6 +94,7 @@ Here is an example of customizing `fill` color and `innerPadding` for the bar re
 ```
 
 **Show Tooltip And Crosshair Reference Line**
+---
 
 Set `showTooltip` to true to show a tooltip when the user hovers over a bar element. 
 
@@ -112,6 +115,7 @@ Plase make sure the `tooltip` field is included in each `DivergingBarChartDataIt
 ```
 
 **Customized Options for X Axis at Bottom**
+---
 
 You can provide a custom format function mapping a value from the axis Domain to a formatted string for display purposes:
 ```js
@@ -138,6 +142,7 @@ You can provide a custom format function mapping a value from the axis Domain to
 ```
 
 **Customized Options for Y Axis at left**
+---
 
 Here is an example of extend ticks on y axis and show them as grid lines: 
 ```js
@@ -175,6 +180,7 @@ You can provide a custom format function mapping a value from the axis Domain to
 ```
 
 **Customized Options For Y Scale**
+---
 
 Here is an example of using customized options for Y Scale. 
 

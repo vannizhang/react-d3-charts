@@ -16,9 +16,8 @@ import { Sparkline } from '@vannizhang/react-d3-charts'
  height        | `number` (optional)              | -           | The height of the chart container. If not provided, it will fit the height of the parent container. 
  margin        | `SvgContainerMargins` (optional) | -           | Custom margins for the chart container.                                                             
 
-### Examples
-
-**Basic**
+**Basic Example**
+---
 
 Here is an example of plotting a sparkline chart.
 ```js
@@ -28,6 +27,7 @@ Here is an example of plotting a sparkline chart.
 ```
 
 **Customized Style**
+---
 
 Here is an example of customizing stroke color and width for the sparkline; and the `width`, `height` and `margin` of the chart container.
 ```js
