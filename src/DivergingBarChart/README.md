@@ -32,16 +32,16 @@ Here is an example of a Diverging Bar Chart:
 <DivergingBarChart
   data={[
     {
-        x: 'Trees',
-        y: -40,
-        tooltip: 'this is a tooltip',
-        fill: 'green',
+      x: 'Trees',
+      y: -40,
+      tooltip: 'this is a tooltip',
+      fill: 'green',
     },
     {
-        x: 'Water',
-        y: -10,
-        tooltip: 'this is a tooltip',
-        fill: 'dodgerblue',
+      x: 'Water',
+      y: -10,
+      tooltip: 'this is a tooltip',
+      fill: 'dodgerblue',
     },
     //...
   ]}
@@ -53,14 +53,14 @@ The `x` field of `DivergingBarChartDataItem` can also be a `number`
 <DivergingBarChart
   data={[
     {
-        x: 2018,
-        y: -40,
-        tooltip: 'this is a tooltip',
+      x: 2018,
+      y: -40,
+      tooltip: 'this is a tooltip',
     },
     {
-        x: 2019,
-        y: -10,
-        tooltip: 'this is a tooltip',
+      x: 2019,
+      y: -10,
+      tooltip: 'this is a tooltip',
     },
     //...
   ]}
@@ -104,10 +104,10 @@ Plase make sure the `tooltip` field is included in each `DivergingBarChartDataIt
   showTooltip={true}
   data={[
     {
-        x: 'Trees',
-        y: -40,
-        tooltip: 'this is a tooltip',
-        fill: 'green',
+      x: 'Trees',
+      y: -40,
+      tooltip: 'this is a tooltip',
+      fill: 'green',
     },
     //...
   ]}
@@ -121,20 +121,20 @@ You can provide a custom format function mapping a value from the axis Domain to
 ```js
 <DivergingBarChart
   bottomAxisOptions={{
-	shouldRotateTextLabels: true,
-    // a format function to convert default value (e.g. 'Trees') into a different format (e.g. 'Change of Trees')
-	tickFormatFunction: (val: number | string) => {
-		if (typeof val === 'number') {
-			val = val.toString();
-		}
+    shouldRotateTextLabels: true,
+      // a format function to convert default value (e.g. 'Trees') into a different format (e.g. 'Change of Trees')
+    tickFormatFunction: (val: number | string) => {
+      if (typeof val === 'number') {
+        val = val.toString();
+      }
 
-		return `Change of ${val}`;
-	},
+      return `Change of ${val}`;
+    },
   }}
   data={[
     {
-        x: 'Trees',
-        y: -40,
+      x: 'Trees',
+      y: -40,
     },
     //...
   ]}
@@ -153,8 +153,8 @@ Here is an example of extend ticks on y axis and show them as grid lines:
   }}
   data={[
     {
-        x: 'Trees',
-        y: -40,
+      x: 'Trees',
+      y: -40,
     },
     //...
   ]}
@@ -171,8 +171,8 @@ You can provide a custom format function mapping a value from the axis Domain to
   }}
   data={[
     {
-        x: 'Trees',
-        y: -40,
+      x: 'Trees',
+      y: -40,
     },
     //...
   ]}
