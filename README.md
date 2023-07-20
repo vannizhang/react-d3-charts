@@ -27,6 +27,8 @@ npm install @vannizhang/react-d3-charts
 ### [Basic Bar Chart](./src/BarChart/)
 A basic bar chart, or bar graph, is a graph that displays different categories of data with rectangular bars. The lengths of the bars are proportional to the size of the data category they represent.
 
+See [examples](https://vannizhang.github.io/react-d3-charts/?path=/docs/example-barchartbasic--docs).
+
 ```js
 import { BarChartBasic } from '@vannizhang/react-d3-charts'
 
@@ -50,6 +52,8 @@ import { BarChartBasic } from '@vannizhang/react-d3-charts'
 ### [Basic Line Chart](./src/LineChart/)
 A basic line chart is a simple, two-dimensional chart with an X and Y axis. Each point represents a single value, and the data points are joined by a line to depict a trend, usually over time.
 
+See [examples](https://vannizhang.github.io/react-d3-charts/?path=/docs/example-linechartbasic--docs).
+
 ```js
 import { LineChartBasic } from '@vannizhang/react-d3-charts'
 
@@ -72,6 +76,8 @@ import { LineChartBasic } from '@vannizhang/react-d3-charts'
 
 ### [Bar and Line Combo Chart](./src/BarLineComboChart/)
 The Bar and Line Combo Chart is a type of graph that combines two different types of visualization: bar chart and line chart. It is used to display and compare different data series that have different scales or units of measurement. 
+
+See [examples](https://vannizhang.github.io/react-d3-charts/?path=/docs/example-barlinecombochart--docs).
 
 ```js
 import { BarLineComboChart } from '@vannizhang/react-d3-charts'
@@ -98,6 +104,8 @@ import { BarLineComboChart } from '@vannizhang/react-d3-charts'
 ### [Diverging Bar Chart](./src/DivergingBarChart/)
 A diverging bar chart is a type of bar chart that can be used to visualize the spread between values, generally positive and negative.
 
+See [examples](https://vannizhang.github.io/react-d3-charts/?path=/docs/example-divergingbarchart--docs).
+
 ```js
 import { DivergingBarChart } from '@vannizhang/react-d3-charts'
 
@@ -123,6 +131,8 @@ import { DivergingBarChart } from '@vannizhang/react-d3-charts'
 ### [Horizontal Bar Chart](./src/HorizontalBarChart/)
 A horizontal bar chart is a type of graph that uses rectangular bars to present data. The length of the bars is proportional to the values they represent. Horizontal bar charts are used to display comparisons between categories of data.
 
+See [examples](https://vannizhang.github.io/react-d3-charts/?path=/docs/example-horizontalbarchart--docs).
+
 ```js
 import { HorizontalBarChart } from '@vannizhang/react-d3-charts'
 
@@ -145,6 +155,8 @@ import { HorizontalBarChart } from '@vannizhang/react-d3-charts'
 
 ### [Pie Chart](./src/PieChart/)
 Pie charts can be used to summarize a set of nominal data or display the different values of a given variable, such as a percentage distribution. 
+
+See [examples](https://vannizhang.github.io/react-d3-charts/?path=/docs/example-piechart--docs).
 
 ```js
 import { PieChart } from '@vannizhang/react-d3-charts'
@@ -174,6 +186,8 @@ import { PieChart } from '@vannizhang/react-d3-charts'
 
 ### [Sparkline Chart](./src/Sparkline/)
 The Sparkline chart renders a tiny line chart using an array of numbers as input data.
+
+See [examples](https://vannizhang.github.io/react-d3-charts/?path=/docs/example-sparkline--docs).
 
 ```js
 import { Sparkline } from '@vannizhang/react-d3-charts'
