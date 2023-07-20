@@ -85,7 +85,7 @@ type Props = {
 };
 
 /**
- * Divergin Bar Chart can show negative values as well as positive ones.
+ * A diverging bar chart is a type of bar chart that can be used to visualize the spread between values, generally positive and negative.
  * @param param0
  * @returns
  */

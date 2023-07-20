@@ -20,7 +20,8 @@ export type DivergingBarChartDataItem = {
 export type YScaleOptions = {
     /**
      * Custom domain used to create the scale function for the y-axis.
-     * If not provided, the domain will be determined by the maximum absolute values of the `y` property among all items.
+     * If not provided, the maximum value of the domain will be determined by the maximum absolute values of the `y` property among all items.
+     * The minimum value will be the negative value of the maximum value.
      */
     domain?: number[];
 };
