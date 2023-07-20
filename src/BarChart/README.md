@@ -25,7 +25,8 @@ import { BarChartBasic } from '@vannizhang/react-d3-charts'
 
                                                
 ### Examples
-**Basic**
+
+Basic Example
 ---
 
 Here is an example of a basic Bar Chart. Bar charts are effective for representing ordinal or categorical data:
@@ -66,7 +67,7 @@ The `x` field of `BarChartDataItem` can also be a `number`
  />
 ```
 
-**Customized Style**
+Use Customized Styles
 ---
 
 Here is an example of customizing `fill` color and `innerPadding` for the bar rectangles; and the `width`, `height` and `margin` of the chart container.
@@ -92,7 +93,7 @@ Here is an example of customizing `fill` color and `innerPadding` for the bar re
 />
 ```
 
-**Show Tooltip And Reference Line**
+Show Tooltip And Crosshair Reference Line
 ---
 
 Set `showTooltip` to true to show a tooltip when the user hovers over a bar element. 
@@ -117,7 +118,7 @@ Plase make sure the `tooltip` field is included in each `BarChartDataItem`.
 />
 ```
 
-**Customized Options for X Axis at Bottom**
+Customized Options for X Axis at Bottom
 ---
 
 Here is an example of rotate text labels on x axis to provide more space: 
@@ -194,7 +195,7 @@ You can provide a custom format function mapping a value from the axis Domain to
 />
 ```
 
-**Customized Options for Y Axis at left**
+Customized Options for Y Axis at left
 ---
 
 Here is an example of extend ticks on y axis and show them as grid lines: 
@@ -229,7 +230,7 @@ You can indicate number of ticks on y axis that should be rendered, If not provi
 />
 ```
 
-**Customized Options For Y Scale**
+Customized Options For Y Scale
 ---
 
 Here is an example of using customized options for Y Scale. 
@@ -250,7 +251,7 @@ You can provide a custom `domain` used to create the scale function for the y-ax
 />
 ```
 
-**Customized Vertical Reference Lines**
+Customized Vertical Reference Lines
 ---
 
 Here is an example of adding vertical reference lines to the Bar Chart.
