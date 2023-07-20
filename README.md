@@ -556,20 +556,21 @@ import { BarLineComboChart } from '@vannizhang/react-d3-charts'
 ```
 
 ### Props
-| **Name**          | **Type**                                                          | **Default**                                  | **Description**                                                                                     |
-|-------------------|-------------------------------------------------------------------|----------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| data              | [`BarLineComboChartDataItem[]`](./src/BarLineComboChart/types.ts) | -                                            | The data used to render the bar and line combo chart.                                               |
-| showTooltip       | `boolean` (optional)                                              | false                                        | Determines whether to show a tooltip when the user hovers over a bar element.                       |
-| yScaleOptions     | `YScaleOptions` (optional)                                        | -                                            | Options used to customize the scale function for the y-axis.                                        |
-| bottomAxisOptions | [`BottomAxisOptions`](./src/Axis/types.ts) (optional)             | -                                            | Options used to customize the x-axis at bottom.                                                     |
-| leftAxisOptions   | [`LeftAxisOptions`](./src/Axis/types.ts) (optional)               | -                                            | Options used to customize the y-axis at left.                                                       |
-| fill              | `string` (optional)                                               | -                                            | The fill color of the bar rectangles.                                                               |
-| strokeColor       | `string` (optional)                                               | -                                            | The stroke color of the line.                                                                       |
-| strokeWidth       | `number` (optional)                                               | -                                            | The width of the line.                                                                              |
-| innerPadding      | `number` (optional)                                               | 0.2                                          | The inner padding determines the blank space between bands.                                         |
-| width             | `number` (optional)                                               | -                                            | The width of the chart container. If not provided, it will fit the width of the parent container.   |
-| height            | `number` (optional)                                               | -                                            | The height of the chart container. If not provided, it will fit the height of the parent container. |
-| margin            | `SvgContainerMargins` (optional)                                  | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                               |
+| **Name**               | **Type**                                                                     | **Default**                                  | **Description**                                                                                     |
+|------------------------|------------------------------------------------------------------------------|----------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| data                   | [`BarLineComboChartDataItem[]`](./src/BarLineComboChart/types.ts)            | -                                            | The data used to render the bar and line combo chart.                                               |
+| showTooltip            | `boolean` (optional)                                                         | false                                        | Determines whether to show a tooltip when the user hovers over a bar element.                       |
+| yScaleOptions          | `YScaleOptions` (optional)                                                   | -                                            | Options used to customize the scale function for the y-axis.                                        |
+| bottomAxisOptions      | [`BottomAxisOptions`](./src/Axis/types.ts) (optional)                        | -                                            | Options used to customize the x-axis at bottom.                                                     |
+| leftAxisOptions        | [`LeftAxisOptions`](./src/Axis/types.ts) (optional)                          | -                                            | Options used to customize the y-axis at left.                                                       |
+| verticalReferenceLines | [`VerticalReferenceLineData[]`](./src/BarLineComboChart/types.ts) (optional) | -                                            | Data that will be used to draw vertical reference lines.                                            |
+| fill                   | `string` (optional)                                                          | -                                            | The fill color of the bar rectangles.                                                               |
+| strokeColor            | `string` (optional)                                                          | -                                            | The stroke color of the line.                                                                       |
+| strokeWidth            | `number` (optional)                                                          | -                                            | The width of the line.                                                                              |
+| innerPadding           | `number` (optional)                                                          | 0.2                                          | The inner padding determines the blank space between bands.                                         |
+| width                  | `number` (optional)                                                          | -                                            | The width of the chart container. If not provided, it will fit the width of the parent container.   |
+| height                 | `number` (optional)                                                          | -                                            | The height of the chart container. If not provided, it will fit the height of the parent container. |
+| margin                 | `SvgContainerMargins` (optional)                                             | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                               |
 
 ### Examples
 **Basic**
@@ -639,6 +640,30 @@ Plase make sure the `tooltip` field is included in each `BarLineComboChartDataIt
       tooltip: 'this is a tooltip',
     },
     //...
+  ]}
+/>
+```
+
+**Customized Vertical Reference Lines**
+
+Here is an example of adding vertical reference lines to the Bar Chart.
+```js
+<BarLineComboChart
+  data={[
+    {
+      tooltip: 'this is a tooltip',
+      x: '12/1',
+      yBar: 26,
+      yLine: 10
+    },
+    //...
+  ]}
+  showTooltip={true}
+  verticalReferenceLines={[
+    {
+      tooltip: 'tooltip comes with reference line',
+      x: '12/9'
+    }
   ]}
 />
 ```

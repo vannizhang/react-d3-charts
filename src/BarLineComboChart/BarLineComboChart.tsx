@@ -26,7 +26,8 @@ import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 import { VerticalCrosshairLine } from '../CrosshairReferenceLine/VerticalCrosshairLine';
 import Line from './Line';
-import { BarLineComboChartDataItem } from './types';
+import { BarLineComboChartDataItem, VerticalReferenceLineData } from './types';
+import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
 
 export type XScaleBarLineComboChart = ScaleBand<string | number>;
 
@@ -53,6 +54,10 @@ type Props = {
          */
         domain?: number[];
     };
+    /**
+     * Array of data that will be used to draw vertical reference lines
+     */
+    verticalReferenceLines?: VerticalReferenceLineData[];
     /**
      * Options used to customize the x-axis at bottom.
      */
@@ -105,6 +110,7 @@ export const BarLineComboChart: FC<Props> = ({
     yScaleOptions = {},
     bottomAxisOptions = {},
     leftAxisOptions = {},
+    verticalReferenceLines = [],
     fill,
     strokeColor,
     strokeWidth,
@@ -120,6 +126,12 @@ export const BarLineComboChart: FC<Props> = ({
 
     const [hoveredChartItem, setHoveredChartItem] =
         useState<HoveredChartItem>();
+
+    /**
+     * data of the reference line that is currently hovered by the mouse pointer
+     */
+    const [hoveredVerticalReferenceLine, setHoveredVerticalReferenceLine] =
+        useState<VerticalReferenceLineData>();
 
     const xDomain = useMemo(() => {
         if (!data || !data.length) {
@@ -219,12 +231,45 @@ export const BarLineComboChart: FC<Props> = ({
                     xDomain={xDomain}
                     hoveredChartItemOnChange={setHoveredChartItem}
                 />
+
+                {verticalReferenceLines && verticalReferenceLines.length ? (
+                    verticalReferenceLines.map((d) => {
+                        return (
+                            <VerticalReferenceLine
+                                key={d.x}
+                                xPosition={xScale(d.x) + xScale.bandwidth() / 2}
+                                onMouseEnter={setHoveredVerticalReferenceLine.bind(
+                                    null,
+                                    d
+                                )}
+                                onMouseLeave={setHoveredVerticalReferenceLine.bind(
+                                    null,
+                                    null
+                                )}
+                            />
+                        );
+                    })
+                ) : (
+                    <></>
+                )}
             </SvgContainer>
 
             {showTooltip && hoveredChartItem && (
                 <TooltipOnTop
                     content={data[hoveredChartItem.index]?.tooltip}
                     xPosition={hoveredChartItem.xPosition}
+                    dimension={dimension}
+                    margin={margin}
+                />
+            )}
+
+            {hoveredVerticalReferenceLine && (
+                <TooltipOnTop
+                    content={hoveredVerticalReferenceLine.tooltip}
+                    xPosition={
+                        xScale(hoveredVerticalReferenceLine.x) +
+                        xScale.bandwidth() / 2
+                    }
                     dimension={dimension}
                     margin={margin}
                 />
