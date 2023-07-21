@@ -3,12 +3,13 @@ React D3 Charts is a library that offers a collection of simple and reusable cha
 
 ## Table of Conetnt
 - [Installation](#Installation)
-- [Charts](#Charts)
+- [Docs](#Docs)
   - [Basic Bar Chart](./src/BarChart/)
   - [Basic Line Chart](./src/LineChart/)
   - [Bar and Line Combo Chart](./src/BarLineComboChart/)
   - [Diverging Bar Chart](./src/DivergingBarChart/)
   - [Horizontal Bar Chart](./src/HorizontalBarChart/)
+  - [Area Chart](./src/AreaChart/)
   - [Pie Chart](./src/PieChart/)
   - [Sparkline Chart](./src/Sparkline/)
 - [Customizing Chart Styles with CSS Variables](#customizing-common-chart-styles-with-css-variables)
@@ -22,7 +23,7 @@ To use React D3 Charts in your project, install it via npm:
 npm install @vannizhang/react-d3-charts
 ```
 
-## Charts
+## Docs
 
 ### [Basic Bar Chart](./src/BarChart/)
 A basic bar chart, or bar graph, is a graph that displays different categories of data with rectangular bars. The lengths of the bars are proportional to the size of the data category they represent.
@@ -147,6 +148,31 @@ import { HorizontalBarChart } from '@vannizhang/react-d3-charts'
         y: 'Colorado',
         x: 45,
         tooltip: 'this is a tooltip',
+    },
+    //...
+  ]}
+/>
+```
+
+### [Area Chart](./src/AreaChart/)
+An area chart, also known as a mountain chart, is a data visualization that combines the appearance of a line chart and a bar chart. It's similar to a line graph in that data points are plotted and connected by line segments. However, the area below the line is colored in or shaded.
+
+See [examples](https://vannizhang.github.io/react-d3-charts/?path=/docs/example-areachart--docs).
+
+```js
+import { AreaChart } from '@vannizhang/react-d3-charts'
+
+<AreaChart
+  data={[
+    {
+      x: 2013,
+      y: 26,
+      tooltip: 'this is a tooltip',
+    },
+    {
+      x: 2014,
+      y: 38,
+      tooltip: 'this is a tooltip',
     },
     //...
   ]}
