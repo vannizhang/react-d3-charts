@@ -2,7 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 import { AreaChart } from './AreaChart';
-import { data, dataTimestampForX } from './data';
+import {
+    data,
+    dataTimestampForX,
+    elevationProfileData,
+    sp500DailyClosePrice2022,
+} from './data';
+import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof AreaChart> = {
@@ -34,6 +40,90 @@ export const BasicExample: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
+    },
+};
+
+export const KodiakUltraMarathonElevationProfile: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data: elevationProfileData,
+        showTooltip: true,
+        fill: '#778C7E',
+        leftAxisOptions: {
+            showGridLines: true,
+        },
+        yScaleOptions: {
+            domain: [5000, 10000],
+        },
+        bottomAxisOptions: {
+            tickFormatFunction: (val: number | string) => {
+                if (typeof val === 'string') {
+                    return val;
+                }
+
+                return val.toFixed(0) + ' mi';
+            },
+        },
+        verticalReferenceLines: [
+            {
+                x: 11.85,
+                tooltip: 'Sugarloaf - 11.85 mile',
+            },
+            {
+                x: 17.1,
+                tooltip: 'Bear Mountain - 17.1 mile',
+            },
+            {
+                x: 27,
+                tooltip: 'Grandview 3 - 27 mile',
+            },
+        ],
+        margin: {
+            ...DEFAULT_MARGINS,
+            left: 40,
+        },
+    },
+};
+
+// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+export const SP500DailyClosePrice2022: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data: sp500DailyClosePrice2022,
+        showTooltip: true,
+        fill: '#9fe6e5',
+        xScaleOptions: {
+            useTimeScale: true,
+        },
+        yScaleOptions: {
+            domain: [3000, 5000],
+        },
+        leftAxisOptions: {
+            showGridLines: true,
+        },
+        bottomAxisOptions: {
+            showGridLines: true,
+            tickFormatFunction: (val: number | string) => {
+                const monthAbbreviations = [
+                    'Jan',
+                    'Feb',
+                    'Mar',
+                    'Apr',
+                    'May',
+                    'Jun',
+                    'Jul',
+                    'Aug',
+                    'Sep',
+                    'Oct',
+                    'Nov',
+                    'Dec',
+                ];
+
+                const date = new Date(val);
+
+                return monthAbbreviations[date.getMonth()];
+            },
+        },
     },
 };
 

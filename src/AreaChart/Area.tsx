@@ -23,9 +23,10 @@ export const Area: React.FC<Props> = ({
     const areaGroup = React.useRef<SVGGElement>();
 
     const valueArea = useMemo(() => {
+        const [yMin] = yScale.domain();
         return area<AreaChartDataItem>()
             .x((d) => xScale(d.x))
-            .y0(yScale(0))
+            .y0(yScale(yMin))
             .y1((d) => yScale(d.y));
     }, [xScale, yScale]);
 
