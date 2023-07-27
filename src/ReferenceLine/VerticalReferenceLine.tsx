@@ -1,4 +1,4 @@
-import './ReferenceLine.css';
+import './VerticalReferenceLine.css';
 
 import React, { FC, useEffect, useRef } from 'react';
 import { select } from 'd3';
@@ -76,5 +76,7 @@ export const VerticalReferenceLine: FC<Props> = ({
         }
     }, [xPosition, svgContainerData]);
 
-    return <g className="reference-line-group" ref={containerGroupRef} />;
+    return (
+        <g className="vertical-reference-line-group" ref={containerGroupRef} />
+    );
 };

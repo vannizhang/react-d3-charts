@@ -25,9 +25,9 @@
     /*
      * variables that control the style of user provided reference line
      */
-     --reference-line-color: rgba(0,0,255,.8);
-     --reference-line-width: 1px;
-     --reference-line-stroke-dasharray: 2 1;
+     --vertical-reference-line-color: rgba(0,0,255,.8);
+     --vertical-reference-line-width: 1px;
+     --vertical-reference-line-stroke-dasharray: 2 1;
 
     /*
      * variables that control the style of divider line that is used in Diverging Bar Chart and similar

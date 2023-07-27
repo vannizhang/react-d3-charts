@@ -208,7 +208,7 @@ export const CustomizedVerticalReferenceLines: Story = {
         showTooltip: true,
         verticalReferenceLines: [
             {
-                x: 2020,
+                x: 10,
                 tooltip: 'text label with reference line',
             },
         ],
