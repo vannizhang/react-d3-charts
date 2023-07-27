@@ -31,6 +31,8 @@ import {
     YScaleOptions,
 } from './types';
 import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
+import { HorizontalReferenceLineData } from '../ReferenceLine/types';
+import { HorizontalReferenceLine } from '../ReferenceLine/HorizontalReferenceLine';
 
 type XScale = ScaleBand<string | number>;
 
@@ -63,6 +65,10 @@ type Props = {
      * Array of data that will be used to draw vertical reference lines
      */
     verticalReferenceLines?: VerticalReferenceLineData[];
+    /**
+     * Array of data that will be used to draw horizontal reference lines
+     */
+    horizontalReferenceLines?: HorizontalReferenceLineData[];
     /**
      * The fill color of the bar rectangles.
      */
@@ -100,6 +106,7 @@ export const BarChartBasic: FC<Props> = ({
     bottomAxisOptions = {},
     leftAxisOptions = {},
     verticalReferenceLines = [],
+    horizontalReferenceLines = [],
     fill,
     innerPadding = 0.2,
     width,
@@ -212,6 +219,20 @@ export const BarChartBasic: FC<Props> = ({
                                     null,
                                     null
                                 )}
+                            />
+                        );
+                    })
+                ) : (
+                    <></>
+                )}
+
+                {horizontalReferenceLines && horizontalReferenceLines.length ? (
+                    horizontalReferenceLines.map((d) => {
+                        return (
+                            <HorizontalReferenceLine
+                                key={d.y}
+                                yPosition={yScale(d.y)}
+                                label={d.label}
                             />
                         );
                     })
