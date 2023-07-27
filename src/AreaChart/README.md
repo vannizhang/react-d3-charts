@@ -11,19 +11,21 @@ import { AreaChart } from '@vannizhang/react-d3-charts'
 ```
 
 ### Props
-| **Name**               | **Type**                                               | **Default** | **Description**                                                                                     |
-|------------------------|--------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------------------|
-| data                   | [`AreaChartDataItem[]`](./types.ts)                    | -           | An array of `AreaChartDataItem` objects that will be used to plot the area chart.                   |
-| showTooltip            | `boolean` (optional)                                   | false       | If set to true, displays a tooltip when the user hovers over the chart.                             |
-| xScaleOptions          | [`XScaleOptions`](./types.ts) (optional)               | -           | Options used to create a scale function for the x-axis.                                             |
-| yScaleOptions          | [`YScaleOptions`](./types.ts) (optional)               | -           | Options used to create a scale function for the y-axis.                                             |
-| bottomAxisOptions      | [`BottomAxisOptions`](../Axis/types.ts) (optional)     | -           | Options used to customize the x-axis at bottom.                                                     |
-| leftAxisOptions        | [`LeftAxisOptions`](../Axis/types.ts) (optional)       | -           | Options used to customize the y-axis at left.                                                       |
-| verticalReferenceLines | [`VerticalReferenceLineData[]`](./types.ts) (optional) | -           | Data that will be used to draw vertical reference lines.                                            |
-| fill                   | `string` (optional)                                    | -           | The fill color of the area path.                                                                    |
-| width                  | `number` (optional)                                    | -           | The width of the chart container. If not provided, it will fit the width of the parent container.   |
-| height                 | `number` (optional)                                    | -           | The height of the chart container. If not provided, it will fit the height of the parent container. |
-| margin                 | `SvgContainerMargins` (optional)                       | -           | Custom margins for the chart container.                                                             |
+| **Name**                 | **Type**                                                                | **Default** | **Description**                                                                                     |
+|--------------------------|-------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------------------|
+| data                     | [`AreaChartDataItem[]`](./types.ts)                                     | -           | An array of `AreaChartDataItem` objects that will be used to plot the area chart.                   |
+| showTooltip              | `boolean` (optional)                                                    | false       | If set to true, displays a tooltip when the user hovers over the chart.                             |
+| xScaleOptions            | [`XScaleOptions`](./types.ts) (optional)                                | -           | Options used to create a scale function for the x-axis.                                             |
+| yScaleOptions            | [`YScaleOptions`](./types.ts) (optional)                                | -           | Options used to create a scale function for the y-axis.                                             |
+| bottomAxisOptions        | [`BottomAxisOptions`](../Axis/types.ts) (optional)                      | -           | Options used to customize the x-axis at bottom.                                                     |
+| leftAxisOptions          | [`LeftAxisOptions`](../Axis/types.ts) (optional)                        | -           | Options used to customize the y-axis at left.                                                       |
+| verticalReferenceLines   | [`VerticalReferenceLineData[]`](./types.ts) (optional)                  | -           | Data that will be used to draw vertical reference lines.                                            |
+| horizontalReferenceLines | [`HorizontalReferenceLineData[]`](../ReferenceLine/types.ts) (optional) | -           | Data that will be used to draw horizontal reference lines.                                          |
+| fill                     | `string` (optional)                                                     | -           | The fill color of the area path.                                                                    |
+| width                    | `number` (optional)                                                     | -           | The width of the chart container. If not provided, it will fit the width of the parent container.   |
+| height                   | `number` (optional)                                                     | -           | The height of the chart container. If not provided, it will fit the height of the parent container. |
+| margin                   | `SvgContainerMargins` (optional)                                        | -           | Custom margins for the chart container.                                                             |
+
                                            
 **Basic Example**
 ---
@@ -215,7 +217,7 @@ You can provide a custom `domain` used to create the scale function for the y-ax
 />
 ```
 
-**Customized Vertical Reference Lines**
+**Add Customized Vertical Reference Lines**
 ---
 
 Here is an example of adding vertical reference lines to the Area Chart.
@@ -232,6 +234,28 @@ Here is an example of adding vertical reference lines to the Area Chart.
     {
       tooltip: 'text to be displayed',
       x: 2020
+    }
+  ]}
+/>
+```
+
+**Add Customized Horizontal Reference Lines**
+---
+
+Here is an example of adding horizontal reference lines to the Area Chart.
+```js
+<AreaChart
+  data={[
+    {
+      x: 2013,
+      y: 26,
+    },
+    //...
+  ]}
+  horizontalReferenceLines={[
+    {
+      label: 'text label with reference line',
+      y: 35
     }
   ]}
 />

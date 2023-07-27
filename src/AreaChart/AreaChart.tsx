@@ -34,6 +34,8 @@ import {
     YScaleOptions,
 } from './types';
 import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
+import { HorizontalReferenceLineData } from '../ReferenceLine/types';
+import { HorizontalReferenceLine } from '../ReferenceLine/HorizontalReferenceLine';
 
 type XScale = ScaleLinear<number, number> | ScaleTime<number, number>;
 
@@ -69,6 +71,10 @@ type Props = {
      */
     verticalReferenceLines?: VerticalReferenceLineData[];
     /**
+     * Array of data that will be used to draw horizontal reference lines
+     */
+    horizontalReferenceLines?: HorizontalReferenceLineData[];
+    /**
      * fill color of the area
      */
     fill?: string;
@@ -100,6 +106,7 @@ export const AreaChart: FC<Props> = ({
     bottomAxisOptions = {},
     leftAxisOptions = {},
     verticalReferenceLines = [],
+    horizontalReferenceLines = [],
     width,
     height,
     margin = DEFAULT_MARGINS,
@@ -205,6 +212,20 @@ export const AreaChart: FC<Props> = ({
                                     null,
                                     null
                                 )}
+                            />
+                        );
+                    })
+                ) : (
+                    <></>
+                )}
+
+                {horizontalReferenceLines && horizontalReferenceLines.length ? (
+                    horizontalReferenceLines.map((d) => {
+                        return (
+                            <HorizontalReferenceLine
+                                key={d.y}
+                                yPosition={yScale(d.y)}
+                                label={d.label}
                             />
                         );
                     })
