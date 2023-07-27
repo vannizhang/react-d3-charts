@@ -103,3 +103,76 @@ export const dataTimestampForX = [
         y: 20,
     },
 ];
+
+export const californiaUnemploymentData = [
+    {
+        x: 1,
+        y: 4,
+        tooltip: 'Unemployment Rate: 4%',
+    },
+    {
+        x: 2,
+        y: 3.7,
+        tooltip: 'Unemployment Rate: 3.7%',
+    },
+    {
+        x: 3,
+        y: 4.1,
+        tooltip: 'Unemployment Rate: 4.1%',
+    },
+    {
+        x: 4,
+        y: 4.1,
+        tooltip: 'Unemployment Rate: 4.1%',
+    },
+    {
+        x: 5,
+        y: 4.1,
+        tooltip: 'Unemployment Rate: 4.1%',
+    },
+    {
+        x: 6,
+        y: 3.7,
+        tooltip: 'Unemployment Rate: 3.7%',
+    },
+    {
+        x: 7,
+        y: 3.9,
+        tooltip: 'Unemployment Rate: 3.9%',
+    },
+    {
+        x: 8,
+        y: 4,
+        tooltip: 'Unemployment Rate: 4%',
+    },
+    {
+        x: 9,
+        y: 3.9,
+        tooltip: 'Unemployment Rate: 3.9%',
+    },
+    {
+        x: 10,
+        y: 4.6,
+        tooltip: 'Unemployment Rate: 4.6%',
+    },
+    {
+        x: 11,
+        y: 4.8,
+        tooltip: 'Unemployment Rate: 4.8%',
+    },
+    {
+        x: 12,
+        y: 4.8,
+        tooltip: 'Unemployment Rate: 4.8%',
+    },
+    {
+        x: 13,
+        y: 4.3,
+        tooltip: 'Unemployment Rate: 4.3%',
+    },
+    {
+        x: 14,
+        y: 4.5,
+        tooltip: 'Unemployment Rate: 4.5%',
+    },
+];

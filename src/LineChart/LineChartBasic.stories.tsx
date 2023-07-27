@@ -2,7 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 import { LineChartBasic } from './LineChartBasic';
-import { data, dataTimestampForX } from './data';
+import {
+    californiaUnemploymentData,
+    data,
+    dataTimestampForX,
+} from './examples.data';
+import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof LineChartBasic> = {
@@ -34,6 +39,50 @@ export const BasicExample: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
+    },
+};
+
+export const CaliforniaUnemploymentRateApril2022ToMay2023: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data: californiaUnemploymentData,
+        showTooltip: true,
+        stroke: 'rgba(20,106,164,1)',
+        yScaleOptions: {
+            domain: [3, 5],
+        },
+        leftAxisOptions: {
+            tickFormatFunction: (val: number) => {
+                return `${val.toFixed(1)}%`;
+            },
+        },
+        bottomAxisOptions: {
+            tickFormatFunction: (val, index) => {
+                const tickValues = [
+                    '2022 Apr',
+                    'May',
+                    'Jun',
+                    'Jul',
+                    'Aug',
+                    'Sep',
+                    'Oct',
+                    'Nov',
+                    'Dec',
+                    '2023 Jan',
+                    'Feb',
+                    'Mar',
+                    'Apr',
+                    'May',
+                ];
+
+                return tickValues[index as number];
+            },
+            showGridLines: true,
+        },
+        margin: {
+            ...DEFAULT_MARGINS,
+            left: 40,
+        },
     },
 };
 

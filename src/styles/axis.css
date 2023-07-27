@@ -4,6 +4,7 @@
 
 .axis .tick line {
     stroke: var(--axis-tick-line-color);
+    pointer-events: none;
 }
 
 .axis .domain {
@@ -12,4 +13,5 @@
 
 .axis.show-grid .tick line {
     stroke-dasharray: 1 1;
+    pointer-events: none;
 }
