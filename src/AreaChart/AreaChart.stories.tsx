@@ -7,7 +7,7 @@ import {
     dataTimestampForX,
     elevationProfileData,
     sp500DailyClosePrice2022,
-} from './data';
+} from './examples.data';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

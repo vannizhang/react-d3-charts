@@ -2,7 +2,7 @@
     /*
      * variables that control the style of the axis tick line and text
      */
-    --axis-tick-line-color: #303030;
+    --axis-tick-line-color: rgba(0,0,0,.5);
     --axis-tick-text-color: #303030;
 
     /*

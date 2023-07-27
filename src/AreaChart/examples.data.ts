@@ -1,52 +1,62 @@
 export const data = [
     {
-        x: 2013,
+        x: 1,
         y: 26,
         tooltip: 'this is a tooltip',
     },
     {
-        x: 2014,
+        x: 2,
         y: 38,
         tooltip: 'this is a <strong>tooltip</strong>',
     },
     {
-        x: 2015,
+        x: 3,
         y: 10,
         tooltip: 'this is <br/>a tooltip',
     },
     {
-        x: 2016,
+        x: 4,
         y: 45,
         tooltip: 'this is a tooltip',
     },
     {
-        x: 2017,
+        x: 5,
         y: 10,
         tooltip: 'this is a tooltip',
     },
     {
-        x: 2018,
+        x: 6,
         y: 12,
         tooltip: 'this is a tooltip',
     },
     {
-        x: 2019,
+        x: 7,
         y: 15,
         tooltip: 'this is a tooltip',
     },
     {
-        x: 2020,
+        x: 8,
         y: 7,
         tooltip: 'this is a tooltip',
     },
     {
-        x: 2021,
+        x: 9,
         y: 23,
         tooltip: 'this is a tooltip',
     },
     {
-        x: 2022,
+        x: 10,
         y: 20,
+        tooltip: 'this is a tooltip',
+    },
+    {
+        x: 11,
+        y: 17,
+        tooltip: 'this is a tooltip',
+    },
+    {
+        x: 12,
+        y: 30,
         tooltip: 'this is a tooltip',
     },
 ];
