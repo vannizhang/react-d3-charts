@@ -10,6 +10,7 @@ React D3 Charts is a library that offers a collection of simple and reusable cha
   - [Diverging Bar Chart](./src/DivergingBarChart/)
   - [Horizontal Bar Chart](./src/HorizontalBarChart/)
   - [Area Chart](./src/AreaChart/)
+  - [Multiple Lines Chart](./src/MultipleLinesChart/)
   - [Pie Chart](./src/PieChart/)
   - [Sparkline Chart](./src/Sparkline/)
 - [Customizing Chart Styles with CSS Variables](#customizing-common-chart-styles-with-css-variables)
@@ -178,6 +179,59 @@ import { AreaChart } from '@vannizhang/react-d3-charts'
   ]}
 />
 ```
+
+### [Multiple Lines Chart](./src/MultipleLinesChart/)
+A multi-line chart is a basic line chart with one or more additional lines that represent comparison trends.  You can use a line graph with multiple lines to display the trend of key data points over time. 
+
+See [examples](https://vannizhang.github.io/react-d3-charts/?path=/docs/example-multiplelineschart--docs).
+
+```js
+import { MultipleLinesChart } from '@vannizhang/react-d3-charts'
+
+<MultipleLinesChart
+  data={[
+    {
+      fill: '#3b5998',
+      key: 'Meta',  
+      values: [
+        {
+          x: 1,
+          y: 313.26001
+        },
+        {
+          x: 2,
+          y: 211.029999
+        },
+        {
+          x: 3,
+          y: 222.360001
+        },
+        //...
+      ]
+    },
+    {
+      fill: '#7FBA00',
+      key: 'Microsoft',
+      values: [
+        {
+          x: 1,
+          y: 310.980011
+        },
+        {
+          x: 2,
+          y: 298.790009
+        },
+        {
+          x: 3,
+          y: 308.309998
+        },
+        //...
+      ]
+    }
+  ]}
+/>
+```
+
 
 ### [Pie Chart](./src/PieChart/)
 Pie charts can be used to summarize a set of nominal data or display the different values of a given variable, such as a percentage distribution. 
