@@ -79,6 +79,12 @@ export const CaliforniaUnemploymentRateApril2022ToMay2023: Story = {
             },
             showGridLines: true,
         },
+        horizontalReferenceLines: [
+            {
+                y: 3.6,
+                label: '2022 national average: 3.6%',
+            },
+        ],
         margin: {
             ...DEFAULT_MARGINS,
             left: 40,
@@ -86,7 +92,7 @@ export const CaliforniaUnemploymentRateApril2022ToMay2023: Story = {
     },
 };
 
-export const CustomizedStyles: Story = {
+export const CustomizeChartStyles: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
@@ -97,7 +103,7 @@ export const CustomizedStyles: Story = {
     },
 };
 
-export const ShowTooltipAndReferenceLine: Story = {
+export const ShowTooltipAndCrosshairReferenceLine: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
@@ -105,7 +111,7 @@ export const ShowTooltipAndReferenceLine: Story = {
     },
 };
 
-export const CustomizedXAxisOptions: Story = {
+export const CustomizeXAxis: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
@@ -120,7 +126,7 @@ export const CustomizedXAxisOptions: Story = {
     },
 };
 
-export const CustomizedYAxisOptions: Story = {
+export const CustomizeYAxis: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
@@ -134,7 +140,7 @@ export const CustomizedYAxisOptions: Story = {
     },
 };
 
-export const CustomizedOptionsForXScale: Story = {
+export const UseTimeScaleForXScale: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data: dataTimestampForX,
@@ -150,36 +156,50 @@ export const CustomizedOptionsForXScale: Story = {
     },
 };
 
-export const CustomizedOptionsForXScaleUseCustomizedDomain: Story = {
+export const UseCustomizedDomainForXScale: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
         xScaleOptions: {
-            domain: [2013, 2025],
+            domain: [1, 24],
         },
     },
 };
 
-export const CustomizedOptionsForYScale: Story = {
+export const UseCustomizedDomainForYScale: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
         showTooltip: true,
         yScaleOptions: {
-            domain: [0, 200],
+            domain: [0, 100],
         },
     },
 };
 
-export const CustomizedVerticalReferenceLines: Story = {
+export const AddVerticalReferenceLines: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
         showTooltip: true,
         verticalReferenceLines: [
             {
-                x: 2020,
+                x: 10,
                 tooltip: 'text label with reference line',
+            },
+        ],
+    },
+};
+
+export const AddHorizontalReferenceLines: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        showTooltip: true,
+        horizontalReferenceLines: [
+            {
+                y: 30,
+                label: 'text label with reference line',
             },
         ],
     },

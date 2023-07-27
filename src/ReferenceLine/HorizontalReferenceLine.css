@@ -1,0 +1,15 @@
+.reference-line-group {
+    pointer-events: none;
+}
+
+.horizontal-reference-line-group line {
+    pointer-events: none;
+    stroke: var(--horizontal-reference-line-color);
+    /* stroke-width: var(--horizontal-reference-line-width); */
+    stroke-dasharray: var(--horizontal-reference-line-stroke-dasharray);
+}
+
+.horizontal-reference-line-group text {
+    font-size: var(--horizontal-reference-line-label-text-size);
+    fill: var(--horizontal-reference-line-label-text-color);
+}

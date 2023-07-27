@@ -18,6 +18,7 @@ import { LineChartBasic } from '@vannizhang/react-d3-charts'
 | bottomAxisOptions      | [`BottomAxisOptions`](../Axis/types.ts) (optional)                   | -           | Options used to customize the x-axis at bottom.                                                     |
 | leftAxisOptions        | [`LeftAxisOptions`](../Axis/types.ts) (optional)                     | -           | Options used to customize the y-axis at left.                                                       |
 | verticalReferenceLines | [`VerticalReferenceLineData[]`](./types.ts) (optional)               | -           | Data that will be used to draw vertical reference lines.                                            |
+| horizontalReferenceLines | [`HorizontalReferenceLineData[]`](../ReferenceLine/types.ts) (optional)               | -           | Data that will be used to draw horizontal reference lines.                                            |
 | stroke                 | `string` (optional)                                                  | -           | The stroke color of the line.                                                                       |
 | strokeWidth            | `number` (optional)                                                  | -           | The width of the line.                                                                              |
 | width                  | `number` (optional)                                                  | -           | The width of the chart container. If not provided, it will fit the width of the parent container.   |
@@ -236,7 +237,7 @@ You can provide a custom `domain` used to create the scale function for the y-ax
 />
 ```
 
-**Customized Vertical Reference Lines**
+**Show Vertical Reference Lines**
 ---
 
 Here is an example of adding vertical reference lines to the Line Chart.
@@ -254,6 +255,29 @@ Here is an example of adding vertical reference lines to the Line Chart.
       tooltip: 'text to be displayed',
       x: 2020
     }
+  ]}
+/>
+```
+
+
+**Show Horizontal Reference Lines**
+---
+
+Here is an example of adding horizontal reference lines to the Line Chart.
+```js
+<LineChartBasic
+  data={[
+    {
+      x: 2013,
+      y: 26,
+    },
+    //...
+  ]}
+  horizontalReferenceLines={[
+    {
+        y: 30,
+        label: 'national average: 30',
+    },
   ]}
 />
 ```
