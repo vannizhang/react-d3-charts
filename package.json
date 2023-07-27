@@ -16,7 +16,8 @@
     "version": "npm run lint && git add -A src",
     "postversion": "git push && git push --tags",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "rimraf docs && storybook build -o docs"
+    "build-storybook": "rimraf docs && storybook build -o docs",
+    "postbuild-storybook": "git add . && git commit -m \"chore: rebuild storybook\" && git push origin master && git push origin master:gh-pages"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,json}": [
