@@ -9,21 +9,21 @@ import { LineChartBasic } from '@vannizhang/react-d3-charts'
 ```
 
 ### Props
-| **Name**               | **Type**                                                             | **Default** | **Description**                                                                                     |
-|------------------------|----------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------------------|
-| data                   | [`LineChartDataItem[]`](./types.ts)                                  | -           | An array of `LineChartDataItem` objects that will be used to plot the line chart.                   |
-| showTooltip            | `boolean` (optional)                                                 | false       | If set to true, displays a tooltip when the user hovers over the chart.                             |
-| xScaleOptions          | [`XScaleOptions`](./types.ts) (optional)                             | -           | Options used to create a scale function for the x-axis.                                             |
-| yScaleOptions          | [`YScaleOptions`](./types.ts) (optional)                             | -           | Options used to create a scale function for the y-axis.                                             |
-| bottomAxisOptions      | [`BottomAxisOptions`](../Axis/types.ts) (optional)                   | -           | Options used to customize the x-axis at bottom.                                                     |
-| leftAxisOptions        | [`LeftAxisOptions`](../Axis/types.ts) (optional)                     | -           | Options used to customize the y-axis at left.                                                       |
-| verticalReferenceLines | [`VerticalReferenceLineData[]`](./types.ts) (optional)               | -           | Data that will be used to draw vertical reference lines.                                            |
-| horizontalReferenceLines | [`HorizontalReferenceLineData[]`](../ReferenceLine/types.ts) (optional)               | -           | Data that will be used to draw horizontal reference lines.                                            |
-| stroke                 | `string` (optional)                                                  | -           | The stroke color of the line.                                                                       |
-| strokeWidth            | `number` (optional)                                                  | -           | The width of the line.                                                                              |
-| width                  | `number` (optional)                                                  | -           | The width of the chart container. If not provided, it will fit the width of the parent container.   |
-| height                 | `number` (optional)                                                  | -           | The height of the chart container. If not provided, it will fit the height of the parent container. |
-| margin                 | `SvgContainerMargins` (optional)                                     | -           | Custom margins for the chart container.                                                             |
+| **Name**                 | **Type**                                                                | **Default** | **Description**                                                                                     |
+|--------------------------|-------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------------------|
+| data                     | [`LineChartDataItem[]`](./types.ts)                                     | -           | An array of `LineChartDataItem` objects that will be used to plot the line chart.                   |
+| showTooltip              | `boolean` (optional)                                                    | false       | If set to true, displays a tooltip when the user hovers over the chart.                             |
+| xScaleOptions            | [`XScaleOptions`](./types.ts) (optional)                                | -           | Options used to create a scale function for the x-axis.                                             |
+| yScaleOptions            | [`YScaleOptions`](./types.ts) (optional)                                | -           | Options used to create a scale function for the y-axis.                                             |
+| bottomAxisOptions        | [`BottomAxisOptions`](../Axis/types.ts) (optional)                      | -           | Options used to customize the x-axis at bottom.                                                     |
+| leftAxisOptions          | [`LeftAxisOptions`](../Axis/types.ts) (optional)                        | -           | Options used to customize the y-axis at left.                                                       |
+| verticalReferenceLines   | [`VerticalReferenceLineData[]`](./types.ts) (optional)                  | -           | Data that will be used to draw vertical reference lines.                                            |
+| horizontalReferenceLines | [`HorizontalReferenceLineData[]`](../ReferenceLine/types.ts) (optional) | -           | Data that will be used to draw horizontal reference lines.                                          |
+| stroke                   | `string` (optional)                                                     | -           | The stroke color of the line.                                                                       |
+| strokeWidth              | `number` (optional)                                                     | -           | The width of the line.                                                                              |
+| width                    | `number` (optional)                                                     | -           | The width of the chart container. If not provided, it will fit the width of the parent container.   |
+| height                   | `number` (optional)                                                     | -           | The height of the chart container. If not provided, it will fit the height of the parent container. |
+| margin                   | `SvgContainerMargins` (optional)                                        | -           | Custom margins for the chart container.                                                             |
 
                                                    
 
