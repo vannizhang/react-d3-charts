@@ -37,7 +37,7 @@ export const BasicExample: Story = {
     },
 };
 
-export const CustomizedStyles: Story = {
+export const CustomizeChartStyles: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
@@ -57,7 +57,7 @@ export const ShowTooltipAndReferenceLine: Story = {
     },
 };
 
-export const CustomizedXAxisOptions: Story = {
+export const CustomizeBottomAxis: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
@@ -88,7 +88,7 @@ export const CustomizedXAxisOptions: Story = {
     },
 };
 
-export const CustomizedYAxisOptions: Story = {
+export const CustomizeLeftAxis: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
@@ -99,7 +99,7 @@ export const CustomizedYAxisOptions: Story = {
     },
 };
 
-export const CustomizedOptionsForYScale: Story = {
+export const UseCustomizedDomainForYScale: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
@@ -109,7 +109,7 @@ export const CustomizedOptionsForYScale: Story = {
     },
 };
 
-export const CustomizedVerticalReferenceLines: Story = {
+export const AddVerticalReferenceLines: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
@@ -118,6 +118,20 @@ export const CustomizedVerticalReferenceLines: Story = {
             {
                 x: '12/9',
                 tooltip: 'tooltip comes with reference line',
+            },
+        ],
+    },
+};
+
+export const AddHorizontalReferenceLines: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        showTooltip: true,
+        horizontalReferenceLines: [
+            {
+                y: 35,
+                label: 'text label with reference line',
             },
         ],
     },

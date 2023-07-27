@@ -28,6 +28,8 @@ import { VerticalCrosshairLine } from '../CrosshairReferenceLine/VerticalCrossha
 import Line from './Line';
 import { BarLineComboChartDataItem, VerticalReferenceLineData } from './types';
 import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
+import { HorizontalReferenceLine } from '../ReferenceLine/HorizontalReferenceLine';
+import { HorizontalReferenceLineData } from '../ReferenceLine/types';
 
 export type XScaleBarLineComboChart = ScaleBand<string | number>;
 
@@ -58,6 +60,10 @@ type Props = {
      * Array of data that will be used to draw vertical reference lines
      */
     verticalReferenceLines?: VerticalReferenceLineData[];
+    /**
+     * Array of data that will be used to draw horizontal reference lines
+     */
+    horizontalReferenceLines?: HorizontalReferenceLineData[];
     /**
      * Options used to customize the x-axis at bottom.
      */
@@ -111,6 +117,7 @@ export const BarLineComboChart: FC<Props> = ({
     bottomAxisOptions = {},
     leftAxisOptions = {},
     verticalReferenceLines = [],
+    horizontalReferenceLines = [],
     fill,
     strokeColor,
     strokeWidth,
@@ -246,6 +253,20 @@ export const BarLineComboChart: FC<Props> = ({
                                     null,
                                     null
                                 )}
+                            />
+                        );
+                    })
+                ) : (
+                    <></>
+                )}
+
+                {horizontalReferenceLines && horizontalReferenceLines.length ? (
+                    horizontalReferenceLines.map((d) => {
+                        return (
+                            <HorizontalReferenceLine
+                                key={d.y}
+                                yPosition={yScale(d.y)}
+                                label={d.label}
                             />
                         );
                     })
