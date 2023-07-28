@@ -50,7 +50,7 @@ Here is an example of plotting a Pie chart.
 />
 ```
 
-**Customized Styles**
+Customized Styles
 ---
 
 Here is an example of using customized colors for each slice:
@@ -74,7 +74,36 @@ Here is an example of using customized colors for each slice:
 />
 ```
 
-You can create a donut pie chart:
+Show Tooltip
+---
+
+Set `showTooltip` to true to show a tooltip when the user hovers Pie Chart arc. 
+
+Plase make sure the `tooltip` field is included in each `PieChartDataItem`.
+```js
+<PieChart
+  showTooltip={true}
+  data={[
+    {
+      key: 'CA',
+      value: 2,
+      tooltip: 'this is a tooltip',
+      color: 'steelblue'
+    },
+    {
+      key: 'CO',
+      value: 4,
+      tooltip: 'this is a tooltip',
+      color: 'skyblue'
+    },
+    //...
+  ]}
+/>
+```
+
+Create a donut pie chart
+---
+
 ```js
 <PieChart
   isDonut={true}
@@ -90,7 +119,11 @@ You can create a donut pie chart:
 />
 ```
 
-You can create a half pie chart, it is recommended to specify the dimension of the container as a rectangle instead of a square. This will ensure that the half pie chart fits properly into the container.
+Create a half pie chart
+---
+
+it is recommended to specify the dimension of the container as a rectangle instead of a square. This will ensure that the half pie chart fits properly into the container.
+
 ```js
 <PieChart
   isHalfPie={true}
