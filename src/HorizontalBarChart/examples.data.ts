@@ -1,27 +1,27 @@
-export const data = [
+export const top5StatesBy2022GDP = [
     {
         y: 'California',
-        x: 50,
+        x: 3598,
         tooltip: 'this is a tooltip',
     },
     {
-        y: 'Colorado',
-        x: 45,
+        y: 'Texas',
+        x: 2356,
         tooltip: 'this is a tooltip',
     },
     {
-        y: 'Delaware',
-        x: 35,
+        y: 'New York',
+        x: 2053,
         tooltip: 'this is a tooltip',
     },
     {
         y: 'Florida',
-        x: 30,
+        x: 1389,
         tooltip: 'this is a tooltip',
     },
     {
-        y: 'Georgia',
-        x: 25,
+        y: 'Illinois',
+        x: 1033,
         tooltip: 'this is a tooltip',
     },
 ];

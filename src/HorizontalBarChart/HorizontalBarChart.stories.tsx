@@ -2,7 +2,10 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { HorizontalBarChart } from './HorizontalBarChart';
-import { california2022GDPByIndustry, data } from './examples.data';
+import {
+    california2022GDPByIndustry,
+    top5StatesBy2022GDP,
+} from './examples.data';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof HorizontalBarChart> = {
@@ -33,7 +36,7 @@ type Story = StoryObj<typeof HorizontalBarChart>;
 export const BasicExample: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
-        data,
+        data: top5StatesBy2022GDP,
         margin: {
             left: 100,
             right: 15,
@@ -64,14 +67,14 @@ export const California2022GDPByIndustryInBillionDollar: Story = {
     },
 };
 
-export const CustomizedStyles: Story = {
+export const CustomizeChartStyles: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
-        data,
+        data: top5StatesBy2022GDP,
         fill: 'orange',
         innerPadding: 0.3,
         // width: 300,
-        height: 400,
+        height: 300,
         margin: {
             left: 100,
             right: 15,
@@ -81,13 +84,21 @@ export const CustomizedStyles: Story = {
     },
 };
 
-export const CustomizedLeftAxisOptions: Story = {
+export const CustomizeLeftAxis: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
-        data,
+        data: top5StatesBy2022GDP,
         leftAxisOptions: {
             tickFormatFunction: (val: number | string) => {
                 val = typeof val === 'number' ? val.toString() : val;
+
+                if (val === 'New York') {
+                    return 'NY';
+                }
+
+                if (val === 'Texas') {
+                    return 'TX';
+                }
 
                 return val.slice(0, 2).toUpperCase();
             },
@@ -96,15 +107,15 @@ export const CustomizedLeftAxisOptions: Story = {
     },
 };
 
-export const CustomizedBottomAxisOptions: Story = {
+export const CustomizeBottomAxis: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
-        data,
+        data: top5StatesBy2022GDP,
         bottomAxisOptions: {
             showGridLines: true,
-            numberOfTicks: 10,
+            numberOfTicks: 3,
             tickFormatFunction: (val: string | number) => {
-                return `$${val}`;
+                return `${val} Billion Dollar`;
             },
         },
         height: 300,
@@ -117,15 +128,12 @@ export const CustomizedBottomAxisOptions: Story = {
     },
 };
 
-export const CustomizedOptionsForXScale: Story = {
+export const useCustomizedDomainForXScale: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
-        data,
+        data: top5StatesBy2022GDP,
         xScaleOptions: {
-            domain: [0, 100],
-        },
-        bottomAxisOptions: {
-            showGridLines: true,
+            domain: [0, 5000],
         },
         height: 300,
         margin: {
