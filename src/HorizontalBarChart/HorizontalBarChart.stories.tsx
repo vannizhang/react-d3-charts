@@ -2,7 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { HorizontalBarChart } from './HorizontalBarChart';
-import { data } from './data';
+import { california2022GDPByIndustry, data } from './examples.data';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof HorizontalBarChart> = {
@@ -43,12 +43,26 @@ export const BasicExample: Story = {
     },
 };
 
-// export const BasicExampleNumericaValueForXAxis: Story = {
-//     // More on args: https://storybook.js.org/docs/react/writing-stories/args
-//     args: {
-//         data: dataNumbericalX,
-//     },
-// };
+export const California2022GDPByIndustryInBillionDollar: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data: california2022GDPByIndustry,
+        fill: '#2890ce',
+        xScaleOptions: {
+            domain: [0, 600],
+        },
+        bottomAxisOptions: {
+            showGridLines: true,
+        },
+        margin: {
+            left: 300,
+            right: 15,
+            top: 30,
+            bottom: 30,
+        },
+        height: 500,
+    },
+};
 
 export const CustomizedStyles: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
