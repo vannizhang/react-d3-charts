@@ -4,7 +4,7 @@ A horizontal bar chart is a type of graph that uses rectangular bars to present 
 
 The length of the bars is proportional to the values they represent. Horizontal bar charts are used to display comparisons between categories of data.
 
-See [exmaples](https://vannizhang.github.io/react-d3-charts/?path=/docs/example-barlinecombochart--docs).
+See [exmaples](https://vannizhang.github.io/react-d3-charts/?path=/docs/example-horizontalbarchart--docs).
 
 ### Usage
 ```sh
