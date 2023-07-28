@@ -1,12 +1,18 @@
-import React, { FC, useEffect, useRef } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { schemeSet2, select, arc, pie } from 'd3';
 import { PieChartDataItem } from './types';
+import { Tooltip, TooltipPosition } from './Tooltip';
+import '../styles/variables.css';
 
 type Props = {
     /**
      * data that will be used to plot the Pie Chart
      */
     data: PieChartDataItem[];
+    /**
+     * if true, show tooltip when user hover the Pie Chart
+     */
+    showTooltip: boolean;
     /**
      * if true, a pie chart with a hole in the center, which makes it look like an donut
      */
@@ -44,6 +50,7 @@ const ColorRamp = schemeSet2;
 
 export const PieChart: FC<Props> = ({
     data,
+    showTooltip,
     isDonut,
     isHalfPie,
     width,
@@ -53,32 +60,22 @@ export const PieChart: FC<Props> = ({
     onMouseLeave,
 }: Props) => {
     const containerRef = useRef<HTMLDivElement>();
+    const svgRef = useRef<SVGSVGElement>();
+    const rootGroupRef = useRef<SVGGElement>();
+
+    const [itemOnHOver, setItemOnHover] = useState<PieChartDataItem>();
+
+    const [tooltipPosition, setTooltipPosition] = useState<TooltipPosition>();
 
     const draw = () => {
         const container = containerRef.current;
-
         const width = container.offsetWidth;
         const height = container.offsetHeight;
 
+        // const arcGroup = select(container).select(`.${ARC_GROUP_CLASSNAME}`);
+        const arcGroup = select(rootGroupRef.current);
+
         const radius = isHalfPie ? width / 2 : Math.min(width, height) / 2;
-
-        const translate = {
-            width: width * 0.5,
-            height: isHalfPie ? height : height * 0.5,
-        };
-
-        select(container)
-            .append<SVGElement>('svg')
-            .attr('width', width)
-            .attr('height', height)
-            .append('g')
-            .attr('class', ARC_GROUP_CLASSNAME)
-            .attr(
-                'transform',
-                `translate(${translate.width}, ${translate.height})`
-            );
-
-        const arcGroup = select(container).select(`.${ARC_GROUP_CLASSNAME}`);
 
         const arcGenerator = arc<any>()
             .innerRadius(
@@ -129,11 +126,28 @@ export const PieChart: FC<Props> = ({
                 if (onMouseEnter) {
                     onMouseEnter(d.data);
                 }
+
+                setItemOnHover(d.data);
             })
             .on('mouseleave', function (evt) {
                 if (onMouseLeave) {
                     onMouseLeave();
                 }
+
+                setItemOnHover(null);
+                setTooltipPosition(null);
+            })
+            .on('mousemove', function (evt: MouseEvent) {
+                if (!showTooltip) {
+                    return;
+                }
+
+                // console.log('mouse is moving', evt)
+
+                setTooltipPosition({
+                    x: evt.offsetX,
+                    y: evt.offsetY,
+                });
             });
     };
 
@@ -145,9 +159,36 @@ export const PieChart: FC<Props> = ({
         <div
             ref={containerRef}
             style={{
+                position: 'relative',
                 width: width || '100%',
                 height: height || '100%',
             }}
-        ></div>
+        >
+            <svg
+                ref={svgRef}
+                style={{
+                    position: 'relative',
+                    width: '100%',
+                    height: '100%',
+                }}
+            >
+                <g
+                    className={ARC_GROUP_CLASSNAME}
+                    ref={rootGroupRef}
+                    style={{
+                        transform: `translate(50%, ${
+                            isHalfPie ? '100%' : '50%'
+                        })`,
+                    }}
+                ></g>
+            </svg>
+
+            {showTooltip && itemOnHOver ? (
+                <Tooltip
+                    content={itemOnHOver?.tooltip}
+                    position={tooltipPosition}
+                />
+            ) : null}
+        </div>
     );
 };

@@ -12,6 +12,7 @@ import { PieChart } from '@vannizhang/react-d3-charts'
 | **Name**     | **Type**                                        | **Default** | **Description**                                                                                     |
 |--------------|-------------------------------------------------|-------------|-----------------------------------------------------------------------------------------------------|
 | data         | [`PieChartDataItem[]`](./types.ts)              | -           | Data that will be used to plot the Pie Chart.                                                       |
+| showTooltip  | `boolean` (optional)                            | -           | if true, display tooltip when user hovers a Pie Chart arc.                                          |
 | isDonut      | `boolean` (optional)                            | -           | if true, a pie chart with a hole in the center, which makes it look like an donut.                  |
 | isHalfPie    | `boolean` (optional)                            | -           | if true, create half pie chart is a 180 degree graph that represents the composition of a whole.    |
 | width        | `number` (optional)                             | -           | The width of the chart container. If not provided, it will fit the width of the parent container.   |

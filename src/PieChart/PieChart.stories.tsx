@@ -34,8 +34,8 @@ export const BasicExample: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
-        width: 120,
-        height: 120,
+        width: 200,
+        height: 200,
     },
 };
 
@@ -45,8 +45,8 @@ export const DonutChartExample: Story = {
     args: {
         data,
         isDonut: true,
-        width: 120,
-        height: 120,
+        width: 200,
+        height: 200,
     },
 };
 
@@ -57,20 +57,31 @@ export const HalfDonutChartExample: Story = {
         data,
         isDonut: true,
         isHalfPie: true,
-        width: 120,
-        height: 60,
+        width: 200,
+        height: 100,
     },
 };
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-export const CustomEventsExample: Story = {
+export const ShowTooltip: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
-        width: 120,
-        height: 120,
+        showTooltip: true,
+        width: 200,
+        height: 200,
+    },
+};
+
+// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+export const AddCustomEvents: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        width: 200,
+        height: 200,
         onClick: (data) => {
-            console.log('clicked on a pie chart path', data);
+            alert('clicked on a pie chart ' + data.tooltip);
         },
         onMouseEnter: (data) => {
             console.log('mouse pointer has entered pie chart path', data);

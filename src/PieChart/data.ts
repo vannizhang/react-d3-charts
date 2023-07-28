@@ -3,18 +3,18 @@ export const data = [
         key: 'CA',
         value: 2,
         color: 'skyblue',
-        tooltip: 'this is a tooltip',
+        tooltip: 'California: 2',
     },
     {
         key: 'CO',
         value: 4,
         color: 'pink',
-        tooltip: 'this is a tooltip',
+        tooltip: 'Colorado: 4',
     },
     {
         key: 'CT',
         value: 3,
         color: 'steelblue',
-        tooltip: 'this is a tooltip',
+        tooltip: 'Connecticut: 3',
     },
 ];
