@@ -6,50 +6,62 @@ export const data = [
             {
                 x: 1,
                 y: 313.26001,
+                tooltip: `meta: $313`,
             },
             {
                 x: 2,
                 y: 211.029999,
+                tooltip: `meta: $211`,
             },
             {
                 x: 3,
                 y: 222.360001,
+                tooltip: `meta: $222`,
             },
             {
                 x: 4,
                 y: 200.470001,
+                tooltip: `meta: $200`,
             },
             {
                 x: 5,
                 y: 193.639999,
+                tooltip: `meta: $193`,
             },
             {
                 x: 6,
                 y: 161.25,
+                tooltip: `meta: $161`,
             },
             {
                 x: 7,
                 y: 159.100006,
+                tooltip: `meta: $159`,
             },
             {
                 x: 8,
                 y: 162.929993,
+                tooltip: `meta: $162`,
             },
             {
                 x: 9,
                 y: 135.679993,
+                tooltip: `meta: $135`,
             },
             {
                 x: 10,
                 y: 93.160004,
+                tooltip: `meta: $93`,
             },
             {
                 x: 11,
                 y: 118.099998,
+                tooltip: `meta: $118`,
             },
             {
                 x: 12,
                 y: 120.339996,
+                tooltip: `meta: $120`,
             },
         ],
     },
@@ -60,50 +72,62 @@ export const data = [
             {
                 x: 1,
                 y: 310.980011,
+                tooltip: `microsoft: $310`,
             },
             {
                 x: 2,
                 y: 298.790009,
+                tooltip: `microsoft: $298`,
             },
             {
                 x: 3,
                 y: 308.309998,
+                tooltip: `microsoft: $308`,
             },
             {
                 x: 4,
                 y: 277.519989,
+                tooltip: `microsoft: $277`,
             },
             {
                 x: 5,
                 y: 271.869995,
+                tooltip: `microsoft: $271`,
             },
             {
                 x: 6,
                 y: 256.829987,
+                tooltip: `microsoft: $256`,
             },
             {
                 x: 7,
                 y: 280.73999,
+                tooltip: `microsoft: $280`,
             },
             {
                 x: 8,
                 y: 261.470001,
+                tooltip: `microsoft: $261`,
             },
             {
                 x: 9,
                 y: 232.899994,
+                tooltip: `microsoft: $232`,
             },
             {
                 x: 10,
                 y: 232.130005,
+                tooltip: `microsoft: $232`,
             },
             {
                 x: 11,
                 y: 255.139999,
+                tooltip: `microsoft: $255`,
             },
             {
                 x: 12,
                 y: 239.820007,
+                tooltip: `microsoft: $239`,
             },
         ],
     },

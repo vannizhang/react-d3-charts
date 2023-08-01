@@ -24,11 +24,13 @@ import {
     PointerEventsOverlay,
 } from '../PointerEventOverlay/PointerEventsOverlay';
 import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
+import { Tooltip } from './Tooltip';
 import Lines from './Lines';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 import { VerticalCrosshairLine } from '../CrosshairReferenceLine/VerticalCrosshairLine';
 import {
     LineGroupData,
+    LineVertexData,
     VerticalReferenceLineData,
     XScaleOptions,
     YScaleOptions,
@@ -168,6 +170,30 @@ export const MultipleLinesChart: FC<Props> = ({
         return scaleLinear<number, number>().range([height, 0]).domain(domain);
     }, [dimension, data, yScaleOptions]);
 
+    const tooltipContent: string = useMemo(() => {
+        if (!hoveredChartItem || !showTooltip) {
+            return null;
+        }
+
+        const items: LineVertexData[] = [];
+
+        // loop through data to get hovered data item from each line group
+        for (const { values } of data) {
+            const d = values[hoveredChartItem.index];
+
+            if (!d.tooltip) {
+                continue;
+            }
+
+            items.push(d);
+        }
+
+        // sort line group data using y value in an descending order
+        items.sort((a, b) => b.y - a.y);
+
+        return items.map((d) => d.tooltip).join('<br/>');
+    }, [hoveredChartItem, data]);
+
     return (
         <div
             style={{
@@ -253,14 +279,14 @@ export const MultipleLinesChart: FC<Props> = ({
                 )}
             </SvgContainer>
 
-            {/* {showTooltip && hoveredChartItem && (
-                <TooltipOnTop
-                    content={data[hoveredChartItem.index]?.tooltip}
+            {showTooltip && hoveredChartItem && (
+                <Tooltip
+                    content={tooltipContent}
                     xPosition={hoveredChartItem.xPosition}
                     dimension={dimension}
                     margin={margin}
                 />
-            )} */}
+            )}
 
             {hoveredVerticalReferenceLine && (
                 <TooltipOnTop
