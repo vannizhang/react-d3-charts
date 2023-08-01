@@ -1,6 +1,6 @@
 {
   "name": "@vannizhang/react-d3-charts",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "A collection of simple and reusable charts with D3, React and TypeScript.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
