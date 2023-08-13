@@ -204,3 +204,14 @@ export const AddHorizontalReferenceLines: Story = {
         ],
     },
 };
+
+export const AddCustomEventHandler: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        showTooltip: true,
+        onClick: (index: number) => {
+            alert(`clicked on data at index of ${index}`);
+        },
+    },
+};

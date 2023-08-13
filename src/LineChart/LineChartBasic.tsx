@@ -94,6 +94,12 @@ type Props = {
      * custom margin space
      */
     margin?: SvgContainerMargins;
+    /**
+     * Emits when user clicks on the line chart
+     *
+     * @param index index of the LineChartDataItem that user has clicked
+     */
+    onClick?: (index: number) => void;
 };
 
 /**
@@ -115,6 +121,7 @@ export const LineChartBasic: FC<Props> = ({
     width,
     height,
     margin = DEFAULT_MARGINS,
+    onClick,
 }: Props) => {
     const [dimension, setDimension] = useState<SvgContainerDimension>({
         height: 0,
@@ -169,6 +176,13 @@ export const LineChartBasic: FC<Props> = ({
                 position: 'relative',
                 width: width || '100%',
                 height: height || '100%',
+            }}
+            onClick={() => {
+                if (!onClick || !hoveredChartItem) {
+                    return;
+                }
+
+                onClick(hoveredChartItem.index);
             }}
         >
             <SvgContainer margin={margin} dimensionOnChange={setDimension}>

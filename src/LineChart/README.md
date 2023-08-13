@@ -24,6 +24,7 @@ import { LineChartBasic } from '@vannizhang/react-d3-charts'
 | width                    | `number` (optional)                                                     | -           | The width of the chart container. If not provided, it will fit the width of the parent container.   |
 | height                   | `number` (optional)                                                     | -           | The height of the chart container. If not provided, it will fit the height of the parent container. |
 | margin                   | `SvgContainerMargins` (optional)                                        | -           | Custom margins for the chart container.                                                             |
+| onClick                  | `function` (optional)                                                   | -           | `(index: number) => void` Emits when user clicks on the line chart. `index` is index of the `LineChartDataItem` that user has clicked                                  |
 
                                                    
 
@@ -279,5 +280,24 @@ Here is an example of adding horizontal reference lines to the Line Chart.
         label: 'national average: 30',
     },
   ]}
+/>
+```
+
+**Add Custom Event Handlers**
+---
+
+Here is an example of adding custom event handlers to the Line Chart.
+```js
+<LineChartBasic
+  data={[
+    {
+      x: 2013,
+      y: 26,
+    },
+    //...
+  ]}
+  onClick={(index:number)=>{
+    alert(`clicked on data at index of ${index}`)
+  }}
 />
 ```
