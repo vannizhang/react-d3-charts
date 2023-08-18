@@ -2,7 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { BarLineComboChart } from './BarLineComboChart';
-import { data } from './data';
+import { UnemploymentData, data } from './data';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof BarLineComboChart> = {
@@ -34,6 +34,43 @@ export const BasicExample: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
+    },
+};
+
+export const CaliforniaUnemploymentRateMay2022ToJune2023: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data: UnemploymentData,
+        showTooltip: true,
+        fill: '#FF8000',
+        strokeColor: '#136AA4',
+        strokeWidth: 2,
+        innerPadding: 0.8,
+        bottomAxisOptions: {
+            tickFormatFunction: (
+                val: number | string,
+                index: number | undefined
+            ) => {
+                const ticks = [
+                    'May 2022',
+                    'Jun',
+                    'Jul',
+                    'Aug',
+                    'Sep',
+                    'Oct',
+                    'Nov',
+                    'Dec',
+                    'Jan 2023',
+                    'Feb',
+                    'Mar',
+                    'Apr',
+                    'May',
+                    'Jun',
+                ];
+
+                return ticks[index as any];
+            },
+        },
     },
 };
 

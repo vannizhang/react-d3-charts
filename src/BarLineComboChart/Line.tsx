@@ -31,7 +31,11 @@ const Line: React.FC<Props> = ({
     const valueline = useMemo(() => {
         return line<BarLineComboChartDataItem>()
             .curve(curveMonotoneX)
-            .x((d) => xScale(d.x) + xOffset)
+            .x((d) => {
+                return typeof d.x === 'number'
+                    ? xScale(d.x.toString()) + xOffset
+                    : xScale(d.x) + xOffset;
+            })
             .y((d) => yScale(d.yLine));
     }, [xScale, yScale]);
 
