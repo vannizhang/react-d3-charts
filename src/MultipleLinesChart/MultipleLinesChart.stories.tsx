@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 import { MultipleLinesChart } from './MultipleLinesChart';
-import { data, dataTimestampForX } from './examples.data';
+import { data, dataTimestampForX, dataWithDashPattern } from './examples.data';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -222,5 +222,13 @@ export const AddHorizontalReferenceLines: Story = {
                 label: 'Meta Highest Closing Price on 2021: $382',
             },
         ],
+    },
+};
+
+export const UseDashPattern: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data: dataWithDashPattern,
+        strokeWidth: 3,
     },
 };

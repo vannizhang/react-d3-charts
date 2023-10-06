@@ -30,6 +30,10 @@ export type LineGroupData = {
      */
     fill?: string;
     /**
+     * The stroke-dasharray property (e.g. '4 4') that will be used to render this line as a dashed line
+     */
+    dashPattern?: string;
+    /**
      * data that will be used plot the line for this group
      */
     values: LineVertexData[];

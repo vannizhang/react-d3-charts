@@ -133,6 +133,16 @@ export const data = [
     },
 ];
 
+export const dataWithDashPattern = [
+    {
+        ...data[0],
+    },
+    {
+        ...data[1],
+        dashPattern: '9 3',
+    },
+];
+
 export const dataTimestampForX = [
     {
         key: 'Meta',

@@ -468,3 +468,38 @@ Here is an example of adding horizontal reference lines to the Multiple Lines ch
   ]}
 />
 ```
+
+**Show Dashed Lines**
+---
+
+Here is an example of rendering lines with [stroke-dasharray](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dasharray). Just add `dashPattern` property to the `LineGroupData` objects.
+```js
+<MultipleLinesChart
+  data={[
+    {
+      fill: '#3b5998',
+      dashPattern: '9 3',
+      key: 'Meta',  
+      values: [
+        {
+          x: 1,
+          y: 313.26001
+        },
+        //...
+      ]
+    },
+    {
+      fill: '#7FBA00',
+      dashPattern: '9 3',
+      key: 'Microsoft',
+      values: [
+        {
+          x: 1,
+          y: 310.980011
+        },
+        //...
+      ]
+    }
+  ]}
+/>
+```

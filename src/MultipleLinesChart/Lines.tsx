@@ -47,6 +47,9 @@ const Lines: React.FC<Props> = ({
             .attr('fill', 'none')
             .attr('stroke', (d) => d.fill)
             .attr('stroke-width', width)
+            .style('stroke-dasharray', (d) => {
+                return d.dashPattern || 'none';
+            })
             .attr('d', function (d) {
                 return valueline(d.values);
             });
