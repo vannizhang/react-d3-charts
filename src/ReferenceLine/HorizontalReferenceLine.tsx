@@ -6,9 +6,13 @@ import { SvgContainerData } from '../SvgContainer/SvgContainer';
 
 type Props = {
     /**
-     * position on y-axis to place this horizontal reference line
+     * starting position on y-axis to place this horizontal reference line
      */
-    yPosition: number;
+    y1: number;
+    /**
+     * ending position on y-axis to place this horizontal reference line
+     */
+    y2: number;
     label: string;
     svgContainerData?: SvgContainerData;
 };
@@ -16,7 +20,8 @@ type Props = {
 const LABEL_TEXT_MARGIN = 5;
 
 export const HorizontalReferenceLine: FC<Props> = ({
-    yPosition,
+    y1,
+    y2,
     label,
     svgContainerData,
 }) => {
@@ -31,29 +36,29 @@ export const HorizontalReferenceLine: FC<Props> = ({
 
         const refLine = group.select('line');
 
-        const yPos: number = yPosition | 0;
+        const yPos4LabelText: number = y2 || 0;
 
         if (refLine.size()) {
             const refLine = group.select(`line`);
-            refLine.attr('y1', yPos).attr('y2', yPos);
+            refLine.attr('y1', y1).attr('y2', y2);
 
             group
                 .select(`text`)
-                .attr('y', yPos - LABEL_TEXT_MARGIN)
+                .attr('y', yPos4LabelText - LABEL_TEXT_MARGIN)
                 .text(label);
         } else {
             group
                 .append('line')
                 .attr('x1', 0)
-                .attr('y1', yPos)
+                .attr('y1', y1)
                 .attr('x2', width)
-                .attr('y2', yPos)
+                .attr('y2', y2)
                 .attr('fill', 'none');
 
             group
                 .append('text')
                 .attr('x', width - LABEL_TEXT_MARGIN)
-                .attr('y', yPos - LABEL_TEXT_MARGIN)
+                .attr('y', yPos4LabelText - LABEL_TEXT_MARGIN)
                 .attr('text-anchor', 'end')
                 .text(label);
         }
@@ -63,7 +68,7 @@ export const HorizontalReferenceLine: FC<Props> = ({
         if (svgContainerData) {
             drawRefLine();
         }
-    }, [yPosition, label, svgContainerData]);
+    }, [y1, y2, label, svgContainerData]);
 
     return (
         <g

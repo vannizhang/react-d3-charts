@@ -223,8 +223,9 @@ export const AreaChart: FC<Props> = ({
                     horizontalReferenceLines.map((d) => {
                         return (
                             <HorizontalReferenceLine
-                                key={d.y}
-                                yPosition={yScale(d.y)}
+                                key={`${d.y1}-${d.y2}`}
+                                y1={yScale(d.y1)}
+                                y2={yScale(d.y2)}
                                 label={d.label}
                             />
                         );

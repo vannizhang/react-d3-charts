@@ -81,7 +81,8 @@ export const CaliforniaUnemploymentRateApril2022ToMay2023: Story = {
         },
         horizontalReferenceLines: [
             {
-                y: 3.6,
+                y1: 3.6,
+                y2: 3.6,
                 label: '2022 national average: 3.6%',
             },
         ],
@@ -198,7 +199,8 @@ export const AddHorizontalReferenceLines: Story = {
         showTooltip: true,
         horizontalReferenceLines: [
             {
-                y: 30,
+                y1: 10,
+                y2: 35,
                 label: 'text label with reference line',
             },
         ],

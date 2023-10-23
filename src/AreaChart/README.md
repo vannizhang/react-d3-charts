@@ -255,7 +255,8 @@ Here is an example of adding horizontal reference lines to the Area Chart.
   horizontalReferenceLines={[
     {
       label: 'text label with reference line',
-      y: 35
+      y1: 35,
+      y2: 35
     }
   ]}
 />

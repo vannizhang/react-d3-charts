@@ -148,7 +148,8 @@ Here is an example of adding horizontal reference lines to the Line Chart.
   ]}
   horizontalReferenceLines={[
     {
-        y: 30,
+        y1: 30,
+        y2: 30
         label: 'national average: 30',
     },
   ]}
