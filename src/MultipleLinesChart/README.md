@@ -463,7 +463,7 @@ Here is an example of adding horizontal reference lines to the Multiple Lines ch
   horizontalReferenceLines={[
     {
         y1: 382,
-        y2: 382
+        y2: 382,
         label: 'Meta Highest Closing Price on 2021: $382',
     },
   ]}
