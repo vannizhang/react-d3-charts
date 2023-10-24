@@ -10,5 +10,5 @@ export type HorizontalReferenceLineData = {
     /**
      * label text to be displayed with this horizontal reference line
      */
-    label: string;
+    label?: string;
 };

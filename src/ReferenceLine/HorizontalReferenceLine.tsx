@@ -3,17 +3,9 @@ import './HorizontalReferenceLine.css';
 import React, { FC, useEffect, useRef } from 'react';
 import { select } from 'd3';
 import { SvgContainerData } from '../SvgContainer/SvgContainer';
+import { HorizontalReferenceLineData } from './types';
 
-type Props = {
-    /**
-     * starting position on y-axis to place this horizontal reference line
-     */
-    y1: number;
-    /**
-     * ending position on y-axis to place this horizontal reference line
-     */
-    y2: number;
-    label: string;
+type Props = HorizontalReferenceLineData & {
     svgContainerData?: SvgContainerData;
 };
 
@@ -42,10 +34,12 @@ export const HorizontalReferenceLine: FC<Props> = ({
             const refLine = group.select(`line`);
             refLine.attr('y1', y1).attr('y2', y2);
 
-            group
-                .select(`text`)
-                .attr('y', yPos4LabelText - LABEL_TEXT_MARGIN)
-                .text(label);
+            if (label) {
+                group
+                    .select(`text`)
+                    .attr('y', yPos4LabelText - LABEL_TEXT_MARGIN)
+                    .text(label);
+            }
         } else {
             group
                 .append('line')
@@ -55,12 +49,14 @@ export const HorizontalReferenceLine: FC<Props> = ({
                 .attr('y2', y2)
                 .attr('fill', 'none');
 
-            group
-                .append('text')
-                .attr('x', width - LABEL_TEXT_MARGIN)
-                .attr('y', yPos4LabelText - LABEL_TEXT_MARGIN)
-                .attr('text-anchor', 'end')
-                .text(label);
+            if (label) {
+                group
+                    .append('text')
+                    .attr('x', width - LABEL_TEXT_MARGIN)
+                    .attr('y', yPos4LabelText - LABEL_TEXT_MARGIN)
+                    .attr('text-anchor', 'end')
+                    .text(label);
+            }
         }
     };
 

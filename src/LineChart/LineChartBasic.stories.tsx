@@ -199,9 +199,23 @@ export const AddHorizontalReferenceLines: Story = {
         showTooltip: true,
         horizontalReferenceLines: [
             {
-                y1: 10,
+                y1: 35,
                 y2: 35,
                 label: 'text label with reference line',
+            },
+        ],
+    },
+};
+
+export const ShowTrendLine: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        showTooltip: true,
+        horizontalReferenceLines: [
+            {
+                y1: 35,
+                y2: 10,
             },
         ],
     },
