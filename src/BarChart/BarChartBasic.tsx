@@ -33,6 +33,7 @@ import {
 import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
 import { HorizontalReferenceLineData } from '../ReferenceLine/types';
 import { HorizontalReferenceLine } from '../ReferenceLine/HorizontalReferenceLine';
+import BarLabelOnTop from './BarLabelOnTop';
 
 type XScale = ScaleBand<string | number>;
 
@@ -47,8 +48,10 @@ type Props = {
      * Determines whether to show a tooltip when the user hovers over a bar element.
      */
     showTooltip?: boolean;
-    // xScaleOptions?: {
-    // };
+    /**
+     * if true, show label text on top of the bar
+     */
+    showLabelOnTop?: boolean;
     /**
      * Options used to customize the scale function for the y-axis.
      */
@@ -101,7 +104,7 @@ type Props = {
 export const BarChartBasic: FC<Props> = ({
     data,
     showTooltip = false,
-    // xScaleOptions = {},
+    showLabelOnTop = false,
     yScaleOptions = {},
     bottomAxisOptions = {},
     leftAxisOptions = {},
@@ -189,6 +192,17 @@ export const BarChartBasic: FC<Props> = ({
                     shouldHide={leftAxisOptions.shouldHide}
                     tickFormatFunction={leftAxisOptions.tickFormatFunction}
                 />
+
+                {showLabelOnTop ? (
+                    <BarLabelOnTop
+                        data={data}
+                        xScale={xScale}
+                        yScale={yScale}
+                        stickyToTop={true}
+                    />
+                ) : (
+                    <></>
+                )}
 
                 {showTooltip ? (
                     <VerticalCrosshairLine

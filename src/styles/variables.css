@@ -4,6 +4,7 @@
      */
     --axis-tick-line-color: rgba(0,0,0,.5);
     --axis-tick-text-color: #303030;
+    --axis-tick-text-font-size: 10px;
 
     /*
      * variables that control the style of the chart tooltip

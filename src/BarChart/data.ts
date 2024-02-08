@@ -78,3 +78,42 @@ export const dataNumbericalX = [
         tooltip: 'this is a tooltip',
     },
 ];
+
+export const dataWithLabelOnTop = [
+    {
+        x: '12/1',
+        y: 26,
+        tooltip: 'this is a tooltip',
+        labelOnTop: 'Dec 1',
+    },
+    {
+        x: '12/2',
+        y: 38,
+        tooltip: 'this is a tooltip',
+        labelOnTop: 'Dec 2',
+    },
+    {
+        x: '12/3',
+        y: 10,
+        tooltip: 'this is a tooltip',
+        labelOnTop: 'Dec 3',
+    },
+    {
+        x: '12/4',
+        y: 45,
+        tooltip: 'this is a tooltip',
+        labelOnTop: 'Dec 4',
+    },
+    {
+        x: '12/5',
+        y: 10,
+        tooltip: 'this is a tooltip',
+        labelOnTop: 'Dec 5',
+    },
+    {
+        x: '12/6',
+        y: 12,
+        tooltip: 'this is a tooltip',
+        labelOnTop: 'Dec 6',
+    },
+];

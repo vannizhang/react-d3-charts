@@ -1,0 +1,4 @@
+.bar-label-on-top-group text{
+    fill: var(--axis-tick-text-color);
+    font-size: var(--axis-tick-text-font-size);
+}

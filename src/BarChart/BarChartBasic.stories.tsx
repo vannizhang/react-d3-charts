@@ -2,7 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { BarChartBasic } from './BarChartBasic';
-import { data, dataNumbericalX } from './data';
+import { data, dataNumbericalX, dataWithLabelOnTop } from './data';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof BarChartBasic> = {
@@ -151,5 +151,20 @@ export const AddHorizontalReferenceLines: Story = {
                 label: 'text label with reference line',
             },
         ],
+    },
+};
+
+export const ShowLabelOnTop: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data: dataWithLabelOnTop,
+        showTooltip: false,
+        showLabelOnTop: true,
+        margin: {
+            top: 30,
+            right: 15,
+            bottom: 30,
+            left: 30,
+        },
     },
 };
