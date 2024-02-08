@@ -186,6 +186,7 @@ export const BarChartBasic: FC<Props> = ({
                     scale={yScale}
                     showGridLines={leftAxisOptions.showGridLines}
                     numberOfTicks={leftAxisOptions.numberOfTicks}
+                    shouldHide={leftAxisOptions.shouldHide}
                     tickFormatFunction={leftAxisOptions.tickFormatFunction}
                 />
 

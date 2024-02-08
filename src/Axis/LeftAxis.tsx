@@ -16,6 +16,7 @@ export const LeftAxis: FC<Props> = ({
     scale,
     numberOfTicks = 5,
     showGridLines,
+    shouldHide,
     tickFormatFunction,
     svgContainerData,
 }) => {
@@ -65,10 +66,14 @@ export const LeftAxis: FC<Props> = ({
     };
 
     useEffect(() => {
+        if (shouldHide) {
+            return;
+        }
+
         if (svgContainerData) {
             drawYAxis();
         }
-    }, [scale, svgContainerData]);
+    }, [scale, svgContainerData, shouldHide]);
 
     return null;
 };

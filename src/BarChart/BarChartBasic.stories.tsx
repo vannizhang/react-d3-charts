@@ -105,6 +105,16 @@ export const CustomizeLeftAxis: Story = {
     },
 };
 
+export const HideLeftAxis: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        leftAxisOptions: {
+            shouldHide: true,
+        },
+    },
+};
+
 export const UseCustomizedDomainForYScale: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
@@ -136,7 +146,8 @@ export const AddHorizontalReferenceLines: Story = {
         showTooltip: true,
         horizontalReferenceLines: [
             {
-                y: 30,
+                y1: 30,
+                y2: 30,
                 label: 'text label with reference line',
             },
         ],

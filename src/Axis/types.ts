@@ -42,6 +42,10 @@ export type LeftAxisOptions = {
      */
     showGridLines?: boolean;
     /**
+     * if true, hide left axis
+     */
+    shouldHide?: boolean;
+    /**
      * custom format function mapping a value from the axis Domain to a formatted string for display purposes.
      * @param domainValue original domain value
      * @param index
