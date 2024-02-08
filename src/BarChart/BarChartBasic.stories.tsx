@@ -160,6 +160,7 @@ export const ShowLabelOnTop: Story = {
         data: dataWithLabelOnTop,
         showTooltip: false,
         showLabelOnTop: true,
+        shouldLabelOnTopUseFixedTopPosition: true,
         margin: {
             top: 30,
             right: 15,

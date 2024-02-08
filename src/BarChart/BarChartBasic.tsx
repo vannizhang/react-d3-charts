@@ -49,10 +49,6 @@ type Props = {
      */
     showTooltip?: boolean;
     /**
-     * if true, show label text on top of the bar
-     */
-    showLabelOnTop?: boolean;
-    /**
      * Options used to customize the scale function for the y-axis.
      */
     yScaleOptions?: YScaleOptions;
@@ -94,6 +90,15 @@ type Props = {
      * Custom margin space around the chart area.
      */
     margin?: SvgContainerMargins;
+    /**
+     * if true, show label text on top of each bar rectangle
+     */
+    showLabelOnTop?: boolean;
+    /**
+     * if true. label text on top will be placed at a fixed position on top instead of being placed
+     * based on the height of each bar rectangle
+     */
+    shouldLabelOnTopUseFixedTopPosition?: boolean;
 };
 
 /**
@@ -105,6 +110,7 @@ export const BarChartBasic: FC<Props> = ({
     data,
     showTooltip = false,
     showLabelOnTop = false,
+    shouldLabelOnTopUseFixedTopPosition = false,
     yScaleOptions = {},
     bottomAxisOptions = {},
     leftAxisOptions = {},
@@ -198,7 +204,7 @@ export const BarChartBasic: FC<Props> = ({
                         data={data}
                         xScale={xScale}
                         yScale={yScale}
-                        stickyToTop={true}
+                        stickyToTop={shouldLabelOnTopUseFixedTopPosition}
                     />
                 ) : (
                     <></>
