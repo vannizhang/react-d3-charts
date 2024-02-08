@@ -7,6 +7,12 @@
     --axis-tick-text-font-size: 10px;
 
     /*
+     * this variable will be used to transform the position of 
+     * bar-label-on-top text element along the y axis.
+     */
+    --bar-label-on-top-translate-y-position: -10px;
+
+    /*
      * variables that control the style of the chart tooltip
      */
     --tooltip-background-color: rgba(255,255,255,1);

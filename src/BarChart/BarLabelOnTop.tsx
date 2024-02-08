@@ -47,7 +47,7 @@ const BarLabelOnTop: React.FC<Props> = ({
             .attr('y', (d) => {
                 // use a fixed y value, no need to calculate y position
                 if (stickyToTop) {
-                    return -10;
+                    return 0;
                 }
 
                 const yPos = yScale(d.y);

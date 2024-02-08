@@ -15,6 +15,10 @@ export type DivergingBarChartDataItem = {
      * The tooltip associated with this item, which can be plain text or an HTML string.
      */
     tooltip?: string;
+    /**
+     * The label text to be place on top of each bar
+     */
+    labelOnTop?: string;
 };
 
 export type YScaleOptions = {

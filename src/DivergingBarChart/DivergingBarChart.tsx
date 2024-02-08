@@ -31,6 +31,7 @@ import {
     VerticalReferenceLineData,
 } from './types';
 import { HorizontalDividerLine } from './HorizontalDividerLine';
+import BarLabelOnTop from '../BarChart/BarLabelOnTop';
 // import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
 
 type XScale = ScaleBand<string | number>;
@@ -46,8 +47,10 @@ type Props = {
      * Determines whether to show a tooltip when the user hovers over a bar element.
      */
     showTooltip?: boolean;
-    // xScaleOptions?: {
-    // };
+    /**
+     * if true, show label text on top of the bar
+     */
+    showLabelOnTop?: boolean;
     /**
      * Options used to customize the scale function for the y-axis.
      */
@@ -92,7 +95,7 @@ type Props = {
 export const DivergingBarChart: FC<Props> = ({
     data,
     showTooltip = false,
-    // xScaleOptions = {},
+    showLabelOnTop = false,
     yScaleOptions = {},
     bottomAxisOptions = {},
     leftAxisOptions = {},
@@ -168,11 +171,21 @@ export const DivergingBarChart: FC<Props> = ({
                 />
 
                 <LeftAxis
+                    {...leftAxisOptions}
                     scale={yScale}
-                    showGridLines={leftAxisOptions.showGridLines}
-                    numberOfTicks={leftAxisOptions.numberOfTicks}
                     tickFormatFunction={leftAxisOptions.tickFormatFunction}
                 />
+
+                {showLabelOnTop ? (
+                    <BarLabelOnTop
+                        data={data}
+                        xScale={xScale}
+                        yScale={yScale}
+                        stickyToTop={true}
+                    />
+                ) : (
+                    <></>
+                )}
 
                 {showTooltip ? (
                     <VerticalCrosshairLine

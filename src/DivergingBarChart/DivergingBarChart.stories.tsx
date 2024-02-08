@@ -2,7 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { DivergingBarChart } from './DivergingBarChart';
-import { data, dataNumbericalX } from './data';
+import { data, dataNumbericalX, dataWithLabelOnTop } from './data';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -116,16 +116,19 @@ export const CustomizedOptionsForYScale: Story = {
     },
 };
 
-// export const CustomizedVerticalReferenceLines: Story = {
-//     // More on args: https://storybook.js.org/docs/react/writing-stories/args
-//     args: {
-//         data,
-//         showTooltip: true,
-//         verticalReferenceLines: [
-//             {
-//                 x: '12/9',
-//                 tooltip: 'tooltip comes with reference line',
-//             },
-//         ],
-//     },
-// };
+export const ShowLabelOnTop: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data: dataWithLabelOnTop,
+        showLabelOnTop: true,
+        leftAxisOptions: {
+            shouldHide: true,
+        },
+        margin: {
+            top: 30,
+            right: 15,
+            bottom: 30,
+            left: 30,
+        },
+    },
+};
