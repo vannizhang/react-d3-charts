@@ -40,34 +40,26 @@ type Props = {
      * The data used to render the Grouped Bar chart.
      */
     groupedData: GroupedBarChartGroupData[];
-    /**
-     * Determines whether to show a tooltip when the user hovers over a bar element.
-     */
-    showTooltip?: boolean;
+    // /**
+    //  * Determines whether to show a tooltip when the user hovers over a bar element.
+    //  */
+    // showTooltip?: boolean;
     /**
      * Options used to customize the scale function for the y-axis.
      */
     yScaleOptions?: YScaleOptions;
     /**
-     * Options used to customize the x-axis at bottom.
-     */
-    bottomAxisOptions?: BottomAxisOptions;
-    /**
      * Options used to customize the y-axis at left.
      */
     leftAxisOptions?: LeftAxisOptions;
-    // /**
-    //  * Array of data that will be used to draw vertical reference lines
-    //  */
-    // verticalReferenceLines?: VerticalReferenceLineData[];
     /**
      * Array of data that will be used to draw horizontal reference lines
      */
     horizontalReferenceLines?: HorizontalReferenceLineData[];
     /**
-     * The inner padding determines the blank space between bands.
-     * The value which must be in the range [0, 1]. A value `0` of innerPadding indicates no blank space betwwen bands.
-     * The default value is 0.2.
+     * The inner padding determines the blank space between bands inside of each group.
+     * The value which must be in the range [0, 1]. A value `0` of innerPadding indicates no blank space between bands.
+     * The default value is 0.1.
      */
     innerPadding?: number;
     /**
@@ -95,9 +87,9 @@ type Props = {
 
 export const GroupedBarChart: FC<Props> = ({
     groupedData,
-    showTooltip = false,
+    // showTooltip = false,
     yScaleOptions = {},
-    bottomAxisOptions = {},
+    // bottomAxisOptions = {},
     leftAxisOptions = {},
     // verticalReferenceLines = [],
     horizontalReferenceLines = [],
@@ -169,15 +161,7 @@ export const GroupedBarChart: FC<Props> = ({
                     yScale={yScale}
                 />
 
-                <BottomAxis
-                    scale={xScale}
-                    showGridLines={bottomAxisOptions.showGridLines}
-                    tickValues={bottomAxisOptions.tickValues}
-                    tickFormatFunction={bottomAxisOptions.tickFormatFunction}
-                    shouldRotateTextLabels={
-                        bottomAxisOptions.shouldRotateTextLabels
-                    }
-                />
+                <BottomAxis scale={xScale} />
 
                 <LeftAxis
                     scale={yScale}

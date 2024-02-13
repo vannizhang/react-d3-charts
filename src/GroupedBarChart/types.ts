@@ -8,9 +8,9 @@ export type GroupedBarChartDataItem = {
      */
     y: number;
     /**
-     * The tooltip associated with this item, which can be plain text or an HTML string.
+     * fill color of this bar rectangle element
      */
-    tooltip?: string;
+    fill: string;
     /**
      * The label text to be place on top of each bar
      */

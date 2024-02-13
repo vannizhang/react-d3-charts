@@ -49,7 +49,7 @@ const GroupedBars: React.FC<Props> = ({
             .attr('width', xScaleSubgroup.bandwidth())
             .attr('height', (d) => height - yScale(d.y))
             .attr('fill', (d) => {
-                return 'steelblue';
+                return d.fill || 'steelblue';
             });
     };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { GroupedBarChart } from './GroupedBarChart';
-import { data } from './data';
+import { data as groupedData } from './data';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof GroupedBarChart> = {
@@ -33,7 +33,7 @@ type Story = StoryObj<typeof GroupedBarChart>;
 export const BasicExample: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
-        groupedData: data,
+        groupedData,
     },
 };
 
@@ -87,16 +87,16 @@ export const BasicExample: Story = {
 //     },
 // };
 
-// export const CustomizeLeftAxis: Story = {
-//     // More on args: https://storybook.js.org/docs/react/writing-stories/args
-//     args: {
-//         data,
-//         leftAxisOptions: {
-//             showGridLines: true,
-//             numberOfTicks: 3,
-//         },
-//     },
-// };
+export const CustomizeLeftAxis: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        groupedData,
+        leftAxisOptions: {
+            showGridLines: true,
+            numberOfTicks: 3,
+        },
+    },
+};
 
 // export const HideLeftAxis: Story = {
 //     // More on args: https://storybook.js.org/docs/react/writing-stories/args
@@ -108,15 +108,15 @@ export const BasicExample: Story = {
 //     },
 // };
 
-// export const UseCustomizedDomainForYScale: Story = {
-//     // More on args: https://storybook.js.org/docs/react/writing-stories/args
-//     args: {
-//         data,
-//         yScaleOptions: {
-//             domain: [0, 200],
-//         },
-//     },
-// };
+export const UseCustomizedDomainForYScale: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        groupedData,
+        yScaleOptions: {
+            domain: [0, 100],
+        },
+    },
+};
 
 // export const AddVerticalReferenceLines: Story = {
 //     // More on args: https://storybook.js.org/docs/react/writing-stories/args
@@ -132,20 +132,20 @@ export const BasicExample: Story = {
 //     },
 // };
 
-// export const AddHorizontalReferenceLines: Story = {
-//     // More on args: https://storybook.js.org/docs/react/writing-stories/args
-//     args: {
-//         data,
-//         showTooltip: true,
-//         horizontalReferenceLines: [
-//             {
-//                 y1: 30,
-//                 y2: 30,
-//                 label: 'text label with reference line',
-//             },
-//         ],
-//     },
-// };
+export const AddHorizontalReferenceLines: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        groupedData,
+        // showTooltip: true,
+        horizontalReferenceLines: [
+            {
+                y1: 30,
+                y2: 30,
+                label: 'text label with reference line',
+            },
+        ],
+    },
+};
 
 // export const ShowLabelOnTop: Story = {
 //     // More on args: https://storybook.js.org/docs/react/writing-stories/args
