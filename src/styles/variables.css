@@ -8,9 +8,9 @@
 
     /*
      * this variable will be used to transform the position of 
-     * bar-label-on-top text element along the y axis.
+     * sticky-bar-label-text-group text element along the y axis.
      */
-    --bar-label-on-top-translate-y-position: -10px;
+    --sticky-bar-label-text-translate-y-position: -10px;
 
     /*
      * variables that control the style of the chart tooltip

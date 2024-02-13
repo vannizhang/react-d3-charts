@@ -48,9 +48,9 @@ type Props = {
      */
     showTooltip?: boolean;
     /**
-     * if true, show label text on top of the bar
+     * if true, show sticky label text on top of the bar
      */
-    showLabelOnTop?: boolean;
+    showStickyLabelText?: boolean;
     /**
      * Options used to customize the scale function for the y-axis.
      */
@@ -95,7 +95,7 @@ type Props = {
 export const DivergingBarChart: FC<Props> = ({
     data,
     showTooltip = false,
-    showLabelOnTop = false,
+    showStickyLabelText = false,
     yScaleOptions = {},
     bottomAxisOptions = {},
     leftAxisOptions = {},
@@ -176,7 +176,7 @@ export const DivergingBarChart: FC<Props> = ({
                     tickFormatFunction={leftAxisOptions.tickFormatFunction}
                 />
 
-                {showLabelOnTop ? (
+                {showStickyLabelText ? (
                     <BarLabelTextOnTop
                         data={data}
                         xScale={xScale}

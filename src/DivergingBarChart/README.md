@@ -10,18 +10,19 @@ import { DivergingBarChart } from '@vannizhang/react-d3-charts'
 ```
 
 ### Props
-| **Name**          | **Type**                                                          | **Default**                                  | **Description**                                                                                     |
-|-------------------|-------------------------------------------------------------------|----------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| data              | [`DivergingBarChartDataItem[]`](./types.ts)                       | -                                            | The data used to render the bar chart.                                                              |
-| showTooltip       | `boolean` (optional)                                              | false                                        | Determines whether to show a tooltip when the user hovers over a bar element.                       |
-| yScaleOptions     | [`YScaleOptions`](./types.ts) (optional)                          | -                                            | Options used to customize the scale function for the y-axis.                                        |
-| bottomAxisOptions | [`BottomAxisOptions`](../Axis/types.ts) (optional)                | -                                            | Options used to customize the x-axis at bottom.                                                     |
-| leftAxisOptions   | [`LeftAxisOptions`](../Axis/types.ts) (optional)                  | -                                            | Options used to customize the y-axis at left.                                                       |
-| fill              | `string` (optional)                                               | -                                            | The fill color of the bar rectangles.                                                               |
-| innerPadding      | `number` (optional)                                               | 0.2                                          | The inner padding determines the blank space between bands.                                         |
-| width             | `number` (optional)                                               | -                                            | The width of the chart container. If not provided, it will fit the width of the parent container.   |
-| height            | `number` (optional)                                               | -                                            | The height of the chart container. If not provided, it will fit the height of the parent container. |
-| margin            | `SvgContainerMargins` (optional)                                  | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                               |
+| **Name**            | **Type**                                           | **Default**                                  | **Description**                                                                                     |
+|---------------------|----------------------------------------------------|----------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| data                | [`DivergingBarChartDataItem[]`](./types.ts)        | -                                            | The data used to render the bar chart.                                                              |
+| showTooltip         | `boolean` (optional)                               | false                                        | Determines whether to show a tooltip when the user hovers over a bar element.                       |
+| showStickyLabelText | `boolean` (optional)                               | false                                        | if true, show label text that will be sticky to the top of chart container.                         |
+| yScaleOptions       | [`YScaleOptions`](./types.ts) (optional)           | -                                            | Options used to customize the scale function for the y-axis.                                        |
+| bottomAxisOptions   | [`BottomAxisOptions`](../Axis/types.ts) (optional) | -                                            | Options used to customize the x-axis at bottom.                                                     |
+| leftAxisOptions     | [`LeftAxisOptions`](../Axis/types.ts) (optional)   | -                                            | Options used to customize the y-axis at left.                                                       |
+| fill                | `string` (optional)                                | -                                            | The fill color of the bar rectangles.                                                               |
+| innerPadding        | `number` (optional)                                | 0.2                                          | The inner padding determines the blank space between bands.                                         |
+| width               | `number` (optional)                                | -                                            | The width of the chart container. If not provided, it will fit the width of the parent container.   |
+| height              | `number` (optional)                                | -                                            | The height of the chart container. If not provided, it will fit the height of the parent container. |
+| margin              | `SvgContainerMargins` (optional)                   | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                               |
                                 
 
 **Basic Example**
@@ -192,5 +193,23 @@ You can provide a custom `domain` used to create the scale function for the y-ax
     },
     //...
   ]}
+/>
+```
+
+**Show Sticky Label text**
+---
+
+Here is an example of showing sticky label text for each bar.
+```js
+<DivergingBarChart
+  data={[
+    {
+      x: 2018,
+      y: -40,
+      labelOnTop: '2018'
+    },
+    //...
+  ]}
+  showStickyLabelText={true}
 />
 ```

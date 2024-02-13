@@ -116,11 +116,11 @@ export const CustomizedOptionsForYScale: Story = {
     },
 };
 
-export const ShowLabelOnTop: Story = {
+export const ShowStickyLabelText: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data: dataWithLabelOnTop,
-        showLabelOnTop: true,
+        showStickyLabelText: true,
         leftAxisOptions: {
             shouldHide: true,
         },
