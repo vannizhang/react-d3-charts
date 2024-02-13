@@ -31,7 +31,7 @@ import {
     VerticalReferenceLineData,
 } from './types';
 import { HorizontalDividerLine } from './HorizontalDividerLine';
-import { BarLabelTextOnTop } from '../BarChart/BarLabelText';
+import { BarLabelText } from '../BarChart/BarLabelText';
 // import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
 
 type XScale = ScaleBand<string | number>;
@@ -177,10 +177,11 @@ export const DivergingBarChart: FC<Props> = ({
                 />
 
                 {showStickyLabelText ? (
-                    <BarLabelTextOnTop
+                    <BarLabelText
                         data={data}
                         xScale={xScale}
                         yScale={yScale}
+                        isSticky={true}
                     />
                 ) : (
                     <></>

@@ -33,7 +33,7 @@ import {
 import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
 import { HorizontalReferenceLineData } from '../ReferenceLine/types';
 import { HorizontalReferenceLine } from '../ReferenceLine/HorizontalReferenceLine';
-import { BarLabelText, BarLabelTextOnTop } from './BarLabelText';
+import { BarLabelText } from './BarLabelText';
 
 type XScale = ScaleBand<string | number>;
 
@@ -205,10 +205,11 @@ export const BarChartBasic: FC<Props> = ({
                 )}
 
                 {showStickyLabelText ? (
-                    <BarLabelTextOnTop
+                    <BarLabelText
                         data={data}
                         xScale={xScale}
                         yScale={yScale}
+                        isSticky={true}
                     />
                 ) : (
                     <></>

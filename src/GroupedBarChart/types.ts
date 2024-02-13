@@ -12,7 +12,11 @@ export type GroupedBarChartDataItem = {
      */
     fill: string;
     /**
-     * The label text to be place on top of each bar
+     * The label text for each bar
+     */
+    label?: string;
+    /**
+     * The sticky label text to be place on top of each bar
      */
     labelOnTop?: string;
 };

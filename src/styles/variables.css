@@ -7,10 +7,10 @@
     --axis-tick-text-font-size: 10px;
 
     /*
-     * this variable will be used to transform the position of 
-     * sticky-bar-label-text-group text element along the y axis.
+     * this variable will be used to adjust the position of 
+     * bar-label-text-group text element along the y axis.
      */
-    --sticky-bar-label-text-translate-y-position: -10px;
+    --bar-label-text-translate-y-position: -8px;
 
     /*
      * variables that control the style of the chart tooltip

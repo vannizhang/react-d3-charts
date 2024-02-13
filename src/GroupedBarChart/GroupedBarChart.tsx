@@ -30,6 +30,7 @@ import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
 import { HorizontalReferenceLineData } from '../ReferenceLine/types';
 import { HorizontalReferenceLine } from '../ReferenceLine/HorizontalReferenceLine';
 import GroupedBars from './GroupedBars';
+import { GroupedBarLabelText } from './GroupedBarLabelText';
 
 type XScale = ScaleBand<string>;
 
@@ -81,21 +82,21 @@ type Props = {
      */
     margin?: SvgContainerMargins;
     /**
-     * if true, show label text on top of each bar rectangle
+     * if true, show label text on top of each bar rectangle.
      */
-    showLabelOnTop?: boolean;
+    showLabelText?: boolean;
     /**
-     * if true. label text on top will be placed at a fixed position on top instead of being placed
-     * based on the height of each bar rectangle
+     * if true. show label text that will be placed at a fixed position on top of chart container.
      */
-    shouldLabelOnTopUseFixedTopPosition?: boolean;
+    showStickyLabelText?: boolean;
 };
 
 export const GroupedBarChart: FC<Props> = ({
     groupedData,
     // showTooltip = false,
     yScaleOptions = {},
-    // bottomAxisOptions = {},
+    showLabelText = false,
+    showStickyLabelText = false,
     leftAxisOptions = {},
     // verticalReferenceLines = [],
     horizontalReferenceLines = [],
@@ -181,16 +182,28 @@ export const GroupedBarChart: FC<Props> = ({
                     tickFormatFunction={leftAxisOptions.tickFormatFunction}
                 />
 
-                {/* {showLabelOnTop ? (
-                    <BarLabelOnTop
-                        data={data}
+                {showLabelText ? (
+                    <GroupedBarLabelText
+                        groupedData={groupedData}
                         xScale={xScale}
                         yScale={yScale}
-                        stickyToTop={shouldLabelOnTopUseFixedTopPosition}
+                        xScaleSubgroup={xScaleSubgroup}
                     />
                 ) : (
                     <></>
-                )} */}
+                )}
+
+                {showStickyLabelText ? (
+                    <GroupedBarLabelText
+                        groupedData={groupedData}
+                        xScale={xScale}
+                        yScale={yScale}
+                        xScaleSubgroup={xScaleSubgroup}
+                        isSticky={true}
+                    />
+                ) : (
+                    <></>
+                )}
 
                 {/* {showTooltip ? (
                     <VerticalCrosshairLine
@@ -244,27 +257,6 @@ export const GroupedBarChart: FC<Props> = ({
                     <></>
                 )}
             </SvgContainer>
-
-            {/* {showTooltip && hoveredChartItem && (
-                <TooltipOnTop
-                    content={data[hoveredChartItem.index]?.tooltip}
-                    xPosition={hoveredChartItem.xPosition}
-                    dimension={dimension}
-                    margin={margin}
-                />
-            )}
-
-            {hoveredVerticalReferenceLine && (
-                <TooltipOnTop
-                    content={hoveredVerticalReferenceLine.tooltip}
-                    xPosition={
-                        xScale(hoveredVerticalReferenceLine.x) +
-                        xScale.bandwidth() / 2
-                    }
-                    dimension={dimension}
-                    margin={margin}
-                />
-            )} */}
         </div>
     );
 };

@@ -147,18 +147,51 @@ export const AddHorizontalReferenceLines: Story = {
     },
 };
 
-// export const ShowLabelOnTop: Story = {
-//     // More on args: https://storybook.js.org/docs/react/writing-stories/args
-//     args: {
-//         data: dataWithLabelOnTop,
-//         showTooltip: false,
-//         showLabelOnTop: true,
-//         shouldLabelOnTopUseFixedTopPosition: true,
-//         margin: {
-//             top: 30,
-//             right: 15,
-//             bottom: 30,
-//             left: 30,
-//         },
-//     },
-// };
+export const ShowLabelText: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        groupedData,
+        showLabelText: true,
+        margin: {
+            top: 30,
+            right: 15,
+            bottom: 30,
+            left: 30,
+        },
+    },
+};
+
+export const ShowStickyLabelText: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        groupedData,
+        showStickyLabelText: true,
+        yScaleOptions: {
+            domain: [0, 70],
+        },
+        margin: {
+            top: 30,
+            right: 15,
+            bottom: 30,
+            left: 30,
+        },
+    },
+};
+
+export const ShowBothLabelTextAndStickyLabelText: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        groupedData,
+        showLabelText: true,
+        showStickyLabelText: true,
+        yScaleOptions: {
+            domain: [0, 70],
+        },
+        margin: {
+            top: 30,
+            right: 15,
+            bottom: 30,
+            left: 30,
+        },
+    },
+};

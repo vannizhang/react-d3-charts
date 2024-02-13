@@ -26,10 +26,10 @@ const GroupedBars: React.FC<Props> = ({
 
         const { height } = dimension;
 
-        const existingBars = select(groupContainer.current).selectAll('g');
+        const existingGroups = select(groupContainer.current).selectAll('g');
 
-        if (existingBars.size()) {
-            existingBars.remove();
+        if (existingGroups.size()) {
+            existingGroups.remove();
         }
 
         select(groupContainer.current)
