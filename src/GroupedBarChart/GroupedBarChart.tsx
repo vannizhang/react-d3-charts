@@ -57,9 +57,15 @@ type Props = {
      */
     horizontalReferenceLines?: HorizontalReferenceLineData[];
     /**
+     * The padding determines the blank space between each group of bars.
+     * The value which must be in the range [0, 1]. A value `0` of innerPadding indicates no blank space between bands.
+     * The default value is `0.15`.
+     */
+    groupPadding?: number;
+    /**
      * The inner padding determines the blank space between bands inside of each group.
      * The value which must be in the range [0, 1]. A value `0` of innerPadding indicates no blank space between bands.
-     * The default value is 0.1.
+     * The default value is `0.05`.
      */
     innerPadding?: number;
     /**
@@ -93,6 +99,7 @@ export const GroupedBarChart: FC<Props> = ({
     leftAxisOptions = {},
     // verticalReferenceLines = [],
     horizontalReferenceLines = [],
+    groupPadding = 0.15,
     innerPadding = 0.05,
     width,
     height,
@@ -117,7 +124,10 @@ export const GroupedBarChart: FC<Props> = ({
     const xScale = useMemo((): XScale => {
         const { width } = dimension;
 
-        return scaleBand().padding(0.15).range([0, width]).domain(groups);
+        return scaleBand()
+            .padding(groupPadding)
+            .range([0, width])
+            .domain(groups);
     }, [dimension, groups]);
 
     const xScaleSubgroup = useMemo((): XScale => {
