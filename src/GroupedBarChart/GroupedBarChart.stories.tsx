@@ -166,9 +166,6 @@ export const ShowStickyLabelText: Story = {
     args: {
         groupedData,
         showStickyLabelText: true,
-        yScaleOptions: {
-            domain: [0, 70],
-        },
         margin: {
             top: 30,
             right: 15,
