@@ -18,9 +18,11 @@ import { BarChartBasic } from '@vannizhang/react-d3-charts'
 | leftAxisOptions          | [`LeftAxisOptions`](../Axis/types.ts) (optional)                        | -                                            | Options used to customize the y-axis at left.                                                       |
 | verticalReferenceLines   | [`VerticalReferenceLineData[]`](./types.ts) (optional)                  | -                                            | Data that will be used to draw vertical reference lines.                                            |
 | horizontalReferenceLines | [`HorizontalReferenceLineData[]`](../ReferenceLine/types.ts) (optional) | -                                            | Data that will be used to draw horizontal reference lines.                                          |
+| showLabelText            | `boolean` (optional)                                                    | false                                        | Determines whether to show a tooltip when the user hovers over a bar element.                       |
+| showStickyLabelText      | `boolean` (optional)                                                    | false                                        | if true, show label text that will be sticky to the top of chart container.                         |
 | fill                     | `string` (optional)                                                     | -                                            | The fill color of the bar rectangles.                                                               |
 | innerPadding             | `number` (optional)                                                     | 0.2                                          | The inner padding determines the blank space between bands.                                         |
-| width                    | `number` (optional)                                                     | -                                            | The width of the chart container. If not provided, it will fit the width of the parent container.   |
+| width                    | `number` (optional)                                                     | -                                            | if true, show label text on top of each bar rectangle.                                               |
 | height                   | `number` (optional)                                                     | -                                            | The height of the chart container. If not provided, it will fit the height of the parent container. |
 | margin                   | `SvgContainerMargins` (optional)                                        | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                               |
 
@@ -292,5 +294,43 @@ Here is an example of adding horizontal reference lines to the Bar Chart.
         label: 'national average: 30',
     },
   ]}
+/>
+```
+
+Show Label text
+---
+
+Here is an example of showing label text for each bar.
+```js
+<BarChartBasic
+  data={[
+    {
+      x: '12/1',
+      y: 26,
+      label: '26',
+      labelOnTop: 'Dec 1',
+    },
+    //...
+  ]}
+  showLabelText={true}
+/>
+```
+
+Show Sticky Label text
+---
+
+Here is an example of showing label text for each bar.
+```js
+<BarChartBasic
+  data={[
+    {
+      x: '12/1',
+      y: 26,
+      label: '26',
+      labelOnTop: 'Dec 1',
+    },
+    //...
+  ]}
+  showStickyLabelText={true}
 />
 ```

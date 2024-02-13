@@ -91,12 +91,11 @@ type Props = {
      */
     margin?: SvgContainerMargins;
     /**
-     * if true, show label text on top of each bar rectangle
+     * if true, show label text on top of each bar rectangle.
      */
     showLabelText?: boolean;
     /**
-     * if true. show label text that will be placed at a fixed position on chart container instead of being placed
-     * based on the height of each bar rectangle.
+     * if true. show label text that will be placed at a fixed position on top of chart container.
      */
     showStickyLabelText?: boolean;
 };
