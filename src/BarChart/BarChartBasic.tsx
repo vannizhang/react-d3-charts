@@ -33,7 +33,7 @@ import {
 import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
 import { HorizontalReferenceLineData } from '../ReferenceLine/types';
 import { HorizontalReferenceLine } from '../ReferenceLine/HorizontalReferenceLine';
-import BarLabelOnTop from './BarLabelOnTop';
+import { BarLabelText, BarLabelTextOnTop } from './BarLabelText';
 
 type XScale = ScaleBand<string | number>;
 
@@ -93,12 +93,12 @@ type Props = {
     /**
      * if true, show label text on top of each bar rectangle
      */
-    showLabelOnTop?: boolean;
+    showLabelText?: boolean;
     /**
-     * if true. label text on top will be placed at a fixed position on top instead of being placed
-     * based on the height of each bar rectangle
+     * if true. show label text that will be placed at a fixed position on chart container instead of being placed
+     * based on the height of each bar rectangle.
      */
-    shouldLabelOnTopUseFixedTopPosition?: boolean;
+    showStickyLabelText?: boolean;
 };
 
 /**
@@ -109,13 +109,13 @@ type Props = {
 export const BarChartBasic: FC<Props> = ({
     data,
     showTooltip = false,
-    showLabelOnTop = false,
-    shouldLabelOnTopUseFixedTopPosition = false,
     yScaleOptions = {},
     bottomAxisOptions = {},
     leftAxisOptions = {},
     verticalReferenceLines = [],
     horizontalReferenceLines = [],
+    showLabelText = false,
+    showStickyLabelText = false,
     fill,
     innerPadding = 0.2,
     width,
@@ -199,12 +199,17 @@ export const BarChartBasic: FC<Props> = ({
                     tickFormatFunction={leftAxisOptions.tickFormatFunction}
                 />
 
-                {showLabelOnTop ? (
-                    <BarLabelOnTop
+                {showLabelText ? (
+                    <BarLabelText data={data} xScale={xScale} yScale={yScale} />
+                ) : (
+                    <></>
+                )}
+
+                {showStickyLabelText ? (
+                    <BarLabelTextOnTop
                         data={data}
                         xScale={xScale}
                         yScale={yScale}
-                        stickyToTop={shouldLabelOnTopUseFixedTopPosition}
                     />
                 ) : (
                     <></>

@@ -12,6 +12,10 @@ export type BarChartDataItem = {
      */
     tooltip?: string;
     /**
+     * The label text to be place along the top end of each bar
+     */
+    label?: string;
+    /**
      * The label text to be place on top of each bar
      */
     labelOnTop?: string;
