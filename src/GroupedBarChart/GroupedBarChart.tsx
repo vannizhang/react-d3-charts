@@ -96,6 +96,13 @@ type Props = {
     showDividerLines?: boolean;
 };
 
+/**
+ * A grouped bar chart is a type of bar chart that displays data in rectangular bars grouped together, with each group representing a category, and each bar within the group representing a subcategory or a different variable.
+ *
+ * Grouped bar charts are particularly useful for comparing the values of multiple subcategories across different categories. They allow for easy visual comparison of values within each category and between different categories.
+ * @param param0
+ * @returns
+ */
 export const GroupedBarChart: FC<Props> = ({
     groupedData,
     // showTooltip = false,

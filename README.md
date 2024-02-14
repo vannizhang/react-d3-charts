@@ -155,6 +155,49 @@ import { HorizontalBarChart } from '@vannizhang/react-d3-charts'
 />
 ```
 
+### [Grouped Bar Chart](./src/HorizontalBarChart/)
+A grouped bar chart is a type of bar chart that displays data in rectangular bars grouped together, with each group representing a category, and each bar within the group representing a subcategory or a different variable. 
+
+Grouped bar charts are particularly useful for comparing the values of multiple subcategories across different categories. They allow for easy visual comparison of values within each category and between different categories. 
+
+See [examples](https://vannizhang.github.io/react-d3-charts/?path=/docs/example-groupedbarchart--docs).
+
+```js
+import { GroupedBarChart } from '@vannizhang/react-d3-charts'
+
+<GroupedBarChart
+  data={[
+    {
+        title: 'California',
+        data: [
+            {
+                x: 'Jan',
+                y: 26,
+                fill: 'steelblue',
+                label: '26',
+                labelOnTop: 'Jan',
+            },
+            {
+                x: 'Feb',
+                y: 38,
+                fill: 'cornflowerblue',
+                label: '38',
+                labelOnTop: 'Feb',
+            },
+            {
+                x: 'Mar',
+                y: 10,
+                fill: 'lightblue',
+                label: '10',
+                labelOnTop: 'Mar',
+            },
+        ],
+    },
+    //...
+  ]}
+/>
+```
+
 ### [Area Chart](./src/AreaChart/)
 An area chart, also known as a mountain chart, is a data visualization that combines the appearance of a line chart and a bar chart. It's similar to a line graph in that data points are plotted and connected by line segments. However, the area below the line is colored in or shaded.
 
@@ -286,8 +329,15 @@ Here's an example of the [`variables.css`](./src/styles/variables.css) file:
     /*
      * variables that control the style of the axis tick line and text
      */
-    --axis-tick-line-color: #303030;
+    --axis-tick-line-color: rgba(0,0,0,.5);
     --axis-tick-text-color: #303030;
+    --axis-tick-text-font-size: 10px;
+
+    /*
+     * this variable will be used to adjust the position of 
+     * bar-label-text-group text element along the y axis.
+     */
+    --bar-label-text-translate-y-position: -8px;
 
     /*
      * variables that control the style of the chart tooltip
@@ -304,6 +354,29 @@ Here's an example of the [`variables.css`](./src/styles/variables.css) file:
      */
     --crosshair-reference-line-color: rgba(0,0,0,.5);
     --crosshair-reference-line-width: 1px;
+    --crosshair-reference-line-stroke-dasharray: 1 1;
+
+    /*
+     * variables that control the style of user provided vertical reference line
+     */
+    --vertical-reference-line-color: rgba(50, 50, 50, .5);
+    --vertical-reference-line-width: 1px;
+    --vertical-reference-line-stroke-dasharray: none;
+
+    /*
+     * variables that control the style of user provided horizontal reference line
+     */
+    --horizontal-reference-line-color: rgba(50, 50, 50, .5);
+    --horizontal-reference-line-width: 1px;
+    --horizontal-reference-line-stroke-dasharray: none;
+    --horizontal-reference-line-label-text-color: rgba(30, 30, 30, .9);
+    --horizontal-reference-line-label-text-size: .8rem;
+
+    /*
+     * variables that control the style of divider line that is used in Diverging Bar Chart and similar
+     */
+    --divider-line-color: rgba(0,0,0,.5);
+    --divider-line-width: 1px;
 }
 ```
 

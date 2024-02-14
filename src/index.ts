@@ -7,6 +7,7 @@ import { HorizontalBarChart } from './HorizontalBarChart/HorizontalBarChart';
 import { PieChart } from './PieChart/PieChart';
 import { AreaChart } from './AreaChart/AreaChart';
 import { MultipleLinesChart } from './MultipleLinesChart/MultipleLinesChart';
+import { GroupedBarChart } from './GroupedBarChart/GroupedBarChart';
 
 export {
     AreaChart,
@@ -18,4 +19,5 @@ export {
     MultipleLinesChart,
     PieChart,
     Sparkline,
+    GroupedBarChart,
 };
