@@ -15,22 +15,23 @@ import SvgContainer, {
 } from '../SvgContainer/SvgContainer';
 
 import { BottomAxis } from '../Axis/BottomAxis';
-import { BottomAxisOptions } from '../Axis/types';
+// import { BottomAxisOptions } from '../Axis/types';
 import { LeftAxis } from '../Axis/LeftAxis';
 import { LeftAxisOptions } from '../Axis/types';
-import {
-    HoveredChartItem,
-    PointerEventsOverlay,
-} from '../PointerEventOverlay/PointerEventsOverlay';
-import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
+// import {
+//     HoveredChartItem,
+//     PointerEventsOverlay,
+// } from '../PointerEventOverlay/PointerEventsOverlay';
+// import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
 import { DEFAULT_MARGINS } from '../SvgContainer/constants';
-import { VerticalCrosshairLine } from '../CrosshairReferenceLine/VerticalCrosshairLine';
+// import { VerticalCrosshairLine } from '../CrosshairReferenceLine/VerticalCrosshairLine';
 import { GroupedBarChartGroupData, YScaleOptions } from './types';
-import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
+// import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
 import { HorizontalReferenceLineData } from '../ReferenceLine/types';
 import { HorizontalReferenceLine } from '../ReferenceLine/HorizontalReferenceLine';
-import GroupedBars from './GroupedBars';
+import { GroupedBars } from './GroupedBars';
 import { GroupedBarLabelText } from './GroupedBarLabelText';
+import { GroupedBarDividerLines } from './GroupedBarDividerLines';
 
 type XScale = ScaleBand<string>;
 
@@ -89,6 +90,10 @@ type Props = {
      * if true. show label text that will be placed at a fixed position on top of chart container.
      */
     showStickyLabelText?: boolean;
+    /**
+     * If true, show divider lines between bars inside of each group
+     */
+    showDividerLines?: boolean;
 };
 
 export const GroupedBarChart: FC<Props> = ({
@@ -97,6 +102,7 @@ export const GroupedBarChart: FC<Props> = ({
     yScaleOptions = {},
     showLabelText = false,
     showStickyLabelText = false,
+    showDividerLines = false,
     leftAxisOptions = {},
     // verticalReferenceLines = [],
     horizontalReferenceLines = [],
@@ -181,6 +187,17 @@ export const GroupedBarChart: FC<Props> = ({
                     shouldHide={leftAxisOptions.shouldHide}
                     tickFormatFunction={leftAxisOptions.tickFormatFunction}
                 />
+
+                {showDividerLines ? (
+                    <GroupedBarDividerLines
+                        groupedData={groupedData}
+                        xScale={xScale}
+                        xScaleSubgroup={xScaleSubgroup}
+                        yScale={yScale}
+                    />
+                ) : (
+                    <></>
+                )}
 
                 {showLabelText ? (
                     <GroupedBarLabelText

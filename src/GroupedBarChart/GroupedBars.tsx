@@ -12,7 +12,7 @@ type Props = {
     groupedData: GroupedBarChartGroupData[];
 };
 
-const GroupedBars: React.FC<Props> = ({
+export const GroupedBars: React.FC<Props> = ({
     xScale,
     xScaleSubgroup,
     yScale,
@@ -67,5 +67,3 @@ const GroupedBars: React.FC<Props> = ({
 
     return <g ref={groupContainer} className="grouped-bars-group"></g>;
 };
-
-export default GroupedBars;

@@ -192,3 +192,13 @@ export const ShowBothLabelTextAndStickyLabelText: Story = {
         },
     },
 };
+
+export const ShowGridLines: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        groupedData,
+        showDividerLines: true,
+        innerPadding: 0.15,
+        showStickyLabelText: true,
+    },
+};
