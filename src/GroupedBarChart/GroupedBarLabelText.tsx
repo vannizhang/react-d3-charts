@@ -51,6 +51,9 @@ export const GroupedBarLabelText: FC<Props> = ({
                 return d.data;
             })
             .join('text')
+            .attr('class', (d) => {
+                return isSticky ? 'is-sticky' : '';
+            })
             .text(function (d) {
                 if (isSticky) {
                     return d.labelOnTop || d.label;

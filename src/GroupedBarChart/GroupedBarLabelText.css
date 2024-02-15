@@ -3,3 +3,7 @@
     font-size: var(--bar-label-text-font-size);
     transform: translateY(var(--bar-label-text-translate-y-position))
 }
+
+.grouped-bar-label-text-group text.is-sticky {
+    transform: translateY(var(--bar-label-text-translate-y-position-sticky))
+}

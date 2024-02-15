@@ -15,7 +15,8 @@
      * this variable will be used to adjust the position of 
      * bar-label-text-group text element along the y axis.
      */
-     --bar-label-text-translate-y-position: -8px;
+    --bar-label-text-translate-y-position: -8px;
+    --bar-label-text-translate-y-position-sticky: -8px;
 
     /*
      * variables that control the style of the chart tooltip
