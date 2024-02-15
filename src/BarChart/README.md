@@ -334,3 +334,20 @@ Here is an example of showing sticky label text for each bar.
   showStickyLabelText={true}
 />
 ```
+
+**Use Custom Fill Color for Each Bar**
+---
+
+Here is an example of showing the bars using the fill color from the data of each bar item.
+```js
+<BarChartBasic
+  data={[
+    {
+      x: '12/1',
+      y: 26,
+      fill: 'skyblue',
+    },
+    //...
+  ]}
+/>
+```

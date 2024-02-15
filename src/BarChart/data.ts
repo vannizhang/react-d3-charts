@@ -123,3 +123,31 @@ export const dataWithLabelOnTop = [
         labelOnTop: 'Dec 6',
     },
 ];
+
+export const dataWithFillColor = [
+    {
+        x: 2018,
+        y: 26,
+        fill: 'deepskyblue',
+    },
+    {
+        x: 2019,
+        y: 38,
+        fill: 'darkslateblue',
+    },
+    {
+        x: 2020,
+        y: 10,
+        fill: 'lightskyblue',
+    },
+    {
+        x: 2021,
+        y: 45,
+        fill: 'skyblue',
+    },
+    {
+        x: 2022,
+        y: 10,
+        fill: 'cornflowerblue',
+    },
+];

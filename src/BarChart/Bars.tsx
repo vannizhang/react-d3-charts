@@ -2,15 +2,13 @@ import React, { useRef, useEffect } from 'react';
 
 import { select, ScaleBand, ScaleLinear } from 'd3';
 import { SvgContainerData } from '../SvgContainer/SvgContainer';
+import { BarChartDataItem } from './types';
 
 type Props = {
     xScale: ScaleBand<string | number>;
     yScale: ScaleLinear<number, number>;
     svgContainerData?: SvgContainerData;
-    data: {
-        x: string | number;
-        y: number;
-    }[];
+    data: BarChartDataItem[];
     /**
      * fill color of bar rects
      */
@@ -42,7 +40,7 @@ const Bars: React.FC<Props> = ({
             .data(data)
             .enter()
             .append('rect')
-            .style('fill', fill)
+            .style('fill', (d) => d.fill || fill)
             .attr('x', (d) => {
                 return typeof d.x === 'number'
                     ? xScale(d.x.toString())

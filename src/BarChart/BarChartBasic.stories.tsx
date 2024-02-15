@@ -2,7 +2,12 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { BarChartBasic } from './BarChartBasic';
-import { data, dataNumbericalX, dataWithLabelOnTop } from './data';
+import {
+    data,
+    dataNumbericalX,
+    dataWithFillColor,
+    dataWithLabelOnTop,
+} from './data';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof BarChartBasic> = {
@@ -200,5 +205,12 @@ export const ShowBothLabelTextAndStickyLabelText: Story = {
             bottom: 30,
             left: 30,
         },
+    },
+};
+
+export const UseFillColorFromData: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data: dataWithFillColor,
     },
 };

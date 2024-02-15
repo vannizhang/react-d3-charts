@@ -19,6 +19,10 @@ export type BarChartDataItem = {
      * The label text to be place on top of each bar
      */
     labelOnTop?: string;
+    /**
+     * The fill color that will be used to render this Bar rectangle.
+     */
+    fill?: string;
 };
 
 export type YScaleOptions = {
