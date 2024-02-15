@@ -1,5 +1,9 @@
 .bar-label-text-group text{
-    fill: var(--axis-tick-text-color);
-    font-size: var(--axis-tick-text-font-size);
+    fill: var(--bar-label-text-color);
+    font-size: var(--bar-label-text-font-size);
     transform: translateY(var(--bar-label-text-translate-y-position))
+}
+
+.bar-label-text-group text.is-sticky {
+    transform: translateY(var(--bar-label-text-translate-y-position-sticky))
 }

@@ -37,6 +37,9 @@ export const BarLabelText: React.FC<Props> = ({
             .data(data)
             .enter()
             .append('text')
+            .attr('class', (d) => {
+                return isSticky ? 'is-sticky' : '';
+            })
             .text(function (d) {
                 if (isSticky) {
                     return d.labelOnTop || d.label;
