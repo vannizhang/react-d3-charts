@@ -12,15 +12,15 @@ export type BarChartDataItem = {
      */
     tooltip?: string;
     /**
-     * The label text to be place along the top end of each bar
+     * The label text to be placed right above this item.
      */
     label?: string;
     /**
-     * The label text to be place on top of each bar
+     * The label text to be place on top of this item.
      */
     labelOnTop?: string;
     /**
-     * The fill color that will be used to render this Bar rectangle.
+     * The fill color that will be used to render this item.
      */
     fill?: string;
 };
