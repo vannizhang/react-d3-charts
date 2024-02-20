@@ -132,3 +132,19 @@ export const ShowStickyLabelText: Story = {
         },
     },
 };
+
+export const AddCustomPointerEvents: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        onBarClick: (d) => {
+            alert(`clicked bar element at index of ${d.index}`);
+        },
+        onBarMouseEnter: (d) => {
+            console.log(`hovered bar element at index of ${d?.index}`);
+        },
+        onBarMouseLeave: () => {
+            console.log(`pointer has left bar elements`);
+        },
+    },
+};

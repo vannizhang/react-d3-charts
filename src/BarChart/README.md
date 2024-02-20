@@ -354,7 +354,7 @@ Here is an example of showing the bars using the fill color from the data of eac
 />
 ```
 
-**Add Custom Pointer Events to the Bar Chart**
+**Add Custom Pointer Events**
 ---
 
 Here is an example of adding custom pointer events to the Bar Chart

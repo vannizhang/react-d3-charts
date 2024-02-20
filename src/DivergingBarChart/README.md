@@ -10,20 +10,23 @@ import { DivergingBarChart } from '@vannizhang/react-d3-charts'
 ```
 
 ### Props
-| **Name**            | **Type**                                           | **Default**                                  | **Description**                                                                                     |
-|---------------------|----------------------------------------------------|----------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| data                | [`DivergingBarChartDataItem[]`](./types.ts)        | -                                            | The data used to render the bar chart.                                                              |
-| showTooltip         | `boolean` (optional)                               | false                                        | Determines whether to show a tooltip when the user hovers over a bar element.                       |
-| showStickyLabelText | `boolean` (optional)                               | false                                        | if true, show label text that will be sticky to the top of chart container.                         |
-| yScaleOptions       | [`YScaleOptions`](./types.ts) (optional)           | -                                            | Options used to customize the scale function for the y-axis.                                        |
-| bottomAxisOptions   | [`BottomAxisOptions`](../Axis/types.ts) (optional) | -                                            | Options used to customize the x-axis at bottom.                                                     |
-| leftAxisOptions     | [`LeftAxisOptions`](../Axis/types.ts) (optional)   | -                                            | Options used to customize the y-axis at left.                                                       |
-| fill                | `string` (optional)                                | -                                            | The fill color of the bar rectangles.                                                               |
-| innerPadding        | `number` (optional)                                | 0.2                                          | The inner padding determines the blank space between bands.                                         |
-| width               | `number` (optional)                                | -                                            | The width of the chart container. If not provided, it will fit the width of the parent container.   |
-| height              | `number` (optional)                                | -                                            | The height of the chart container. If not provided, it will fit the height of the parent container. |
-| margin              | `SvgContainerMargins` (optional)                   | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                               |
-                                
+ --------------------- | ---------------------------------------------------- | ---------------------------------------------- | -----------------------------------------------------------------------------------------------------                                                                                                                   
+-----------------------|------------------------------------------------------|------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ data                  | [`DivergingBarChartDataItem[]`](./types.ts)          | -                                              | The data used to render the bar chart.                                                                                                                                                                                  
+ showTooltip           | `boolean` (optional)                                 | false                                          | Determines whether to show a tooltip when the user hovers over a bar element.                                                                                                                                           
+ showStickyLabelText   | `boolean` (optional)                                 | false                                          | if true, show label text that will be sticky to the top of chart container.                                                                                                                                             
+ yScaleOptions         | [`YScaleOptions`](./types.ts) (optional)             | -                                              | Options used to customize the scale function for the y-axis.                                                                                                                                                            
+ bottomAxisOptions     | [`BottomAxisOptions`](../Axis/types.ts) (optional)   | -                                              | Options used to customize the x-axis at bottom.                                                                                                                                                                         
+ leftAxisOptions       | [`LeftAxisOptions`](../Axis/types.ts) (optional)     | -                                              | Options used to customize the y-axis at left.                                                                                                                                                                           
+ fill                  | `string` (optional)                                  | -                                              | The fill color of the bar rectangles.                                                                                                                                                                                   
+ innerPadding          | `number` (optional)                                  | 0.2                                            | The inner padding determines the blank space between bands.                                                                                                                                                             
+ width                 | `number` (optional)                                  | -                                              | The width of the chart container. If not provided, it will fit the width of the parent container.                                                                                                                       
+ height                | `number` (optional)                                  | -                                              | The height of the chart container. If not provided, it will fit the height of the parent container.                                                                                                                     
+ margin                | `SvgContainerMargins` (optional)                     | `{top: 15, right: 15, bottom: 30,left: 30,}`   | Custom margin space around the chart.                                                                                                                                                                                   
+ onBarClick            | `(data:PointerEventDataItem)=>void` (optional)       | -                                              | Emits when user clicks a Bar element. The [`PointerEventDataItem`](../PointerEventOverlay/PointerEventsOverlay.tsx) object contains the index of the bar element that is clicked and the x position of the click event. 
+ onBarMouseEnter       | `(data:PointerEventDataItem)=>void` (optional)       | -                                              | Emits when user hovers a Bar element. The [`PointerEventDataItem`](../PointerEventOverlay/PointerEventsOverlay.tsx) object contains the index of the bar element that is hovered and the x position of the hover event. 
+ onBarMouseLeave       | `()=>void` (optional)                                | -                                              | Emits when user moves the pointer out of Bar elements.                                                                                                                                                                  
+
 
 **Basic Example**
 ---
@@ -211,5 +214,32 @@ Here is an example of showing sticky label text for each bar.
     //...
   ]}
   showStickyLabelText={true}
+/>
+```
+
+**Add Custom Pointer Events**
+---
+
+Here is an example of adding custom pointer events to the Diverging Bar Chart
+```js
+<DivergingBarChart
+  data={[
+    {
+      x: 'Trees',
+      y: -40,
+      tooltip: 'this is a tooltip',
+      fill: 'green',
+    },
+    //...
+  ]}
+  onBarClick={(d)=>{
+    alert(`clicked bar element at index of ${d.index}`);
+  }}
+  onBarMouseEnter={(d)=>{
+    console.log(`hovered bar element at index of ${d?.index}`)
+  }}
+  onBarMouseLeave={()=>{
+    console.log(`pointer has left bar elements`)
+  }}
 />
 ```

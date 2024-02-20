@@ -215,7 +215,7 @@ export const UseFillColorFromData: Story = {
     },
 };
 
-export const AddCustomEvents: Story = {
+export const AddCustomPointerEvents: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
         data,
