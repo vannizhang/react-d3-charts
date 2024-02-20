@@ -19,7 +19,7 @@ import { BottomAxisOptions } from '../Axis/types';
 import { LeftAxis } from '../Axis/LeftAxis';
 import { LeftAxisOptions } from '../Axis/types';
 import {
-    HoveredChartItem,
+    PointerEventDataItem,
     PointerEventsOverlay,
 } from '../PointerEventOverlay/PointerEventsOverlay';
 import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
@@ -112,7 +112,7 @@ export const DivergingBarChart: FC<Props> = ({
     });
 
     const [hoveredChartItem, setHoveredChartItem] =
-        useState<HoveredChartItem>();
+        useState<PointerEventDataItem>();
 
     const xDomain = useMemo(() => {
         if (!data || !data.length) {

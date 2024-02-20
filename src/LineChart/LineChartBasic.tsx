@@ -20,7 +20,7 @@ import { BottomAxisOptions } from '../Axis/types';
 import { LeftAxis } from '../Axis/LeftAxis';
 import { LeftAxisOptions } from '../Axis/types';
 import {
-    HoveredChartItem,
+    PointerEventDataItem,
     PointerEventsOverlay,
 } from '../PointerEventOverlay/PointerEventsOverlay';
 import { TooltipOnTop } from '../Tooltip/TooltipOnTop';
@@ -129,7 +129,7 @@ export const LineChartBasic: FC<Props> = ({
     });
 
     const [hoveredChartItem, setHoveredChartItem] =
-        useState<HoveredChartItem>();
+        useState<PointerEventDataItem>();
 
     /**
      * data of the reference line that is currently hovered by the mouse pointer

@@ -3,13 +3,13 @@ import React, { useRef, useEffect, FC } from 'react';
 import { select, ScaleBand, ScaleLinear, ScaleTime } from 'd3';
 import { SvgContainerData } from '../SvgContainer/SvgContainer';
 
-export type HoveredChartItem = {
+export type PointerEventDataItem = {
     /**
-     * index of the item that is being hovered
+     * index of the item that is being hovered by the pointer
      */
     index: number;
     /**
-     * x position of the item that is being hovered
+     * x position of the item that is being hovered by the pointer
      */
     xPosition: number;
 };
@@ -35,7 +35,7 @@ type Props = {
      * @param data
      * @returns
      */
-    hoveredChartItemOnChange: (data: HoveredChartItem) => void;
+    hoveredChartItemOnChange: (data: PointerEventDataItem) => void;
     svgContainerData?: SvgContainerData;
 };
 
@@ -117,9 +117,11 @@ export const PointerEventsOverlay: FC<Props> = ({
      * Finds the item on hover based on the mouse position.
      *
      * @param {number} mousePosX - The x-coordinate of the mouse position.
-     * @returns {HoveredChartItem} - An object containing the index and x-position of the item on hover.
+     * @returns {PointerEventDataItem} - An object containing the index and x-position of the item on hover.
      */
-    const findItemOnHoverByMousePos = (mousePosX: number): HoveredChartItem => {
+    const findItemOnHoverByMousePos = (
+        mousePosX: number
+    ): PointerEventDataItem => {
         if (!mousePosX) {
             return null;
         }
