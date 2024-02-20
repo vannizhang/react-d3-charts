@@ -36,6 +36,12 @@ type Props = {
      * @returns
      */
     hoveredChartItemOnChange: (data: PointerEventDataItem) => void;
+    /**
+     * fires when user clicks a chart item
+     * @param data
+     * @returns
+     */
+    onClick?: (data: PointerEventDataItem) => void;
     svgContainerData?: SvgContainerData;
 };
 
@@ -44,6 +50,7 @@ export const PointerEventsOverlay: FC<Props> = ({
     xDomain,
     svgContainerData,
     hoveredChartItemOnChange,
+    onClick,
 }: Props) => {
     const containerGroupRef = useRef<SVGGElement>();
 
@@ -71,6 +78,14 @@ export const PointerEventsOverlay: FC<Props> = ({
             })
             .on('mousemove', (evt) => {
                 handleMouseMoveEvent(evt.offsetX);
+            })
+            .on('click', (evt) => {
+                if (!onClick) {
+                    return;
+                }
+
+                const itemOnHover = findItemOnHoverByMousePos(evt.offsetX);
+                onClick(itemOnHover);
             });
     };
 

@@ -1,5 +1,5 @@
 import '../styles/variables.css';
-import React, { FC, useMemo, useState } from 'react';
+import React, { FC, useEffect, useMemo, useState } from 'react';
 import {
     ScaleBand,
     scaleLinear,
@@ -98,6 +98,23 @@ type Props = {
      * if true. show label text that will be placed at a fixed position on top of chart container.
      */
     showStickyLabelText?: boolean;
+    /**
+     * Emits when user clicks on a Bar element
+     * @param data {PointerEventDataItem} that contains the index of the bar element that is clicked and the x position of the click event.
+     * @returns void
+     */
+    onBarClick?: (data: PointerEventDataItem) => void;
+    /**
+     * Emits when user hovers on a Bar element
+     * @param data {PointerEventDataItem} that contains the index of the bar item that is hovered and the x position of the hover event
+     * @returns void
+     */
+    onBarMouseEnter?: (data: PointerEventDataItem) => void;
+    /**
+     * Emits when user moves the pointer out of Bar elements
+     * @returns void
+     */
+    onBarMouseLeave?: () => void;
 };
 
 /**
@@ -120,6 +137,9 @@ export const BarChartBasic: FC<Props> = ({
     width,
     height,
     margin = DEFAULT_MARGINS,
+    onBarClick,
+    onBarMouseEnter,
+    onBarMouseLeave,
 }: Props) => {
     const [dimension, setDimension] = useState<SvgContainerDimension>({
         height: 0,
@@ -168,6 +188,18 @@ export const BarChartBasic: FC<Props> = ({
         }
         return scaleLinear<number, number>().range([height, 0]).domain(domain);
     }, [dimension, data, yScaleOptions]);
+
+    useEffect(() => {
+        if (!onBarMouseEnter && !onBarMouseLeave) {
+            return;
+        }
+
+        if (hoveredChartItem) {
+            onBarMouseEnter(hoveredChartItem);
+        } else {
+            onBarMouseLeave();
+        }
+    }, [hoveredChartItem?.index]);
 
     return (
         <div
@@ -229,6 +261,7 @@ export const BarChartBasic: FC<Props> = ({
                     xScale={xScale}
                     xDomain={xDomain}
                     hoveredChartItemOnChange={setHoveredChartItem}
+                    onClick={onBarClick}
                 />
 
                 {verticalReferenceLines && verticalReferenceLines.length ? (

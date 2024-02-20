@@ -9,24 +9,26 @@ import { BarChartBasic } from '@vannizhang/react-d3-charts'
 ```
 
 ### Props
-| **Name**                 | **Type**                                                                | **Default**                                  | **Description**                                                                                     |
-|--------------------------|-------------------------------------------------------------------------|----------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| data                     | [`BarChartDataItem[]`](./types.ts)                                      | -                                            | The data used to render the bar chart.                                                              |
-| showTooltip              | `boolean` (optional)                                                    | false                                        | Determines whether to show a tooltip when the user hovers over a bar element.                       |
-| yScaleOptions            | [`YScaleOptions`](./types.ts) (optional)                                | -                                            | Options used to customize the scale function for the y-axis.                                        |
-| bottomAxisOptions        | [`BottomAxisOptions`](../Axis/types.ts) (optional)                      | -                                            | Options used to customize the x-axis at bottom.                                                     |
-| leftAxisOptions          | [`LeftAxisOptions`](../Axis/types.ts) (optional)                        | -                                            | Options used to customize the y-axis at left.                                                       |
-| verticalReferenceLines   | [`VerticalReferenceLineData[]`](./types.ts) (optional)                  | -                                            | Data that will be used to draw vertical reference lines.                                            |
-| horizontalReferenceLines | [`HorizontalReferenceLineData[]`](../ReferenceLine/types.ts) (optional) | -                                            | Data that will be used to draw horizontal reference lines.                                          |
-| showLabelText            | `boolean` (optional)                                                    | false                                        | Determines whether to show a tooltip when the user hovers over a bar element.                       |
-| showStickyLabelText      | `boolean` (optional)                                                    | false                                        | if true, show label text that will be sticky to the top of chart container.                         |
-| fill                     | `string` (optional)                                                     | -                                            | The fill color of the bar rectangles.                                                               |
-| innerPadding             | `number` (optional)                                                     | 0.2                                          | The inner padding determines the blank space between bands.                                         |
-| width                    | `number` (optional)                                                     | -                                            | if true, show label text on top of each bar rectangle.                                               |
-| height                   | `number` (optional)                                                     | -                                            | The height of the chart container. If not provided, it will fit the height of the parent container. |
-| margin                   | `SvgContainerMargins` (optional)                                        | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                               |
-
-                                               
+| **Name**                 | **Type**                                                                | **Default**                                  | **Description**                                                                                                                                                                                                         |
+|--------------------------|-------------------------------------------------------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| data                     | [`BarChartDataItem[]`](./types.ts)                                      | -                                            | The data used to render the bar chart.                                                                                                                                                                                  |
+| showTooltip              | `boolean` (optional)                                                    | false                                        | Determines whether to show a tooltip when the user hovers over a bar element.                                                                                                                                           |
+| yScaleOptions            | [`YScaleOptions`](./types.ts) (optional)                                | -                                            | Options used to customize the scale function for the y-axis.                                                                                                                                                            |
+| bottomAxisOptions        | [`BottomAxisOptions`](../Axis/types.ts) (optional)                      | -                                            | Options used to customize the x-axis at bottom.                                                                                                                                                                         |
+| leftAxisOptions          | [`LeftAxisOptions`](../Axis/types.ts) (optional)                        | -                                            | Options used to customize the y-axis at left.                                                                                                                                                                           |
+| verticalReferenceLines   | [`VerticalReferenceLineData[]`](./types.ts) (optional)                  | -                                            | Data that will be used to draw vertical reference lines.                                                                                                                                                                |
+| horizontalReferenceLines | [`HorizontalReferenceLineData[]`](../ReferenceLine/types.ts) (optional) | -                                            | Data that will be used to draw horizontal reference lines.                                                                                                                                                              |
+| showLabelText            | `boolean` (optional)                                                    | false                                        | Determines whether to show a tooltip when the user hovers over a bar element.                                                                                                                                           |
+| showStickyLabelText      | `boolean` (optional)                                                    | false                                        | if true, show label text that will be sticky to the top of chart container.                                                                                                                                             |
+| fill                     | `string` (optional)                                                     | -                                            | The fill color of the bar rectangles.                                                                                                                                                                                   |
+| innerPadding             | `number` (optional)                                                     | 0.2                                          | The inner padding determines the blank space between bands.                                                                                                                                                             |
+| width                    | `number` (optional)                                                     | -                                            | if true, show label text on top of each bar rectangle.                                                                                                                                                                  |
+| height                   | `number` (optional)                                                     | -                                            | The height of the chart container. If not provided, it will fit the height of the parent container.                                                                                                                     |
+| margin                   | `SvgContainerMargins` (optional)                                        | `{top: 15, right: 15, bottom: 30,left: 30,}` | Custom margin space around the chart.                                                                                                                                                                                   |
+| onBarClick               | `(data:PointerEventDataItem)=>void` (optional)                          | -                                            | Emits when user clicks a Bar element. The [`PointerEventDataItem`](../PointerEventOverlay/PointerEventsOverlay.tsx) object contains the index of the bar element that is clicked and the x position of the click event. |
+| onBarMouseEnter          | `(data:PointerEventDataItem)=>void` (optional)                          | -                                            | Emits when user hovers a Bar element. The [`PointerEventDataItem`](../PointerEventOverlay/PointerEventsOverlay.tsx) object contains the index of the bar element that is hovered and the x position of the hover event. |
+| onBarMouseLeave          | `()=>void` (optional)                                                   | -                                            | Emits when user moves the pointer out of Bar elements.                                                                                                                                                                  |
+                              
 **Basic Example**
 ---
 
@@ -349,5 +351,31 @@ Here is an example of showing the bars using the fill color from the data of eac
     },
     //...
   ]}
+/>
+```
+
+**Add Custom Pointer Events to the Bar Chart**
+---
+
+Here is an example of adding custom pointer events to the Bar Chart
+```js
+<BarChartBasic
+  data={[
+    {
+      x: '12/1',
+      y: 26,
+      fill: 'skyblue',
+    },
+    //...
+  ]}
+  onBarClick={(d)=>{
+    alert(`clicked bar element at index of ${d.index}`);
+  }}
+  onBarMouseEnter={(d)=>{
+    console.log(`hovered bar element at index of ${d?.index}`)
+  }}
+  onBarMouseLeave={()=>{
+    console.log(`pointer has left bar elements`)
+  }}
 />
 ```
