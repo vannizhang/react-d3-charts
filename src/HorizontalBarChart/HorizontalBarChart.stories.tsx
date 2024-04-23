@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { HorizontalBarChart } from './HorizontalBarChart';
 import {
     california2022GDPByIndustry,
+    top3StatesBy2022GDPWithFillColr,
     top5StatesBy2022GDP,
 } from './examples.data';
 
@@ -136,6 +137,20 @@ export const useCustomizedDomainForXScale: Story = {
             domain: [0, 5000],
         },
         height: 300,
+        margin: {
+            left: 100,
+            right: 15,
+            top: 30,
+            bottom: 30,
+        },
+    },
+};
+
+// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+export const UseUniqueFillColor: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data: top3StatesBy2022GDPWithFillColr,
         margin: {
             left: 100,
             right: 15,

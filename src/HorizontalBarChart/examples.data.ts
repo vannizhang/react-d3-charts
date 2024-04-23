@@ -26,6 +26,24 @@ export const top5StatesBy2022GDP = [
     },
 ];
 
+export const top3StatesBy2022GDPWithFillColr = [
+    {
+        y: 'California',
+        x: 3598,
+        fill: 'dodgerblue',
+    },
+    {
+        y: 'Texas',
+        x: 2356,
+        fill: 'wheat',
+    },
+    {
+        y: 'New York',
+        x: 2053,
+        fill: 'lightgrey',
+    },
+];
+
 export const california2022GDPByIndustry = [
     {
         y: 'Professional and business services',

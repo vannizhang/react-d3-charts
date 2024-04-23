@@ -11,6 +11,10 @@ export type HorizontalBarChartDataItem = {
      * The tooltip associated with this item, which can be plain text or an HTML string.
      */
     tooltip?: string;
+    /**
+     * The fill color that will be used to render this item.
+     */
+    fill?: string;
 };
 
 export type LeftAxisOptions = {
