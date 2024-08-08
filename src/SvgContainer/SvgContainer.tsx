@@ -69,11 +69,33 @@ const SvgContainer: React.FC<Props> = ({
         updateDimension();
     }, []);
 
-    useLayoutEffect(() => {
-        window.addEventListener('resize', updateDimension);
+    // useLayoutEffect(() => {
+    //     window.addEventListener('resize', updateDimension);
+
+    //     return () => {
+    //         window.removeEventListener('resize', updateDimension);
+    //     };
+    // }, []);
+
+    useEffect(() => {
+        const resizeObserver = new ResizeObserver((entries) => {
+            if (entries[0]) {
+                // const { width, height } = entries[0].contentRect;
+                // setSize({ width, height });
+                updateDimension();
+            }
+        });
+
+        if (containerRef.current) {
+            resizeObserver.observe(containerRef.current);
+        }
 
         return () => {
-            window.removeEventListener('resize', updateDimension);
+            if (containerRef.current) {
+                resizeObserver.unobserve(containerRef.current);
+            }
+
+            resizeObserver.disconnect();
         };
     }, []);
 
