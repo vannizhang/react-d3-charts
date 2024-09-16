@@ -41,6 +41,10 @@ const SvgContainer: React.FC<Props> = ({
         React.useState<SvgContainerData>();
 
     const updateDimension = () => {
+        if (!containerRef.current) {
+            return; // If the container isn't rendered yet, exit the function.
+        }
+
         const svg = select(svgRef.current).node();
         const rootGroup = select(rootGroupRef.current).node();
 
@@ -65,9 +69,9 @@ const SvgContainer: React.FC<Props> = ({
         });
     };
 
-    useEffect(() => {
-        updateDimension();
-    }, []);
+    // useEffect(() => {
+    //     updateDimension();
+    // }, []);
 
     // useLayoutEffect(() => {
     //     window.addEventListener('resize', updateDimension);
@@ -78,6 +82,8 @@ const SvgContainer: React.FC<Props> = ({
     // }, []);
 
     useEffect(() => {
+        updateDimension();
+
         const resizeObserver = new ResizeObserver((entries) => {
             if (entries[0]) {
                 // const { width, height } = entries[0].contentRect;
