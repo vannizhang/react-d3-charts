@@ -1,6 +1,6 @@
 import './VerticalReferenceLine.css';
 
-import React, { FC, useEffect, useRef } from 'react';
+import React, { CSSProperties, FC, useEffect, useMemo, useRef } from 'react';
 import { select } from 'd3';
 import { SvgContainerData } from '../SvgContainer/SvgContainer';
 
@@ -9,6 +9,18 @@ type Props = {
      * position on x-axis to place this vertical reference line
      */
     xPosition: number;
+    /**
+     * The stroke color of this specific vertical reference line
+     */
+    strokeColor?: string;
+    /**
+     * The stroke width of this specific vertical reference line
+     */
+    strokeWidth?: string;
+    /**
+     * The stroke dash array of this specific vertical reference line
+     */
+    strokeDashArray?: string;
     svgContainerData?: SvgContainerData;
     onMouseEnter?: () => void;
     onMouseLeave?: () => void;
@@ -18,11 +30,38 @@ const POINTER_EVENTS_BUFFER_RECT_WIDTH = 16;
 
 export const VerticalReferenceLine: FC<Props> = ({
     xPosition,
+    strokeColor,
+    strokeWidth,
+    strokeDashArray,
     svgContainerData,
     onMouseEnter,
     onMouseLeave,
 }) => {
     const containerGroupRef = useRef<SVGGElement>();
+
+    /**
+     * CSS Properties contains values to override the default css variables
+     */
+    const cssProperties: CSSProperties = useMemo(() => {
+        const output: {
+            [key: string]: string;
+        } = {};
+
+        if (strokeColor) {
+            output['--vertical-reference-line-color'] = strokeColor;
+        }
+
+        if (strokeWidth) {
+            output['--vertical-reference-line-width'] = strokeWidth;
+        }
+
+        if (strokeDashArray) {
+            output['--vertical-reference-line-stroke-dasharray'] =
+                strokeDashArray;
+        }
+
+        return output as CSSProperties;
+    }, [strokeColor, strokeWidth, strokeDashArray]);
 
     const drawRefLine = () => {
         const { dimension } = svgContainerData;
@@ -77,6 +116,10 @@ export const VerticalReferenceLine: FC<Props> = ({
     }, [xPosition, svgContainerData]);
 
     return (
-        <g className="vertical-reference-line-group" ref={containerGroupRef} />
+        <g
+            className="vertical-reference-line-group"
+            style={cssProperties}
+            ref={containerGroupRef}
+        />
     );
 };

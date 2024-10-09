@@ -68,4 +68,28 @@ export type VerticalReferenceLineData = {
      * tooltip to be displayed on top of the vertical reference line
      */
     tooltip: string;
+    /**
+     * The stroke color of this specific vertical reference line,
+     * useful when you need to differentiate it from other reference lines.
+     *
+     * Note: It's recommended to use the CSS variable `--vertical-reference-line-color`
+     * to manage the stroke color for consistency.
+     */
+    strokeColor?: string;
+    /**
+     * The stroke width of this specific vertical reference line,
+     * useful when you need to differentiate it from other reference lines.
+     *
+     * Note: It's recommended to use the CSS variable `--vertical-reference-line-width`
+     * to manage the stroke width for consistency.
+     */
+    strokeWidth?: string;
+    /**
+     * The stroke dash array of this specific vertical reference line,
+     * useful when you need to differentiate it from other reference lines.
+     *
+     * Note: It's recommended to use the CSS variable `--vertical-reference-line-stroke-dasharray`
+     * to manage the stroke dash pattern for consistency.
+     */
+    strokeDashArray?: string;
 };

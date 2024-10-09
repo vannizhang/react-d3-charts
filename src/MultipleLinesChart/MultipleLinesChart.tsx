@@ -249,6 +249,9 @@ export const MultipleLinesChart: FC<Props> = ({
                             <VerticalReferenceLine
                                 key={d.x}
                                 xPosition={xScale(d.x)}
+                                strokeColor={d.strokeColor}
+                                strokeWidth={d.strokeWidth}
+                                strokeDashArray={d.strokeDashArray}
                                 onMouseEnter={setHoveredVerticalReferenceLine.bind(
                                     null,
                                     d

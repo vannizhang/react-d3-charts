@@ -78,7 +78,7 @@ export const MetaAndMicrosoftAverageClosingPriceOn2022: Story = {
             {
                 y: 382,
                 label: 'Meta Highest Closing Price on 2021: $382',
-            },
+            } as any,
         ],
         margin: {
             ...DEFAULT_MARGINS,
@@ -209,6 +209,33 @@ export const AddVerticalReferenceLines: Story = {
     },
 };
 
+export const AddVerticalReferenceLinesWithDifferentStyles: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        showTooltip: true,
+        verticalReferenceLines: [
+            {
+                x: 5,
+                tooltip: 'Reference Line uses default style ',
+            },
+            {
+                x: 6,
+                tooltip: 'Reference Line uses default style',
+                strokeColor: 'orange',
+                strokeWidth: '2px',
+                strokeDashArray: '1, 2',
+            },
+            {
+                x: 10,
+                tooltip: 'Reference Line uses custome style',
+                strokeColor: 'red',
+                strokeWidth: '4px',
+            },
+        ],
+    },
+};
+
 export const AddHorizontalReferenceLines: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {
@@ -220,7 +247,7 @@ export const AddHorizontalReferenceLines: Story = {
             {
                 y: 382,
                 label: 'Meta Highest Closing Price on 2021: $382',
-            },
+            } as any,
         ],
     },
 };

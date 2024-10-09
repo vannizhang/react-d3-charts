@@ -429,6 +429,60 @@ Here is an example of adding vertical reference lines to the Multiple Lines char
 />
 ```
 
+**Show Vertical Reference Lines with Difference Styles**
+---
+
+Here is an example of adding vertical reference lines with different styles.
+```js
+<MultipleLinesChart
+  data={[
+    {
+      fill: '#3b5998',
+      key: 'Meta',  
+      values: [
+        {
+          x: 1,
+          y: 313.26001
+        },
+        //...
+      ]
+    },
+    {
+      fill: '#7FBA00',
+      key: 'Microsoft',
+      values: [
+        {
+          x: 1,
+          y: 310.980011
+        },
+        //...
+      ]
+    }
+  ]}
+  verticalReferenceLines={[
+    {
+        x: 5,
+        tooltip:
+          'Reference Line uses default style ',
+    },
+    {
+        x: 6,
+        tooltip:
+          'Reference Line uses default style',
+        strokeColor: 'orange',
+        strokeWidth: '2px',
+        strokeDashArray: '1, 2'
+    },
+    {
+        x: 10,
+        tooltip:
+          'Reference Line uses custome style',
+        strokeColor: 'red',
+        strokeWidth: '4px'
+    },
+  ]}
+/>
+```
 
 **Show Horizontal Reference Lines**
 ---
