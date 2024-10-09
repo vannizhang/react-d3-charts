@@ -247,7 +247,7 @@ export const MultipleLinesChart: FC<Props> = ({
                     verticalReferenceLines.map((d) => {
                         return (
                             <VerticalReferenceLine
-                                key={d.x}
+                                key={d.x + '-' + Math.random().toString()}
                                 xPosition={xScale(d.x)}
                                 strokeColor={d.strokeColor}
                                 strokeWidth={d.strokeWidth}

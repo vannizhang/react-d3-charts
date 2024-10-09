@@ -243,7 +243,7 @@ export const BarLineComboChart: FC<Props> = ({
                     verticalReferenceLines.map((d) => {
                         return (
                             <VerticalReferenceLine
-                                key={d.x}
+                                key={d.x + '-' + Math.random().toString()}
                                 xPosition={xScale(d.x) + xScale.bandwidth() / 2}
                                 onMouseEnter={setHoveredVerticalReferenceLine.bind(
                                     null,

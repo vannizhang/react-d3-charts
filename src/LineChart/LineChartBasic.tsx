@@ -231,7 +231,7 @@ export const LineChartBasic: FC<Props> = ({
                     verticalReferenceLines.map((d) => {
                         return (
                             <VerticalReferenceLine
-                                key={d.x}
+                                key={d.x + '-' + Math.random().toString()}
                                 xPosition={xScale(d.x)}
                                 onMouseEnter={setHoveredVerticalReferenceLine.bind(
                                     null,
