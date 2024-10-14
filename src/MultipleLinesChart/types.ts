@@ -93,3 +93,25 @@ export type VerticalReferenceLineData = {
      */
     strokeDashArray?: string;
 };
+
+export type ReferenceRectangleData = {
+    /**
+     * Unique identifier for this reference rectangle.
+     */
+    key: string;
+
+    /**
+     * The x-coordinate of the rectangle's top-left corner.
+     */
+    xMin: number;
+
+    /**
+     * The x-coordinate of the rectangle's bottom-right corner.
+     */
+    xMax: number;
+
+    /**
+     * The fill color of the rectangle (optional).
+     */
+    fillColor?: string;
+};

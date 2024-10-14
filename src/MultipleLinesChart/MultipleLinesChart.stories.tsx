@@ -252,6 +252,21 @@ export const AddHorizontalReferenceLines: Story = {
     },
 };
 
+export const AddReferenceRectangles: Story = {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    args: {
+        data,
+        referenceRectangels: [
+            {
+                key: 'rectangle-1',
+                xMin: 4,
+                xMax: 9,
+                fillColor: 'rgba(50,50,50,.1)',
+            } as any,
+        ],
+    },
+};
+
 export const UseDashPattern: Story = {
     // More on args: https://storybook.js.org/docs/react/writing-stories/args
     args: {

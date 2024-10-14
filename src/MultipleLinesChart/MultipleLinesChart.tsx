@@ -31,6 +31,7 @@ import { VerticalCrosshairLine } from '../CrosshairReferenceLine/VerticalCrossha
 import {
     LineGroupData,
     LineVertexData,
+    ReferenceRectangleData,
     VerticalReferenceLineData,
     XScaleOptions,
     YScaleOptions,
@@ -38,6 +39,7 @@ import {
 import { VerticalReferenceLine } from '../ReferenceLine/VerticalReferenceLine';
 import { HorizontalReferenceLineData } from '../ReferenceLine/types';
 import { HorizontalReferenceLine } from '../ReferenceLine/HorizontalReferenceLine';
+import { ReferenceRectangle } from '../ReferenceRectangle/ReferenceRectangle';
 
 type XScale = ScaleLinear<number, number> | ScaleTime<number, number>;
 
@@ -77,6 +79,10 @@ type Props = {
      */
     horizontalReferenceLines?: HorizontalReferenceLineData[];
     /**
+     * Array of data that will be used to draw reference rectangles
+     */
+    referenceRectangels?: ReferenceRectangleData[];
+    /**
      * width of the line
      */
     strokeWidth?: number;
@@ -108,6 +114,7 @@ export const MultipleLinesChart: FC<Props> = ({
     leftAxisOptions = {},
     verticalReferenceLines = [],
     horizontalReferenceLines = [],
+    referenceRectangels = [],
     strokeWidth,
     width,
     height,
@@ -203,6 +210,22 @@ export const MultipleLinesChart: FC<Props> = ({
             }}
         >
             <SvgContainer margin={margin} dimensionOnChange={setDimension}>
+                {referenceRectangels && referenceRectangels.length ? (
+                    referenceRectangels.map((d) => {
+                        return (
+                            <ReferenceRectangle
+                                key={d.key}
+                                x={xScale(d.xMin)}
+                                y={0}
+                                width={xScale(d.xMax) - xScale(d.xMin)}
+                                height={dimension.height} // the reference rectangle should cover the full height
+                                fillColor={d.fillColor}
+                            />
+                        );
+                    })
+                ) : (
+                    <></>
+                )}
                 <Lines
                     xScale={xScale}
                     yScale={yScale}
