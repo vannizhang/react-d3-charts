@@ -109,9 +109,4 @@ export type ReferenceRectangleData = {
      * The x-coordinate of the rectangle's bottom-right corner.
      */
     xMax: number;
-
-    /**
-     * The fill color of the rectangle (optional).
-     */
-    fillColor?: string;
 };

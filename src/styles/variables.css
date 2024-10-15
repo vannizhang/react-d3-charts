@@ -43,6 +43,13 @@
     --vertical-reference-line-stroke-dasharray: none;
 
     /*
+     * variables that control the style of user provided reference rectangle box
+     */
+    --reference-rectangle-fill-color: rgba(255,0,0,.05);
+    --reference-rectangle-stroke-color: rgba(0,0,0, .25);
+    --reference-rectangle-stroke-width: 1px;
+
+    /*
      * variables that control the style of user provided horizontal reference line
      */
     --horizontal-reference-line-color: rgba(50, 50, 50, .5);

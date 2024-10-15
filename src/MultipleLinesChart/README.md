@@ -19,6 +19,7 @@ import { MultipleLinesChart } from '@vannizhang/react-d3-charts'
 | leftAxisOptions          | [`LeftAxisOptions`](../Axis/types.ts) (optional)                        | -           | Options used to customize the y-axis at left.                                                       |
 | verticalReferenceLines   | [`VerticalReferenceLineData[]`](./types.ts) (optional)                  | -           | Data that will be used to draw vertical reference lines.                                            |
 | horizontalReferenceLines | [`HorizontalReferenceLineData[]`](../ReferenceLine/types.ts) (optional) | -           | Data that will be used to draw horizontal reference lines.                                          |
+| referenceRectangels      | [`ReferenceRectangleData[]`](./types.ts) (optional)                     | -           | Data that will be used to draw reference rectangles.                                                |
 | strokeWidth              | `number` (optional)                                                     | -           | The width of the line.                                                                              |
 | width                    | `number` (optional)                                                     | -           | The width of the chart container. If not provided, it will fit the width of the parent container.   |
 | height                   | `number` (optional)                                                     | -           | The height of the chart container. If not provided, it will fit the height of the parent container. |
@@ -520,6 +521,46 @@ Here is an example of adding horizontal reference lines to the Multiple Lines ch
         y2: 382,
         label: 'Meta Highest Closing Price on 2021: $382',
     },
+  ]}
+/>
+```
+
+**Show Reference Rectangles**
+---
+
+Here is an example of adding reference rectangle to the Multiple Lines chart.
+```js
+<MultipleLinesChart
+  data={[
+    {
+      fill: '#3b5998',
+      key: 'Meta',  
+      values: [
+        {
+          x: 1,
+          y: 313.26001
+        },
+        //...
+      ]
+    },
+    {
+      fill: '#7FBA00',
+      key: 'Microsoft',
+      values: [
+        {
+          x: 1,
+          y: 310.980011
+        },
+        //...
+      ]
+    }
+  ]}
+  referenceRectangels={[
+    {
+        key: 'rectangle-1',
+        xMin: 4,
+        xMax: 9,
+    }
   ]}
 />
 ```

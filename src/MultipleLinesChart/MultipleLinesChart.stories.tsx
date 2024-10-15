@@ -261,8 +261,7 @@ export const AddReferenceRectangles: Story = {
                 key: 'rectangle-1',
                 xMin: 4,
                 xMax: 9,
-                fillColor: 'rgba(50,50,50,.1)',
-            } as any,
+            },
         ],
     },
 };

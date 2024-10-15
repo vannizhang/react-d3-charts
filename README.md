@@ -373,6 +373,13 @@ Here's an example of the [`variables.css`](./src/styles/variables.css) file:
     --horizontal-reference-line-label-text-size: .8rem;
 
     /*
+     * variables that control the style of user provided reference rectangle box
+     */
+    --reference-rectangle-fill-color: rgba(0,0,0,.05);
+    --reference-rectangle-stroke-color: rgba(0,0,0, .25);
+    --reference-rectangle-stroke-width: 1px;
+
+    /*
      * variables that control the style of divider line that is used in Diverging Bar Chart and similar
      */
     --divider-line-color: rgba(0,0,0,.5);

@@ -219,7 +219,7 @@ export const MultipleLinesChart: FC<Props> = ({
                                 y={0}
                                 width={xScale(d.xMax) - xScale(d.xMin)}
                                 height={dimension.height} // the reference rectangle should cover the full height
-                                fillColor={d.fillColor}
+                                // fillColor={d.fillColor}
                             />
                         );
                     })

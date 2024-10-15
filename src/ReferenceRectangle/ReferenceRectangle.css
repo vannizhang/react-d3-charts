@@ -2,6 +2,10 @@
     pointer-events: none;
 } */
 
-.reference-rectangle-group {
+.reference-rectangle-group rect {
+    position: relative;
     pointer-events: none;
+    fill: var(--reference-rectangle-fill-color);
+    stroke: var(--reference-rectangle-stroke-color);
+    stroke-width: var(--reference-rectangle-stroke-width);
 }

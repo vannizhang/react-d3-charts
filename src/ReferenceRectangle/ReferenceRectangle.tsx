@@ -21,10 +21,6 @@ type Props = {
      * height of the rectangle
      */
     height: number;
-    /**
-     * The stroke color of this specific vertical reference line
-     */
-    fillColor?: string;
     svgContainerData?: SvgContainerData;
 };
 
@@ -33,7 +29,6 @@ export const ReferenceRectangle: FC<Props> = ({
     y,
     width,
     height,
-    fillColor,
     svgContainerData,
 }) => {
     const containerGroupRef = useRef<SVGGElement>();
@@ -60,8 +55,8 @@ export const ReferenceRectangle: FC<Props> = ({
                 .attr('x', x)
                 .attr('y', y)
                 .attr('width', width)
-                .attr('height', height)
-                .attr('fill', fillColor);
+                .attr('height', height);
+            // .attr('fill', fillColor);
         }
     };
 
