@@ -375,7 +375,7 @@ Here's an example of the [`variables.css`](./src/styles/variables.css) file:
     /*
      * variables that control the style of user provided reference rectangle box
      */
-    --reference-rectangle-fill-color: rgba(0,0,0,.05);
+    --reference-rectangle-fill: rgba(0,0,0,.05);
     --reference-rectangle-stroke-color: rgba(0,0,0, .25);
     --reference-rectangle-stroke-width: 1px;
 
